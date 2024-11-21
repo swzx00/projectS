@@ -11,6 +11,6 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     'no-undef': 'off',
-    'prettier/prettier': 1,
+    'prettier/prettier': 'error',
   },
-};
+}
