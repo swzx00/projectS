@@ -12,4 +12,7 @@ export default defineNuxtConfig({
   //   pages: 'pages',
   //   public: 'public',
   // },
+  // imports: {  // 關閉自動導入的元件
+  //   autoImport: false,
+  // },
 })
