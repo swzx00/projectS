@@ -6,4 +6,10 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
   modules: ['@nuxtjs/tailwindcss'],
+  // dir: { // 自訂目錄名稱
+  //   layouts: 'layouts',
+  //   middleware: 'middleware',
+  //   pages: 'pages',
+  //   public: 'public',
+  // },
 })
