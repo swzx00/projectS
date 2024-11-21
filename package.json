@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/tailwindcss": "^6.12.2",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
