@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt'],
   // dir: { // 自訂目錄名稱
   //   layouts: 'layouts',
   //   middleware: 'middleware',
