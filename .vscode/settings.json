@@ -42,5 +42,6 @@
     "vueuse",
     "youtu",
     "Noto"
-  ]
+  ],
+  "css.customData": [".vscode/css_custom_data.json"]
 }
