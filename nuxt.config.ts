@@ -5,7 +5,13 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt', '@nuxtjs/google-fonts', '@nuxt/icon'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+    '@nuxtjs/google-fonts',
+    '@nuxt/icon',
+  ],
   googleFonts: {
     families: {
       // 指定您想要的字體
@@ -21,4 +27,7 @@ export default defineNuxtConfig({
   // imports: {  // 關閉自動導入的元件
   //   autoImport: false,
   // },
+  app: {
+    baseURL: '/portfolio/',
+  },
 })

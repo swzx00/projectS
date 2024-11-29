@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repository
+      - uses: actions/checkout@v4
+
+      # 2. Enable corepack and setup Node.js
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # 3. Install dependencies
+      - run: npm install
+
+      # 4. Build static files
+      - run: npm run generate # 使用 nuxt generate 來生成靜態頁面
+
+      # 5. Upload the generated files as an artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist # 確保是輸出到 dist 資料夾
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github_pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
