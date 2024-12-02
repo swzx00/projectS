@@ -28,6 +28,6 @@ export default defineNuxtConfig({
   //   autoImport: false,
   // },
   app: {
-    baseURL: '/portfolio/',
+    baseURL: '/projectS/',
   },
 })
