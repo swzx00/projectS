@@ -41,7 +41,10 @@
     "vuetify",
     "vueuse",
     "youtu",
-    "Noto"
+    "Noto",
+    "JhengHei",
+    "Noto",
+    "Fira"
   ],
   "css.customData": [".vscode/css_custom_data.json"]
 }

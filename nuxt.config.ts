@@ -15,8 +15,12 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       // 指定您想要的字體
-      'Noto Sans': [100, 200, 300, 400, 500, 600, 700, 800, 900], // 指定需要的字體粗細
+      'Noto Sans': '100..900', // 指定需要的字體粗細
+      'Fira Code': '300..700',
     },
+  },
+  icon: {
+    mode: 'svg', // default <Icon> mode applied
   },
   // dir: { // 自訂目錄名稱
   //   layouts: 'layouts',

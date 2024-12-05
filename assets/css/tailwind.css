@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  html,
+  body {
+    @apply box-border h-full font-Noto text-base font-normal;
+  }
+  img {
+    @apply h-full max-h-full w-full max-w-full;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    @apply w-4 border-y-0 border-l border-solid border-x-white/20 bg-transparent;
+  }
+  .scrollbar::-webkit-scrollbar-button {
+    @apply hidden;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-black/30;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-4;
+  }
+}
