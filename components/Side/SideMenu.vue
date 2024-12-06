@@ -86,7 +86,11 @@ onUnmounted(() => {
         leave-from-class="opacity-100 translate-x-0"
         leave-to-class="opacity-0 -translate-x-1/2"
       >
-        <SideFrontendContent v-if="showDivProject && isMobile" class="sm:hidden"></SideFrontendContent>
+        <SideFrontendContent
+          v-if="showDivProject && isMobile"
+          v-model:show-div-project="showDivProject"
+          class="sm:hidden"
+        ></SideFrontendContent>
       </Transition>
     </Teleport>
   </aside>

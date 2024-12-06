@@ -28,6 +28,10 @@ watch(
         iconName.value = 'vscode-icons:file-type-js-official'
         title.value = 'Javascript'
         break
+      case 'typescript':
+        iconName.value = 'vscode-icons:file-type-typescript-official'
+        title.value = 'Typescript'
+        break
       case 'css':
         iconName.value = 'vscode-icons:file-type-css'
         title.value = 'Css'
@@ -82,10 +86,10 @@ watch(
       <Transition
         name="zoom-in"
         mode="out-in"
-        enter-active-class="transition-all duration-300 ease-in-out overflow-hidden"
+        enter-active-class="transition-all duration-200 ease-in-out overflow-hidden"
         enter-from-class="opacity-0"
         enter-to-class="opacity-100"
-        leave-active-class="transition-all duration-300 ease-in-out overflow-hidden"
+        leave-active-class="transition-all duration-200 ease-in-out overflow-hidden"
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >

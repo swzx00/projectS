@@ -25,9 +25,11 @@ defineModel('image', {
   <div
     class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-start overflow-hidden rounded-md border border-solid border-slate-800 bg-slate-800 transition-all duration-300 ease-linear first:*:rounded-t-md last:*:rounded-b-md hover:border-white hover:bg-white"
   >
-    <div class="aspect-[3/2] size-full h-full max-h-full w-full max-w-full overflow-hidden">
+    <div
+      class="relative flex aspect-[3/2] size-full h-full max-h-full w-full max-w-full items-center justify-center overflow-hidden"
+    >
       <img
-        class="size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
+        class="z-10 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
         :src="image"
         :title="title"
         :alt="title"
@@ -35,6 +37,13 @@ defineModel('image', {
         height="200"
         loading="lazy"
         decoding="async"
+      />
+      <Icon
+        class="absolute z-0 text-lg text-white"
+        name="line-md:loading-twotone-loop"
+        size="20"
+        title="Loading"
+        alt="Loading"
       />
     </div>
     <div

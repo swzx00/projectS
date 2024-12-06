@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// 使用 defineModel 接收父元件的狀態
+const showDivProject = defineModel<boolean>('showDivProject')
+
+// 切換顯示狀態
+const clickLink = () => {
+  showDivProject.value = !showDivProject.value // 改變父元件的狀態
+}
+</script>
 
 <template>
   <div
@@ -14,6 +22,7 @@
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='frontend'"
+          @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-vscode" size="16" title="Frontend" alt="Frontend" />
           Frontend
@@ -23,6 +32,7 @@
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='nuxt'"
+          @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-nuxt" size="16" title="Nuxt" alt="Nuxt" />
           Nuxt
@@ -32,6 +42,7 @@
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='vue'"
+          @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-vue" size="16" title="Vue" alt="Vue" />
           Vue
@@ -41,6 +52,7 @@
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='tailwind'"
+          @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-tailwind" size="16" title="Tailwind" alt="Tailwind" />
           Tailwind
@@ -50,6 +62,7 @@
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='bootstrap'"
+          @click="clickLink"
         >
           <Icon name="devicon:bootstrap" size="16" title="Bootstrap" alt="Bootstrap" />
           Bootstrap
@@ -59,6 +72,7 @@
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='html'"
+          @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-html" size="16" title="Html" alt="Html" />
           Html
@@ -68,6 +82,7 @@
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='css'"
+          @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-css" size="16" title="Css" alt="Css" />
           Css
@@ -76,7 +91,18 @@
       <li class="group">
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          to="/frontend?tag='typescript'"
+          @click="clickLink"
+        >
+          <Icon name="vscode-icons:file-type-typescript-official" size="16" title="Typescript" alt="Typescript" />
+          Typescript
+        </NuxtLink>
+      </li>
+      <li class="group">
+        <NuxtLink
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='javascript'"
+          @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-js-official" size="16" title="Javascript" alt="Javascript" />
           Javascript
@@ -86,6 +112,7 @@
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-5 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
           to="/frontend?tag='edm'"
+          @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-templ" size="16" title="Edm" alt="Edm" />
           Edm
