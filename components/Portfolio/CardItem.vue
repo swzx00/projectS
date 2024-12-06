@@ -60,7 +60,7 @@ const getIconName = (tag: string) => {
     case 'frontend':
       return 'vscode-icons:file-type-vscode'
     case 'design':
-      return 'skill-icons:photoshop'
+      return 'logos:adobe-photoshop'
     default:
       return ''
   }
@@ -101,7 +101,7 @@ const getIconTitle = (tag: string) => {
     class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-start overflow-hidden rounded-md border border-solid border-slate-800 bg-slate-800 transition-all duration-300 ease-linear first:*:rounded-t-md last:*:rounded-b-md hover:border-white hover:bg-white"
   >
     <div
-      class="relative flex aspect-video size-full h-full max-h-max min-h-fit w-full max-w-full items-center justify-center overflow-hidden"
+      class="relative flex aspect-video size-full h-full max-h-max min-h-fit w-full max-w-full items-center justify-center overflow-hidden bg-black/30"
     >
       <img
         class="z-10 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"

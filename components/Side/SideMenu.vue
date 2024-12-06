@@ -62,7 +62,7 @@ onUnmounted(() => {
         leave-from-class="opacity-100 translate-x-0"
         leave-to-class="opacity-0 -translate-x-1/2"
       >
-        <HeaderFrontendContent v-if="showDivMenu && isMobile" class="sm:hidden"></HeaderFrontendContent>
+        <HeaderContent v-if="showDivMenu && isMobile" class="sm:hidden"></HeaderContent>
       </Transition>
     </Teleport>
     <button
@@ -86,11 +86,11 @@ onUnmounted(() => {
         leave-from-class="opacity-100 translate-x-0"
         leave-to-class="opacity-0 -translate-x-1/2"
       >
-        <SideFrontendContent
+        <SideContentFrontend
           v-if="showDivProject && isMobile"
           v-model:show-div-project="showDivProject"
           class="sm:hidden"
-        ></SideFrontendContent>
+        ></SideContentFrontend>
       </Transition>
     </Teleport>
   </aside>
