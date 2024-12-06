@@ -115,16 +115,20 @@ watch(
         <!-- 資料渲染 -->
         <div
           v-else-if="data?.dataCard && data?.dataCard.length"
-          class="mx-auto flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-3 gap-y-6 *:max-w-full *:sm:max-w-full *:md:max-w-[calc((100%-(1*1rem))/2)] *:lg:max-w-[calc((100%-(2*1rem))/3)] *:xl:max-w-[calc((100%-(3*1rem))/4)]"
+          class="mx-auto flex h-fit w-full max-w-full flex-col flex-wrap items-start justify-start"
         >
-          <PortfolioCardItem
-            v-for="card in data?.dataCard"
-            :key="card.id"
-            :title="card.title"
-            :tags="card.tag"
-            :content="card.content"
-            :image="card.image"
-          ></PortfolioCardItem>
+          <div
+            class="mx-auto flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-3 gap-y-6 *:max-w-full *:sm:max-w-full *:md:max-w-[calc((100%-(1*.75rem))/2)] *:lg:max-w-[calc((100%-(2*.75rem))/3)] *:xl:max-w-[calc((100%-(3*.75rem))/4)]"
+          >
+            <PortfolioCardItem
+              v-for="card in data?.dataCard"
+              :key="card.id"
+              :title="card.title"
+              :tags="card.tag"
+              :content="card.content"
+              :image="card.image"
+            ></PortfolioCardItem>
+          </div>
           <PortfolioPagination
             v-if="data?.perPage && data?.totalCount > data?.perPage"
             :total-count="totalCount"
