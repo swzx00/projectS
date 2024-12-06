@@ -54,7 +54,7 @@ onUnmounted(() => {
     </button>
     <Teleport to="body">
       <Transition
-        name="menu"
+        name="menu-header"
         enter-active-class="transition-all duration-300 ease-in-out overflow-hidden"
         enter-from-class="opacity-0 -translate-x-1/2"
         enter-to-class="opacity-100 translate-x-0"
@@ -62,7 +62,7 @@ onUnmounted(() => {
         leave-from-class="opacity-100 translate-x-0"
         leave-to-class="opacity-0 -translate-x-1/2"
       >
-        <HeaderFrontendNavComponent v-if="showDivMenu && isMobile" class="sm:hidden" />
+        <HeaderFrontendContent v-if="showDivMenu && isMobile" class="sm:hidden"></HeaderFrontendContent>
       </Transition>
     </Teleport>
     <button
@@ -78,7 +78,7 @@ onUnmounted(() => {
     </button>
     <Teleport to="body">
       <Transition
-        name="menu"
+        name="menu-side"
         enter-active-class="transition-all duration-300 ease-in-out overflow-hidden"
         enter-from-class="opacity-0 -translate-x-1/2"
         enter-to-class="opacity-100 translate-x-0"
@@ -86,7 +86,7 @@ onUnmounted(() => {
         leave-from-class="opacity-100 translate-x-0"
         leave-to-class="opacity-0 -translate-x-1/2"
       >
-        <SideFrontend v-if="showDivProject && isMobile" class="sm:hidden"></SideFrontend>
+        <SideFrontendContent v-if="showDivProject && isMobile" class="sm:hidden"></SideFrontendContent>
       </Transition>
     </Teleport>
   </aside>

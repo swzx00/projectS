@@ -35,10 +35,10 @@ onUnmounted(() => {
   <div
     class="layout-frontend static flex h-dvh max-h-full w-dvw max-w-full flex-row items-start justify-start overflow-hidden bg-slate-900 sm:fixed sm:flex-col"
   >
-    <HeaderFrontendIndexComponent class="hidden sm:block"></HeaderFrontendIndexComponent>
+    <HeaderFrontendLayout class="hidden sm:block"></HeaderFrontendLayout>
     <SideMenu v-if="showDivMobile && isMobile" class="block sm:hidden"></SideMenu>
     <div class="flex h-full max-h-[calc(100%-32px)] w-[calc(100%-40px)] flex-1 flex-row sm:w-full">
-      <SideLayout v-if="showDivPc && !isMobile" class="hidden sm:block"></SideLayout>
+      <SideAsideLayout v-if="showDivPc && !isMobile" class="hidden sm:block"></SideAsideLayout>
       <slot />
     </div>
   </div>

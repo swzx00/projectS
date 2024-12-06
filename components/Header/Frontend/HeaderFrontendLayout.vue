@@ -5,7 +5,7 @@
     <h1 class="hidden">Title</h1>
     <div class="flex h-full flex-row flex-nowrap items-stretch justify-start *:flex *:h-full *:items-center">
       <Icon name="vscode-icons:file-type-vscode" size="18" title="Frontend" alt="Frontend" />
-      <HeaderFrontendNavComponent class="hidden sm:flex"></HeaderFrontendNavComponent>
+      <HeaderFrontendContent class="hidden sm:flex"></HeaderFrontendContent>
     </div>
   </header>
 </template>

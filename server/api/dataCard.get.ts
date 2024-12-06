@@ -2,9 +2,10 @@ import { readFileSync } from 'fs'
 import { resolve } from 'path'
 import { defineEventHandler, getQuery } from 'h3'
 
-export default defineEventHandler((event) => {
-  // 取得查詢參數
-  // const { page = 1 } = getQuery(event) // 預設為第 1 頁
+export default defineEventHandler(async (event) => {
+  // 模擬延遲 (例如延遲 0.3 秒)
+  await new Promise((resolve) => setTimeout(resolve, 300))
+
   // 取得查詢參數
   const { page = 1, tag }: { page: string | number; tag?: string } = getQuery(event)
 

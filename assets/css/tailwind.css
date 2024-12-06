@@ -12,13 +12,13 @@
   }
 
   .scrollbar::-webkit-scrollbar {
-    @apply w-4 border-y-0 border-l border-solid border-x-white/20 bg-transparent;
+    @apply w-3 border-y-0 border-l border-r border-solid border-slate-600 bg-transparent sm:w-5 sm:border-l-2 sm:border-r-2;
   }
   .scrollbar::-webkit-scrollbar-button {
     @apply hidden;
   }
   .scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-black/30;
+    @apply rounded-full border-y-0 border-l border-r border-solid border-slate-600 bg-black/30 sm:rounded-none sm:border-l-2 sm:border-r-2;
   }
 }
 
