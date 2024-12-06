@@ -127,6 +127,8 @@ watch(
               :tags="card.tag"
               :content="card.content"
               :image="card.image"
+              :more="card.more || ''"
+              :link="card.link || ''"
             ></PortfolioCardItem>
           </div>
           <PortfolioPagination

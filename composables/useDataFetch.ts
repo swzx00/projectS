@@ -7,6 +7,8 @@ interface DataCard {
   tag: string[]
   content: string
   image: string
+  more?: string // 可選屬性
+  link?: string // 可選屬性
 }
 
 interface ResponseData {

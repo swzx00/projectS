@@ -1,12 +1,14 @@
 <script setup lang="ts">
-// 使用 defineModel 來傳遞資料
+import { defineModel } from 'vue'
+
+// 使用 defineModel 定義傳遞資料
 defineModel('title', {
   type: String,
   required: true,
 })
 
 defineModel('tags', {
-  type: Array as PropType<string[]>,
+  type: Array as PropType<string[]>, // 定義 tags 的型別
   required: true,
 })
 
@@ -19,6 +21,79 @@ defineModel('image', {
   type: String,
   required: true,
 })
+
+defineModel('more', {
+  type: String,
+  default: '', // 設定預設值
+  required: false,
+})
+
+defineModel('link', {
+  type: String,
+  default: '', // 設定預設值
+  required: false,
+})
+
+// 在 setup 函數內部，使用 `props` 存取 `tags` 變數
+const { tags } = defineProps<{ tags: string[] }>() // 使用 `defineProps` 來定義 props
+
+const getIconName = (tag: string) => {
+  switch (tag.toLowerCase().replace(/['\s]/g, '')) {
+    case 'edm':
+      return 'vscode-icons:file-type-templ'
+    case 'javascript':
+      return 'vscode-icons:file-type-js-official'
+    case 'typescript':
+      return 'vscode-icons:file-type-typescript-official'
+    case 'css':
+      return 'vscode-icons:file-type-css'
+    case 'html':
+      return 'vscode-icons:file-type-html'
+    case 'bootstrap':
+      return 'devicon:bootstrap'
+    case 'tailwind':
+      return 'vscode-icons:file-type-tailwind'
+    case 'vue':
+      return 'vscode-icons:file-type-vue'
+    case 'nuxt':
+      return 'vscode-icons:file-type-nuxt'
+    case 'frontend':
+      return 'vscode-icons:file-type-vscode'
+    case 'design':
+      return 'skill-icons:photoshop'
+    default:
+      return ''
+  }
+}
+
+const getIconTitle = (tag: string) => {
+  switch (tag.toLowerCase().replace(/['\s]/g, '')) {
+    case 'edm':
+      return 'Edm'
+    case 'javascript':
+      return 'Javascript'
+    case 'typescript':
+      return 'Typescript'
+    case 'css':
+      return 'Css'
+    case 'html':
+      return 'Html'
+    case 'bootstrap':
+      return 'Bootstrap'
+    case 'tailwind':
+      return 'Tailwind'
+    case 'vue':
+      return 'Vue'
+    case 'nuxt':
+      return 'Nuxt'
+    case 'frontend':
+      return 'Frontend'
+    case 'design':
+      return 'Design'
+    default:
+      return ''
+  }
+}
 </script>
 
 <template>
@@ -26,7 +101,7 @@ defineModel('image', {
     class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-start overflow-hidden rounded-md border border-solid border-slate-800 bg-slate-800 transition-all duration-300 ease-linear first:*:rounded-t-md last:*:rounded-b-md hover:border-white hover:bg-white"
   >
     <div
-      class="relative flex aspect-[3/2] size-full h-full max-h-full w-full max-w-full items-center justify-center overflow-hidden"
+      class="relative flex aspect-video size-full h-full max-h-max min-h-fit w-full max-w-full items-center justify-center overflow-hidden"
     >
       <img
         class="z-10 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
@@ -47,7 +122,7 @@ defineModel('image', {
       />
     </div>
     <div
-      class="card-body flex aspect-[7/3] size-full max-h-full max-w-full flex-col flex-nowrap items-start justify-between gap-1.5 px-3 py-2"
+      class="card-body flex size-full max-h-full max-w-full flex-col flex-nowrap items-start justify-start gap-1.5 px-3 py-2"
     >
       <h3
         class="m-0 inline-block w-fit max-w-full truncate p-0 text-start text-lg font-bold text-amber-200 group-hover:text-black"
@@ -55,12 +130,8 @@ defineModel('image', {
         {{ title }}
       </h3>
       <div class="flex h-6 items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap">
-        <span
-          v-for="tag in tags"
-          :key="tag"
-          class="box-border inline h-6 rounded-full border border-solid border-red-500 px-1.5 py-0.5 text-center align-middle font-Fira text-xs font-normal uppercase text-red-500 group-hover:border-blue-500 group-hover:text-blue-500"
-        >
-          {{ tag }}
+        <span v-for="tag in tags" :key="tag" class="flex size-5 items-center justify-center" :title="getIconTitle(tag)">
+          <Icon :name="getIconName(tag)" :title="getIconTitle(tag)" :alt="getIconTitle(tag)" size="16" />
         </span>
       </div>
       <p
@@ -68,12 +139,21 @@ defineModel('image', {
       >
         {{ content }}
       </p>
-      <NuxtLink
-        to="/"
-        class="mb-0 ml-auto mr-0 mt-auto text-end font-Fira text-sm font-light text-slate-600 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
-      >
-        &lt;More&gt;
-      </NuxtLink>
+      <div class="mb-0 mt-auto flex w-full items-center justify-end gap-2">
+        <NuxtLink
+          v-if="link"
+          to="/"
+          class="text-end font-Fira text-sm font-light text-slate-200 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
+        >
+          &lt;Link&gt;
+        </NuxtLink>
+        <NuxtLink
+          to="/"
+          class="text-end font-Fira text-sm font-light text-slate-200 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
+        >
+          &lt;More&gt;
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
