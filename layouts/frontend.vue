@@ -37,9 +37,37 @@ onUnmounted(() => {
   >
     <HeaderFrontendLayout class="hidden sm:block"></HeaderFrontendLayout>
     <SideMenu v-if="showDivMobile && isMobile" class="block sm:hidden"></SideMenu>
-    <div class="flex h-full max-h-[calc(100%-32px)] w-[calc(100%-40px)] flex-1 flex-row sm:w-full">
+    <div class="flex h-full max-h-full w-[calc(100%-40px)] flex-1 flex-row sm:max-h-[calc(100%-56px)] sm:w-full">
       <SideLayoutFrontend v-if="showDivPc && !isMobile" class="hidden sm:block"></SideLayoutFrontend>
       <slot />
+    </div>
+    <div
+      class="pointer-events-none relative box-border hidden h-6 max-h-6 w-full max-w-full cursor-default select-none items-center justify-between border border-solid border-transparent bg-white/10 px-4 text-xs leading-none text-white/50 *:opacity-50 sm:flex"
+    >
+      <div class="flex items-center justify-start gap-2">
+        <span class="flex items-center justify-start gap-1">
+          <Icon name="iconoir:git-fork" size="14" title="Git" alt="Git" />
+          main
+        </span>
+        <span class="flex items-center justify-start gap-1">
+          <Icon name="line-md:close-circle" size="14" title="Error" alt="Error" />
+          0
+        </span>
+        <span class="flex items-center justify-start gap-1">
+          <Icon name="line-md:alert" size="14" title="Warn" alt="Warn" />
+          0
+        </span>
+      </div>
+      <div class="flex items-center justify-start gap-2">
+        <span class="flex items-center justify-start gap-1">Line 1, Col 1</span>
+        <span class="flex items-center justify-start gap-1">Spaces: 2</span>
+        <span class="flex items-center justify-start gap-1">UTF-8</span>
+        <span class="flex items-center justify-start gap-1">LF</span>
+        <span class="flex items-center justify-start gap-1">{}&nbsp;HTML</span>
+        <span class="flex items-center justify-start gap-1">
+          <Icon name="line-md:bell-loop" size="14" title="Bell" alt="Bell" />
+        </span>
+      </div>
     </div>
   </div>
 </template>

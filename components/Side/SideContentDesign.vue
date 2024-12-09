@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
+
 // 使用 defineModel 接收父元件的狀態
 const showDivProject = defineModel<boolean>('showDivProject')
 
@@ -6,14 +8,17 @@ const showDivProject = defineModel<boolean>('showDivProject')
 const clickLink = () => {
   showDivProject.value = !showDivProject.value // 改變父元件的狀態
 }
+
+const route = useRoute()
+const isActive = (tag: string) => route.query.tag === tag
 </script>
 
 <template>
   <div
-    class="bo fixed left-10 top-0 z-30 h-full w-full max-w-[calc(66dvw-40px)] border-l border-r border-solid border-white/50 bg-slate-800 shadow-lg sm:relative sm:left-0 sm:w-full sm:max-w-none sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:shadow-none"
+    class="bo fixed left-10 top-0 z-30 h-full w-full max-w-[calc(66dvw-40px)] border-l border-r border-solid border-white/50 bg-zinc-700 shadow-lg sm:relative sm:left-0 sm:w-full sm:max-w-none sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:shadow-none"
   >
-    <div class="flex h-fit max-h-fit w-full max-w-full items-center justify-start gap-2 bg-zinc-800">
-      <p class="flex h-fit w-fit items-center justify-center bg-zinc-600 px-2 py-1 text-sm font-normal text-white/80">
+    <div class="flex h-fit max-h-fit w-full max-w-full items-center justify-start gap-2 bg-zinc-700">
+      <p class="flex h-8 w-fit items-center justify-center bg-zinc-600 px-2 py-1 text-sm font-normal text-white/80">
         Preview
       </p>
     </div>
@@ -22,12 +27,14 @@ const clickLink = () => {
         class="aspect-[4/3] h-fit max-h-fit w-full max-w-full border-4 border-solid border-white bg-gray-400 bg-[url('/images/bg-transparent.svg')] bg-[length:12px_12px] bg-center bg-repeat"
       ></div>
     </div>
-    <div class="h-fit max-h-fit w-full max-w-full border-t border-solid border-zinc-800 bg-zinc-800">
-      <p class="flex h-fit w-fit items-center justify-center bg-zinc-600 px-2 py-1 text-sm font-normal text-white/80">
+    <div class="h-fit max-h-fit w-full max-w-full border-t border-solid border-zinc-700 bg-zinc-700">
+      <p
+        class="flex h-8 w-fit cursor-default items-center justify-center bg-zinc-600 px-2 py-1 text-sm font-normal text-white/80"
+      >
         Layers
       </p>
       <div
-        class="flex h-fit w-full items-center justify-start gap-3 border-b border-solid border-zinc-800 bg-zinc-600 px-2 py-1 text-xs font-normal text-white/80 *:pointer-events-none *:opacity-50"
+        class="flex h-fit w-full items-center justify-start gap-3 border-b border-solid border-zinc-700 bg-zinc-600 px-2 py-1 text-xs font-normal text-white/80 *:pointer-events-none *:select-none *:opacity-50"
       >
         <div
           class="flex w-[60px] items-center justify-start border border-solid border-zinc-400 bg-zinc-500 p-0.5 leading-none"
@@ -62,7 +69,7 @@ const clickLink = () => {
         </div>
       </div>
       <div
-        class="flex h-fit w-full items-center justify-start gap-1 border-b border-solid border-zinc-800 bg-zinc-600 px-2 py-1 text-xs font-normal text-white/80 *:pointer-events-none *:opacity-50"
+        class="flex h-fit w-full items-center justify-start gap-1 border-b border-solid border-zinc-700 bg-zinc-600 px-2 py-1 text-xs font-normal text-white/80 *:pointer-events-none *:select-none *:opacity-50"
       >
         <div
           class="flex w-[112px] items-center justify-between border border-solid border-zinc-400 bg-zinc-500 p-0.5 leading-none"
@@ -94,7 +101,7 @@ const clickLink = () => {
         </div>
       </div>
       <div
-        class="flex h-fit w-full items-center justify-start gap-1 border-b border-solid border-zinc-800 bg-zinc-600 px-2 py-1 text-xs font-normal text-white/80 *:pointer-events-none *:opacity-50"
+        class="flex h-fit w-full items-center justify-start gap-1 border-b border-solid border-zinc-700 bg-zinc-600 px-2 py-1 text-xs font-normal text-white/80 *:pointer-events-none *:select-none *:opacity-50"
       >
         <p>Lock:</p>
         <Icon name="bx:bxs-chess" size="16" title="Transparency" alt="Transparency" />
@@ -117,53 +124,53 @@ const clickLink = () => {
           />
         </div>
       </div>
-
+      <NuxtLink
+        class="group flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 bg-zinc-600 text-white"
+        to="/design?tag=design"
+        @click="clickLink"
+      >
+        <div class="aspect-squares flex size-10 items-center justify-center border-r border-solid border-zinc-700">
+          <div
+            class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
+            :class="isActive('design') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
+          >
+            <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
+          </div>
+        </div>
+        <div class="flex h-full w-full cursor-pointer items-center justify-start gap-0 p-2 group-hover:bg-slate-500">
+          <Icon
+            class="mr-1 size-fit"
+            name="akar-icons:triangle-down-fill"
+            size="16"
+            title="Folder Open"
+            alt="Folder Open"
+          />
+          <Icon class="mr-2 size-fit" name="bx:bxs-folder-open" size="20" title="Folder" alt="Folder" />
+          Design
+        </div>
+      </NuxtLink>
       <ul
         class="flex flex-col items-start justify-start bg-zinc-600 p-0 text-lg font-normal text-white/90 *:flex *:w-full"
       >
         <li class="group">
           <NuxtLink
-            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-800"
-            to="/design?tag=design"
-            @click="clickLink"
-          >
-            <div class="flex aspect-square size-12 items-center justify-center border-r border-solid border-zinc-800">
-              <div
-                class="border border-solid border-zinc-800/20 bg-zinc-700/20 shadow-inner group-hover:border-0 group-hover:bg-transparent"
-              >
-                <Icon class="opacity-0 group-hover:opacity-100" name="mdi:eye" size="16" title="Show" alt="Show" />
-              </div>
-            </div>
-            <div
-              class="flex h-full w-full cursor-pointer items-center justify-start gap-2 p-2 group-hover:bg-slate-500"
-            >
-              <div
-                class="flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
-              >
-                <Icon class="size-fit" name="logos:adobe-icon" size="22" title="Design" alt="Design" />
-              </div>
-              Design
-            </div>
-          </NuxtLink>
-        </li>
-        <li class="group">
-          <NuxtLink
-            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-800"
+            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700"
             to="/design?tag=web"
             @click="clickLink"
           >
-            <div class="flex aspect-square size-12 items-center justify-center border-r border-solid border-zinc-800">
+            <div class="flex h-12 w-10 items-center justify-center border-r border-solid border-zinc-700">
               <div
-                class="border border-solid border-zinc-800/20 bg-zinc-700/20 shadow-inner group-hover:border-0 group-hover:bg-transparent"
+                class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
+                :class="isActive('web') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
               >
-                <Icon class="opacity-0 group-hover:opacity-100" name="mdi:eye" size="16" title="Show" alt="Show" />
+                <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
               </div>
             </div>
             <div
               class="flex h-full w-full cursor-pointer items-center justify-start gap-2 p-2 group-hover:bg-slate-500"
             >
               <div
-                class="flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
+                class="ml-6 flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
               >
                 <Icon class="size-fit" name="vscode-icons:file-type-vscode" size="22" title="Web" alt="Web" />
               </div>
@@ -173,22 +180,23 @@ const clickLink = () => {
         </li>
         <li class="group">
           <NuxtLink
-            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-800"
+            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700"
             to="/design?tag=edm"
             @click="clickLink"
           >
-            <div class="flex aspect-square size-12 items-center justify-center border-r border-solid border-zinc-800">
+            <div class="flex h-12 w-10 items-center justify-center border-r border-solid border-zinc-700">
               <div
-                class="border border-solid border-zinc-800/20 bg-zinc-700/20 shadow-inner group-hover:border-0 group-hover:bg-transparent"
+                class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
+                :class="isActive('edm') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
               >
-                <Icon class="opacity-0 group-hover:opacity-100" name="mdi:eye" size="16" title="Show" alt="Show" />
+                <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
               </div>
             </div>
             <div
               class="flex h-full w-full cursor-pointer items-center justify-start gap-2 p-2 group-hover:bg-slate-500"
             >
               <div
-                class="flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
+                class="ml-6 flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
               >
                 <Icon class="size-fit" name="logos:adobe-dreamweaver" size="22" title="Edm" alt="Edm" />
               </div>
@@ -198,22 +206,23 @@ const clickLink = () => {
         </li>
         <li class="group">
           <NuxtLink
-            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-800"
+            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700"
             to="/design?tag=interface"
             @click="clickLink"
           >
-            <div class="flex aspect-square size-12 items-center justify-center border-r border-solid border-zinc-800">
+            <div class="flex h-12 w-10 items-center justify-center border-r border-solid border-zinc-700">
               <div
-                class="border border-solid border-zinc-800/20 bg-zinc-700/20 shadow-inner group-hover:border-0 group-hover:bg-transparent"
+                class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
+                :class="isActive('interface') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
               >
-                <Icon class="opacity-0 group-hover:opacity-100" name="mdi:eye" size="16" title="Show" alt="Show" />
+                <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
               </div>
             </div>
             <div
               class="flex h-full w-full cursor-pointer items-center justify-start gap-2 p-2 group-hover:bg-slate-500"
             >
               <div
-                class="flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
+                class="ml-6 flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
               >
                 <Icon class="size-fit" name="skill-icons:figma-dark" size="22" title="Interface" alt="Interface" />
               </div>
@@ -223,22 +232,23 @@ const clickLink = () => {
         </li>
         <li class="group">
           <NuxtLink
-            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-800"
+            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700"
             to="/design?tag=publication"
             @click="clickLink"
           >
-            <div class="flex aspect-square size-12 items-center justify-center border-r border-solid border-zinc-800">
+            <div class="flex h-12 w-10 items-center justify-center border-r border-solid border-zinc-700">
               <div
-                class="border border-solid border-zinc-800/20 bg-zinc-700/20 shadow-inner group-hover:border-0 group-hover:bg-transparent"
+                class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
+                :class="isActive('publication') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
               >
-                <Icon class="opacity-0 group-hover:opacity-100" name="mdi:eye" size="16" title="Show" alt="Show" />
+                <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
               </div>
             </div>
             <div
               class="flex h-full w-full cursor-pointer items-center justify-start gap-2 p-2 group-hover:bg-slate-500"
             >
               <div
-                class="flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
+                class="ml-6 flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
               >
                 <Icon class="size-fit" name="logos:adobe-indesign" size="22" title="Publication" alt="Publication" />
               </div>
@@ -248,22 +258,23 @@ const clickLink = () => {
         </li>
         <li class="group">
           <NuxtLink
-            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-800"
+            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700"
             to="/design?tag=graphic"
             @click="clickLink"
           >
-            <div class="flex aspect-square size-12 items-center justify-center border-r border-solid border-zinc-800">
+            <div class="flex h-12 w-10 items-center justify-center border-r border-solid border-zinc-700">
               <div
-                class="border border-solid border-zinc-800/20 bg-zinc-700/20 shadow-inner group-hover:border-0 group-hover:bg-transparent"
+                class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
+                :class="isActive('graphic') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
               >
-                <Icon class="opacity-0 group-hover:opacity-100" name="mdi:eye" size="16" title="Show" alt="Show" />
+                <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
               </div>
             </div>
             <div
               class="flex h-full w-full cursor-pointer items-center justify-start gap-2 p-2 group-hover:bg-slate-500"
             >
               <div
-                class="flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
+                class="ml-6 flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
               >
                 <Icon class="size-fit" name="logos:adobe-photoshop" size="22" title="Graphic" alt="Graphic" />
               </div>
@@ -273,22 +284,23 @@ const clickLink = () => {
         </li>
         <li class="group">
           <NuxtLink
-            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-800"
+            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700"
             to="/design?tag=media"
             @click="clickLink"
           >
-            <div class="flex aspect-square size-12 items-center justify-center border-r border-solid border-zinc-800">
+            <div class="flex h-12 w-10 items-center justify-center border-r border-solid border-zinc-700">
               <div
-                class="border border-solid border-zinc-800/20 bg-zinc-700/20 shadow-inner group-hover:border-0 group-hover:bg-transparent"
+                class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
+                :class="isActive('media') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
               >
-                <Icon class="opacity-0 group-hover:opacity-100" name="mdi:eye" size="16" title="Show" alt="Show" />
+                <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
               </div>
             </div>
             <div
               class="flex h-full w-full cursor-pointer items-center justify-start gap-2 p-2 group-hover:bg-slate-500"
             >
               <div
-                class="flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
+                class="ml-6 flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
               >
                 <Icon class="size-fit" name="logos:adobe-after-effects" size="22" title="Media" alt="Media" />
               </div>
@@ -298,22 +310,23 @@ const clickLink = () => {
         </li>
         <li class="group">
           <NuxtLink
-            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-800"
+            class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700"
             to="/design?tag=product"
             @click="clickLink"
           >
-            <div class="flex aspect-square size-12 items-center justify-center border-r border-solid border-zinc-800">
+            <div class="flex h-12 w-10 items-center justify-center border-r border-solid border-zinc-700">
               <div
-                class="border border-solid border-zinc-800/20 bg-zinc-700/20 shadow-inner group-hover:border-0 group-hover:bg-transparent"
+                class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
+                :class="isActive('product') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
               >
-                <Icon class="opacity-0 group-hover:opacity-100" name="mdi:eye" size="16" title="Show" alt="Show" />
+                <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
               </div>
             </div>
             <div
               class="flex h-full w-full cursor-pointer items-center justify-start gap-2 p-2 group-hover:bg-slate-500"
             >
               <div
-                class="flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
+                class="ml-6 flex aspect-square size-8 items-center justify-center border border-solid border-gray-800 bg-white"
               >
                 <Icon class="size-fit" name="logos:adobe-illustrator" size="22" title="Product" alt="Product" />
               </div>

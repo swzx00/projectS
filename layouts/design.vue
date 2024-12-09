@@ -33,7 +33,7 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="layout-frontend static flex h-dvh max-h-full w-dvw max-w-full flex-row items-start justify-start overflow-hidden bg-zinc-600 sm:fixed sm:flex-col"
+    class="layout-design static flex h-dvh max-h-full w-dvw max-w-full flex-row items-start justify-start overflow-hidden bg-zinc-600 sm:fixed sm:flex-col"
   >
     <HeaderDesignLayout class="hidden sm:block"></HeaderDesignLayout>
     <!-- <SideMenu v-if="showDivMobile && isMobile" class="block sm:hidden"></SideMenu> -->

@@ -40,7 +40,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <aside class="side-menu relative z-40 h-full w-[60px] overflow-y-auto overflow-x-hidden bg-slate-800 p-0">
+  <aside class="side-menu relative z-40 h-full w-[40px] overflow-y-auto overflow-x-hidden bg-slate-800 p-0">
     <button
       class="flex size-10 items-center justify-center p-1 text-3xl font-bold text-white"
       @click="toggleNav('menu')"

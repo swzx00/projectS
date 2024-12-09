@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
+
 // 使用 defineModel 接收父元件的狀態
 const showDivProject = defineModel<boolean>('showDivProject')
 
@@ -6,6 +8,9 @@ const showDivProject = defineModel<boolean>('showDivProject')
 const clickLink = () => {
   showDivProject.value = !showDivProject.value // 改變父元件的狀態
 }
+
+const route = useRoute()
+const isActive = (tag: string) => route.query.tag === tag
 </script>
 
 <template>
@@ -13,32 +18,29 @@ const clickLink = () => {
     class="bo fixed left-10 top-0 z-30 h-full w-full max-w-[calc(66dvw-40px)] border-l border-r border-solid border-white/50 bg-slate-800 shadow-lg sm:relative sm:left-0 sm:w-full sm:max-w-none sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:shadow-none"
   >
     <p class="flex items-center justify-start gap-2 px-2 pb-1 pt-2 text-sm font-normal text-white/80">Hello World!</p>
-    <!-- <p class="mt-1 flex items-center justify-start gap-2 px-3 py-1 text-base font-semibold text-white">
-      <Icon name="uil:angle-down" size="18" />
-      Coding Type
-    </p> -->
     <NuxtLink
-      class="mt-1 flex w-full cursor-pointer items-center justify-start gap-2 px-3 pb-1 pt-2 text-lg font-normal text-white/80 hover:bg-black/20 hover:font-semibold hover:text-white"
+      class="group mt-1 flex w-full cursor-pointer items-center justify-start gap-2 px-3 pb-1 pt-2 text-lg font-normal hover:bg-black/20 hover:font-semibold"
+      :class="
+        isActive('frontend')
+          ? 'text-amber-200 after:ml-auto after:mr-0 after:aspect-square after:size-2 after:rounded-full after:bg-amber-200 after:content-[\'\'] hover:text-amber-400 hover:after:bg-amber-400'
+          : 'text-white/80 hover:text-white'
+      "
       to="/frontend?tag=frontend"
       @click="clickLink"
-      ><Icon name="uil:angle-down" size="18" />
+      ><Icon class="text-white/80" name="uil:angle-down" size="18" />
       <Icon name="vscode-icons:folder-type-vscode" size="16" title="Frontend" alt="Frontend" />
       Frontend
+      <!-- <span class="ml-auto mr-0 aspect-square size-2 rounded-full bg-amber-200 group-hover:bg-amber-400"></span> -->
     </NuxtLink>
     <ul class="flex flex-col items-start justify-start p-0 text-lg font-normal text-white/90 *:flex *:w-full">
-      <!-- <li class="group">
-        <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
-          to="/frontend?tag=frontend"
-          @click="clickLink"
-        >
-          <Icon name="vscode-icons:file-type-vscode" size="16" title="Frontend" alt="Frontend" />
-          Frontend
-        </NuxtLink>
-      </li> -->
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('nuxt')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=nuxt"
           @click="clickLink"
         >
@@ -48,7 +50,12 @@ const clickLink = () => {
       </li>
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('vue')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=vue"
           @click="clickLink"
         >
@@ -58,7 +65,12 @@ const clickLink = () => {
       </li>
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('tailwind')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=tailwind"
           @click="clickLink"
         >
@@ -68,7 +80,12 @@ const clickLink = () => {
       </li>
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('bootstrap')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=bootstrap"
           @click="clickLink"
         >
@@ -78,7 +95,12 @@ const clickLink = () => {
       </li>
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('html')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=html"
           @click="clickLink"
         >
@@ -88,7 +110,12 @@ const clickLink = () => {
       </li>
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('css')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=css"
           @click="clickLink"
         >
@@ -98,7 +125,12 @@ const clickLink = () => {
       </li>
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('typescript')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=typescript"
           @click="clickLink"
         >
@@ -108,7 +140,12 @@ const clickLink = () => {
       </li>
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('javascript')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=javascript"
           @click="clickLink"
         >
@@ -118,7 +155,12 @@ const clickLink = () => {
       </li>
       <li class="group">
         <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] hover:font-semibold hover:text-white group-hover:bg-black/20"
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('edm')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
           to="/frontend?tag=edm"
           @click="clickLink"
         >

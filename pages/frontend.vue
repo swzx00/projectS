@@ -82,7 +82,6 @@ watch(
       {{ title }}
     </h2>
     <div class="scrollbar h-full max-h-[calc(100%)] overflow-x-hidden overflow-y-scroll bg-slate-600 px-4 py-6">
-      <!-- 載入中狀態 -->
       <Transition
         name="zoom-in"
         mode="out-in"
@@ -93,6 +92,7 @@ watch(
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >
+        <!-- 載入中狀態 -->
         <div v-if="pending" class="mx-auto w-full max-w-full px-4">
           <p class="flex items-center justify-start gap-2 text-lg text-white">
             <Icon class="text-lg" name="line-md:loading-twotone-loop" size="20" title="Loading" alt="Loading" />
@@ -120,16 +120,17 @@ watch(
           <div
             class="mx-auto flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-3 gap-y-6 *:max-w-full *:sm:max-w-full *:md:max-w-[calc((100%-(1*.75rem))/2)] *:lg:max-w-[calc((100%-(2*.75rem))/3)] *:xl:max-w-[calc((100%-(3*.75rem))/4)]"
           >
-            <PortfolioCardItem
+            <PortfolioCardFrontend
               v-for="card in data?.dataCard"
               :key="card.id"
               :title="card.title"
               :tags="card.tag"
               :content="card.content"
               :image="card.image"
+              :date="card.date"
               :more="card.more || ''"
               :link="card.link || ''"
-            ></PortfolioCardItem>
+            ></PortfolioCardFrontend>
           </div>
           <PortfolioPagination
             v-if="data?.perPage && data?.totalCount > data?.perPage"
