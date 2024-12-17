@@ -36,7 +36,7 @@ onUnmounted(() => {
     class="layout-frontend static flex h-dvh max-h-full w-dvw max-w-full flex-row items-start justify-start overflow-hidden bg-slate-900 sm:fixed sm:flex-col"
   >
     <HeaderFrontendLayout class="hidden sm:block"></HeaderFrontendLayout>
-    <SideMenu v-if="showDivMobile && isMobile" class="block sm:hidden"></SideMenu>
+    <SideMenuFrontend v-if="showDivMobile && isMobile" class="block sm:hidden"></SideMenuFrontend>
     <div class="flex h-full max-h-full w-[calc(100%-40px)] flex-1 flex-row sm:max-h-[calc(100%-56px)] sm:w-full">
       <SideLayoutFrontend v-if="showDivPc && !isMobile" class="hidden sm:block"></SideLayoutFrontend>
       <slot />

@@ -76,7 +76,7 @@ watch(
     class="relative flex h-full max-h-full w-full flex-col sm:w-[calc(100%-250px)] md:w-[calc(100%-200px)] lg:w-[calc(100%-250px)] xl:w-[calc(100%-300px)]"
   >
     <h2
-      class="flex h-10 w-full max-w-full flex-row items-center justify-center gap-2 border-t-0 border-solid border-blue-500 bg-slate-600 px-2 py-1 text-xl font-bold text-white sm:w-fit sm:max-w-fit sm:justify-start sm:border-t-2"
+      class="flex h-10 w-full max-w-full flex-row items-center justify-center gap-2 border-t-0 border-solid border-blue-500 bg-slate-700 px-2 py-1 text-xl font-bold text-white sm:w-fit sm:max-w-fit sm:justify-start sm:border-t-2 sm:bg-slate-600"
     >
       <Icon :name="iconName" size="16" :title="title" :alt="title" />
       {{ title }}
@@ -114,7 +114,7 @@ watch(
         </div>
         <!-- 資料渲染 -->
         <div
-          v-else-if="data?.dataCard && data?.dataCard.length"
+          v-else-if="Array.isArray(data?.dataCard) && data?.dataCard.length"
           class="mx-auto flex h-fit w-full max-w-full flex-col flex-wrap items-start justify-start"
         >
           <div
@@ -132,12 +132,12 @@ watch(
               :link="card.link || ''"
             ></PortfolioCardFrontend>
           </div>
-          <PortfolioPagination
+          <PaginationFrontend
             v-if="data?.perPage && data?.totalCount > data?.perPage"
             :total-count="totalCount"
             :per-page="perPage"
             :current-page="currentPage"
-          ></PortfolioPagination>
+          ></PaginationFrontend>
         </div>
       </Transition>
     </div>

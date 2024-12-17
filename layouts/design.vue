@@ -36,8 +36,8 @@ onUnmounted(() => {
     class="layout-design static flex h-dvh max-h-full w-dvw max-w-full flex-row items-start justify-start overflow-hidden bg-zinc-600 sm:fixed sm:flex-col"
   >
     <HeaderDesignLayout class="hidden sm:block"></HeaderDesignLayout>
-    <!-- <SideMenu v-if="showDivMobile && isMobile" class="block sm:hidden"></SideMenu> -->
-    <div class="flex h-full max-h-[calc(100%-32px)] w-[calc(100%-40px)] flex-1 flex-row sm:w-full">
+    <SideMenuDesign v-if="showDivMobile && isMobile" class="block sm:hidden"></SideMenuDesign>
+    <div class="flex h-full max-h-full w-[calc(100%-40px)] flex-1 flex-row sm:max-h-[calc(100%-32px)] sm:w-full">
       <slot />
       <SideLayoutDesign v-if="showDivPc && !isMobile" class="hidden sm:block"></SideLayoutDesign>
     </div>

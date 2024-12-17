@@ -2,6 +2,10 @@
 import { defineModel } from 'vue'
 
 // 使用 defineModel 定義傳遞資料
+defineModel('cardId', {
+  type: String,
+  required: true,
+})
 defineModel('title', {
   type: String,
   required: true,
@@ -22,6 +26,11 @@ defineModel('image', {
   required: true,
 })
 
+defineModel('date', {
+  type: String,
+  required: true,
+})
+
 defineModel('more', {
   type: String,
   default: '', // 設定預設值
@@ -32,11 +41,6 @@ defineModel('link', {
   type: String,
   default: '', // 設定預設值
   required: false,
-})
-
-defineModel('date', {
-  type: String,
-  required: true,
 })
 
 // 在 setup 函數內部，使用 `props` 存取 `tags` 變數
@@ -69,51 +73,60 @@ const getIconTitle = (tag: string) => {
 <template>
   <div
     class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-start overflow-hidden rounded bg-transparent transition-all duration-300 ease-linear"
+    :data-card="cardId"
   >
-    <div
-      class="relative flex aspect-square size-full h-full max-h-max min-h-fit w-full max-w-full items-center justify-center overflow-hidden rounded bg-zinc-700/80 p-3 group-hover:bg-zinc-700/100"
+    <NuxtLink
+      class="flex aspect-square size-full max-h-max min-h-fit min-w-fit max-w-full items-center justify-center rounded bg-zinc-700/80 p-4"
+      :to="more"
+      target="_blank"
     >
-      <img
-        class="z-10 h-fit max-h-full w-fit max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
-        :src="image"
-        :title="title"
-        :alt="title"
-        width="400"
-        height="400"
-        loading="lazy"
-        decoding="async"
-      />
-      <Icon
-        class="absolute z-0 text-lg text-white"
-        name="line-md:loading-twotone-loop"
-        size="20"
-        title="Loading"
-        alt="Loading"
-      />
-    </div>
+      <div
+        class="flex aspect-square size-full max-h-fit min-h-full min-w-full max-w-full items-center justify-center overflow-hidden rounded-sm bg-white/80 p-0 group-hover:bg-white/100"
+      >
+        <img
+          class="z-10 h-fit max-h-fit w-fit max-w-full object-contain transition-all duration-300 ease-linear group-hover:scale-105"
+          :src="image"
+          :title="title"
+          :alt="title"
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        />
+        <Icon
+          class="absolute z-0 text-lg text-white"
+          name="line-md:loading-twotone-loop"
+          size="20"
+          title="Loading"
+          alt="Loading"
+        />
+      </div>
+    </NuxtLink>
     <div
-      class="card-body flex size-full max-h-full max-w-full flex-col flex-nowrap items-start justify-start gap-1.5 py-2"
+      class="card-body flex size-full max-h-full max-w-full flex-col flex-nowrap items-start justify-start gap-1.5 overflow-hidden py-2"
     >
       <h3
-        class="m-0 inline-block w-fit max-w-full truncate p-0 text-start text-base font-bold text-zinc-50/80 group-hover:text-zinc-50/100"
+        class="m-0 inline-block w-fit max-w-full cursor-default truncate p-0 text-start text-base font-bold text-zinc-50/80 group-hover:text-zinc-50/100"
       >
         {{ title }}
       </h3>
-      <div class="flex h-6 items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap">
+      <div
+        class="inline-block h-6 w-full max-w-full flex-wrap items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap py-0 leading-none text-white/80 group-hover:text-white/100"
+      >
         <span
           v-for="tag in tags"
           :key="tag"
-          class="flex h-full w-fit cursor-default items-center justify-center rounded-full border border-solid border-blue-600 bg-blue-600 px-1 py-px text-xs leading-none text-white opacity-80 group-hover:opacity-100"
+          class="mx-1 inline-flex h-full w-fit max-w-full flex-shrink-0 flex-grow-0 cursor-default items-center justify-center overflow-hidden text-ellipsis whitespace-nowrap rounded-full border border-solid border-blue-600 bg-blue-600 px-1 py-px text-xs capitalize leading-none text-white opacity-80 first:ml-0 last:mr-0 group-hover:opacity-100"
           :title="getIconTitle(tag)"
         >
-          {{ title }}
+          {{ tag }}
         </span>
       </div>
       <div class="mb-0 mt-auto flex w-full items-center justify-between gap-2 pt-1">
         <time class="text-start font-Fira text-xs font-light text-white/80" :datetime="date"> {{ date }}</time>
         <NuxtLink
-          to="/"
-          class="text-end font-Fira text-xs font-light text-white/80 underline underline-offset-2 transition-all hover:font-normal hover:text-white/100 hover:underline-offset-4 group-hover:text-white/90"
+          :to="more"
+          class="cursor-pointer text-end font-Fira text-xs font-light text-white/80 underline underline-offset-2 transition-all hover:font-normal hover:text-white/100 hover:underline-offset-4 group-hover:text-white/90"
         >
           &lt;More&gt;
         </NuxtLink>

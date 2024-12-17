@@ -40,7 +40,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <aside class="side-menu relative z-40 h-full w-[40px] overflow-y-auto overflow-x-hidden bg-slate-800 p-0">
+  <aside class="side-menu relative z-40 h-full w-[40px] overflow-y-auto overflow-x-hidden bg-zinc-700 p-0">
+    <Icon class="m-[10px] size-[20px]" name="logos:adobe-photoshop" size="20" title="Menu" alt="Menu" />
     <button
       class="flex size-10 items-center justify-center p-1 text-3xl font-bold text-white"
       @click="toggleNav('menu')"
@@ -62,7 +63,7 @@ onUnmounted(() => {
         leave-from-class="opacity-100 translate-x-0"
         leave-to-class="opacity-0 -translate-x-1/2"
       >
-        <HeaderContent v-if="showDivMenu && isMobile" class="sm:hidden"></HeaderContent>
+        <HeaderContent v-if="showDivMenu && isMobile" class="border-zinc-800 bg-zinc-700 sm:hidden"></HeaderContent>
       </Transition>
     </Teleport>
     <button
@@ -70,7 +71,7 @@ onUnmounted(() => {
       @click="toggleNav('project')"
     >
       <Icon
-        :name="showDivProject ? 'material-symbols:file-copy-rounded' : 'material-symbols:file-copy-outline-rounded'"
+        :name="showDivProject ? 'material-symbols:layers-rounded' : 'material-symbols:layers-outline-rounded'"
         size="20"
         title="Menu"
         alt="Menu"
@@ -86,11 +87,11 @@ onUnmounted(() => {
         leave-from-class="opacity-100 translate-x-0"
         leave-to-class="opacity-0 -translate-x-1/2"
       >
-        <SideContentFrontend
+        <SideContentDesign
           v-if="showDivProject && isMobile"
           v-model:show-div-project="showDivProject"
           class="sm:hidden"
-        ></SideContentFrontend>
+        ></SideContentDesign>
       </Transition>
     </Teleport>
   </aside>

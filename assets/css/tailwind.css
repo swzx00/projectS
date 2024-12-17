@@ -22,13 +22,13 @@
   }
 
   .layout-design .scrollbar::-webkit-scrollbar {
-    @apply w-3 border-y-0 border-l border-r border-solid border-zinc-600 sm:w-5 sm:border-l-2 sm:border-r-2;
+    @apply w-3 border-y-0 border-l border-r border-solid border-zinc-800 sm:w-5 sm:border-l-2 sm:border-r-2 sm:border-zinc-600;
   }
   .layout-design .scrollbar::-webkit-scrollbar-track {
-    @apply bg-zinc-600;
+    @apply bg-transparent sm:bg-zinc-600;
   }
   .layout-design .scrollbar::-webkit-scrollbar-button {
-    @apply h-3 w-3 cursor-pointer bg-zinc-600 bg-contain bg-center opacity-50 sm:h-5 sm:w-5;
+    @apply hidden h-3 w-3 cursor-pointer bg-zinc-600 bg-contain bg-center opacity-50 sm:block sm:h-5 sm:w-5;
   }
   .layout-design .scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement {
     @apply bg-[url(./images/UilAngleUp-c.svg)];

@@ -58,20 +58,16 @@ const maxY = 1080 // 最大值
 const step = 50 // 間距
 
 // 動態生成數字陣列
-const numbersX = computed(() => {
+const generateNumbers = (max: number, step: number) => {
   const result = []
-  for (let i = 0; i <= maxX; i += step) {
+  for (let i = 0; i <= max; i += step) {
     result.push(i)
   }
   return result
-})
-const numbersY = computed(() => {
-  const result = []
-  for (let i = 0; i <= maxY; i += step) {
-    result.push(i)
-  }
-  return result
-})
+}
+
+const numbersX = computed(() => generateNumbers(maxX, step))
+const numbersY = computed(() => generateNumbers(maxY, step))
 </script>
 
 <template>
@@ -85,16 +81,16 @@ const numbersY = computed(() => {
       {{ title }}<span class="text-xs font-thin">@&nbsp;100%&nbsp;(RGB/8)</span>
     </h2>
     <div
-      class="grid h-full max-h-[calc(100%)] grid-cols-[1.25rem_auto] grid-rows-[1.25rem_auto] gap-0 overflow-hidden bg-zinc-800"
+      class="flex h-full max-h-full grid-cols-[1.25rem_auto] grid-rows-[1.25rem_auto] gap-0 overflow-hidden bg-zinc-800 sm:grid sm:max-h-[calc(100%-1.25rem)]"
     >
       <div
-        class="relative size-5 bg-zinc-600 before:absolute before:bottom-1/3 before:block before:h-px before:w-full before:bg-zinc-500 before:content-[''] after:absolute after:right-1/3 after:h-full after:w-px after:bg-zinc-500 after:content-['']"
+        class="relative hidden size-5 bg-zinc-600 before:absolute before:bottom-1/3 before:block before:h-px before:w-full before:bg-zinc-500 before:content-[''] after:absolute after:right-1/3 after:h-full after:w-px after:bg-zinc-500 after:content-[''] sm:block"
       ></div>
       <div
         class="scrollbar col-span-full col-start-2 col-end-3 row-start-1 row-end-3 h-full overflow-x-hidden overflow-y-scroll"
       >
         <div
-          class="sticky top-0 z-10 flex h-5 w-full flex-row flex-nowrap items-end justify-start gap-0 overflow-hidden bg-zinc-700 bg-[url(/images/bg-rulersX.svg)] bg-auto bg-[bottom_left_1rem] bg-repeat-x *:pointer-events-none *:mb-1 *:block *:h-full *:w-10 *:flex-shrink-0 *:flex-grow-0 *:select-none *:pl-1 *:text-[11px] *:font-thin *:text-zinc-300 first:*:ml-4"
+          class="sticky top-0 z-10 hidden h-5 w-full flex-row flex-nowrap items-end justify-start gap-0 overflow-hidden bg-zinc-700 bg-[url(/images/bg-rulersX.svg)] bg-auto bg-[bottom_left_1rem] bg-repeat-x *:pointer-events-none *:mb-1 *:block *:h-full *:w-10 *:flex-shrink-0 *:flex-grow-0 *:select-none *:pl-1 *:text-[11px] *:font-thin *:text-zinc-300 first:*:ml-4 sm:flex"
         >
           <span v-for="num in numbersX" :key="num">{{ num }}</span>
         </div>
@@ -131,7 +127,7 @@ const numbersY = computed(() => {
             </div>
             <!-- 資料渲染 -->
             <div
-              v-else-if="data?.dataCard && data?.dataCard.length"
+              v-else-if="Array.isArray(data?.dataCard) && data?.dataCard.length"
               class="mx-auto flex h-fit w-full max-w-full flex-col flex-wrap items-start justify-start"
             >
               <div
@@ -140,6 +136,7 @@ const numbersY = computed(() => {
                 <PortfolioCardDesign
                   v-for="card in data?.dataCard"
                   :key="card.id"
+                  :card-id="card.id"
                   :title="card.title"
                   :tags="card.tag"
                   :content="card.content"
@@ -149,18 +146,18 @@ const numbersY = computed(() => {
                   :link="card.link || ''"
                 ></PortfolioCardDesign>
               </div>
-              <PortfolioPagination
+              <PaginationDesign
                 v-if="data?.perPage && data?.totalCount > data?.perPage"
                 :total-count="totalCount"
                 :per-page="perPage"
                 :current-page="currentPage"
-              ></PortfolioPagination>
+              ></PaginationDesign>
             </div>
           </Transition>
         </div>
       </div>
       <div
-        class="flex h-full w-5 flex-col flex-nowrap items-end justify-start overflow-hidden bg-zinc-700 bg-[url(/images/bg-rulersY.svg)] bg-auto bg-[right_top_1.5rem] bg-repeat-y *:pointer-events-none *:mr-1 *:block *:h-10 *:w-3 *:flex-shrink-0 *:flex-grow-0 *:select-none *:break-all *:pt-1 *:text-center *:text-[11px] *:font-thin *:leading-none *:text-zinc-300 first:*:mt-6"
+        class="hidden h-full w-5 flex-col flex-nowrap items-end justify-start overflow-hidden bg-zinc-700 bg-[url(/images/bg-rulersY.svg)] bg-auto bg-[right_top_1.5rem] bg-repeat-y *:pointer-events-none *:mr-1 *:block *:h-10 *:w-3 *:flex-shrink-0 *:flex-grow-0 *:select-none *:break-all *:pt-1 *:text-center *:text-[11px] *:font-thin *:leading-none *:text-zinc-300 first:*:mt-6 sm:flex"
       >
         <span v-for="num in numbersY" :key="num">{{ num }}</span>
       </div>

@@ -105,8 +105,10 @@ const getIconTitle = (tag: string) => {
   <div
     class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-start overflow-hidden rounded-md border border-solid border-slate-800 bg-slate-800 transition-all duration-300 ease-linear first:*:rounded-t-md last:*:rounded-b-md hover:border-white hover:bg-white"
   >
-    <div
+    <NuxtLink
       class="relative flex aspect-video size-full h-full max-h-max min-h-fit w-full max-w-full items-center justify-center overflow-hidden bg-black/30"
+      :to="more"
+      target="_blank"
     >
       <img
         class="z-10 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
@@ -125,12 +127,12 @@ const getIconTitle = (tag: string) => {
         title="Loading"
         alt="Loading"
       />
-    </div>
+    </NuxtLink>
     <div
       class="card-body flex size-full max-h-full max-w-full flex-col flex-nowrap items-start justify-start gap-1.5 px-3 py-2"
     >
       <h3
-        class="m-0 inline-block w-fit max-w-full truncate p-0 text-start text-lg font-bold text-amber-200 group-hover:text-black"
+        class="m-0 inline-block w-fit max-w-full cursor-default truncate p-0 text-start text-lg font-bold text-amber-200 group-hover:text-black"
       >
         {{ title }}
       </h3>
@@ -150,13 +152,13 @@ const getIconTitle = (tag: string) => {
         >
         <NuxtLink
           v-if="link"
-          to="/"
+          :to="link"
           class="text-end font-Fira text-sm font-light text-slate-200 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
         >
           &lt;Link&gt;
         </NuxtLink>
         <NuxtLink
-          to="/"
+          :to="more"
           class="text-end font-Fira text-sm font-light text-slate-200 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
         >
           &lt;More&gt;
