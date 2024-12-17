@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useDataFetch } from '~/composables/useDataFetch'
+
+import { useHoverStore } from '~/stores/hoverStore'
 
 // 使用 defineModel 接收父元件的狀態
 const showDivProject = defineModel<boolean>('showDivProject')
+
+// 使用整合後的 useDataFetch
+const { data } = useDataFetch('design')
 
 // 切換顯示狀態
 const clickLink = () => {
@@ -11,11 +18,20 @@ const clickLink = () => {
 
 const route = useRoute()
 const isActive = (tag: string) => route.query.tag === tag
+
+// 使用 Pinia store
+const hoverStore = useHoverStore()
+const { hoveredId } = storeToRefs(hoverStore)
+
+const hoveredData = computed(() => {
+  if (!hoveredId.value || !data?.value?.dataCard) return null
+  return data.value.dataCard.find((item: any) => item.id === hoveredId.value) || null
+})
 </script>
 
 <template>
   <div
-    class="xs:max-w-[calc(66dvw-40px)] fixed left-10 top-0 z-30 h-full w-full max-w-[calc(100dvw-40px)] border-l border-r border-solid border-zinc-800 bg-zinc-600 shadow-lg sm:relative sm:left-0 sm:w-full sm:max-w-none sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:shadow-none"
+    class="fixed left-10 top-0 z-30 h-full w-full max-w-[calc(100dvw-40px)] border-l border-r border-solid border-zinc-800 bg-zinc-600 shadow-lg xs:max-w-[calc(66dvw-40px)] sm:relative sm:left-0 sm:w-full sm:max-w-none sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:shadow-none"
   >
     <div class="hidden h-fit max-h-fit w-full max-w-full items-center justify-start gap-2 bg-zinc-700 sm:flex">
       <p class="flex h-8 w-fit items-center justify-center bg-zinc-600 px-2 py-1 text-sm font-normal text-white/80">
@@ -24,8 +40,36 @@ const isActive = (tag: string) => route.query.tag === tag
     </div>
     <div class="hidden h-fit max-h-fit w-full max-w-full items-center justify-center p-4 sm:flex">
       <div
-        class="aspect-[4/3] h-fit max-h-fit w-full max-w-full border-4 border-solid border-white bg-gray-400 bg-[url('/images/bg-transparent.svg')] bg-[length:12px_12px] bg-center bg-repeat"
-      ></div>
+        :class="[
+          'flex aspect-[4/3] h-fit max-h-fit w-full max-w-full items-center justify-center overflow-hidden border-4 border-solid bg-[length:12px_12px] bg-center bg-repeat',
+          hoveredData?.image
+            ? 'border-red-600 bg-white bg-none'
+            : 'border-white bg-gray-400 bg-[url(/images/bg-transparent.svg)]',
+        ]"
+      >
+        <Transition
+          name="zoom-in"
+          mode="out-in"
+          enter-active-class="transition-all duration-700 ease-linear overflow-hidden"
+          enter-from-class="opacity-0 scale-125 blur"
+          enter-to-class="opacity-100 scale-100 blur-none"
+          leave-active-class="transition-all duration-300 ease-linear overflow-hidden"
+          leave-from-class="opacity-50 scale-100 blur-none"
+          leave-to-class="opacity-0 scale-100 blur-sm"
+        >
+          <img
+            v-if="hoveredData?.image"
+            class="size-full max-h-full max-w-full object-cover"
+            :src="hoveredData.image"
+            :title="hoveredData.title"
+            :alt="hoveredData.title"
+            width="400"
+            height="300"
+            loading="lazy"
+            decoding="async"
+          />
+        </Transition>
+      </div>
     </div>
     <div class="h-fit max-h-fit w-full max-w-full border-t border-solid border-zinc-700 bg-zinc-700">
       <p

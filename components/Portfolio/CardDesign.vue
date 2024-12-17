@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { defineModel } from 'vue'
+import { useHoverStore } from '~/stores/hoverStore'
+
+const hoverStore = useHoverStore()
 
 // 使用 defineModel 定義傳遞資料
-defineModel('cardId', {
+const cardId = defineModel('cardId', {
   type: String,
   required: true,
 })
@@ -68,12 +70,23 @@ const getIconTitle = (tag: string) => {
       return ''
   }
 }
+
+// 新增 hover 事件處理函數
+const onHover = () => {
+  hoverStore.setHoveredId(cardId.value)
+}
+
+const onLeave = () => {
+  hoverStore.setHoveredId(null)
+}
 </script>
 
 <template>
   <div
     class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-start overflow-hidden rounded bg-transparent transition-all duration-300 ease-linear"
     :data-card="cardId"
+    @mouseenter="onHover"
+    @mouseleave="onLeave"
   >
     <NuxtLink
       class="flex aspect-square size-full max-h-max min-h-fit min-w-fit max-w-full items-center justify-center rounded bg-zinc-700/80 p-4"
