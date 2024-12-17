@@ -79,6 +79,23 @@ const onHover = () => {
 const onLeave = () => {
   hoverStore.setHoveredId(null)
 }
+
+// let hoverTimeout: ReturnType<typeof setTimeout> | null = null
+
+// Hover 事件處理：延遲 1 秒後設定 hoveredId
+// const onHover = () => {
+//   if (hoverTimeout) clearTimeout(hoverTimeout) // 清除舊的定時器，避免重複觸發
+
+//   hoverTimeout = setTimeout(() => {
+//     hoverStore.setHoveredId(cardId.value) // 設定 hoveredId
+//   }, 500) // 延遲 1 秒
+// }
+
+// // Leave 事件處理：立即清除定時器並重置 hoveredId
+// const onLeave = () => {
+//   if (hoverTimeout) clearTimeout(hoverTimeout) // 立即清除定時器
+//   hoverStore.setHoveredId(null) // 重置 hoveredId
+// }
 </script>
 
 <template>

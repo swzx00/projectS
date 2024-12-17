@@ -31,10 +31,10 @@
     @apply hidden h-3 w-3 cursor-pointer bg-zinc-600 bg-contain bg-center opacity-50 sm:block sm:h-5 sm:w-5;
   }
   .layout-design .scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement {
-    @apply bg-[url(./images/UilAngleUp-c.svg)];
+    @apply bg-[url(/images/UilAngleUp-c.svg)];
   }
   .layout-design .scrollbar::-webkit-scrollbar-button:single-button:vertical:increment {
-    @apply bg-[url(./images/UilAngleDown-c.svg)];
+    @apply bg-[url(/images/UilAngleDown-c.svg)];
   }
   .layout-design .scrollbar::-webkit-scrollbar-thumb {
     @apply rounded-full border-y-0 border-l border-r border-solid border-zinc-600 bg-white/30 sm:rounded-none sm:border-l-2 sm:border-r-2;

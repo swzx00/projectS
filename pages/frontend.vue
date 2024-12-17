@@ -132,12 +132,14 @@ watch(
               :link="card.link || ''"
             ></PortfolioCardFrontend>
           </div>
-          <PaginationFrontend
-            v-if="data?.perPage && data?.totalCount > data?.perPage"
-            :total-count="totalCount"
-            :per-page="perPage"
-            :current-page="currentPage"
-          ></PaginationFrontend>
+          <ClientOnly>
+            <PaginationFrontend
+              v-if="data && data?.perPage && data?.totalCount > data?.perPage"
+              :total-count="totalCount"
+              :per-page="perPage"
+              :current-page="currentPage"
+            ></PaginationFrontend>
+          </ClientOnly>
         </div>
       </Transition>
     </div>

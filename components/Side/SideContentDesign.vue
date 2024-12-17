@@ -2,14 +2,10 @@
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useDataFetch } from '~/composables/useDataFetch'
-
 import { useHoverStore } from '~/stores/hoverStore'
 
 // 使用 defineModel 接收父元件的狀態
 const showDivProject = defineModel<boolean>('showDivProject')
-
-// 使用整合後的 useDataFetch
-const { data } = useDataFetch('design')
 
 // 切換顯示狀態
 const clickLink = () => {
@@ -18,6 +14,9 @@ const clickLink = () => {
 
 const route = useRoute()
 const isActive = (tag: string) => route.query.tag === tag
+
+// 使用整合後的 useDataFetch
+const { data } = useDataFetch('design')
 
 // 使用 Pinia store
 const hoverStore = useHoverStore()
@@ -41,25 +40,25 @@ const hoveredData = computed(() => {
     <div class="hidden h-fit max-h-fit w-full max-w-full items-center justify-center p-4 sm:flex">
       <div
         :class="[
-          'flex aspect-[4/3] h-fit max-h-fit w-full max-w-full items-center justify-center overflow-hidden border-4 border-solid bg-[length:12px_12px] bg-center bg-repeat',
-          hoveredData?.image
-            ? 'border-red-600 bg-white bg-none'
+          'relative flex aspect-[4/3] h-fit max-h-fit w-full max-w-full items-center justify-center overflow-hidden border-4 border-solid bg-[length:12px_12px] bg-center bg-repeat',
+          hoveredId
+            ? 'border-red-600 bg-gray-100 bg-none'
             : 'border-white bg-gray-400 bg-[url(/images/bg-transparent.svg)]',
         ]"
       >
         <Transition
-          name="zoom-in"
+          name="zoomIn-img"
           mode="out-in"
-          enter-active-class="transition-all duration-700 ease-linear overflow-hidden"
+          enter-active-class="transition-all duration-1000 delay-200 ease-linear overflow-hidden"
           enter-from-class="opacity-0 scale-125 blur"
           enter-to-class="opacity-100 scale-100 blur-none"
-          leave-active-class="transition-all duration-300 ease-linear overflow-hidden"
+          leave-active-class="transition-all duration-300 delay-0 ease-linear overflow-hidden"
           leave-from-class="opacity-50 scale-100 blur-none"
           leave-to-class="opacity-0 scale-100 blur-sm"
         >
           <img
             v-if="hoveredData?.image"
-            class="size-full max-h-full max-w-full object-cover"
+            class="absolute z-10 aspect-[4/3] size-full max-h-full max-w-full object-cover"
             :src="hoveredData.image"
             :title="hoveredData.title"
             :alt="hoveredData.title"

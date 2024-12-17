@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import { useDataFetch } from '~/composables/useDataFetch'
 
 // 使用整合後的 useDataFetch
-const { currentPage, data, pending, error, totalCount, perPage } = useDataFetch('frontend')
+const { currentPage, data, pending, error, totalCount, perPage } = useDataFetch('design')
 
 definePageMeta({
   layout: 'design',
@@ -146,12 +146,14 @@ const numbersY = computed(() => generateNumbers(maxY, step))
                   :link="card.link || ''"
                 ></PortfolioCardDesign>
               </div>
-              <PaginationDesign
-                v-if="data?.perPage && data?.totalCount > data?.perPage"
-                :total-count="totalCount"
-                :per-page="perPage"
-                :current-page="currentPage"
-              ></PaginationDesign>
+              <ClientOnly>
+                <PaginationDesign
+                  v-if="data && data?.perPage && data?.totalCount > data?.perPage"
+                  :total-count="totalCount"
+                  :per-page="perPage"
+                  :current-page="currentPage"
+                ></PaginationDesign>
+              </ClientOnly>
             </div>
           </Transition>
         </div>

@@ -73,12 +73,12 @@ watchEffect(() => {
         :image="card.image"
       ></PortfolioCardItem>
     </div>
-    <PortfolioPagination
+    <!-- <PortfolioPagination
       v-if="data?.perPage && data?.totalCount > data?.perPage"
       :total-count="totalCount"
       :per-page="perPage"
       :current-page="currentPage"
-    ></PortfolioPagination>
+    ></PortfolioPagination> -->
   </main>
 </template>
 

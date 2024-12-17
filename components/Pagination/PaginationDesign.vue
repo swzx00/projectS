@@ -11,21 +11,21 @@ const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount.v
 
 <template>
   <div
-    class="container mt-3 flex h-fit max-h-fit w-full flex-row flex-nowrap items-center justify-center gap-1 px-4 font-Fira text-base font-normal text-slate-900 transition-all *:border-2 *:border-solid *:duration-500"
+    class="container my-3 flex h-fit max-h-fit w-fit flex-row flex-nowrap items-center justify-center gap-1 rounded-full bg-zinc-700 font-Fira text-base font-normal text-gray-400 transition-all *:border-0 *:border-solid *:duration-500"
   >
     <button
-      class="flex size-9 items-center justify-center rounded-lg border-slate-200/0 bg-slate-200/0 hover:border-slate-200/100 hover:text-slate-200/100"
+      class="flex size-9 items-center justify-center hover:text-blue-400"
       title="第一頁"
-      :class="currentPage === 1 ? 'pointer-events-none opacity-50' : 'border-gray-600/0'"
+      :class="currentPage === 1 ? 'pointer-events-none opacity-20' : ''"
       :disabled="currentPage === 1"
       @click="gotoPage('first')"
     >
       <Icon name="uil:angle-double-left" size="24" title="第一頁" alt="第一頁" />
     </button>
     <button
-      class="flex size-9 items-center justify-center rounded-lg border-slate-200/0 bg-slate-200/0 hover:border-slate-200/100 hover:text-slate-200/100"
+      class="flex size-9 items-center justify-center hover:text-blue-400"
       title="前一頁"
-      :class="currentPage === 1 ? 'pointer-events-none opacity-50' : 'border-gray-600/0'"
+      :class="currentPage === 1 ? 'pointer-events-none opacity-20' : ''"
       :disabled="currentPage === 1"
       @click="gotoPage('prev')"
     >
@@ -35,12 +35,8 @@ const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount.v
       <button
         v-for="item in pagesArray"
         :key="item"
-        class="flex size-9 items-center justify-center bg-slate-800/0 hover:border-slate-200/100 hover:font-bold hover:text-slate-200/100"
-        :class="
-          item === currentPage
-            ? 'pointer-events-none rounded-[50%] border-slate-800/100 bg-slate-800/100 font-bold text-white'
-            : 'rounded-lg border-slate-800/0'
-        "
+        class="flex size-9 items-center justify-center hover:font-bold hover:text-blue-400"
+        :class="item === currentPage ? 'pointer-events-none font-bold text-white' : ''"
         :disabled="item === currentPage"
         :title="'第' + item + '頁'"
         @click="gotoPage(item)"
@@ -50,25 +46,25 @@ const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount.v
     </template>
     <button
       v-if="totalPages && totalPages > 5 && gapPage >= 3"
-      class="flex size-9 items-center justify-center rounded-lg border-slate-200/0 bg-slate-200/0 hover:border-slate-200/100 hover:text-slate-200/100"
+      class="flex size-9 items-center justify-center hover:text-blue-400"
       title="更多"
       @click="gotoPage('more')"
     >
       <Icon name="uil:ellipsis-h" size="24" title="更多" alt="更多" />
     </button>
     <button
-      class="flex size-9 items-center justify-center rounded-lg border-slate-200/0 bg-slate-200/0 hover:border-slate-200/100 hover:text-slate-200/100"
+      class="flex size-9 items-center justify-center hover:text-blue-400"
       title="下一頁"
-      :class="currentPage === totalPages ? 'pointer-events-none opacity-50' : 'border-gray-600/0'"
+      :class="currentPage === totalPages ? 'pointer-events-none opacity-20' : ''"
       :disabled="currentPage === totalPages"
       @click="gotoPage('next')"
     >
       <Icon name="uil:angle-right" size="24" title="下一頁" alt="下一頁" />
     </button>
     <button
-      class="flex size-9 items-center justify-center rounded-lg border-slate-200/0 bg-slate-200/0 hover:border-slate-200/100 hover:text-slate-200/100"
+      class="flex size-9 items-center justify-center hover:text-blue-400"
       title="最後一頁"
-      :class="currentPage === totalPages ? 'pointer-events-none opacity-50' : 'border-gray-600/0'"
+      :class="currentPage === totalPages ? 'pointer-events-none opacity-20' : ''"
       :disabled="currentPage === totalPages"
       @click="gotoPage('last')"
     >
