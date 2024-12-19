@@ -2,7 +2,7 @@
 
 <template>
   <nav
-    class="xs:min-w-[calc(66dvw-40px)] fixed left-10 top-0 z-30 flex h-full min-w-[calc(100dvw-40px)] flex-col items-start justify-start gap-y-2 border-l border-r border-solid px-2 py-5 font-Fira text-xl font-normal text-white/50 shadow-lg *:rounded sm:relative sm:left-0 sm:min-w-0 sm:flex-row sm:items-center sm:gap-y-0 sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-base sm:shadow-none"
+    class="fixed left-10 top-0 z-30 flex h-full min-w-[calc(100dvw-40px)] flex-col items-start justify-start gap-y-2 border-l border-r border-solid px-2 py-5 font-Fira text-xl font-normal text-white/50 shadow-lg *:rounded xs:min-w-[calc(66dvw-40px)] sm:relative sm:left-0 sm:min-w-0 sm:flex-row sm:items-center sm:gap-y-0 sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-base sm:shadow-none"
   >
     <NuxtLink
       class="flex h-fit w-full items-center px-2 transition-all duration-300 hover:bg-white/10 hover:text-white sm:h-full sm:w-fit"

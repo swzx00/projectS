@@ -17,6 +17,7 @@ export default defineNuxtConfig({
       // 指定您想要的字體
       'Noto Sans': '100..900', // 指定需要的字體粗細
       'Fira Code': '300..700',
+      'Noto Serif': '100..900',
     },
   },
   icon: {

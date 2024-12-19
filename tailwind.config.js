@@ -10,8 +10,10 @@ module.exports = {
   // ],
   theme: {
     screens: {
-      xs: '320px',
+      '2xs': '280px',
       // => @media (min-width: 320px) { ... }
+      xs: '375px',
+      // => @media (min-width: 375px) { ... }
       sm: '640px',
       // => @media (min-width: 640px) { ... }
       md: '768px',
@@ -28,6 +30,12 @@ module.exports = {
         JhengHei: ['"Microsoft JhengHei"', 'sans-serif', 'Arial'],
         Noto: ['"Noto Sans"', '"Microsoft JhengHei"', 'sans-serif', 'Arial'],
         Fira: ['"Fira Code"', '"Noto Sans"', '"Microsoft JhengHei"', 'sans-serif', 'Arial'],
+        NotoSerif: ['"Noto Serif"', 'serif'],
+      },
+      dropShadow: {
+        'black-000': ['0 0 0 rgba(0, 0, 0, 0)', '0 0 0 rgba(0, 0, 0, 0)'],
+        'black-100': ['1px 1px 2px rgba(0, 0, 0, .1)', '-1px -1px 2px rgba(0, 0, 0, .1)'],
+        'black-200': ['1px 1px 2px rgba(0, 0, 0, .4)', '-1px -1px 2px rgba(0, 0, 0, .4)'],
       },
     },
   },

@@ -8,6 +8,9 @@
         <img src="/images/logo-01.svg" title="Logo" alt="logo" width="48" height="48" loading="eager" decoding="sync" />
       </NuxtLink>
       <div class="flex h-full items-center justify-end font-Fira font-bold text-gray-800">
+        <NuxtLink class="flex h-full items-center px-2 transition-all duration-300 hover:text-blue-500" to="/"
+          >Home</NuxtLink
+        >
         <NuxtLink class="flex h-full items-center px-2 transition-all duration-300 hover:text-blue-500" to="/about"
           >About</NuxtLink
         >
