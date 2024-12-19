@@ -3,30 +3,58 @@ definePageMeta({
   layout: false,
   middleware: ['loading'], // 啟用 loading 中介層
 })
+
+// 定義狀態變數 isHover
+const isHover = ref(false)
 </script>
 
 <template>
   <div
-    class="relative h-dvh max-h-full w-dvw max-w-full bg-[url(/images/SequoiaLight.webp)] bg-cover bg-top bg-no-repeat"
+    class="relative h-dvh max-h-full w-dvw max-w-full overflow-hidden bg-[url(/images/SequoiaLight.webp)] bg-cover bg-top bg-no-repeat"
   >
     <div
       class="translate-none relative flex w-full flex-col items-center justify-start gap-48 px-4 xs:absolute xs:left-1/2 xs:top-1/2 xs:w-fit xs:-translate-x-1/2 xs:-translate-y-1/2 xs:px-0"
     >
       <div
         class="group fixed top-1/2 mx-auto flex w-full -translate-y-3/4 flex-col items-start justify-center gap-6 *:transition-all *:duration-300 *:ease-linear xs:static xs:top-0 xs:w-fit xs:translate-y-0"
+        @mouseenter="isHover = true"
+        @mouseleave="isHover = false"
       >
         <div
-          class="group-hover:drop-shadow-black-000 mx-auto size-36 rounded-full bg-slate-50 p-7 drop-shadow-black-100 group-hover:bg-white"
+          class="group-hover:drop-shadow-black-000 relative mx-auto size-36 rounded-full bg-slate-50 p-7 drop-shadow-black-100 *:absolute *:left-1/2 *:top-1/2 *:size-20 *:-translate-x-1/2 *:-translate-y-1/2 group-hover:bg-white"
         >
-          <img
-            src="/images/logo-01.svg"
-            title="About"
-            alt="About"
-            width="48"
-            height="48"
-            loading="lazy"
-            decoding="async"
-          />
+          <Transition
+            name="zoomIn-logo"
+            enter-active-class="transition-all duration-700 ease-linear overflow-hidden"
+            enter-from-class="opacity-100 pixelated"
+            enter-to-class="opacity-100 pixelated-none"
+            leave-active-class="transition-all duration-700 ease-linear overflow-hidden"
+            leave-from-class="opacity-100 pixelated-none"
+            leave-to-class="opacity-100 pixelated"
+          >
+            <!-- Hover變換圖片 -->
+            <img
+              v-if="isHover"
+              src="/images/logo-02.svg"
+              title="林家丞 作品集"
+              alt="林家丞 作品集"
+              width="88"
+              height="88"
+              loading="eager"
+              decoding="sync"
+            />
+            <!-- 預設圖片 -->
+            <img
+              v-else
+              src="/images/logo-01.svg"
+              title="林家丞 作品集"
+              alt="林家丞 作品集"
+              width="88"
+              height="88"
+              loading="lazy"
+              decoding="async"
+            />
+          </Transition>
         </div>
         <h1
           class="mx-auto w-fit cursor-default text-center align-baseline text-xl font-medium leading-loose tracking-wide text-gray-50 drop-shadow-black-200 group-hover:text-white group-hover:drop-shadow-black-100"
@@ -152,4 +180,11 @@ definePageMeta({
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.pixelated {
+  filter: blur(1.5px) brightness(50%) contrast(500%) saturate(200%) opacity(0%);
+}
+.pixelated-none {
+  filter: none;
+}
+</style>
