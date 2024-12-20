@@ -6,7 +6,7 @@ interface DataCard {
   title: string
   tag: string[]
   content: string
-  image: string
+  image: string[]
   date: string
   link?: string // 可選屬性
 }
@@ -16,13 +16,18 @@ interface ResponseData {
   error?: string
 }
 
-// 設定泛型參數 T 為 ResponseData，並在其中包含所需的欄位
-export async function useSingleDataFetch<T extends ResponseData>(defaultTag: string) {
+interface FetchResult {
+  data: ResponseData | null
+  pending: boolean
+  error: string
+}
+
+export async function useSingleDataFetch(providedId?: string): Promise<FetchResult> {
   const route = useRoute()
   const router = useRouter()
 
-  // 從路由中獲取 ID 參數
-  const { id } = route.params
+  // 使用提供的 ID 或從路由中獲取 ID 參數
+  const id = providedId || route.params.id
   const safeId = Array.isArray(id) ? id[0] : id || ''
 
   try {
@@ -41,11 +46,12 @@ export async function useSingleDataFetch<T extends ResponseData>(defaultTag: str
       error: '',
     }
   } catch (err) {
-    console.error(err)
+    // 使用 console.warn 替代 console.error
+    console.warn('Error fetching data:', err)
     return {
       data: null,
       pending: false,
-      error: err instanceof Error ? err.message : 'Unknown error', // 檢查錯誤是否為 Error 類型
+      error: err instanceof Error ? err.message : 'Unknown error',
     }
   }
 }
