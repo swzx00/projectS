@@ -6,9 +6,8 @@ interface DataCard {
   title: string
   tag: string[]
   content: string
-  image: string
+  image: string[]
   date: string
-  more?: string // 可選屬性
   link?: string // 可選屬性
 }
 

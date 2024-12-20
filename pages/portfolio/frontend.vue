@@ -18,53 +18,55 @@ watch(
   () => route.query.tag,
   (newTag) => {
     // 先去除引號和空格，然後轉換為小寫
-    const cleanTag = (newTag as string).replace(/['\s]/g, '').toLowerCase()
-    switch (cleanTag) {
-      case 'edm':
-        iconName.value = 'vscode-icons:file-type-templ'
-        title.value = 'Edm'
-        break
-      case 'javascript':
-        iconName.value = 'vscode-icons:file-type-js-official'
-        title.value = 'Javascript'
-        break
-      case 'typescript':
-        iconName.value = 'vscode-icons:file-type-typescript-official'
-        title.value = 'Typescript'
-        break
-      case 'css':
-        iconName.value = 'vscode-icons:file-type-css'
-        title.value = 'Css'
-        break
-      case 'html':
-        iconName.value = 'vscode-icons:file-type-html'
-        title.value = 'Html'
-        break
-      case 'bootstrap':
-        iconName.value = 'devicon:bootstrap'
-        title.value = 'Bootstrap'
-        break
-      case 'tailwind':
-        iconName.value = 'vscode-icons:file-type-tailwind'
-        title.value = 'Tailwind'
-        break
-      case 'vue':
-        iconName.value = 'vscode-icons:file-type-vue'
-        title.value = 'Vue'
-        break
-      case 'nuxt':
-        iconName.value = 'vscode-icons:file-type-nuxt'
-        title.value = 'Nuxt'
-        break
-      case 'frontend':
-        iconName.value = 'vscode-icons:file-type-vscode'
-        title.value = 'Frontend'
-        break
-      default:
-        // 如果沒有匹配的 tag，使用默認值
-        iconName.value = 'vscode-icons:file-type-vscode'
-        title.value = 'Frontend'
-        break
+    if (newTag) {
+      const cleanTag = (newTag as string).replace(/['\s]/g, '').toLowerCase()
+      switch (cleanTag) {
+        case 'edm':
+          iconName.value = 'vscode-icons:file-type-templ'
+          title.value = 'Edm'
+          break
+        case 'javascript':
+          iconName.value = 'vscode-icons:file-type-js-official'
+          title.value = 'Javascript'
+          break
+        case 'typescript':
+          iconName.value = 'vscode-icons:file-type-typescript-official'
+          title.value = 'Typescript'
+          break
+        case 'css':
+          iconName.value = 'vscode-icons:file-type-css'
+          title.value = 'Css'
+          break
+        case 'html':
+          iconName.value = 'vscode-icons:file-type-html'
+          title.value = 'Html'
+          break
+        case 'bootstrap':
+          iconName.value = 'devicon:bootstrap'
+          title.value = 'Bootstrap'
+          break
+        case 'tailwind':
+          iconName.value = 'vscode-icons:file-type-tailwind'
+          title.value = 'Tailwind'
+          break
+        case 'vue':
+          iconName.value = 'vscode-icons:file-type-vue'
+          title.value = 'Vue'
+          break
+        case 'nuxt':
+          iconName.value = 'vscode-icons:file-type-nuxt'
+          title.value = 'Nuxt'
+          break
+        case 'frontend':
+          iconName.value = 'vscode-icons:file-type-vscode'
+          title.value = 'Frontend'
+          break
+        default:
+          // 如果沒有匹配的 tag，使用默認值
+          iconName.value = 'vscode-icons:file-type-vscode'
+          title.value = 'Frontend'
+          break
+      }
     }
   },
   { immediate: true },
@@ -123,12 +125,12 @@ watch(
             <PortfolioCardFrontend
               v-for="card in data?.dataCard"
               :key="card.id"
+              :card-id="card.id"
               :title="card.title"
               :tags="card.tag"
               :content="card.content"
               :image="card.image"
               :date="card.date"
-              :more="card.more || ''"
               :link="card.link || ''"
             ></PortfolioCardFrontend>
           </div>

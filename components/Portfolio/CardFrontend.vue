@@ -2,6 +2,10 @@
 import { defineModel } from 'vue'
 
 // 使用 defineModel 定義傳遞資料
+const cardId = defineModel('cardId', {
+  type: String,
+  required: true,
+})
 defineModel('title', {
   type: String,
   required: true,
@@ -18,7 +22,7 @@ defineModel('content', {
 })
 
 defineModel('image', {
-  type: String,
+  type: Array as PropType<string[]>, // 定義 tags 的型別
   required: true,
 })
 
@@ -27,20 +31,17 @@ defineModel('date', {
   required: true,
 })
 
-defineModel('more', {
-  type: String,
-  default: '', // 設定預設值
-  required: false,
-})
-
 defineModel('link', {
   type: String,
   default: '', // 設定預設值
   required: false,
 })
 
-// 在 setup 函數內部，使用 `props` 存取 `tags` 變數
-const { tags } = defineProps<{ tags: string[] }>() // 使用 `defineProps` 來定義 props
+// 在 setup 函數內部，使用 `props` 存取 `tags`, `image` 變數
+const { tags, image } = defineProps<{
+  tags: string[]
+  image: string[]
+}>()
 
 const getIconName = (tag: string) => {
   switch (tag.toLowerCase().replace(/['\s]/g, '')) {
@@ -107,12 +108,12 @@ const getIconTitle = (tag: string) => {
   >
     <NuxtLink
       class="relative flex aspect-video size-full h-full max-h-max min-h-fit w-full max-w-full items-center justify-center overflow-hidden bg-black/30"
-      :to="more"
+      :to="`/portfolio/${cardId}?from=frontend`"
       target="_blank"
     >
       <img
         class="z-10 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
-        :src="image"
+        :src="image[0]"
         :title="title"
         :alt="title"
         width="300"
@@ -158,7 +159,8 @@ const getIconTitle = (tag: string) => {
           &lt;Link&gt;
         </NuxtLink>
         <NuxtLink
-          :to="more"
+          :to="`/portfolio/${cardId}?from=frontend`"
+          target="_blank"
           class="text-end font-Fira text-sm font-light text-slate-200 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
         >
           &lt;More&gt;

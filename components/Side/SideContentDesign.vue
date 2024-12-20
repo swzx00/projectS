@@ -59,7 +59,7 @@ const hoveredData = computed(() => {
           <img
             v-if="hoveredData?.image"
             class="absolute z-10 aspect-[4/3] size-full max-h-full max-w-full object-cover"
-            :src="hoveredData.image"
+            :src="hoveredData.image[0]"
             :title="hoveredData.title"
             :alt="hoveredData.title"
             width="400"

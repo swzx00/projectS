@@ -21,12 +21,12 @@
     >
     <NuxtLink
       class="flex h-fit w-full items-center px-2 transition-all duration-300 hover:bg-white/10 hover:text-white sm:h-full sm:w-fit"
-      to="/frontend?tag=frontend"
+      to="/portfolio/frontend?tag=frontend"
       >Frontend</NuxtLink
     >
     <NuxtLink
       class="flex h-fit w-full items-center px-2 transition-all duration-300 hover:bg-white/10 hover:text-white sm:h-full sm:w-fit"
-      to="/design?tag=design"
+      to="/portfolio/design?tag=design"
       >Design</NuxtLink
     >
   </nav>

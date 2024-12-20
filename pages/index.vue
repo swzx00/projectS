@@ -21,7 +21,7 @@ const isHover = ref(false)
         @mouseleave="isHover = false"
       >
         <div
-          class="group-hover:drop-shadow-black-000 relative mx-auto size-36 rounded-full bg-slate-50 p-7 drop-shadow-black-100 *:absolute *:left-1/2 *:top-1/2 *:size-20 *:-translate-x-1/2 *:-translate-y-1/2 group-hover:bg-white"
+          class="relative mx-auto size-36 rounded-full bg-slate-50 p-7 drop-shadow-black-100 *:absolute *:left-1/2 *:top-1/2 *:size-20 *:-translate-x-1/2 *:-translate-y-1/2 group-hover:bg-white group-hover:drop-shadow-black-000"
         >
           <Transition
             name="zoomIn-logo"
@@ -92,7 +92,7 @@ const isHover = ref(false)
               />
             </div>
             <figcaption
-              class="group-hover:drop-shadow-black-000 absolute -mt-12 hidden rounded-full bg-black/50 p-2 text-base font-medium leading-none tracking-normal text-gray-50 drop-shadow-black-100 group-hover:inline group-hover:text-white xs:relative xs:mt-0 xs:inline xs:bg-transparent xs:p-0 xs:text-sm xs:leading-loose"
+              class="absolute -mt-12 hidden rounded-full bg-black/50 p-2 text-base font-medium leading-none tracking-normal text-gray-50 drop-shadow-black-100 group-hover:inline group-hover:text-white group-hover:drop-shadow-black-000 xs:relative xs:mt-0 xs:inline xs:bg-transparent xs:p-0 xs:text-sm xs:leading-loose"
             >
               About
             </figcaption>
@@ -117,7 +117,7 @@ const isHover = ref(false)
               />
             </div>
             <figcaption
-              class="group-hover:drop-shadow-black-000 absolute -mt-12 hidden rounded-full bg-black/50 p-2 text-base font-medium leading-none tracking-normal text-gray-50 drop-shadow-black-100 group-hover:inline group-hover:text-white xs:relative xs:mt-0 xs:inline xs:bg-transparent xs:p-0 xs:text-sm xs:leading-loose"
+              class="absolute -mt-12 hidden rounded-full bg-black/50 p-2 text-base font-medium leading-none tracking-normal text-gray-50 drop-shadow-black-100 group-hover:inline group-hover:text-white group-hover:drop-shadow-black-000 xs:relative xs:mt-0 xs:inline xs:bg-transparent xs:p-0 xs:text-sm xs:leading-loose"
             >
               Portfolio
             </figcaption>
@@ -125,7 +125,7 @@ const isHover = ref(false)
         </NuxtLink>
         <NuxtLink
           class="group block h-fit w-[calc((100%-(1rem*3))/3)] cursor-pointer xs:w-fit"
-          to="/frontend?tag=frontend"
+          to="/portfolio/frontend?tag=frontend"
           target="_self"
         >
           <figure class="flex h-fit w-full flex-col items-center justify-start gap-1 xs:w-fit">
@@ -143,7 +143,7 @@ const isHover = ref(false)
               />
             </div>
             <figcaption
-              class="group-hover:drop-shadow-black-000 absolute -mt-12 hidden rounded-full bg-black/50 p-2 text-base font-medium leading-none tracking-normal text-gray-50 drop-shadow-black-100 group-hover:inline group-hover:text-white xs:relative xs:mt-0 xs:inline xs:bg-transparent xs:p-0 xs:text-sm xs:leading-loose"
+              class="absolute -mt-12 hidden rounded-full bg-black/50 p-2 text-base font-medium leading-none tracking-normal text-gray-50 drop-shadow-black-100 group-hover:inline group-hover:text-white group-hover:drop-shadow-black-000 xs:relative xs:mt-0 xs:inline xs:bg-transparent xs:p-0 xs:text-sm xs:leading-loose"
             >
               Frontend
             </figcaption>
@@ -151,7 +151,7 @@ const isHover = ref(false)
         </NuxtLink>
         <NuxtLink
           class="group block h-fit w-[calc((100%-(1rem*3))/3)] cursor-pointer xs:w-fit"
-          to="/design?tag=design"
+          to="/portfolio/design?tag=design"
           target="_self"
         >
           <figure class="flex h-fit w-full flex-col items-center justify-start gap-1 xs:w-fit">
@@ -169,7 +169,7 @@ const isHover = ref(false)
               />
             </div>
             <figcaption
-              class="group-hover:drop-shadow-black-000 absolute -mt-12 hidden rounded-full bg-black/50 p-2 text-base font-medium leading-none tracking-normal text-gray-50 drop-shadow-black-100 group-hover:inline group-hover:text-white xs:relative xs:mt-0 xs:inline xs:bg-transparent xs:p-0 xs:text-sm xs:leading-loose"
+              class="absolute -mt-12 hidden rounded-full bg-black/50 p-2 text-base font-medium leading-none tracking-normal text-gray-50 drop-shadow-black-100 group-hover:inline group-hover:text-white group-hover:drop-shadow-black-000 xs:relative xs:mt-0 xs:inline xs:bg-transparent xs:p-0 xs:text-sm xs:leading-loose"
             >
               Design
             </figcaption>

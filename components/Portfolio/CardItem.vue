@@ -18,7 +18,7 @@ defineModel('content', {
 })
 
 defineModel('image', {
-  type: String,
+  type: Array as PropType<string[]>, // 定義 tags 的型別
   required: true,
 })
 
@@ -34,8 +34,11 @@ defineModel('link', {
   required: false,
 })
 
-// 在 setup 函數內部，使用 `props` 存取 `tags` 變數
-const { tags } = defineProps<{ tags: string[] }>() // 使用 `defineProps` 來定義 props
+// 在 setup 函數內部，使用 `props` 存取 `tags`, `image` 變數
+const { tags, image } = defineProps<{
+  tags: string[]
+  image: string[]
+}>()
 
 const getIconName = (tag: string) => {
   switch (tag.toLowerCase().replace(/['\s]/g, '')) {
@@ -105,7 +108,7 @@ const getIconTitle = (tag: string) => {
     >
       <img
         class="z-10 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
-        :src="image"
+        :src="image[0]"
         :title="title"
         :alt="title"
         width="300"
@@ -149,6 +152,7 @@ const getIconTitle = (tag: string) => {
         </NuxtLink>
         <NuxtLink
           to="/"
+          target="_blank"
           class="text-end font-Fira text-sm font-light text-slate-200 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
         >
           &lt;More&gt;

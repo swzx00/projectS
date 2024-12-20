@@ -24,19 +24,13 @@ defineModel('content', {
 })
 
 defineModel('image', {
-  type: String,
+  type: Array as PropType<string[]>, // 定義 tags 的型別
   required: true,
 })
 
 defineModel('date', {
   type: String,
   required: true,
-})
-
-defineModel('more', {
-  type: String,
-  default: '', // 設定預設值
-  required: false,
 })
 
 defineModel('link', {
@@ -46,7 +40,10 @@ defineModel('link', {
 })
 
 // 在 setup 函數內部，使用 `props` 存取 `tags` 變數
-const { tags } = defineProps<{ tags: string[] }>() // 使用 `defineProps` 來定義 props
+const { tags, image } = defineProps<{
+  tags: string[]
+  image: string[]
+}>()
 
 const getIconTitle = (tag: string) => {
   switch (tag.toLowerCase().replace(/['\s]/g, '')) {
@@ -79,35 +76,17 @@ const onHover = () => {
 const onLeave = () => {
   hoverStore.setHoveredId(null)
 }
-
-// let hoverTimeout: ReturnType<typeof setTimeout> | null = null
-
-// Hover 事件處理：延遲 1 秒後設定 hoveredId
-// const onHover = () => {
-//   if (hoverTimeout) clearTimeout(hoverTimeout) // 清除舊的定時器，避免重複觸發
-
-//   hoverTimeout = setTimeout(() => {
-//     hoverStore.setHoveredId(cardId.value) // 設定 hoveredId
-//   }, 500) // 延遲 1 秒
-// }
-
-// // Leave 事件處理：立即清除定時器並重置 hoveredId
-// const onLeave = () => {
-//   if (hoverTimeout) clearTimeout(hoverTimeout) // 立即清除定時器
-//   hoverStore.setHoveredId(null) // 重置 hoveredId
-// }
 </script>
 
 <template>
   <div
     class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-start overflow-hidden rounded bg-transparent transition-all duration-300 ease-linear"
-    :data-card="cardId"
     @mouseenter="onHover"
     @mouseleave="onLeave"
   >
     <NuxtLink
       class="flex aspect-square size-full max-h-max min-h-fit min-w-fit max-w-full items-center justify-center rounded bg-zinc-700/80 p-4"
-      :to="more"
+      :to="`/portfolio/${cardId}?from=design`"
       target="_blank"
     >
       <div
@@ -115,7 +94,7 @@ const onLeave = () => {
       >
         <img
           class="z-10 h-fit max-h-fit w-fit max-w-full object-contain transition-all duration-300 ease-linear group-hover:scale-105"
-          :src="image"
+          :src="image[0]"
           :title="title"
           :alt="title"
           width="400"
@@ -155,7 +134,8 @@ const onLeave = () => {
       <div class="mb-0 mt-auto flex w-full items-center justify-between gap-2 pt-1">
         <time class="text-start font-Fira text-xs font-light text-white/80" :datetime="date"> {{ date }}</time>
         <NuxtLink
-          :to="more"
+          :to="`/portfolio/${cardId}?from=design`"
+          target="_blank"
           class="cursor-pointer text-end font-Fira text-xs font-light text-white/80 underline underline-offset-2 transition-all hover:font-normal hover:text-white/100 hover:underline-offset-4 group-hover:text-white/90"
         >
           &lt;More&gt;

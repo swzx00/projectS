@@ -142,7 +142,6 @@ const numbersY = computed(() => generateNumbers(maxY, step))
                   :content="card.content"
                   :image="card.image"
                   :date="card.date"
-                  :more="card.more || ''"
                   :link="card.link || ''"
                 ></PortfolioCardDesign>
               </div>

@@ -15,7 +15,7 @@ const isActive = (tag: string) => route.query.tag === tag
 
 <template>
   <div
-    class="xs:max-w-[calc(66dvw-40px)] fixed left-10 top-0 z-30 h-full w-full max-w-[calc(600dvw-40px)] border-l border-r border-solid border-white/50 bg-slate-800 shadow-lg sm:relative sm:left-0 sm:w-full sm:max-w-none sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:shadow-none"
+    class="fixed left-10 top-0 z-30 h-full w-full max-w-[calc(600dvw-40px)] border-l border-r border-solid border-white/50 bg-slate-800 shadow-lg xs:max-w-[calc(66dvw-40px)] sm:relative sm:left-0 sm:w-full sm:max-w-none sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:shadow-none"
   >
     <p class="flex items-center justify-start gap-2 px-2 pb-1 pt-2 text-sm font-normal text-white/80">Hello World!</p>
     <NuxtLink
