@@ -170,7 +170,7 @@ const hoveredData = computed(() => {
       <div class="overflow-x-hidden overflow-y-hidden">
         <NuxtLink
           class="group flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 bg-zinc-600 text-sm text-white"
-          to="/design?tag=design"
+          to="/portfolio/design?tag=design"
           @click="clickLink"
         >
           <div
@@ -203,7 +203,7 @@ const hoveredData = computed(() => {
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/design?tag=web"
+              to="/portfolio/design?tag=web"
               @click="clickLink"
             >
               <div
@@ -231,7 +231,7 @@ const hoveredData = computed(() => {
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/design?tag=edm"
+              to="/portfolio/design?tag=edm"
               @click="clickLink"
             >
               <div
@@ -259,7 +259,7 @@ const hoveredData = computed(() => {
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/design?tag=interface"
+              to="/portfolio/design?tag=interface"
               @click="clickLink"
             >
               <div
@@ -287,7 +287,7 @@ const hoveredData = computed(() => {
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/design?tag=publication"
+              to="/portfolio/design?tag=publication"
               @click="clickLink"
             >
               <div
@@ -315,7 +315,7 @@ const hoveredData = computed(() => {
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/design?tag=graphic"
+              to="/portfolio/design?tag=graphic"
               @click="clickLink"
             >
               <div
@@ -343,7 +343,7 @@ const hoveredData = computed(() => {
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/design?tag=media"
+              to="/portfolio/design?tag=media"
               @click="clickLink"
             >
               <div
@@ -371,7 +371,7 @@ const hoveredData = computed(() => {
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/design?tag=product"
+              to="/portfolio/design?tag=product"
               @click="clickLink"
             >
               <div

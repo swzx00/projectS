@@ -145,14 +145,12 @@ const numbersY = computed(() => generateNumbers(maxY, step))
                   :link="card.link || ''"
                 ></PortfolioCardDesign>
               </div>
-              <ClientOnly>
-                <PaginationDesign
-                  v-if="data && data?.perPage && data?.totalCount > data?.perPage"
-                  :total-count="totalCount"
-                  :per-page="perPage"
-                  :current-page="currentPage"
-                ></PaginationDesign>
-              </ClientOnly>
+              <PaginationDesign
+                v-if="data && data?.perPage && data?.totalCount > data?.perPage"
+                :total-count="totalCount"
+                :per-page="perPage"
+                :current-page="currentPage"
+              ></PaginationDesign>
             </div>
           </Transition>
         </div>

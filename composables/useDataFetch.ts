@@ -18,8 +18,7 @@ interface ResponseData {
   dataCard: DataCard[]
 }
 
-// 設定泛型參數 T 為 ResponseData，並在其中包含所需的欄位
-export function useDataFetch<T extends ResponseData>(defaultTag: string) {
+export function useDataFetch(defaultTag: string) {
   const route = useRoute()
 
   // 頁數狀態
@@ -37,20 +36,43 @@ export function useDataFetch<T extends ResponseData>(defaultTag: string) {
     },
   )
 
-  // 使用 useFetch 抓取資料
-  const { data, pending, error } = useFetch<T>(() => {
-    return `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
-  })
+  // 定義 async 函數來使用 await 獲取資料
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`)
+      const responseData: ResponseData = await response.json()
 
-  // 當資料加載完成後，將 totalCount 和 perPage 賦值
+      // 當資料加載完成後，將 totalCount 和 perPage 賦值
+      totalCount.value = responseData.totalCount
+      perPage.value = responseData.perPage
+
+      return responseData
+    } catch (err) {
+      console.error('Error fetching data:', err)
+      throw err
+    }
+  }
+
+  // 使用 ref 和 watchEffect 來儲存狀態
+  const data = ref<ResponseData | null>(null)
+  const pending = ref<boolean>(false)
+  const error = ref<any>(null)
+
   const totalCount = ref<number | null>(null)
   const perPage = ref<number | null>(null)
 
-  watchEffect(() => {
-    if (data.value) {
-      const responseData = data.value as ResponseData // 強制轉型成 ResponseData
-      totalCount.value = responseData.totalCount
-      perPage.value = responseData.perPage
+  // 使用 watchEffect 來觸發資料請求
+  watchEffect(async () => {
+    pending.value = true
+    error.value = null
+
+    try {
+      const result = await fetchData()
+      data.value = result
+    } catch (err) {
+      error.value = err
+    } finally {
+      pending.value = false
     }
   })
 

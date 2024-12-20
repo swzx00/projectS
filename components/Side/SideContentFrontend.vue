@@ -25,7 +25,7 @@ const isActive = (tag: string) => route.query.tag === tag
           ? 'text-amber-200 after:ml-auto after:mr-0 after:aspect-square after:size-2 after:rounded-full after:bg-amber-200 after:content-[\'\'] hover:text-amber-400 hover:after:bg-amber-400'
           : 'text-white/80 hover:text-white'
       "
-      to="/frontend?tag=frontend"
+      to="/portfolio/frontend?tag=frontend"
       @click="clickLink"
       ><Icon class="text-white/80" name="uil:angle-down" size="18" />
       <Icon name="vscode-icons:folder-type-vscode" size="16" title="Frontend" alt="Frontend" />
@@ -41,7 +41,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=nuxt"
+          to="/portfolio/frontend?tag=nuxt"
           @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-nuxt" size="16" title="Nuxt" alt="Nuxt" />
@@ -56,7 +56,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=vue"
+          to="/portfolio/frontend?tag=vue"
           @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-vue" size="16" title="Vue" alt="Vue" />
@@ -71,7 +71,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=tailwind"
+          to="/portfolio/frontend?tag=tailwind"
           @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-tailwind" size="16" title="Tailwind" alt="Tailwind" />
@@ -86,7 +86,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=bootstrap"
+          to="/portfolio/frontend?tag=bootstrap"
           @click="clickLink"
         >
           <Icon name="devicon:bootstrap" size="16" title="Bootstrap" alt="Bootstrap" />
@@ -101,7 +101,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=html"
+          to="/portfolio/frontend?tag=html"
           @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-html" size="16" title="Html" alt="Html" />
@@ -116,7 +116,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=css"
+          to="/portfolio/frontend?tag=css"
           @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-css" size="16" title="Css" alt="Css" />
@@ -131,7 +131,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=typescript"
+          to="/portfolio/frontend?tag=typescript"
           @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-typescript-official" size="16" title="Typescript" alt="Typescript" />
@@ -146,7 +146,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=javascript"
+          to="/portfolio/frontend?tag=javascript"
           @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-js-official" size="16" title="Javascript" alt="Javascript" />
@@ -161,7 +161,7 @@ const isActive = (tag: string) => route.query.tag === tag
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
           "
-          to="/frontend?tag=edm"
+          to="/portfolio/frontend?tag=edm"
           @click="clickLink"
         >
           <Icon name="vscode-icons:file-type-templ" size="16" title="Edm" alt="Edm" />
