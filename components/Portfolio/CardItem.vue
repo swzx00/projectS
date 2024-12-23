@@ -78,7 +78,7 @@ const getIconTitle = (tag: string) => {
       :to="`/portfolio/${cardId}`"
       target="_blank"
     >
-      <div class="block size-full overflow-hidden rounded">
+      <div class="flex size-full items-center justify-center overflow-hidden rounded">
         <img
           class="relative z-10 aspect-[4/3] size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
           :src="image[0]"
@@ -90,7 +90,7 @@ const getIconTitle = (tag: string) => {
           decoding="async"
         />
         <Icon
-          class="absolute z-0 text-lg text-white"
+          class="absolute z-0 text-lg text-black/50"
           name="line-md:loading-twotone-loop"
           size="20"
           title="Loading"
