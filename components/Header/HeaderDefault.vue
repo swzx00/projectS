@@ -18,9 +18,10 @@ const handleResize = () => {
   isMobile.value = currentWidth < 640 // 如果寬度小於 640，則為手機尺寸
   if (!isMobile.value) {
     showDivHeader.value = true // 如果是桌面模式，顯示 Nav
+  } else {
+    showDivHeader.value = false
   }
-  // 根據螢幕模式更新 `showDivHeader`
-  showDivHeader.value = !isMobile.value
+  console.log(isMobile.value)
 }
 
 // 初始化時檢查螢幕大小
@@ -42,6 +43,7 @@ onUnmounted(() => {
         <img src="/images/logo-01.svg" title="Logo" alt="logo" width="48" height="48" loading="eager" decoding="sync" />
       </NuxtLink>
       <button
+        v-if="isMobile"
         class="flex size-10 h-full items-center justify-center p-1 text-3xl font-bold text-black"
         @click="toggleNav('header')"
       >
@@ -52,42 +54,34 @@ onUnmounted(() => {
           alt="Menu"
         />
       </button>
-      <Teleport :to="isMobile ? 'body' : '.header-nav'">
-        <Transition
-          name="menu-header-default"
-          enter-active-class="transition-all duration-300 ease-in-out overflow-hidden sm:transition-none"
-          enter-from-class="sm:opacity-100 translate-x-1/2 opacity-0 sm:translate-x-0"
-          enter-to-class="opacity-100 translate-x-0"
-          leave-active-class="transition-all duration-300 ease-in-out overflow-hidden sm:transition-none"
-          leave-from-class="opacity-100 translate-x-0"
-          leave-to-class="sm:opacity-100 translate-x-1/2 opacity-0 sm:translate-x-0"
-        >
+      <Teleport to="body" :disabled="!isMobile">
+        <Transition name="menu-default">
           <div
             v-if="showDivHeader"
-            class="fixed bottom-0 left-auto right-0 top-[4rem] h-[calc(100dvh-4rem)] w-dvw flex-col items-center justify-start gap-4 bg-slate-50 py-4 font-Fira font-bold text-gray-800 shadow-md backdrop-blur-xl *:z-10 xs:w-[calc(66dvw)] sm:static sm:flex sm:h-full sm:w-fit sm:flex-row sm:justify-end sm:gap-2 sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
+            class="nav-header fixed bottom-0 left-auto right-0 top-[4rem] flex h-[calc(100dvh-4rem)] w-dvw flex-col items-end justify-start gap-6 py-4 font-Fira text-2xl font-bold text-gray-800 shadow-md backdrop-blur-md *:z-20 before:fixed before:bottom-0 before:left-auto before:right-0 before:top-auto before:z-10 before:block before:h-dvh before:w-full before:bg-slate-50 after:fixed after:bottom-0 after:left-auto after:right-0 after:top-auto after:z-0 after:block after:h-dvh after:w-dvw after:bg-black/50 after:content-[''] before:xs:w-[66dvw] sm:static sm:flex sm:h-full sm:w-fit sm:flex-row sm:items-center sm:justify-end sm:gap-2 sm:bg-transparent sm:py-0 sm:text-base sm:shadow-none sm:backdrop-blur-none after:sm:hidden"
           >
             <NuxtLink
-              class="flex h-fit items-center px-2 transition-all duration-300 hover:text-blue-500 sm:h-full"
+              class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               to="/"
               >Home</NuxtLink
             >
             <NuxtLink
-              class="flex h-fit items-center px-2 transition-all duration-300 hover:text-blue-500 sm:h-full"
+              class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               to="/about"
               >About</NuxtLink
             >
             <NuxtLink
-              class="flex h-fit items-center px-2 transition-all duration-300 hover:text-blue-500 sm:h-full"
+              class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               to="/portfolio"
               >Portfolio</NuxtLink
             >
             <NuxtLink
-              class="flex h-fit items-center px-2 transition-all duration-300 hover:text-blue-500 sm:h-full"
+              class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               to="/portfolio/frontend?tag=frontend"
               >Frontend</NuxtLink
             >
             <NuxtLink
-              class="flex h-fit items-center px-2 transition-all duration-300 hover:text-blue-500 sm:h-full"
+              class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               to="/portfolio/design?tag=design"
               >Design</NuxtLink
             >
@@ -98,4 +92,55 @@ onUnmounted(() => {
   </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* .navHeader-animation::after {
+  background: red;
+} */
+.menu-default-enter-active,
+.menu-default-enter-active::before,
+.menu-default-enter-active::after,
+.menu-default-enter-active *,
+.menu-default-leave-active,
+.menu-default-leave-active::before,
+.menu-default-leave-active::after,
+.menu-default-leave-active * {
+  overflow: hidden;
+  transition: all 0.3s linear;
+}
+
+.menu-default-enter-from::before,
+.menu-default-enter-from * {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.menu-default-enter-from::after {
+  opacity: 0;
+}
+
+.menu-default-enter-to::before,
+.menu-default-enter-to * {
+  transform: translateX(0%);
+  opacity: 1;
+}
+.menu-default-enter-to::after {
+  opacity: 1;
+}
+
+.menu-default-leave-from::before,
+.menu-default-leave-from * {
+  transform: translateX(0%);
+  opacity: 1;
+}
+.menu-default-leave-from::after {
+  opacity: 1;
+}
+
+.menu-default-leave-to::before,
+.menu-default-leave-to * {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.menu-default-leave-to::after {
+  opacity: 0;
+}
+</style>
