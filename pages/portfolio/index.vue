@@ -1,54 +1,11 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useDataFetch } from '~/composables/useDataFetch'
+
+// 使用整合後的 useDataFetch
+const { currentPage, data, pending, error, totalCount, perPage } = useDataFetch('')
+
 definePageMeta({
   middleware: ['loading'], // 啟用 loading 中介層
-})
-
-// 定義資料型別
-interface DataCard {
-  id: string
-  title: string
-  tag: string[]
-  content: string
-  image: string
-}
-
-interface ResponseData {
-  totalCount: number
-  page: number
-  perPage: number
-  dataCard: DataCard[]
-}
-
-// 使用 useRoute 來取得 URL 參數
-const route = useRoute()
-
-// 頁數狀態
-const currentPage = ref(Number(route.query.page) || 1)
-
-// 當頁數改變時，重新抓取資料
-watch(
-  () => route.query.page,
-  (newPage) => {
-    currentPage.value = Number(newPage) || 1
-  },
-)
-
-// 使用 useFetch 並監聽 currentPage 的變化
-const { data, pending, error } = useFetch<ResponseData>(() => {
-  return `/api/dataCard?page=${currentPage.value}`
-})
-
-// 當資料加載完成後，將 totalCount 傳遞給子組件
-const totalCount = ref<number | null>(null)
-const perPage = ref<number | null>(null)
-
-// 當資料加載完成後，將 totalCount 和 perPage 賦值
-watchEffect(() => {
-  if (data.value) {
-    totalCount.value = data.value.totalCount
-    perPage.value = data.value.perPage
-  }
 })
 </script>
 
@@ -92,7 +49,7 @@ watchEffect(() => {
       </NuxtLink>
       <NuxtLink
         class="group block h-fit w-full cursor-pointer rounded-lg border border-solid border-slate-300 bg-slate-100 px-4 py-2 hover:border-blue-200 hover:bg-blue-100 xs:w-[calc((100%-(1*1rem))/2)] md:w-[calc((100%-(2*1rem))/3)] lg:w-[calc((100%-(3*1rem))/4)]"
-        to="/portfolio/frontend?tag=frontend"
+        to="/portfolio/design?tag=design"
         target="_self"
       >
         <figure class="flex h-fit w-full flex-row items-center justify-start gap-2">
@@ -136,12 +93,12 @@ watchEffect(() => {
         :image="card.image"
       ></PortfolioCardItem>
     </div>
-    <PortfolioPagination
+    <PaginationDefault
       v-if="data?.perPage && data?.totalCount > data?.perPage"
       :total-count="totalCount"
       :per-page="perPage"
       :current-page="currentPage"
-    ></PortfolioPagination>
+    ></PaginationDefault>
   </main>
 </template>
 

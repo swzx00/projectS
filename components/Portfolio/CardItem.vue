@@ -39,35 +39,6 @@ const { tags, image } = defineProps<{
   image: string[]
 }>()
 
-const getIconName = (tag: string) => {
-  switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-    case 'edm':
-      return 'vscode-icons:file-type-templ'
-    case 'javascript':
-      return 'vscode-icons:file-type-js-official'
-    case 'typescript':
-      return 'vscode-icons:file-type-typescript-official'
-    case 'css':
-      return 'vscode-icons:file-type-css'
-    case 'html':
-      return 'vscode-icons:file-type-html'
-    case 'bootstrap':
-      return 'devicon:bootstrap'
-    case 'tailwind':
-      return 'vscode-icons:file-type-tailwind'
-    case 'vue':
-      return 'vscode-icons:file-type-vue'
-    case 'nuxt':
-      return 'vscode-icons:file-type-nuxt'
-    case 'frontend':
-      return 'vscode-icons:file-type-vscode'
-    case 'design':
-      return 'logos:adobe-photoshop'
-    default:
-      return ''
-  }
-}
-
 const getIconTitle = (tag: string) => {
   switch (tag.toLowerCase().replace(/['\s]/g, '')) {
     case 'edm':
