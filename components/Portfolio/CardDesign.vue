@@ -125,7 +125,7 @@ const onLeave = () => {
         <span
           v-for="tag in tags"
           :key="tag"
-          class="mx-1 inline-flex h-full w-fit max-w-full flex-shrink-0 flex-grow-0 cursor-default items-center justify-center overflow-hidden text-ellipsis whitespace-nowrap rounded-full border border-solid border-blue-600 bg-blue-600 px-1 py-px text-xs capitalize leading-none text-white opacity-80 first:ml-0 last:mr-0 group-hover:opacity-100"
+          class="mx-1 inline-flex h-full w-fit max-w-full flex-shrink-0 flex-grow-0 cursor-default items-center justify-center overflow-hidden text-ellipsis whitespace-nowrap rounded-full border border-solid border-blue-600 bg-blue-600 px-1 text-xs capitalize leading-none text-white opacity-80 first:ml-0 last:mr-0 group-hover:opacity-100"
           :title="getIconTitle(tag)"
         >
           {{ tag }}
