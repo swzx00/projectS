@@ -4,7 +4,10 @@ definePageMeta({
 })
 </script>
 <template>
-  <div>Page: about</div>
+  <div>
+    Page: about
+    <NuxtLink to="/resume">Resume</NuxtLink>
+  </div>
 </template>
 
 <style scoped></style>
