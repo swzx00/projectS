@@ -1,44 +1,23 @@
 <script setup lang="ts">
 import { useSingleDataFetch } from '~/composables/useSingleDataFetch'
+import type { ResponseData } from '~/composables/interface'
 
 const route = useRoute()
-const { id } = route.params
-// 確保 id 是 string
-const safeId = Array.isArray(id) ? id[0] : id || ''
-
-// 定義 ResponseData 類型 (根據你的實際數據結構)
-interface ResponseData {
-  dataCard:
-    | {
-        id: string
-        title: string
-        tag: string[]
-        date: string
-        image: string[]
-        content: string
-      }
-    | null
-    | undefined // dataCard 可以是 null 或 undefined
-}
-
-// 使用整合後的 useSingleDataFetch
-// const { data, pending, error } = await useSingleDataFetch(safeId)
-
-// 用 onMounted 包裹異步請求
-const dataLoaded = ref(false)
-const data = ref<ResponseData | null>(null) // 指定為 ResponseData 或 null
+const data = ref<ResponseData | null>(null)
 const pending = ref(true)
-const error = ref<Error | null>(null) // error 類型可以是 Error 或 null
-const items = ref<ResponseData['dataCard'] | null>(null) // 指定為 dataCard 或 null
+const error = ref<Error | null>(null)
+const dataLoaded = ref(false)
+const items = ref<ResponseData['dataCard'][0] | null>(null) // 指定為 dataCard 的單一項目或 null
 
 onMounted(async () => {
+  const safeId = route.params.id as string
   try {
     const response = await useSingleDataFetch(safeId)
     data.value = response.data
     pending.value = false
 
     // 確保 dataCard 的資料結構符合型別定義
-    items.value = data.value?.dataCard ?? null
+    items.value = data.value?.dataCard[0] ?? null
   } catch (err) {
     error.value = err as Error
     pending.value = false

@@ -1,22 +1,4 @@
-import { useRoute } from 'vue-router'
-
-// 定義資料型別
-interface DataCard {
-  id: string
-  title: string
-  tag: string[]
-  content: string
-  image: string[]
-  date: string
-  link?: string // 可選屬性
-}
-
-interface ResponseData {
-  totalCount: number
-  page: number
-  perPage: number
-  dataCard: DataCard[]
-}
+import type { ResponseData } from './interface'
 
 export function useDataFetch(defaultTag: string) {
   const route = useRoute()
@@ -62,7 +44,6 @@ export function useDataFetch(defaultTag: string) {
       // 當資料加載完成後，將 totalCount 和 perPage 賦值
       totalCount.value = responseData.totalCount
       perPage.value = responseData.perPage
-
       return responseData
     } catch (err) {
       console.error('Error fetching data:', err)

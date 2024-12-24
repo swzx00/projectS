@@ -15,3 +15,17 @@ export interface ResponseData {
   dataCard: DataCard[]
   error?: string
 }
+
+export interface FetchResult {
+  data: ResponseData | null
+  pending: boolean
+  error: string
+}
+
+export interface Pagination {
+  totalPages: ComputedRef<number>
+  pagesArray: ComputedRef<number[]>
+  gapPage: ComputedRef<number>
+  currentPage: Ref<number>
+  gotoPage: (page: number | string) => void
+}

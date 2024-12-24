@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { usePagination } from '@/composables/usePagination'
+import { usePagination } from '~/composables/usePagination'
 
 // 取得 defineModel 的數據
 const totalCount = defineModel<number | null>('totalCount', { default: null })
 const perPage = defineModel<number | null>('perPage', { default: null })
 const currentPage = defineModel<number>('currentPage', { default: 1 })
 
-const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount.value, perPage.value, currentPage.value)
+const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount, perPage, currentPage)
 </script>
 
 <template>

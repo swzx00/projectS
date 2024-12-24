@@ -1,26 +1,4 @@
-import { useRoute } from 'vue-router'
-
-// 定義資料型別
-interface DataCard {
-  id: string
-  title: string
-  tag: string[]
-  content: string
-  image: string[]
-  date: string
-  link?: string // 可選屬性
-}
-
-interface ResponseData {
-  dataCard: DataCard | null
-  error?: string
-}
-
-interface FetchResult {
-  data: ResponseData | null
-  pending: boolean
-  error: string
-}
+import type { ResponseData, FetchResult } from './interface'
 
 export async function useSingleDataFetch(providedId?: string): Promise<FetchResult> {
   const route = useRoute()

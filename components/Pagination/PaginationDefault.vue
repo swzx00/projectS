@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { usePagination } from '@/composables/usePagination'
+import { defineModel } from 'vue'
+import { usePagination } from '~/composables/usePagination'
 
 // 取得 defineModel 的數據
 const totalCount = defineModel<number | null>('totalCount', { default: null })
 const perPage = defineModel<number | null>('perPage', { default: null })
 const currentPage = defineModel<number>('currentPage', { default: 1 })
 
-const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount.value, perPage.value, currentPage.value)
+const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount, perPage, currentPage)
 </script>
 
 <template>
@@ -57,7 +58,7 @@ const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount.v
       <Icon name="uil:ellipsis-h" size="24" title="更多" alt="更多" />
     </button>
     <button
-      class="flex size-9 items-center justify-center rounded-lg border-slate-300 hover:border-slate-400 hover:bg-slate-300 hover:font-bold hover:text-slate-500"
+      class="flex size-9 items-center justify-center rounded-lg border-slate-200/0 bg-slate-200/0 hover:border-slate-200/100 hover:text-slate-200/100"
       title="下一頁"
       :class="currentPage === totalPages ? 'pointer-events-none border-transparent opacity-50' : 'border-slate-300'"
       :disabled="currentPage === totalPages"
@@ -66,7 +67,7 @@ const { totalPages, pagesArray, gapPage, gotoPage } = usePagination(totalCount.v
       <Icon name="uil:angle-right" size="24" title="下一頁" alt="下一頁" />
     </button>
     <button
-      class="flex size-9 items-center justify-center rounded-lg border-slate-300 hover:border-slate-400 hover:bg-slate-300 hover:font-bold hover:text-slate-500"
+      class="flex size-9 items-center justify-center rounded-lg hover:border-slate-400 hover:bg-slate-300 hover:font-bold hover:text-slate-500"
       title="最後一頁"
       :class="currentPage === totalPages ? 'pointer-events-none border-transparent opacity-50' : 'border-slate-300'"
       :disabled="currentPage === totalPages"
