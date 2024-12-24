@@ -14,13 +14,9 @@ definePageMeta({
     <h1 class="hidden">Portfolio</h1>
 
     <div
-      class="mx-auto mb-8 flex w-full max-w-full flex-col flex-wrap items-center justify-center gap-y-2 px-4 xs:flex-row xs:gap-x-4 md:gap-x-6 md:gap-y-0 lg:max-w-[960px] lg:gap-x-4"
+      class="mx-auto mb-8 flex w-full max-w-full flex-col flex-wrap items-center justify-start gap-y-2 px-4 xs:flex-row xs:gap-x-4 md:gap-y-0 lg:max-w-[960px]"
     >
-      <h2
-        class="mx-auto block w-full max-w-full px-0 text-base font-semibold leading-loose text-black sm:mx-0 sm:w-full md:mx-auto md:w-[calc((100%/3*2)+2rem)] md:px-4 lg:mx-[calc((100%-(3*1rem))/4)] lg:w-[calc((100%/2)+2rem)]"
-      >
-        項目分類:
-      </h2>
+      <h2 class="mx-auto block w-full max-w-full px-0 text-base font-semibold leading-loose text-black">項目分類:</h2>
       <NuxtLink
         class="group block h-fit w-full cursor-pointer rounded-lg border border-solid border-slate-300 bg-slate-100 px-4 py-2 hover:border-blue-200 hover:bg-blue-100 xs:w-[calc((100%-(1*1rem))/2)] md:w-[calc((100%-(2*1rem))/3)] lg:w-[calc((100%-(3*1rem))/4)]"
         to="/portfolio/frontend?tag=frontend"
