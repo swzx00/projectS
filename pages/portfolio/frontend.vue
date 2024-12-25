@@ -17,8 +17,17 @@ const title = ref('Frontend')
 watch(
   () => route.query.tag,
   (newTag) => {
-    // 先去除引號和空格，然後轉換為小寫
-    if (newTag) {
+    if (!newTag) {
+      const cleanTag = 'Frontend'
+      switch (cleanTag) {
+        default:
+          // 如果沒有匹配的 tag，使用默認值
+          iconName.value = 'vscode-icons:file-type-vscode'
+          title.value = 'Frontend'
+          break
+      }
+    } else {
+      // 先去除引號和空格，然後轉換為小寫
       const cleanTag = (newTag as string).replace(/['\s]/g, '').toLowerCase()
       switch (cleanTag) {
         case 'edm':
@@ -56,10 +65,6 @@ watch(
         case 'nuxt':
           iconName.value = 'vscode-icons:file-type-nuxt'
           title.value = 'Nuxt'
-          break
-        case 'frontend':
-          iconName.value = 'vscode-icons:file-type-vscode'
-          title.value = 'Frontend'
           break
         default:
           // 如果沒有匹配的 tag，使用默認值

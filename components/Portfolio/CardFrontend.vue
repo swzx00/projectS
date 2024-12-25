@@ -65,8 +65,6 @@ const getIconName = (tag: string) => {
       return 'vscode-icons:file-type-nuxt'
     case 'frontend':
       return 'vscode-icons:file-type-vscode'
-    case 'design':
-      return 'logos:adobe-photoshop'
     default:
       return ''
   }
@@ -94,8 +92,6 @@ const getIconTitle = (tag: string) => {
       return 'Nuxt'
     case 'frontend':
       return 'Frontend'
-    case 'design':
-      return 'Design'
     default:
       return ''
   }
@@ -138,9 +134,16 @@ const getIconTitle = (tag: string) => {
         {{ title }}
       </h3>
       <div class="flex h-6 items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap">
-        <span v-for="tag in tags" :key="tag" class="flex size-5 items-center justify-center" :title="getIconTitle(tag)">
-          <Icon :name="getIconName(tag)" :title="getIconTitle(tag)" :alt="getIconTitle(tag)" size="16" />
-        </span>
+        <template v-for="tag in tags">
+          <span
+            v-if="getIconName(tag) && getIconTitle(tag)"
+            :key="tag"
+            class="flex size-5 items-center justify-center"
+            :title="getIconTitle(tag)"
+          >
+            <Icon :name="getIconName(tag)" :title="getIconTitle(tag)" :alt="getIconTitle(tag)" size="16" />
+          </span>
+        </template>
       </div>
       <p
         class="text-normal line-clamp-2 justify-items-end text-justify font-normal text-slate-400 group-hover:text-gray-600"

@@ -125,7 +125,7 @@ const isHover = ref(false)
         </NuxtLink>
         <NuxtLink
           class="group block h-fit w-[calc((100%-(1rem*3))/3)] cursor-pointer xs:w-fit"
-          to="/portfolio/frontend?tag=frontend"
+          to="/portfolio/frontend"
           target="_self"
         >
           <figure class="flex h-fit w-full flex-col items-center justify-start gap-1 xs:w-fit">
@@ -151,7 +151,7 @@ const isHover = ref(false)
         </NuxtLink>
         <NuxtLink
           class="group block h-fit w-[calc((100%-(1rem*3))/3)] cursor-pointer xs:w-fit"
-          to="/portfolio/design?tag=design"
+          to="/portfolio/design"
           target="_self"
         >
           <figure class="flex h-fit w-full flex-col items-center justify-start gap-1 xs:w-fit">

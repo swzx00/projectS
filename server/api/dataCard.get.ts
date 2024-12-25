@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   const { page = 1, tag }: { page: string | number; tag?: string } = getQuery(event)
 
   // 如果 tag 存在，去除引號並清除空格，並轉換為小寫
-  const processedTag = tag ? tag.replace(/['"]+/g, '').trim().toLowerCase() : undefined
+  const processedTags = tag ? tag.split(',').map((t) => t.replace(/['"]+/g, '').trim().toLowerCase()) : undefined
 
   // 每頁固定顯示 12 筆
   const perPage = 12
@@ -28,8 +28,10 @@ export default defineEventHandler(async (event) => {
   const sortedData = dataCard.sort((a: any, b: any) => a.id - b.id)
 
   // 如果有 tag 參數，過濾資料並將 tag 陣列中的值統一轉為小寫
-  const filteredData = processedTag
-    ? sortedData.filter((item: any) => item.tag.some((t: string) => t.toLowerCase() === processedTag)) // 檢查 tag 陣列中是否有小寫的 tag
+  const filteredData = processedTags
+    ? sortedData.filter((item: any) =>
+        processedTags.some((tag) => item.tag.some((t: string) => t.toLowerCase() === tag)),
+      ) // 檢查 tag 陣列中是否有小寫的 tag
     : sortedData
 
   // 計算總筆數

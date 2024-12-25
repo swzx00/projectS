@@ -78,12 +78,12 @@ onUnmounted(() => {
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
-              to="/portfolio/frontend?tag=frontend"
+              to="/portfolio/frontend"
               >Frontend</NuxtLink
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
-              to="/portfolio/design?tag=design"
+              to="/portfolio/design"
               >Design</NuxtLink
             >
           </div>

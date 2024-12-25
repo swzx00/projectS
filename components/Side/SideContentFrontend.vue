@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useActive } from '~/composables/useActive'
 
 // 使用 defineModel 接收父元件的狀態
 const showDivProject = defineModel<boolean>('showDivProject')
@@ -9,8 +9,7 @@ const clickLink = () => {
   showDivProject.value = !showDivProject.value // 改變父元件的狀態
 }
 
-const route = useRoute()
-const isActive = (tag: string) => route.query.tag === tag
+const { isActive } = useActive('frontend')
 </script>
 
 <template>
@@ -25,7 +24,7 @@ const isActive = (tag: string) => route.query.tag === tag
           ? 'text-amber-200 after:ml-auto after:mr-0 after:aspect-square after:size-2 after:rounded-full after:bg-amber-200 after:content-[\'\'] hover:text-amber-400 hover:after:bg-amber-400'
           : 'text-white/80 hover:text-white'
       "
-      to="/portfolio/frontend?tag=frontend"
+      to="/portfolio/frontend"
       @click="clickLink"
       ><Icon class="text-white/80" name="uil:angle-down" size="18" />
       <Icon name="vscode-icons:folder-type-vscode" size="16" title="Frontend" alt="Frontend" />

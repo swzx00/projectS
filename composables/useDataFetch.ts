@@ -17,7 +17,11 @@ export function useDataFetch(defaultTag: string) {
       () => [route.query.page, route.query.tag],
       () => {
         currentPage.value = Number(route.query.page) || 1
-        currentTag.value = String(route.query.tag) || defaultTag
+        if (route.query.tag === undefined) {
+          currentTag.value = defaultTag
+        } else {
+          currentTag.value = String(route.query.tag)
+        }
       },
     )
   } else {
@@ -33,9 +37,24 @@ export function useDataFetch(defaultTag: string) {
   // 定義 async 函數來使用 await 獲取資料
   const fetchData = async () => {
     try {
-      if (defaultTag === 'frontend' || defaultTag === 'design') {
-        apiPath.value = `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+      if (defaultTag === 'frontend') {
+        console.log('frontend')
+        if (currentTag.value === 'frontend' || currentTag.value === undefined) {
+          apiPath.value = `/api/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${currentPage.value}`
+        } else {
+          apiPath.value = `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+        }
+      } else if (defaultTag === 'design') {
+        console.log('design')
+        if (currentTag.value === 'design' || currentTag.value === undefined) {
+          console.log('A')
+          apiPath.value = `/api/dataCard?tag=web,edm,interface,publication,graphic,media,product&page=${currentPage.value}`
+        } else {
+          console.log('B')
+          apiPath.value = `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+        }
       } else {
+        console.log('portfolio')
         apiPath.value = `/api/dataCard?page=${currentPage.value}`
       }
       const response = await fetch(apiPath.value)

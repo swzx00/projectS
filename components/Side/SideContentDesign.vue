@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useDataFetch } from '~/composables/useDataFetch'
 import { useHoverStore } from '~/stores/hoverStore'
+import { useActive } from '~/composables/useActive'
 
 // 使用 defineModel 接收父元件的狀態
 const showDivProject = defineModel<boolean>('showDivProject')
@@ -12,8 +12,8 @@ const clickLink = () => {
   showDivProject.value = !showDivProject.value // 改變父元件的狀態
 }
 
-const route = useRoute()
-const isActive = (tag: string) => route.query.tag === tag
+// useActive.ts
+const { isActive } = useActive('design')
 
 // 使用整合後的 useDataFetch
 const { data } = useDataFetch('design')
@@ -170,7 +170,7 @@ const hoveredData = computed(() => {
       <div class="overflow-x-hidden overflow-y-hidden">
         <NuxtLink
           class="group flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 bg-zinc-600 text-sm text-white"
-          to="/portfolio/design?tag=design"
+          to="/portfolio/design"
           @click="clickLink"
         >
           <div

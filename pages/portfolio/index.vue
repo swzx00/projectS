@@ -19,7 +19,7 @@ definePageMeta({
       <h2 class="mx-auto block w-full max-w-full px-0 text-base font-semibold leading-loose text-black">項目分類:</h2>
       <NuxtLink
         class="group block h-fit w-full cursor-pointer rounded-lg border border-solid border-slate-300 bg-slate-100 px-4 py-2 hover:border-blue-200 hover:bg-blue-100 xs:w-[calc((100%-(1*1rem))/2)] md:w-[calc((100%-(2*1rem))/3)] lg:w-[calc((100%-(3*1rem))/4)]"
-        to="/portfolio/frontend?tag=frontend"
+        to="/portfolio/frontend"
         title="Frontend"
         alt="Frontend"
         target="_self"
@@ -47,7 +47,7 @@ definePageMeta({
       </NuxtLink>
       <NuxtLink
         class="group block h-fit w-full cursor-pointer rounded-lg border border-solid border-slate-300 bg-slate-100 px-4 py-2 hover:border-blue-200 hover:bg-blue-100 xs:w-[calc((100%-(1*1rem))/2)] md:w-[calc((100%-(2*1rem))/3)] lg:w-[calc((100%-(3*1rem))/4)]"
-        to="/portfolio/design?tag=design"
+        to="/portfolio/design"
         title="Design"
         alt="Design"
         target="_self"
