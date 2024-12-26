@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineModel } from 'vue'
+import { getIconName, getIconTitle } from '~/composables/useTag'
 
 // 使用 defineModel 定義傳遞資料
 const cardId = defineModel('cardId', {
@@ -43,59 +43,33 @@ const { tags, image } = defineProps<{
   image: string[]
 }>()
 
-const getIconName = (tag: string) => {
-  switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-    case 'edm':
-      return 'vscode-icons:file-type-templ'
-    case 'javascript':
-      return 'vscode-icons:file-type-js-official'
-    case 'typescript':
-      return 'vscode-icons:file-type-typescript-official'
-    case 'css':
-      return 'vscode-icons:file-type-css'
-    case 'html':
-      return 'vscode-icons:file-type-html'
-    case 'bootstrap':
-      return 'devicon:bootstrap'
-    case 'tailwind':
-      return 'vscode-icons:file-type-tailwind'
-    case 'vue':
-      return 'vscode-icons:file-type-vue'
-    case 'nuxt':
-      return 'vscode-icons:file-type-nuxt'
-    case 'frontend':
-      return 'vscode-icons:file-type-vscode'
-    default:
-      return ''
-  }
-}
+// 獲取當前路由的查詢參數
+const route = useRoute()
+const queryTag = route.query.tag ? String(route.query.tag).toLowerCase() : null
 
-const getIconTitle = (tag: string) => {
-  switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-    case 'edm':
-      return 'Edm'
-    case 'javascript':
-      return 'Javascript'
-    case 'typescript':
-      return 'Typescript'
-    case 'css':
-      return 'Css'
-    case 'html':
-      return 'Html'
-    case 'bootstrap':
-      return 'Bootstrap'
-    case 'tailwind':
-      return 'Tailwind'
-    case 'vue':
-      return 'Vue'
-    case 'nuxt':
-      return 'Nuxt'
-    case 'frontend':
-      return 'Frontend'
-    default:
-      return ''
+// 原始的 tags
+const originalTags = tags
+
+// 標準化和去重複
+const uniqueTags = computed(() => {
+  const standardizedTags = originalTags.map((tag) => {
+    if (['web', 'interface', 'publication', 'graphic', 'media', 'product'].includes(tag.toLowerCase())) {
+      return 'design'
+    }
+    return tag
+  })
+
+  // 去除重複的標準化結果
+  const uniqueTagsSet = [...new Set(standardizedTags)]
+
+  // 如果有 queryTag，將其排到第一個
+  if (queryTag && uniqueTagsSet.includes(queryTag)) {
+    uniqueTagsSet.splice(uniqueTagsSet.indexOf(queryTag), 1)
+    uniqueTagsSet.unshift(queryTag)
   }
-}
+
+  return uniqueTagsSet
+})
 </script>
 
 <template>
@@ -134,14 +108,19 @@ const getIconTitle = (tag: string) => {
         {{ title }}
       </h3>
       <div class="flex h-6 items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap">
-        <template v-for="tag in tags">
+        <template v-for="tag in uniqueTags">
           <span
-            v-if="getIconName(tag) && getIconTitle(tag)"
+            v-if="getIconName('frontend', tag) && getIconTitle('frontend', tag)"
             :key="tag"
             class="flex size-5 items-center justify-center"
-            :title="getIconTitle(tag)"
+            :title="getIconTitle('frontend', tag)"
           >
-            <Icon :name="getIconName(tag)" :title="getIconTitle(tag)" :alt="getIconTitle(tag)" size="16" />
+            <Icon
+              :name="getIconName('frontend', tag)"
+              :title="getIconTitle('frontend', tag)"
+              :alt="getIconTitle('frontend', tag)"
+              size="16"
+            />
           </span>
         </template>
       </div>

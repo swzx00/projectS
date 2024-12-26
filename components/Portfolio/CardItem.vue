@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineModel } from 'vue'
+import { getIconTitle } from '~/composables/useTag'
 
 // 使用 defineModel 定義傳遞資料
 const cardId = defineModel('cardId', {
@@ -38,35 +38,6 @@ const { tags, image } = defineProps<{
   tags: string[]
   image: string[]
 }>()
-
-const getIconTitle = (tag: string) => {
-  switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-    case 'edm':
-      return 'Edm'
-    case 'javascript':
-      return 'Javascript'
-    case 'typescript':
-      return 'Typescript'
-    case 'css':
-      return 'Css'
-    case 'html':
-      return 'Html'
-    case 'bootstrap':
-      return 'Bootstrap'
-    case 'tailwind':
-      return 'Tailwind'
-    case 'vue':
-      return 'Vue'
-    case 'nuxt':
-      return 'Nuxt'
-    case 'frontend':
-      return 'Frontend'
-    case 'design':
-      return 'Design'
-    default:
-      return ''
-  }
-}
 </script>
 
 <template>
@@ -113,7 +84,7 @@ const getIconTitle = (tag: string) => {
           v-for="tag in tags"
           :key="tag"
           class="mx-1 inline-flex h-full w-fit max-w-full flex-shrink-0 flex-grow-0 cursor-default items-center justify-center overflow-hidden text-ellipsis whitespace-nowrap text-xs capitalize leading-none text-blue-400 opacity-80 first:ml-0 last:mr-0"
-          :title="getIconTitle(tag)"
+          :title="getIconTitle('', tag)"
         >
           #{{ tag }}
         </span>

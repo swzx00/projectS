@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useHoverStore } from '~/stores/hoverStore'
+import { getIconTitle } from '~/composables/useTag'
 
 const hoverStore = useHoverStore()
 
@@ -45,28 +46,26 @@ const { tags, image } = defineProps<{
   image: string[]
 }>()
 
-const getIconTitle = (tag: string) => {
-  switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-    case 'product':
-      return 'Product'
-    case 'media':
-      return 'Media'
-    case 'graphic':
-      return 'Graphic'
-    case 'publication':
-      return 'Publication'
-    case 'interface':
-      return 'Interface'
-    case 'edm':
-      return 'Edm Design'
-    case 'web':
-      return 'Web Design'
-    case 'design':
-      return 'Design'
-    default:
-      return ''
+// 獲取當前路由的查詢參數
+const route = useRoute()
+const queryTag = route.query.tag ? String(route.query.tag).toLowerCase() : null
+
+// 原始的 tags
+const originalTags = tags
+
+// 標準化和去重複
+const uniqueTags = computed(() => {
+  // 去除重複的標準化結果
+  const uniqueTagsSet = [...new Set(originalTags)]
+
+  // 如果有 queryTag，將其排到第一個
+  if (queryTag && uniqueTagsSet.includes(queryTag)) {
+    uniqueTagsSet.splice(uniqueTagsSet.indexOf(queryTag), 1)
+    uniqueTagsSet.unshift(queryTag)
   }
-}
+
+  return uniqueTagsSet
+})
 
 // 新增 hover 事件處理函數
 const onHover = () => {
@@ -122,14 +121,16 @@ const onLeave = () => {
       <div
         class="inline-block h-6 w-full max-w-full flex-wrap items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap py-0 leading-none text-white/80 group-hover:text-white/100"
       >
-        <span
-          v-for="tag in tags"
-          :key="tag"
-          class="mx-1 inline-flex h-full w-fit max-w-full flex-shrink-0 flex-grow-0 cursor-default items-center justify-center overflow-hidden text-ellipsis whitespace-nowrap rounded-full border border-solid border-blue-600 bg-blue-600 px-1 text-xs capitalize leading-none text-white opacity-80 first:ml-0 last:mr-0 group-hover:opacity-100"
-          :title="getIconTitle(tag)"
-        >
-          {{ tag }}
-        </span>
+        <template v-for="tag in uniqueTags">
+          <span
+            v-if="getIconTitle('design', tag)"
+            :key="tag"
+            class="mx-1 inline-flex h-full w-fit max-w-full flex-shrink-0 flex-grow-0 cursor-default items-center justify-center overflow-hidden text-ellipsis whitespace-nowrap rounded-full border border-solid border-blue-600 bg-blue-600 px-1 text-xs capitalize leading-none text-white opacity-80 first:ml-0 last:mr-0 group-hover:opacity-100"
+            :title="getIconTitle('design', tag)"
+          >
+            {{ tag }}
+          </span>
+        </template>
       </div>
       <div class="mb-0 mt-auto flex w-full items-center justify-between gap-2 pt-1">
         <time class="text-start font-Fira text-xs font-light text-white/80" :datetime="date"> {{ date }}</time>

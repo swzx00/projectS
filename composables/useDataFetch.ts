@@ -38,23 +38,18 @@ export function useDataFetch(defaultTag: string) {
   const fetchData = async () => {
     try {
       if (defaultTag === 'frontend') {
-        console.log('frontend')
         if (currentTag.value === 'frontend' || currentTag.value === undefined) {
           apiPath.value = `/api/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${currentPage.value}`
         } else {
           apiPath.value = `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
         }
       } else if (defaultTag === 'design') {
-        console.log('design')
         if (currentTag.value === 'design' || currentTag.value === undefined) {
-          console.log('A')
           apiPath.value = `/api/dataCard?tag=web,edm,interface,publication,graphic,media,product&page=${currentPage.value}`
         } else {
-          console.log('B')
           apiPath.value = `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
         }
       } else {
-        console.log('portfolio')
         apiPath.value = `/api/dataCard?page=${currentPage.value}`
       }
       const response = await fetch(apiPath.value)
