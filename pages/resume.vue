@@ -5,6 +5,7 @@ definePageMeta({
   // middleware: ['loading'], // 啟用 loading 中介層
 })
 
+// 圖片Loading
 const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
 
 // 圖片來源

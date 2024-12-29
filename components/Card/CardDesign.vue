@@ -41,6 +41,7 @@ defineModel('link', {
   required: false,
 })
 
+// 圖片Loading
 const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
 
 // 在 setup 函數內部，使用 `props` 存取 `tags` 變數

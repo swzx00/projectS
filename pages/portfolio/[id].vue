@@ -3,11 +3,12 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSingleDataFetch } from '~/composables/useSingleDataFetch'
 import type { ResponseData } from '~/composables/interface'
+import { useImageLoading } from '~/composables/useImageLoading'
 
 const route = useRoute()
-const data = ref<ResponseData | null>(null)
 const pending = ref(false)
 const error = ref<Error | null>(null)
+const data = ref<ResponseData | null>(null)
 const dataLoaded = ref(false)
 const item = ref<any>(null) // 指定為 any 或 null
 
@@ -18,7 +19,7 @@ onMounted(async () => {
     data.value = response.data
     pending.value = false
 
-    item.value = data.value?.dataCard[0] ?? null
+    item.value = data.value?.dataCard ?? null
   } catch (err) {
     error.value = err as Error
     pending.value = false
@@ -30,6 +31,9 @@ definePageMeta({
   middleware: ['loading'], // 啟用 loading 中介層
 })
 
+// 圖片Loading
+const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
+
 const imageSizes = ref<{ [key: number]: { width: number; height: number } }>({})
 
 const updateImageSize = (index: number, event: Event) => {
@@ -38,6 +42,11 @@ const updateImageSize = (index: number, event: Event) => {
     width: img.naturalWidth,
     height: img.naturalHeight,
   }
+}
+
+function handleImageLoadCombined(index: number, event: Event) {
+  updateImageSize(index, event)
+  handleImageLoad()
 }
 </script>
 
@@ -79,7 +88,16 @@ const updateImageSize = (index: number, event: Event) => {
             :key="index"
             class="block w-full max-w-full border-x-0 border-y border-solid border-white lg:border-x lg:border-y-2"
           >
+            <Icon
+              v-if="!isImageLoaded"
+              class="absolute z-0 text-lg text-black"
+              name="line-md:loading-twotone-loop"
+              size="20"
+              title="Loading"
+              alt="Loading"
+            />
             <img
+              ref="imageRef"
               class="object-contain"
               :src="image"
               :title="`${item.title}-${index + 1}`"
@@ -88,7 +106,7 @@ const updateImageSize = (index: number, event: Event) => {
               :height="imageSizes[index]?.height || ''"
               loading="lazy"
               decoding="async"
-              @load="updateImageSize(index, $event)"
+              @load="handleImageLoadCombined(index, $event)"
             />
           </picture>
           <article
@@ -101,6 +119,15 @@ const updateImageSize = (index: number, event: Event) => {
             >
               {{ line }}
             </p>
+            <NuxtLink
+              v-if="item.link"
+              class="mt-12 inline-block text-sm font-normal text-blue-400 underline underline-offset-2 transition-all hover:font-bold hover:text-blue-600 hover:underline-offset-4"
+              :to="item.link"
+              target="_blank"
+              :title="item.title"
+            >
+              &lt;Demo&gt;
+            </NuxtLink>
           </article>
         </main>
       </div>
