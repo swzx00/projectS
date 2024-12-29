@@ -143,7 +143,7 @@ const numbersY = computed(() => generateNumbers(maxY, step))
               <div
                 class="mx-auto flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-5 gap-y-12 *:max-w-full *:sm:max-w-full *:md:max-w-[calc((100%-(1*1.25rem))/2)] *:lg:max-w-[calc((100%-(2*1.25rem))/3)] *:xl:max-w-[calc((100%-(3*1.25rem))/4)]"
               >
-                <PortfolioCardDesign
+                <CardDesign
                   v-for="card in data?.dataCard"
                   :key="card.id"
                   :card-id="card.id"
@@ -153,7 +153,7 @@ const numbersY = computed(() => generateNumbers(maxY, step))
                   :image="card.image"
                   :date="card.date"
                   :link="card.link || ''"
-                ></PortfolioCardDesign>
+                ></CardDesign>
               </div>
               <PaginationDesign
                 v-if="data && data?.perPage && data?.totalCount > data?.perPage"

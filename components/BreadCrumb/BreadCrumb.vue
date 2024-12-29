@@ -39,7 +39,7 @@ const showTestLink = computed(() => {
       <li v-if="showTestLink" class="w-fit max-w-fit">
         <NuxtLink
           class="hover:text-blue-600 hover:underline"
-          :to="showTestLink === 'frontend' ? '/portfolio/frontend?tag=frontend' : '/portfolio/design?tag=design'"
+          :to="showTestLink === 'frontend' ? '/portfolio/frontend' : '/portfolio/design'"
           target="_self"
           :title="showTestLink === 'frontend' ? 'Frontend' : 'Design'"
           :alt="showTestLink === 'frontend' ? 'Frontend' : 'Design'"

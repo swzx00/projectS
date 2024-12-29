@@ -83,7 +83,7 @@ definePageMeta({
       v-else-if="data?.dataCard && data?.dataCard.length"
       class="mx-auto flex w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-4 gap-y-8 px-4 *:sm:max-w-[calc((100%-(1*1rem))/2)] *:md:max-w-[calc((100%-(2*1rem))/3)] lg:max-w-[960px] *:lg:max-w-[calc((100%-(3*1rem))/4)]"
     >
-      <PortfolioCardItem
+      <CardDefault
         v-for="card in data?.dataCard"
         :key="card.id"
         :card-id="card.id"
@@ -91,7 +91,7 @@ definePageMeta({
         :tags="card.tag"
         :content="card.content"
         :image="card.image"
-      ></PortfolioCardItem>
+      ></CardDefault>
     </div>
     <PaginationDefault
       v-if="data?.perPage && data?.totalCount > data?.perPage"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getIconTitle } from '~/composables/useTag'
+import { useImageLoading } from '~/composables/useImageLoading'
 
 // 使用 defineModel 定義傳遞資料
 const cardId = defineModel('cardId', {
@@ -33,6 +34,8 @@ defineModel('link', {
   required: false,
 })
 
+const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
+
 // 在 setup 函數內部，使用 `props` 存取 `tags`, `image` 變數
 const { tags, image } = defineProps<{
   tags: string[]
@@ -50,7 +53,16 @@ const { tags, image } = defineProps<{
       target="_blank"
     >
       <div class="flex size-full items-center justify-center overflow-hidden rounded">
+        <Icon
+          v-if="!isImageLoaded"
+          class="absolute z-0 text-lg text-black/50"
+          name="line-md:loading-twotone-loop"
+          size="20"
+          title="Loading"
+          alt="Loading"
+        />
         <img
+          ref="imageRef"
           class="relative z-10 aspect-[4/3] size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
           :src="image[0]"
           :title="title"
@@ -59,13 +71,7 @@ const { tags, image } = defineProps<{
           height="300"
           loading="lazy"
           decoding="async"
-        />
-        <Icon
-          class="absolute z-0 text-lg text-black/50"
-          name="line-md:loading-twotone-loop"
-          size="20"
-          title="Loading"
-          alt="Loading"
+          @load="handleImageLoad"
         />
       </div>
     </NuxtLink>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
 import { useDataFetch } from '~/composables/useDataFetch'
 
 // 使用整合後的 useDataFetch
@@ -127,7 +126,7 @@ watch(
           <div
             class="mx-auto flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-3 gap-y-6 *:max-w-full *:sm:max-w-full *:md:max-w-[calc((100%-(1*.75rem))/2)] *:lg:max-w-[calc((100%-(2*.75rem))/3)] *:xl:max-w-[calc((100%-(3*.75rem))/4)]"
           >
-            <PortfolioCardFrontend
+            <CardFrontend
               v-for="card in data?.dataCard"
               :key="card.id"
               :card-id="card.id"
@@ -137,7 +136,7 @@ watch(
               :image="card.image"
               :date="card.date"
               :link="card.link || ''"
-            ></PortfolioCardFrontend>
+            ></CardFrontend>
           </div>
           <PaginationFrontend
             v-if="data && data?.perPage && data?.totalCount > data?.perPage"

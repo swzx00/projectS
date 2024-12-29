@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useHoverStore } from '~/stores/hoverStore'
 import { getIconTitle } from '~/composables/useTag'
+import { useImageLoading } from '~/composables/useImageLoading'
 
 const hoverStore = useHoverStore()
 
@@ -39,6 +40,8 @@ defineModel('link', {
   default: '', // 設定預設值
   required: false,
 })
+
+const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
 
 // 在 setup 函數內部，使用 `props` 存取 `tags` 變數
 const { tags, image } = defineProps<{
@@ -91,7 +94,16 @@ const onLeave = () => {
       <div
         class="flex aspect-square size-full max-h-fit min-h-full min-w-full max-w-full items-center justify-center overflow-hidden rounded-sm bg-white/80 p-0 group-hover:bg-white/100"
       >
+        <Icon
+          v-if="!isImageLoaded"
+          class="absolute z-0 text-lg text-white"
+          name="line-md:loading-twotone-loop"
+          size="20"
+          title="Loading"
+          alt="Loading"
+        />
         <img
+          ref="imageRef"
           class="z-10 h-fit max-h-fit w-fit max-w-full object-contain transition-all duration-300 ease-linear group-hover:scale-105"
           :src="image[0]"
           :title="title"
@@ -100,13 +112,7 @@ const onLeave = () => {
           height="400"
           loading="lazy"
           decoding="async"
-        />
-        <Icon
-          class="absolute z-0 text-lg text-white"
-          name="line-md:loading-twotone-loop"
-          size="20"
-          title="Loading"
-          alt="Loading"
+          @load="handleImageLoad"
         />
       </div>
     </NuxtLink>
