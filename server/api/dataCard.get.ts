@@ -24,8 +24,10 @@ export default defineEventHandler(async (event) => {
   // 解析 JSON 資料
   const dataCard = JSON.parse(rawData)
 
-  // 根據 id 排序資料
-  const sortedData = dataCard.sort((a: any, b: any) => a.id - b.id)
+  // 根據 id 反向排序，再根據日期反向排序 資料
+  const sortedData = dataCard
+    .sort((a: any, b: any) => b.id - a.id) // 反向排序 id
+    .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()) // 反向排序 date
 
   // 如果有 tag 參數，過濾資料並將 tag 陣列中的值統一轉為小寫
   const filteredData = processedTags

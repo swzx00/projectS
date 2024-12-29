@@ -81,12 +81,12 @@ function handleImageLoadCombined(index: number, event: Event) {
           >
         </div>
         <main
-          class="mb-0 mt-8 w-full max-w-full border-x-0 border-y border-solid border-white bg-white shadow-lg lg:mb-12 lg:border"
+          class="mb-0 mt-8 w-full max-w-full border-x-0 border-y-2 border-solid border-white bg-white shadow-lg lg:mb-12 lg:border-4"
         >
           <picture
             v-for="(image, index) in item.image"
             :key="index"
-            class="block w-full max-w-full border-x-0 border-y border-solid border-white lg:border-x lg:border-y-2"
+            class="block w-full max-w-full border-x-0 border-y-4 border-solid border-white first:border-t-2 last:border-b-2 lg:border-x lg:border-y-2 first:lg:border-t-0 last:lg:border-b-0"
           >
             <Icon
               v-if="!isImageLoaded"
@@ -98,7 +98,7 @@ function handleImageLoadCombined(index: number, event: Event) {
             />
             <img
               ref="imageRef"
-              class="object-contain"
+              class="border-x-0 border-y border-solid border-gray-300 object-contain lg:border-2"
               :src="image"
               :title="`${item.title}-${index + 1}`"
               :alt="`${item.title}-${index + 1}`"

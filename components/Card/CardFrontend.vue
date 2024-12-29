@@ -137,7 +137,10 @@ const uniqueTags = computed(() => {
         {{ content }}
       </p>
       <div class="mb-0 mt-auto flex w-full items-center justify-end gap-2">
-        <time class="ml-0 mr-auto text-start font-Fira text-xs font-light text-white/80" :datetime="date">
+        <time
+          class="ml-0 mr-auto text-start font-Fira text-xs font-light text-white/80 group-hover:text-gray-800"
+          :datetime="date"
+        >
           {{ date }}</time
         >
         <NuxtLink
