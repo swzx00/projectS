@@ -39,7 +39,7 @@ definePageMeta({
             />
           </div>
           <figcaption
-            class="mg:text-xl relative text-base font-bold leading-none tracking-normal text-gray-600 group-hover:text-blue-400 sm:text-lg lg:text-2xl"
+            class="relative text-base font-bold leading-none tracking-normal text-gray-600 group-hover:text-blue-400 sm:text-lg md:text-xl"
           >
             Frontend
           </figcaption>
@@ -67,7 +67,7 @@ definePageMeta({
             />
           </div>
           <figcaption
-            class="mg:text-xl relative text-base font-bold leading-none tracking-normal text-gray-600 group-hover:text-blue-400 sm:text-lg"
+            class="relative text-base font-bold leading-none tracking-normal text-gray-600 group-hover:text-blue-400 sm:text-lg md:text-xl"
           >
             Design
           </figcaption>

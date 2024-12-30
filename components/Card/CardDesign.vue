@@ -35,7 +35,7 @@ defineModel('date', {
   required: true,
 })
 
-defineModel('link', {
+defineModel('demo', {
   type: String,
   default: '', // 設定預設值
   required: false,

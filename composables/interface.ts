@@ -5,7 +5,7 @@ export interface DataCard {
   content: string
   image: string[]
   date: string
-  link?: string // 可選屬性
+  demo?: string // 可選屬性
 }
 
 export interface ResponseData {

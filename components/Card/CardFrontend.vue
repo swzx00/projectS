@@ -32,7 +32,7 @@ defineModel('date', {
   required: true,
 })
 
-defineModel('link', {
+defineModel('demo', {
   type: String,
   default: '', // 設定預設值
   required: false,
@@ -95,7 +95,7 @@ const uniqueTags = computed(() => {
       />
       <img
         ref="imageRef"
-        class="z-10 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
+        class="z-10 size-full max-h-full max-w-full object-cover object-top transition-all duration-300 ease-linear group-hover:scale-105"
         :src="image[0]"
         :title="title"
         :alt="title"
@@ -144,11 +144,11 @@ const uniqueTags = computed(() => {
           {{ date }}</time
         >
         <NuxtLink
-          v-if="link"
-          :to="link"
+          v-if="demo"
+          :to="demo"
           class="text-end font-Fira text-sm font-light text-slate-200 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
         >
-          &lt;Link&gt;
+          &lt;Demo&gt;
         </NuxtLink>
         <NuxtLink
           :to="`/portfolio/${cardId}?from=frontend`"

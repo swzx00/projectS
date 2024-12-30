@@ -28,7 +28,7 @@ defineModel('image', {
   required: true,
 })
 
-defineModel('link', {
+defineModel('demo', {
   type: String,
   default: '', // 設定預設值
   required: false,
@@ -110,11 +110,11 @@ const { tags, image } = defineProps<{
           &lt;More&gt;
         </NuxtLink>
         <NuxtLink
-          v-if="link"
-          to="/"
+          v-if="demo"
+          :to="demo"
           class="text-end font-Fira text-sm font-light text-slate-200 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
         >
-          &lt;Link&gt;
+          &lt;Demo&gt;
         </NuxtLink>
       </div>
     </div>

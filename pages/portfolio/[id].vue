@@ -120,9 +120,9 @@ function handleImageLoadCombined(index: number, event: Event) {
               {{ line }}
             </p>
             <NuxtLink
-              v-if="item.link"
+              v-if="item.demo"
               class="mt-12 inline-block text-sm font-normal text-blue-400 underline underline-offset-2 transition-all hover:font-bold hover:text-blue-600 hover:underline-offset-4"
-              :to="item.link"
+              :to="item.demo"
               target="_blank"
               :title="item.title"
             >

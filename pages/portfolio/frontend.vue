@@ -135,7 +135,7 @@ watch(
               :content="card.content"
               :image="card.image"
               :date="card.date"
-              :link="card.link || ''"
+              :demo="card.demo || ''"
             ></CardFrontend>
           </div>
           <PaginationFrontend
