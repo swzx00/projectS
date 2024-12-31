@@ -1,0 +1,149 @@
+[
+  {
+    "id": "a000000000",
+    "name": "林家丞",
+    "nameEng": "Chia-Cheng, Lin",
+    "introduction": "我是林家丞，是個前端，同時也是個設計。目前任職於1111人力銀行的前端設計，主要負責網站前端的開發與維護。在我成為前端前，我是個設計師，所以對於UI/UX相關領域也是相當瞭解。熟悉Html、Css、Javascript等網頁相關技術，同時也有在接觸Vue、Nuxt等框架。能結合前端技術與設計經驗，打造高效且美觀的網站，為使用者提供最佳體驗。",
+    "picture": "https://drive.google.com/thumbnail?id=1kMVUG36YVx_KLeHIAmsi5k3UEkQPVZys",
+    "birthday": "1991/05/23",
+    "residence": "新北市新莊區",
+    "marital": "未婚",
+    "military": {
+      "military-type": "役畢",
+      "military-discharge": "2014/11"
+    },
+    "email": "swzx00@gmail.com",
+    "phone": "0921-702-528",
+    "contact-time": "10:00~22:00",
+    "experience": [
+      {
+        "company": "全球華人股份有限公司 / 1111人力銀行",
+        "title": "前端設計",
+        "start": "2023/02",
+        "end": "now",
+        "description": "負責公司網站的前端開發、切版以及維護，以及支援活動專區的網站相關開發。"
+      },
+      {
+        "company": "全球華人股份有限公司 / 1111人力銀行",
+        "title": "設計師",
+        "start": "2020/01",
+        "end": "2023/02",
+        "description": "負責公司的網頁設計、EDM設計、DM設計 等相關設計。以及各類活動相關輸出物設計。"
+      },
+      {
+        "company": "晏晟科技股份有限公司",
+        "title": "網頁設計師",
+        "start": "2019/04",
+        "end": "2019/11",
+        "description": "負責公司的網頁設計、UI/UX設計、廣告DM設計、海報設計及展場規劃設計。"
+      },
+      {
+        "company": "美國福祿克公司",
+        "title": "市場行銷",
+        "start": "2015/05",
+        "end": "2018/6",
+        "description": "型錄設計、廣告DM設計、E-DM製作及發送、網站修改以及新產品上市後的相關行銷活動企劃。另外也負責開設及管理臉書粉絲專頁。"
+      }
+    ],
+    "education": [
+      {
+        "school": "淡江大學",
+        "department": "資訊傳播學系",
+        "degree": "學士",
+        "graduation": "畢業",
+        "start": "2009-09",
+        "end": "2013-06"
+      }
+    ],
+    "skills": [
+      {
+        "skills-type": "前端技術",
+        "skills-content": [
+          {
+            "skills-content-title": "Html",
+            "skills-content-proficiency": "90"
+          },
+          {
+            "skills-content-title": "Css",
+            "skills-content-proficiency": "90"
+          },
+          {
+            "skills-content-title": "Javascript",
+            "skills-content-proficiency": "85"
+          },
+          {
+            "skills-content-title": "Sass",
+            "skills-content-proficiency": "80"
+          },
+          {
+            "skills-content-title": "Scss",
+            "skills-content-proficiency": "90"
+          },
+          {
+            "skills-content-title": "Bootstrap",
+            "skills-content-proficiency": "90"
+          },
+          {
+            "skills-content-title": "Tailwind",
+            "skills-content-proficiency": "80"
+          },
+          {
+            "skills-content-title": "Vue",
+            "skills-content-proficiency": "70"
+          },
+          {
+            "skills-content-title": "Nuxt",
+            "skills-content-proficiency": "65"
+          },
+          {
+            "skills-content-title": "Git",
+            "skills-content-proficiency": "70"
+          }
+        ]
+      },
+      {
+        "skills-type": "設計技術",
+        "skills-content": [
+          "Figma",
+          "Photoshop",
+          "Illustrator",
+          "InDesign",
+          "Premiere Pro",
+          "After Effects"
+        ]
+      },
+      {
+        "skills-type": "辦公室技能",
+        "skills-content": [
+          "Word",
+          "Excel",
+          "PowerPoint"
+        ]
+      }
+    ],
+    "languages": [
+      {
+        "languages-type": "中文",
+        "languages-level": "母語"
+      },
+      {
+        "languages-type": "英文",
+        "languages-level": "中等"
+      },
+      {
+        "languages-type": "台語",
+        "languages-level": "精通"
+      },
+      {
+        "languages-type": "客語",
+        "languages-level": "略懂"
+      }
+    ],
+    "autobiography": "您好，我是林家丞，出生於1991年，臺北人。家中排行老大，現與父母及一名妹妹同住。個性沉穩內斂、幽默大方。平時喜愛看電影、聽音樂。熱於探索新的事物、瞭解現今流行什麼。\n我於2013年畢業於 淡江大學 資訊傳播學系。在學期間，學習到了電腦繪圖、影像編輯、網頁設計、影片剪輯及電腦動畫等多媒體製作的能力。另外還有關於行銷學、電子商務及資訊傳播實務的相關課程。\n退伍之後，曾於一間外商公司擔任市場行銷的職務，之後進入一間電腦軟體公司擔任網頁設計師。\n擔任市場行銷的期間，我需要負責公司的網頁修正、E-DM、線上邀請函和電子報的製作與發送(網頁設計)，以及產品型錄、DM和活動海報設計(平面設計)。此外，也要參與公司新產品上市後的相關行銷活動企劃。\n在工作一段時間後，我認為自己比較想要朝著設計這方面前進，於是乎我選擇進入一間電腦軟體公司擔任網頁設計師。在這段期間，我需要負責網頁UI的規劃、網頁前端語法建置和作業系統UI規劃。以及海報和DM設計。此外，也負責過展場的相關規劃。\n在設計這條路上，細膩的觀察力以及與時俱進的能力，都是必備條件。我希望能在這份工作中，吸收到更多關於設計這方面的知識，也期許未來的自己能在設計這方面更加的精進。希望自己能為 貴公司付出一份心力，並且為公司做出更多的貢獻。",
+    "portfolios": [
+      {
+        "url": "/"
+      }
+    ]
+  }
+]

@@ -37,6 +37,9 @@ module.exports = {
         'black-100': ['1px 1px 2px rgba(0, 0, 0, .1)', '-1px -1px 2px rgba(0, 0, 0, .1)'],
         'black-200': ['1px 1px 2px rgba(0, 0, 0, .4)', '-1px -1px 2px rgba(0, 0, 0, .4)'],
       },
+      // maxWidth: {
+      //   A4: '210mm',
+      // },
     },
   },
   plugins: [],

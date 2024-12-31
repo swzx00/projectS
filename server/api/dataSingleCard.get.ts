@@ -1,12 +1,10 @@
-// server/api/dataCard.get.ts
-
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
 import { defineEventHandler, getQuery } from 'h3'
 
 export default defineEventHandler(async (event) => {
-  // 模擬延遲 (例如延遲 0.3 秒)
-  await new Promise((resolve) => setTimeout(resolve, 300))
+  // 模擬延遲 (例如延遲 0 秒)
+  await new Promise((resolve) => setTimeout(resolve, 0))
 
   // 取得查詢參數
   const { id }: { id?: string } = getQuery(event)

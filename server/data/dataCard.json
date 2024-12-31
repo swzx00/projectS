@@ -101,6 +101,25 @@
     "demo": "https://www.1111.com.tw/"
   },
   {
+    "id": "202404290931",
+    "title": "會員中心 履歷編輯頁面",
+    "tag": [
+      "vue",
+      "bootstrap",
+      "html",
+      "css",
+      "javascript"
+    ],
+    "content": "(2024) 履歷編輯頁面改版，於.Net環境內，採用CDN引入方式製作。",
+    "date": "2024-04-29",
+    "image": [
+      "https://drive.google.com/thumbnail?id=dataResume1Pz8yOMDRLJBv24dufPEhYpQ3XIhCNkX8dataResume&sz=w1920",
+      "https://drive.google.com/thumbnail?id=dataResume13WxlHjZrgCkXtLwPzrhgQN1UPhoJ_2SMdataResume&sz=w1920",
+      "https://drive.google.com/thumbnail?id=dataResume13RLsXn4PqYeJ9u2Nd-LMtA9GwLMeRcnDdataResume&sz=w1920"
+    ],
+    "demo": "https://www.1111.com.tw/Resume/ResumeEditNew"
+  },
+  {
     "id": "202402061538",
     "title": "2024第五屆 T大使計畫",
     "tag": [
