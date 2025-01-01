@@ -77,10 +77,10 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
             ref="imageRef"
             class="h-fit max-h-max w-full max-w-full"
             :src="data.picture"
-            title="Logo"
-            alt="logo"
-            width="48"
-            height="48"
+            :title="data.name"
+            :alt="data.name"
+            width="960"
+            height="1280"
             loading="lazy"
             decoding="async"
             @load="handleImageLoad"
@@ -157,7 +157,7 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
           工作技能
           <span class="ml-2 inline-block text-lg font-extrabold text-gray-800">Skills</span>
         </h2>
-        <ul class="flex w-full max-w-full flex-col gap-2 px-2 text-base text-gray-900" style="border: 1px solid red">
+        <ul class="flex w-full max-w-full flex-col gap-2 px-2 text-base text-gray-900">
           <li
             v-for="(skill, index) in data.skills"
             :key="index"
@@ -170,13 +170,36 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
               <li
                 v-for="(content, indexContent) in skill['skills-content']"
                 :key="indexContent"
-                class="text-sm font-normal text-gray-950"
+                class="relative flex flex-col items-center justify-center text-sm font-normal text-gray-950"
+                :class="typeof content !== 'string' ? 'my-1 px-1' : ''"
               >
                 <template v-if="typeof content === 'string'">{{ content }}</template>
-                <template v-else>
+                <!-- <template v-else>
                   {{ content['skills-content-title'] }} - {{ content['skills-content-proficiency'] }}%
+                </template> -->
+                <template v-else>
+                  <div
+                    class="relative aspect-square size-[6.5rem] rounded-full bg-blue-600 before:z-0 before:ml-[50%] before:block before:h-full before:origin-left before:rotate-[--rotate-turn] before:rounded-[0_100%_100%_0/50%] before:bg-blue-600 before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:z-10 after:block after:size-[5.5rem] after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-white after:content-['']"
+                    :style="{
+                      '--rotate-turn': `${Number(content['skills-content-proficiency']) / 100}turn`,
+                      'background-image': 'linear-gradient(to right, transparent 50%, rgba(229, 231,235, 1) 0%)',
+                    }"
+                  >
+                    <p
+                      class="tracking-none absolute left-1/2 top-[30%] z-20 mt-2 flex w-fit -translate-x-1/2 items-center justify-center bg-white text-center text-lg font-normal leading-none tracking-tighter"
+                    >
+                      {{ content['skills-content-title'] }}
+                    </p>
+                    <p
+                      class="absolute left-1/2 top-[57.5%] z-20 -translate-x-1/2 text-center text-base font-semibold after:text-xs after:font-light after:content-['%']"
+                    >
+                      {{ content['skills-content-proficiency'] }}
+                    </p>
+                  </div>
                 </template>
-                <template v-if="indexContent < skill['skills-content'].length - 1">、</template>
+                <template v-if="indexContent < skill['skills-content'].length - 1 && typeof content === 'string'"
+                  >、</template
+                >
               </li>
             </ul>
           </li>
