@@ -31,8 +31,8 @@ export interface Pagination {
 }
 
 export interface Military {
-  'military-type': string
-  'military-discharge': string
+  militaryType: string
+  militaryDischarge: string
 }
 
 export interface Experience {
@@ -53,17 +53,17 @@ export interface Education {
 }
 
 export interface skillsContent {
-  'skills-content-title': string
-  'skills-content-proficiency': string
+  skillsContentTitle: string
+  skillsContentProficiency: string
 }
 export interface Skills {
-  'skills-type': string
-  'skills-content': (string | skillsContent)[]
+  skillsType: string
+  skillsContent: (string | skillsContent)[]
 }
 
 export interface Languages {
-  'languages-type': string
-  'languages-level': string
+  languagesType: string
+  languagesLevel: string
 }
 
 export interface Portfolios {
@@ -82,7 +82,7 @@ export interface DataResume {
   military: Military
   email: string
   phone: string
-  'contact-time': string
+  contactTime: string
   experience: Experience[]
   education: Education[]
   skills: Skills[]

@@ -64,7 +64,7 @@ const { tags, image } = defineProps<{
         />
         <img
           ref="imageRef"
-          class="relative z-10 aspect-[4/3] size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
+          class="aspect-4/3 relative z-10 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
           :src="image[0]"
           :title="title"
           :alt="title"

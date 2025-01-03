@@ -64,10 +64,12 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
       <section
         class="flex w-full max-w-full flex-row flex-nowrap items-start justify-between gap-4 border-b border-solid border-gray-100 pb-6"
       >
-        <picture class="order-2 w-full max-w-[150px] border-2 border-solid border-slate-100">
+        <picture
+          class="aspect-3/4 order-2 flex h-auto max-h-max w-full max-w-[150px] items-center justify-center border-2 border-solid border-slate-100"
+        >
           <Icon
             v-if="!isImageLoaded"
-            class="absolute z-0 text-lg text-gray-200"
+            class="absolute z-0 text-lg text-gray-400"
             name="line-md:loading-twotone-loop"
             size="20"
             title="Loading"
@@ -164,11 +166,11 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
             class="relative flex flex-row flex-wrap items-start justify-start gap-0 text-lg font-bold leading-relaxed text-blue-950"
           >
             <p class="inline-block w-full text-lg font-bold leading-relaxed text-blue-950">
-              {{ skill['skills-type'] }}
+              {{ skill.skillsType }}
             </p>
             <ul class="flex flex-row flex-wrap items-start justify-start gap-0">
               <li
-                v-for="(content, idx) in skill['skills-content']"
+                v-for="(content, idx) in skill.skillsContent"
                 :key="idx"
                 class="relative flex flex-col items-center justify-center text-sm font-normal text-gray-950"
                 :class="typeof content !== 'string' ? 'my-1 px-1' : ''"
@@ -181,7 +183,7 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
                     data-aos-delay="500"
                     :style="{
                       '--size': '6.5rem',
-                      '--rotate-deg': `${(Number(content['skills-content-proficiency']) / 100) * 360}deg`,
+                      '--rotate-deg': `${(Number(content.skillsContentProficiency) / 100) * 360}deg`,
                     }"
                   ></div>
                   <div
@@ -192,18 +194,38 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
                     <p
                       class="absolute left-1/2 top-[22.5%] z-20 mt-2 flex w-fit -translate-x-1/2 items-center justify-center text-center text-lg font-normal leading-none tracking-tighter"
                     >
-                      {{ content['skills-content-title'] }}
+                      {{ content.skillsContentTitle }}
                     </p>
                     <p
                       class="absolute left-1/2 top-[50%] z-20 -translate-x-1/2 text-center text-base font-semibold after:text-xs after:font-light after:content-['%']"
                     >
-                      {{ content['skills-content-proficiency'] }}
+                      {{ content.skillsContentProficiency }}
                     </p>
                   </div>
                 </template>
-                <template v-if="idx < skill['skills-content'].length - 1 && typeof content === 'string'">、</template>
+                <template v-if="idx < skill.skillsContent.length - 1 && typeof content === 'string'">、</template>
               </li>
             </ul>
+          </li>
+        </ul>
+      </section>
+      <section
+        class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6"
+      >
+        <h2 class="inline-block w-full max-w-full text-xl font-black leading-relaxed text-gray-900">
+          語言能力
+          <span class="ml-2 inline-block text-lg font-extrabold text-gray-800">Language</span>
+        </h2>
+        <ul class="flex w-full max-w-full flex-row flex-wrap gap-2 px-2 text-base text-gray-900">
+          <li
+            v-for="(language, index) in data.languages"
+            :key="index"
+            class="relative flex w-[calc((100%-1.5rem)/2)] flex-row flex-wrap items-start justify-start gap-0 sm:w-[calc((100%-2.5rem)/4)]"
+          >
+            <p class="inline-block w-full text-base font-normal text-gray-800">
+              <span class="text-base font-bold text-blue-950">{{ language.languagesType }}</span> -
+              <span class="text-sm font-normal">{{ language.languagesLevel }}</span>
+            </p>
           </li>
         </ul>
       </section>
@@ -259,7 +281,7 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
               class="mr-2 inline-flex w-20 justify-between gap-0 text-justify font-medium after:inline after:content-['：'] xl:mr-0 xl:w-fit"
               >聯繫時間</span
             >
-            <span class="text-gray-800 no-underline hover:text-gray-800">{{ data['contact-time'] }}</span>
+            <span class="text-gray-800 no-underline hover:text-gray-800">{{ data.contactTime }}</span>
           </p>
           <p
             class="mb-0 inline-flex w-full flex-nowrap text-start text-base font-normal leading-normal text-gray-800 sm:w-1/2 xl:w-1/4"

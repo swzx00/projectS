@@ -40,7 +40,7 @@ const hoveredData = computed(() => {
     <div class="hidden h-fit max-h-fit w-full max-w-full items-center justify-center p-4 sm:flex">
       <div
         :class="[
-          'relative flex aspect-[4/3] h-fit max-h-fit w-full max-w-full items-center justify-center overflow-hidden border-4 border-solid bg-[length:12px_12px] bg-center bg-repeat',
+          'aspect-4/3 relative flex h-fit max-h-fit w-full max-w-full items-center justify-center overflow-hidden border-4 border-solid bg-[length:12px_12px] bg-center bg-repeat',
           hoveredId
             ? 'border-red-600 bg-gray-100 bg-none'
             : 'border-white bg-gray-400 bg-[url(/images/bg-transparent.svg)]',
@@ -58,7 +58,7 @@ const hoveredData = computed(() => {
         >
           <img
             v-if="hoveredData?.image"
-            class="absolute z-10 aspect-[4/3] size-full max-h-full max-w-full object-cover"
+            class="aspect-4/3 absolute z-10 size-full max-h-full max-w-full object-cover"
             :src="hoveredData.image[0]"
             :title="hoveredData.title"
             :alt="hoveredData.title"
