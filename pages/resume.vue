@@ -40,6 +40,11 @@ onMounted(async () => {
 
 // 圖片Loading
 const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
+
+// 列印功能
+const handlePrint = () => {
+  window.print()
+}
 </script>
 <template>
   <div
@@ -61,13 +66,54 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
     </p>
     <div
       v-if="data"
-      class="print:p-10pt mx-auto my-10 w-full max-w-full bg-white px-12 py-24 shadow-lg md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl print:my-0 print:shadow-none"
+      class="mx-auto my-5 flex w-full max-w-full flex-wrap items-center justify-start gap-x-4 gap-y-0 px-4 py-0 after:order-2 after:my-2 after:block after:h-0 after:w-full after:content-[''] xs:justify-end xs:gap-4 after:xs:hidden md:max-w-screen-sm md:px-0 lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl print:hidden"
+    >
+      <NuxtLink
+        to="/about"
+        target="_self"
+        class="order-1 ml-0 mr-0 flex w-fit max-w-full items-center justify-start gap-1 p-0 text-base font-normal text-blue-500 transition-all hover:text-blue-700 xs:mr-auto xs:w-fit xs:max-w-fit xs:justify-center"
+        download
+      >
+        <Icon class="text-base" name="uil:angle-left" size="18" title="返回" alt="返回" />
+        返回 About
+      </NuxtLink>
+      <a
+        href="/resume-林家丞_0921702528.pdf"
+        target="_blank"
+        class="order-3 flex w-fit max-w-fit items-center justify-center gap-1 rounded-md bg-blue-500 px-4 py-2 text-base font-normal text-slate-200 shadow transition-all hover:bg-blue-700 hover:text-white hover:shadow-md"
+        download
+      >
+        <Icon class="text-base" name="uil:file-download" size="18" title="下載" alt="下載" />
+        下載
+      </a>
+      <button
+        class="order-4 flex w-fit max-w-fit items-center justify-center gap-1 rounded-md bg-blue-500 px-4 py-2 text-base font-normal text-slate-200 shadow transition-all hover:bg-blue-700 hover:text-white hover:shadow-md"
+        @click="handlePrint"
+      >
+        <Icon class="text-base" name="uil:print" size="18" title="列印" alt="列印" />
+        列印
+      </button>
+    </div>
+    <article
+      v-if="data"
+      class="print:p-10pt mx-auto mb-10 mt-0 w-full max-w-full bg-white px-4 py-8 shadow-lg sm:px-8 sm:py-16 md:max-w-screen-sm md:px-12 md:py-24 lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl print:my-0 print:shadow-none"
     >
       <section
-        class="print:pb-10pt flex w-full max-w-full flex-row flex-nowrap items-start justify-between gap-4 border-b border-solid border-gray-100 pb-6"
+        class="print:pb-10pt grid w-full max-w-full grid-flow-row-dense grid-cols-[1fr] grid-rows-[auto_200px_1fr] gap-4 border-b border-solid border-gray-100 pb-6 sm:grid-cols-[1fr_150px] sm:grid-rows-[2rem_1fr]"
       >
+        <h1
+          class="print:text-14pt print:mb-4pt col-span-2 col-start-1 col-end-2 row-span-1 row-start-1 row-end-2 mb-0 inline-flex flex-col text-2xl font-black text-black xs:inline sm:col-span-1 sm:col-start-1 sm:col-end-2 sm:row-span-1 sm:row-start-1 sm:row-end-1"
+        >
+          {{ data.name }}
+          <span
+            v-if="data.nameEng"
+            class="print:text-12pt ml-0 inline-block font-Fira text-xl font-semibold text-gray-800 opacity-70 xs:ml-2"
+          >
+            {{ data.nameEng }}
+          </span>
+        </h1>
         <picture
-          class="aspect-3/4 order-2 flex h-auto max-h-max w-full max-w-[150px] items-center justify-center border-2 border-solid border-slate-100 print:max-w-[80pt]"
+          class="aspect-3/4 col-span-2 col-start-1 col-end-2 row-span-1 row-start-2 row-end-3 mx-auto flex h-auto max-h-max w-full max-w-[150px] items-center justify-center border-2 border-solid border-slate-100 sm:col-span-1 sm:col-start-2 sm:col-end-3 sm:row-span-2 sm:row-start-1 sm:row-end-3 sm:mx-0 print:max-w-[80pt]"
         >
           <Icon
             v-if="!isImageLoaded"
@@ -90,30 +136,76 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
             @load="handleImageLoad"
           />
         </picture>
-        <div class="order-1 w-full max-w-[calc(100%-(150px+1rem))] print:max-w-[calc(100%-100pt)]">
-          <h1 class="print:text-14pt print:mb-4pt mb-3 text-2xl font-black text-black">
-            {{ data.name }}
+
+        <p
+          class="print:text-10pt col-span-2 col-start-1 col-end-2 row-span-1 row-start-3 row-end-4 text-justify text-base font-normal leading-none text-gray-800 xs:leading-relaxed sm:col-span-1 sm:col-start-1 sm:col-end-2 sm:row-span-1 sm:row-start-2 sm:row-end-3"
+        >
+          <template v-for="(line, index) in introductionLines" :key="index">
+            {{ line }}
+            <br v-if="index < introductionLines.length - 1" />
+          </template>
+        </p>
+      </section>
+      <section
+        class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6"
+      >
+        <h2
+          class="inline-block inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline xs:leading-relaxed"
+        >
+          基本資料
+          <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Information</span>
+        </h2>
+        <div class="flex w-full max-w-full flex-col flex-wrap items-start justify-start gap-2 sm:flex-row sm:gap-0">
+          <p
+            class="mb-0 inline-flex w-full flex-nowrap text-start text-base font-normal leading-normal text-gray-800 sm:w-1/2 xl:w-1/4"
+          >
             <span
-              v-if="data.nameEng"
-              class="print:text-12pt ml-2 inline-block font-Fira text-xl font-semibold text-gray-800 opacity-70"
+              class="mr-2 inline-flex w-20 justify-between gap-0 text-justify font-medium after:inline after:content-['：'] xl:mr-0 xl:w-fit"
+              >出生日期</span
             >
-              {{ data.nameEng }}
-            </span>
-          </h1>
-          <p class="print:text-10pt text-justify text-base font-normal leading-relaxed text-gray-800">
-            <template v-for="(line, index) in introductionLines" :key="index">
-              {{ line }}
-              <br v-if="index < introductionLines.length - 1" />
-            </template>
+            <span class="text-gray-800 no-underline hover:text-gray-800">{{ data.birthday }}</span>
+          </p>
+          <p
+            class="mb-0 inline-flex w-full flex-nowrap text-start text-base font-normal leading-normal text-gray-800 sm:w-1/2 xl:w-1/4"
+          >
+            <span
+              class="mr-2 inline-flex w-20 justify-between gap-0 text-justify font-medium after:inline after:content-['：'] xl:mr-0 xl:w-fit"
+              >居住地</span
+            >
+            <span class="text-gray-800 hover:text-gray-800">{{ data.residence }}</span>
+          </p>
+          <p
+            class="mb-0 inline-flex w-full flex-nowrap text-start text-base font-normal leading-normal text-gray-800 sm:w-1/2 xl:w-1/4"
+          >
+            <span
+              class="mr-2 inline-flex w-20 justify-between gap-0 text-justify font-medium after:inline after:content-['：'] xl:mr-0 xl:w-fit"
+              >婚姻狀況</span
+            >
+            <span class="text-gray-800 no-underline hover:text-gray-800">{{ data.marital }}</span>
+          </p>
+          <p
+            class="mb-0 inline-flex w-full flex-nowrap text-start text-base font-normal leading-normal text-gray-800 sm:w-1/2 xl:w-1/4"
+          >
+            <span
+              class="mr-2 inline-flex w-20 justify-between gap-0 text-justify font-medium after:inline after:content-['：'] xl:mr-0 xl:w-fit"
+              >兵役狀況</span
+            >
+            <span class="text-gray-800 no-underline hover:text-gray-800"
+              >{{ data.military.militaryType }}({{ data.military.militaryDischarge }})</span
+            >
           </p>
         </div>
       </section>
       <section
         class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
       >
-        <h2 class="print:text-14pt inline-block w-full max-w-full text-xl font-black leading-relaxed text-gray-900">
+        <h2
+          class="print:text-14pt inline-block inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline xs:leading-relaxed"
+        >
           工作經歷
-          <span class="print:text-12pt ml-2 inline-block text-lg font-extrabold text-gray-800">Work Experience</span>
+          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2"
+            >Work Experience</span
+          >
         </h2>
         <ul class="ml-4 flex w-full max-w-[calc(100%-1rem)] flex-col gap-2 px-4 text-base text-gray-900">
           <li
@@ -139,9 +231,11 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
       <section
         class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
       >
-        <h2 class="print:text-14pt inline-block w-full max-w-full text-xl font-black leading-relaxed text-gray-900">
+        <h2
+          class="print:text-14pt inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+        >
           教育背景
-          <span class="print:text-12pt ml-2 inline-block text-lg font-extrabold text-gray-800">Education</span>
+          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Education</span>
         </h2>
         <ul class="ml-4 flex w-full max-w-[calc(100%-1rem)] flex-col gap-2 px-4 text-base text-gray-900">
           <li
@@ -167,9 +261,11 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
       <section
         class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
       >
-        <h2 class="print:text-14pt inline-block w-full max-w-full text-xl font-black leading-relaxed text-gray-900">
+        <h2
+          class="print:text-14pt inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+        >
           工作技能
-          <span class="print:text-12pt ml-2 inline-block text-lg font-extrabold text-gray-800">Skills</span>
+          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Skills</span>
         </h2>
         <ul class="flex w-full max-w-full flex-col gap-2 px-2 text-base text-gray-900">
           <li
@@ -185,7 +281,9 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
                 v-for="(content, idx) in skill.skillsContent"
                 :key="idx"
                 class="print:text-10pt relative flex flex-col items-center justify-center text-sm font-normal text-gray-950"
-                :class="typeof content !== 'string' ? 'print:mb-24pt print:mt-12mt my-1 px-1' : ''"
+                :class="
+                  typeof content !== 'string' ? 'print:mb-24pt print:mt-12mt mx-auto my-2 px-1 xs:mx-0 xs:my-1' : ''
+                "
               >
                 <template v-if="typeof content === 'string'">{{ content }}</template>
                 <template v-else>
@@ -222,17 +320,19 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
         </ul>
       </section>
       <section
-        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
+        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:break-inside-avoid print:gap-2 print:border-t"
       >
-        <h2 class="print:text-14pt inline-block w-full max-w-full text-xl font-black leading-relaxed text-gray-900">
+        <h2
+          class="print:text-14pt inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+        >
           語言能力
-          <span class="print:text-12pt ml-2 inline-block text-lg font-extrabold text-gray-800">Language</span>
+          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Language</span>
         </h2>
         <ul class="flex w-full max-w-full flex-row flex-wrap gap-2 px-2 text-base text-gray-900">
           <li
             v-for="(language, index) in data.languages"
             :key="index"
-            class="relative flex w-[calc((100%-1.5rem)/2)] flex-row flex-wrap items-start justify-start gap-0 sm:w-[calc((100%-2.5rem)/4)]"
+            class="relative flex w-full flex-row flex-wrap items-start justify-start gap-0 xs:w-[calc((100%-1.5rem)/2)] sm:w-[calc((100%-2.5rem)/4)]"
           >
             <p class="print:text-12pt inline-block w-full text-base font-normal text-gray-800">
               <span class="text-base font-bold text-blue-950">{{ language.languagesType }}</span> -
@@ -242,11 +342,15 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
         </ul>
       </section>
       <section
-        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:break-inside-avoid print:gap-2 print:border-t"
+        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
       >
-        <h2 class="print:text-14pt inline-block w-full max-w-full text-xl font-black leading-relaxed text-gray-900">
+        <h2
+          class="print:text-14pt inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+        >
           自傳
-          <span class="print:text-12pt ml-2 inline-block text-lg font-extrabold text-gray-800">Autobiography</span>
+          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2"
+            >Autobiography</span
+          >
         </h2>
         <div class="block">
           <p
@@ -261,9 +365,11 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
       <section
         class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:relative"
       >
-        <h2 class="inline-block w-full max-w-full text-xl font-black leading-relaxed text-gray-900">
+        <h2
+          class="inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+        >
           作品集
-          <span class="ml-2 inline-block text-lg font-extrabold text-gray-800">Portfolio</span>
+          <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Portfolio</span>
         </h2>
         <p class="print:text-10pt mb-3 text-start text-base font-normal leading-normal text-gray-800">
           <span
@@ -271,7 +377,7 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
             >線上作品集</span
           >
           <a
-            class="text-blue-600 underline underline-offset-2 transition-all duration-300 hover:text-blue-800 hover:underline-offset-4"
+            class="break-all text-blue-600 underline underline-offset-2 transition-all duration-300 hover:text-blue-800 hover:underline-offset-4"
             :href="data.portfolios[0].url"
             title="線上作品集"
             alt="線上作品集"
@@ -299,9 +405,11 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
         </div>
       </section>
       <section class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 py-6">
-        <h2 class="inline-block w-full max-w-full text-xl font-black leading-relaxed text-gray-900">
+        <h2
+          class="inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+        >
           聯絡方式
-          <span class="ml-2 inline-block text-lg font-extrabold text-gray-800">Information</span>
+          <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Contact</span>
         </h2>
         <div class="flex w-full max-w-full flex-col flex-wrap items-start justify-start gap-2 sm:flex-row sm:gap-0">
           <p
@@ -334,10 +442,10 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
           >
             <span
               class="mr-2 inline-flex w-20 justify-between gap-0 text-justify font-medium after:inline after:content-['：'] xl:mr-0 xl:w-fit"
-              >E-mai</span
+              >E-mail</span
             >
             <a
-              class="text-blue-600 underline underline-offset-2 transition-all duration-300 hover:text-blue-800 hover:underline-offset-4"
+              class="break-all text-blue-600 underline underline-offset-2 transition-all duration-300 hover:text-blue-800 hover:underline-offset-4"
               :href="`mailto:${data.email}`"
               title="E-mail"
               alt="E-mail"
@@ -345,18 +453,9 @@ const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
               >{{ data.email }}</a
             >
           </p>
-          <p
-            class="mb-0 inline-flex w-full flex-nowrap text-start text-base font-normal leading-normal text-gray-800 sm:w-1/2 xl:w-1/4"
-          >
-            <span
-              class="mr-2 inline-flex w-20 justify-between gap-0 text-justify font-medium after:inline after:content-['：'] xl:mr-0 xl:w-fit"
-              >居住地</span
-            >
-            <span class="text-gray-800 hover:text-gray-800">{{ data.residence }}</span>
-          </p>
         </div>
       </section>
-    </div>
+    </article>
   </div>
 </template>
 

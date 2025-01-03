@@ -289,6 +289,25 @@
     "demo": "https://university.1111.com.tw/uni_searchtool.asp?pgtp=1"
   },
   {
+    "id": "202303130853",
+    "title": "求才招募系統",
+    "tag": [
+      "html",
+      "css",
+      "javascript"
+    ],
+    "content": "求才招募系統，新頁面切版 / 原有頁面維護，為.Net環境。",
+    "date": "2023-10-19",
+    "image": [
+      "https://drive.google.com/thumbnail?id=1yaUgoQ7YQoVHVTt4Y2MUWNEnbQovCC6t&sz=w1920",
+      "https://drive.google.com/thumbnail?id=187hiw1bCdhqoLZ8nKbYPFXF8igQx2WKN&sz=w1920",
+      "https://drive.google.com/thumbnail?id=1Y06LW8icNmLKSbwq7jd2SSVBFsaXlFkq&sz=w1920",
+      "https://drive.google.com/thumbnail?id=1jTJ-MI0Xn4gs705Z5vralC3OZdhmYB-6&sz=w1920",
+      "https://drive.google.com/thumbnail?id=1pth_kWljV5pkZw8kgIieoX2GeFl3_A2D&sz=w1920"
+    ],
+    "demo": "https://recruit.1111.com.tw/"
+  },
+  {
     "id": "202302030859",
     "title": "[會員中心]失約通知 公版Edm",
     "tag": [

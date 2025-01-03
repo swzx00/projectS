@@ -10,7 +10,9 @@
   img {
     @apply h-full max-h-full w-full max-w-full;
   }
-
+  body:has(.layout-default.scrollbar) {
+    @apply overflow-y-auto overflow-x-hidden;
+  }
   body:has(.layout-default.scrollbar)::-webkit-scrollbar {
     @apply w-5 border border-solid border-gray-400 bg-transparent;
   }
