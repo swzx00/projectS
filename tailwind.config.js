@@ -26,11 +26,41 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
+      padding: {
+        '10pt': '10pt',
+        '12pt': '12pt',
+        '14pt': '14pt',
+        '16pt': '16pt',
+        '18pt': '18pt',
+        '20pt': '20pt',
+      },
+      margin: {
+        '4pt': '4pt',
+        '6pt': '6pt',
+        '8pt': '8pt',
+        '10pt': '10pt',
+        '12pt': '12pt',
+        '14pt': '14pt',
+        '16pt': '16pt',
+        '18pt': '18pt',
+        '20pt': '20pt',
+        '22pt': '22pt',
+        '24pt': '24pt',
+        '32pt': '32pt',
+      },
       fontFamily: {
         JhengHei: ['"Microsoft JhengHei"', 'sans-serif', 'Arial'],
         Noto: ['"Noto Sans"', '"Microsoft JhengHei"', 'sans-serif', 'Arial'],
         Fira: ['"Fira Code"', '"Noto Sans"', '"Microsoft JhengHei"', 'sans-serif', 'Arial'],
         NotoSerif: ['"Noto Serif"', 'serif'],
+      },
+      fontSize: {
+        '10pt': '10pt',
+        '12pt': '12pt',
+        '14pt': '14pt',
+        '16pt': '16pt',
+        '18pt': '18pt',
+        '20pt': '20pt',
       },
       dropShadow: {
         'black-000': ['0 0 0 rgba(0, 0, 0, 0)', '0 0 0 rgba(0, 0, 0, 0)'],

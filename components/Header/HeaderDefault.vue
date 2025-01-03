@@ -37,7 +37,7 @@ onUnmounted(() => {
 
 <template>
   <header
-    class="sticky top-0 z-10 mx-auto h-16 min-h-16 w-full max-w-full bg-gray-100/80 px-4 shadow-sm backdrop-blur-md"
+    class="sticky top-0 z-10 mx-auto h-16 min-h-16 w-full max-w-full bg-gray-100/80 px-4 shadow-sm backdrop-blur-md print:!hidden"
   >
     <nav class="header-nav relative flex h-full flex-row flex-nowrap items-stretch justify-between *:items-center">
       <NuxtLink class="block h-full p-1 text-3xl font-bold" to="/">
