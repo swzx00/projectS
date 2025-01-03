@@ -113,9 +113,9 @@
     "content": "(2024) 履歷編輯頁面改版，於.Net環境內，採用CDN引入方式製作。",
     "date": "2024-04-29",
     "image": [
-      "https://drive.google.com/thumbnail?id=dataResume1Pz8yOMDRLJBv24dufPEhYpQ3XIhCNkX8dataResume&sz=w1920",
-      "https://drive.google.com/thumbnail?id=dataResume13WxlHjZrgCkXtLwPzrhgQN1UPhoJ_2SMdataResume&sz=w1920",
-      "https://drive.google.com/thumbnail?id=dataResume13RLsXn4PqYeJ9u2Nd-LMtA9GwLMeRcnDdataResume&sz=w1920"
+      "https://drive.google.com/thumbnail?id=1Pz8yOMDRLJBv24dufPEhYpQ3XIhCNkX8&sz=w1920",
+      "https://drive.google.com/thumbnail?id=13WxlHjZrgCkXtLwPzrhgQN1UPhoJ_2SM&sz=w1920",
+      "https://drive.google.com/thumbnail?id=13RLsXn4PqYeJ9u2Nd-LMtA9GwLMeRcnD&sz=w1920"
     ],
     "demo": "https://www.1111.com.tw/Resume/ResumeEditNew"
   },
@@ -297,7 +297,7 @@
       "javascript"
     ],
     "content": "求才招募系統，新頁面切版 / 原有頁面維護，為.Net環境。",
-    "date": "2023-10-19",
+    "date": "2023-03-13",
     "image": [
       "https://drive.google.com/thumbnail?id=1yaUgoQ7YQoVHVTt4Y2MUWNEnbQovCC6t&sz=w1920",
       "https://drive.google.com/thumbnail?id=187hiw1bCdhqoLZ8nKbYPFXF8igQx2WKN&sz=w1920",
