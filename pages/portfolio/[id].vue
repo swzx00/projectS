@@ -51,7 +51,9 @@ function handleImageLoadCombined(index: number, event: Event) {
 </script>
 
 <template>
-  <div class="h-auto overflow-hidden">
+  <div
+    class="relative z-0 ml-auto mr-0 h-auto w-full max-w-full overflow-hidden md:max-w-[1024px] lg:max-w-[1280px] xl:max-w-[1536px] 2xl:max-w-[1600px]"
+  >
     <div class="w-full bg-gray-200">
       <p v-if="dataLoaded && pending" class="flex items-center justify-start gap-2 text-lg text-black">
         <Icon class="text-lg" name="line-md:loading-twotone-loop" size="20" title="Loading" alt="Loading" />

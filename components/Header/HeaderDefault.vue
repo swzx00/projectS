@@ -37,7 +37,7 @@ onUnmounted(() => {
 
 <template>
   <header
-    class="sticky top-0 z-10 mx-auto h-16 min-h-16 w-full max-w-full bg-gray-100/80 px-4 shadow-sm backdrop-blur-md print:!hidden"
+    class="sticky top-0 z-20 mx-auto h-16 min-h-16 w-full max-w-full bg-gray-100/80 px-4 shadow-sm backdrop-blur-md print:!hidden"
   >
     <nav class="header-nav relative flex h-full flex-row flex-nowrap items-stretch justify-between *:items-center">
       <NuxtLink class="block h-full p-1 text-3xl font-bold" to="/">
@@ -59,7 +59,7 @@ onUnmounted(() => {
         <Transition name="menu-default">
           <div
             v-if="showDivHeader"
-            class="nav-header fixed bottom-0 left-auto right-0 top-[4rem] z-10 flex h-[calc(100dvh-4rem)] w-dvw flex-col items-end justify-start gap-6 py-4 font-Fira text-2xl font-bold text-gray-800 shadow-md backdrop-blur-md *:z-50 before:fixed before:bottom-0 before:left-auto before:right-0 before:top-auto before:z-40 before:block before:h-dvh before:w-full before:bg-slate-50 after:fixed after:bottom-0 after:left-auto after:right-0 after:top-auto after:z-30 after:block after:h-dvh after:w-dvw after:bg-black/50 after:content-[''] before:xs:w-[66dvw] sm:static sm:flex sm:h-full sm:w-fit sm:flex-row sm:items-center sm:justify-end sm:gap-2 sm:bg-transparent sm:py-0 sm:text-base sm:shadow-none sm:backdrop-blur-none before:sm:hidden after:sm:hidden"
+            class="nav-header fixed bottom-0 left-auto right-0 top-[4rem] z-20 flex h-[calc(100dvh-4rem)] w-dvw flex-col items-end justify-start gap-6 py-4 font-Fira text-2xl font-bold text-gray-800 shadow-md backdrop-blur-md *:z-50 before:fixed before:bottom-0 before:left-auto before:right-0 before:top-auto before:z-40 before:block before:h-dvh before:w-full before:bg-slate-50 after:fixed after:bottom-0 after:left-auto after:right-0 after:top-auto after:z-30 after:block after:h-dvh after:w-dvw after:bg-black/50 after:content-[''] before:xs:w-[66dvw] sm:static sm:flex sm:h-full sm:w-fit sm:flex-row sm:items-center sm:justify-end sm:gap-2 sm:bg-transparent sm:py-0 sm:text-base sm:shadow-none sm:backdrop-blur-none before:sm:hidden after:sm:hidden"
           >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"

@@ -10,7 +10,9 @@ definePageMeta({
 </script>
 
 <template>
-  <main class="relative z-0 bg-gray-200 py-6">
+  <main
+    class="relative z-0 ml-auto mr-0 w-full max-w-full bg-gray-200 py-6 md:max-w-[768px] lg:max-w-[992px] xl:max-w-[1200px] 2xl:max-w-[1400px]"
+  >
     <h1 class="hidden">Portfolio</h1>
 
     <div
