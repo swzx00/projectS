@@ -17,7 +17,7 @@ const showTestLink = computed(() => {
 </script>
 
 <template>
-  <nav class="mb-8 w-full max-w-full px-4 font-Fira lg:px-0">
+  <nav class="mb-8 w-full max-w-full px-4 font-Fira sm:px-0">
     <ol
       class="flex flex-row flex-wrap items-center justify-start text-sm font-normal text-gray-600 *:after:mx-1 *:after:inline-block *:after:font-light *:after:text-gray-400 *:after:content-['/']"
     >

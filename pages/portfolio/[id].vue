@@ -52,7 +52,7 @@ function handleImageLoadCombined(index: number, event: Event) {
 
 <template>
   <div
-    class="relative z-0 ml-auto mr-0 h-auto w-full max-w-full overflow-hidden md:max-w-[1024px] lg:max-w-[1280px] xl:max-w-[1536px] 2xl:max-w-[1600px]"
+    class="relative z-0 ml-auto mr-0 h-auto min-h-[calc(100dvh-8rem)] w-full max-w-full overflow-hidden md:max-w-[calc(100%-125px)] lg:max-w-[calc(100%-150px)] xl:max-w-[calc(100%-200px)] 2xl:max-w-[calc(100%-400px)]"
   >
     <div class="w-full bg-gray-200">
       <p v-if="dataLoaded && pending" class="flex items-center justify-start gap-2 text-lg text-black">
@@ -65,16 +65,16 @@ function handleImageLoadCombined(index: number, event: Event) {
       </p>
       <div
         v-if="dataLoaded && data && item"
-        class="flex w-full flex-col items-start justify-start gap-0 !px-0 pt-4 md:container md:max-w-full lg:max-w-[992px] xl:max-w-[1200px] 2xl:max-w-[1400px]"
+        class="flex w-full max-w-full flex-col items-start justify-start gap-0 !px-0 pt-4 sm:container sm:max-w-[calc(100%-2rem)] md:max-w-[calc(100%-4rem)] lg:max-w-[calc(100%-8rem)]"
       >
         <BreadCrumb :card-id="item.id" :title="item.title"></BreadCrumb>
-        <div class="flex w-full max-w-full flex-row items-end justify-between gap-0 px-4 lg:px-0">
+        <div class="flex w-full max-w-full flex-row items-end justify-between gap-0 px-4 sm:px-0">
           <h1 class="inline-block w-fit max-w-[calc(100%-6rem)] break-words text-2xl font-bold text-black">
             {{ item.title }}
           </h1>
           <span class="inline-block w-24 max-w-full text-end text-sm font-light text-gray-900">{{ item.date }}</span>
         </div>
-        <div class="mt-4 flex w-full max-w-full flex-wrap items-start justify-start gap-x-3 gap-y-2 px-4 lg:px-0">
+        <div class="mt-4 flex w-full max-w-full flex-wrap items-start justify-start gap-x-3 gap-y-2 px-4 sm:px-0">
           <span
             v-for="(tag, index) in item.tag"
             :key="index"
