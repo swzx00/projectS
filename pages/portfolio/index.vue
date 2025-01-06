@@ -11,12 +11,12 @@ definePageMeta({
 
 <template>
   <main
-    class="relative z-0 ml-auto mr-0 w-full max-w-full bg-gray-200 py-6 md:max-w-[768px] lg:max-w-[992px] xl:max-w-[1200px] 2xl:max-w-[1400px]"
+    class="relative z-0 ml-auto mr-0 w-full max-w-full bg-gray-200 py-6 md:max-w-[1024px] lg:max-w-[1280px] xl:max-w-[1536px] 2xl:max-w-[1600px]"
   >
     <h1 class="hidden">Portfolio</h1>
 
     <div
-      class="mx-auto mb-8 flex w-full max-w-full flex-col flex-wrap items-center justify-start gap-y-2 px-4 xs:flex-row xs:gap-x-4 md:gap-y-0 lg:max-w-[960px]"
+      class="* mx-auto mb-8 flex w-full max-w-full flex-col flex-wrap items-center justify-start gap-y-2 px-4 xs:flex-row xs:gap-x-4 md:max-w-[960px] md:gap-y-0 lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1400px]"
     >
       <h2 class="mx-auto block w-full max-w-full px-0 text-base font-semibold leading-loose text-black">項目分類:</h2>
       <NuxtLink
@@ -83,7 +83,7 @@ definePageMeta({
     <!-- 資料渲染 -->
     <div
       v-else-if="data?.dataCard && data?.dataCard.length"
-      class="mx-auto flex w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-4 gap-y-8 px-4 *:sm:max-w-[calc((100%-(1*1rem))/2)] *:md:max-w-[calc((100%-(2*1rem))/3)] lg:max-w-[960px] *:lg:max-w-[calc((100%-(3*1rem))/4)]"
+      class="mx-auto flex w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-4 gap-y-8 px-4 *:sm:max-w-[calc((100%-(1*1rem))/2)] md:max-w-[960px] *:md:max-w-[calc((100%-(2*1rem))/3)] lg:max-w-[1024px] *:lg:max-w-[calc((100%-(3*1rem))/4)] xl:max-w-[1280px] 2xl:max-w-[1400px]"
     >
       <CardDefault
         v-for="card in data?.dataCard"
