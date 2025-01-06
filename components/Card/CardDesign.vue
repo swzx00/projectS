@@ -105,7 +105,7 @@ const onLeave = () => {
         />
         <img
           ref="imageRef"
-          class="z-10 h-fit max-h-fit w-fit max-w-full object-contain transition-all duration-300 ease-linear group-hover:scale-105"
+          class="z-10 h-full max-h-full w-full max-w-full object-contain transition-all duration-300 ease-linear group-hover:scale-105"
           :src="image[0]"
           :title="title"
           :alt="title"
