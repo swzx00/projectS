@@ -96,6 +96,8 @@ definePageMeta({
           :tags="card.tag"
           :content="card.content"
           :image="card.image"
+          :date="card.date"
+          :demo="card.demo || ''"
         ></CardDefault>
       </div>
       <PaginationDefault
