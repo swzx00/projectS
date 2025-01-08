@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/google-fonts',
     '@nuxt/icon',
-    'nuxt-aos',
   ],
   googleFonts: {
     families: {
