@@ -288,19 +288,13 @@ const handlePrint = () => {
                 <template v-if="typeof content === 'string'">{{ content }}</template>
                 <template v-else>
                   <div
-                    class="aos before:bg-blue-600"
-                    data-aos="aos-rotate"
-                    data-aos-delay="500"
+                    class="relative size-[var(--size)] overflow-hidden rounded-full bg-gray-200 before:absolute before:right-[calc(var(--size)/2)] before:top-0 before:z-[1] before:box-border before:h-[var(--size)] before:w-[calc(var(--size)/2)] before:origin-[calc(var(--size)/2)_calc(var(--size)/2)] before:rotate-[var(--rotate-deg)] before:rounded-bl-[calc(var(--size)/2)] before:rounded-tl-[calc(var(--size)/2)] before:bg-blue-600 after:absolute after:right-[calc(var(--size)/2)] after:top-0 after:z-[2] after:box-border after:h-[var(--size)] after:w-[calc(var(--size)/2)] after:origin-[calc(var(--size)/2)_calc(var(--size)/2)] after:rotate-180 after:rounded-bl-[calc(var(--size)/2)] after:rounded-tl-[calc(var(--size)/2)] after:bg-blue-600 print:size-[47.5pt] print:before:right-[25pt] print:before:h-[50pt] print:before:w-[25pt] print:before:origin-[25pt_25pt] print:before:rounded-bl-[25pt] print:before:rounded-tl-[25pt] print:after:h-[50pt] print:after:w-[25pt] print:after:origin-[32pt_25pt] print:after:rounded-bl-[25pt] print:after:rounded-tl-[25pt]"
                     :style="{
                       '--size': '6.5rem',
                       '--rotate-deg': `${(Number(content.skillsContentProficiency) / 100) * 360}deg`,
                     }"
                   ></div>
-                  <div
-                    class="aos-font absolute z-[3] aspect-square size-[5.5rem] rounded-full bg-white print:size-[37.5pt]"
-                    data-aos="aos-font"
-                    data-aos-delay="1000"
-                  >
+                  <div class="absolute z-[3] aspect-square size-[5.5rem] rounded-full bg-white print:size-[37.5pt]">
                     <p
                       class="absolute left-1/2 top-[22.5%] z-20 mt-2 flex w-fit -translate-x-1/2 items-center justify-center text-center text-lg font-normal leading-none tracking-tighter print:top-[calc(100%+5pt)] print:text-10pt"
                     >
@@ -460,160 +454,11 @@ const handlePrint = () => {
 </template>
 
 <style scoped>
-.aos {
-  position: relative;
-  left: 0;
-  top: 0;
-  height: var(--size);
-  width: var(--size);
-  overflow: hidden;
-  border-radius: 999px;
-  background-color: transparent;
-}
-.aos:before,
-.aos:after {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  right: calc(var(--size) / 2);
-  width: calc(var(--size) / 2);
-  height: var(--size);
-  border-radius: calc(var(--size) / 2) 0 0 calc(var(--size) / 2);
-  transform-origin: calc(var(--size) / 2) calc(var(--size) / 2);
-  opacity: 0;
-}
-.aos:before {
-  z-index: 1;
-  transform: rotate(0deg);
-}
-.aos:after {
-  z-index: 2;
-  transform: rotate(0deg);
-}
-.aos[data-aos='aos-rotate'].aos-animate {
-  animation: aos-bg 500ms 1 linear forwards;
-}
-.aos[data-aos='aos-rotate'].aos-animate::before {
-  animation: aos-before 500ms 1 linear forwards;
-}
-.aos[data-aos='aos-rotate'].aos-animate::after {
-  animation: aos-after 500ms 1 step-start forwards;
-}
-.aos[data-aos='aos-rotate'][data-aos-delay='500'].aos-animate::before {
-  animation-delay: 500ms;
-}
-.aos[data-aos='aos-rotate'][data-aos-delay='500'].aos-animate::after {
-  animation-delay: 500ms;
-}
-.aos-font[data-aos='aos-font'] * {
-  opacity: 0;
-}
-.aos-font[data-aos='aos-font'].aos-animate * {
-  animation: aos-font 500ms 1 linear forwards;
-}
-.aos-font[data-aos='aos-font'][data-aos-delay='1000'].aos-animate * {
-  animation-delay: 1000ms;
-}
-@keyframes aos-bg {
-  0% {
-    opacity: 0;
-    background-color: #ffffff;
-  }
-  100% {
-    opacity: 1;
-    background-color: #e5e7eb;
-  }
-}
-@keyframes aos-before {
-  0% {
-    opacity: 1;
-    transform: rotate(0deg);
-  }
-  50% {
-    opacity: 1;
-    transform: rotate(180deg);
-  }
-  100% {
-    opacity: 1;
-    transform: rotate(var(--rotate-deg));
-  }
-}
-@keyframes aos-after {
-  0% {
-    opacity: 1;
-    background-color: #e5e7eb;
-    transform: rotate(0deg);
-  }
-  49.99% {
-    opacity: 1;
-    background-color: #e5e7eb;
-    transform: rotate(0deg);
-  }
-  50% {
-    opacity: 1;
-    background-color: #2563eb;
-    transform: rotate(180deg);
-  }
-  100% {
-    opacity: 1;
-    background-color: #2563eb;
-    transform: rotate(180deg);
-  }
-}
-@keyframes aos-font {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @media print {
   body,
   * {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact; /* for Chrome, Edge, Opera */
-  }
-  .aos {
-    height: 47.5pt;
-    width: 47.5pt;
-    background-color: #e5e7eb !important;
-    opacity: 100 !important;
-  }
-  .aos:before,
-  .aos:after {
-    right: 25pt;
-    width: 25pt;
-    height: 50pt;
-    border-radius: 25pt 0 0 25pt;
-    transform-origin: 25pt 25pt;
-    opacity: 1;
-  }
-  .aos:before {
-    transform: rotate(var(--rotate-deg)) !important;
-  }
-  .aos:after {
-    z-index: 2;
-    transform: rotate(180deg);
-    opacity: 100 !important;
-    background-color: #2563eb;
-  }
-  .aos[data-aos='aos-rotate'].aos-animate {
-    animation: none;
-  }
-  .aos[data-aos='aos-rotate'].aos-animate::before {
-    animation: none;
-  }
-  .aos[data-aos='aos-rotate'].aos-animate::after {
-    animation: none;
-  }
-  .aos-font[data-aos='aos-font'] * {
-    opacity: 1;
-  }
-  .aos-font[data-aos='aos-font'].aos-animate * {
-    animation: none;
   }
 }
 
