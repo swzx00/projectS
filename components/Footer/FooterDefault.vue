@@ -6,7 +6,7 @@
       <p
         class="text-start align-baseline font-Fira text-sm font-thin leading-normal tracking-tighter text-slate-50 sm:text-center"
       >
-        Produced by swzx00 (Chia-Cheng, Lin)
+        Produced by swzx00 (Chia-Cheng, Lin @ 2025)
       </p>
       <span
         class="text-start align-baseline font-Fira text-xs font-thin leading-none tracking-tighter text-slate-200 sm:text-center"

@@ -96,24 +96,24 @@ const handlePrint = () => {
     </div>
     <article
       v-if="data"
-      class="print:p-10pt mx-auto mb-10 mt-0 w-full max-w-full bg-white px-4 py-8 shadow-lg sm:px-8 sm:py-16 md:max-w-screen-sm md:px-12 md:py-24 lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl print:my-0 print:shadow-none"
+      class="mx-auto mb-10 mt-0 w-full max-w-full bg-white px-4 py-8 shadow-lg sm:px-8 sm:py-16 md:max-w-screen-sm md:px-12 md:py-24 lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl print:my-0 print:p-10pt print:shadow-none"
     >
       <section
-        class="print:pb-10pt grid w-full max-w-full grid-flow-row-dense grid-cols-[1fr] grid-rows-[auto_200px_1fr] gap-4 border-b border-solid border-gray-100 pb-6 sm:grid-cols-[1fr_150px] sm:grid-rows-[2rem_1fr]"
+        class="grid w-full max-w-full grid-flow-row-dense grid-cols-[1fr] grid-rows-[auto_200px_1fr] gap-4 border-b border-solid border-gray-100 pb-6 sm:grid-cols-[1fr_150px] sm:grid-rows-[2rem_1fr] print:pb-10pt"
       >
         <h1
-          class="print:text-14pt print:mb-4pt col-span-2 col-start-1 col-end-2 row-span-1 row-start-1 row-end-2 mb-0 inline-flex flex-col text-2xl font-black text-black xs:inline sm:col-span-1 sm:col-start-1 sm:col-end-2 sm:row-span-1 sm:row-start-1 sm:row-end-1"
+          class="col-span-2 col-start-1 col-end-2 row-span-1 row-start-1 row-end-2 mb-0 inline-flex flex-col text-2xl font-black text-black xs:inline sm:col-span-1 sm:col-start-1 sm:col-end-2 sm:row-span-1 sm:row-start-1 sm:row-end-1 print:mb-4pt print:text-14pt"
         >
           {{ data.name }}
           <span
             v-if="data.nameEng"
-            class="print:text-12pt ml-0 inline-block font-Fira text-xl font-semibold text-gray-800 opacity-70 xs:ml-2"
+            class="ml-0 inline-block font-Fira text-xl font-semibold text-gray-800 opacity-70 xs:ml-2 print:text-12pt"
           >
             {{ data.nameEng }}
           </span>
         </h1>
         <picture
-          class="aspect-3/4 col-span-2 col-start-1 col-end-2 row-span-1 row-start-2 row-end-3 mx-auto flex h-auto max-h-max w-full max-w-[150px] items-center justify-center border-2 border-solid border-slate-100 sm:col-span-1 sm:col-start-2 sm:col-end-3 sm:row-span-2 sm:row-start-1 sm:row-end-3 sm:mx-0 print:max-w-[80pt]"
+          class="col-span-2 col-start-1 col-end-2 row-span-1 row-start-2 row-end-3 mx-auto flex aspect-3/4 h-auto max-h-max w-full max-w-[150px] items-center justify-center border-2 border-solid border-slate-100 sm:col-span-1 sm:col-start-2 sm:col-end-3 sm:row-span-2 sm:row-start-1 sm:row-end-3 sm:mx-0 print:max-w-[80pt]"
         >
           <Icon
             v-if="!isImageLoaded"
@@ -138,7 +138,7 @@ const handlePrint = () => {
         </picture>
 
         <p
-          class="print:text-10pt col-span-2 col-start-1 col-end-2 row-span-1 row-start-3 row-end-4 text-justify text-base font-normal leading-none text-gray-800 xs:leading-relaxed sm:col-span-1 sm:col-start-1 sm:col-end-2 sm:row-span-1 sm:row-start-2 sm:row-end-3"
+          class="col-span-2 col-start-1 col-end-2 row-span-1 row-start-3 row-end-4 text-justify text-base font-normal leading-none text-gray-800 xs:leading-relaxed sm:col-span-1 sm:col-start-1 sm:col-end-2 sm:row-span-1 sm:row-start-2 sm:row-end-3 print:text-10pt"
         >
           <template v-for="(line, index) in introductionLines" :key="index">
             {{ line }}
@@ -197,13 +197,13 @@ const handlePrint = () => {
         </div>
       </section>
       <section
-        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
+        class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2 print:py-10pt"
       >
         <h2
-          class="print:text-14pt inline-block inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline xs:leading-relaxed"
+          class="inline-block inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline xs:leading-relaxed print:text-14pt"
         >
           工作經歷
-          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2"
+          <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2 print:text-12pt"
             >Work Experience</span
           >
         </h2>
@@ -213,29 +213,29 @@ const handlePrint = () => {
             :key="index"
             class="relative text-lg font-bold leading-relaxed text-blue-950 before:absolute before:-left-4 before:top-[.85rem] before:block before:size-2 before:origin-center before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-blue-900 before:content-[''] after:absolute after:-left-4 after:top-[.85rem] after:block after:h-[calc(100%+.5rem)] after:w-0.5 after:-translate-x-1/2 after:bg-blue-900 after:content-[''] last:after:hidden print:before:top-[.5rem] print:after:top-[.5rem]"
           >
-            <p class="print:text-12pt text-lg font-bold leading-relaxed text-blue-950 print:leading-none">
+            <p class="text-lg font-bold leading-relaxed text-blue-950 print:text-12pt print:leading-none">
               {{ exp.title }}
             </p>
-            <p class="print:text-10pt mt-1 text-base font-semibold leading-none text-gray-950">
+            <p class="mt-1 text-base font-semibold leading-none text-gray-950 print:text-10pt">
               {{ exp.company }}
-              <span class="print:text-10pt ml-1 inline-block text-sm font-medium text-gray-700"
+              <span class="ml-1 inline-block text-sm font-medium text-gray-700 print:text-10pt"
                 >({{ exp.start }} - {{ exp.end }})</span
               >
             </p>
-            <p class="print:text-10pt mt-0 text-justify text-base font-semibold leading-normal text-gray-500">
+            <p class="mt-0 text-justify text-base font-semibold leading-normal text-gray-500 print:text-10pt">
               {{ exp.description }}
             </p>
           </li>
         </ul>
       </section>
       <section
-        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
+        class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2 print:py-10pt"
       >
         <h2
-          class="print:text-14pt inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+          class="inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed print:text-14pt"
         >
           教育背景
-          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Education</span>
+          <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2 print:text-12pt">Education</span>
         </h2>
         <ul class="ml-4 flex w-full max-w-[calc(100%-1rem)] flex-col gap-2 px-4 text-base text-gray-900">
           <li
@@ -243,15 +243,15 @@ const handlePrint = () => {
             :key="index"
             class="relative text-lg font-bold leading-relaxed text-blue-950 before:absolute before:-left-4 before:top-[.85rem] before:block before:size-2 before:origin-center before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-blue-900 before:content-[''] after:absolute after:-left-4 after:top-[.85rem] after:block after:h-[calc(100%+.5rem)] after:w-0.5 after:-translate-x-1/2 after:bg-blue-900 after:content-[''] last:after:hidden print:before:top-[.5rem] print:after:top-[.5rem]"
           >
-            <p class="print:text-12pt text-lg font-bold leading-relaxed text-blue-950 print:leading-none">
+            <p class="text-lg font-bold leading-relaxed text-blue-950 print:text-12pt print:leading-none">
               {{ edu.school }}
             </p>
-            <p class="print:text-10pt mt-1 text-base font-semibold leading-none text-gray-950">
+            <p class="mt-1 text-base font-semibold leading-none text-gray-950 print:text-10pt">
               {{ edu.department }}
-              <span class="print:text-10pt ml-1 inline-block text-sm font-medium text-gray-700">
+              <span class="ml-1 inline-block text-sm font-medium text-gray-700 print:text-10pt">
                 / {{ edu.degree }} {{ edu.graduation }}</span
               >
-              <span class="print:text-10pt ml-1 inline-block text-sm font-medium text-gray-700"
+              <span class="ml-1 inline-block text-sm font-medium text-gray-700 print:text-10pt"
                 >({{ edu.start }} - {{ edu.end }})</span
               >
             </p>
@@ -259,13 +259,13 @@ const handlePrint = () => {
         </ul>
       </section>
       <section
-        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
+        class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2 print:py-10pt"
       >
         <h2
-          class="print:text-14pt inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+          class="inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed print:text-14pt"
         >
           工作技能
-          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Skills</span>
+          <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2 print:text-12pt">Skills</span>
         </h2>
         <ul class="flex w-full max-w-full flex-col gap-2 px-2 text-base text-gray-900">
           <li
@@ -273,16 +273,16 @@ const handlePrint = () => {
             :key="index"
             class="relative flex flex-row flex-wrap items-start justify-start gap-0 text-lg font-bold leading-relaxed text-blue-950"
           >
-            <p class="print:text-12pt inline-block w-full text-lg font-bold leading-relaxed text-blue-950">
+            <p class="inline-block w-full text-lg font-bold leading-relaxed text-blue-950 print:text-12pt">
               {{ skill.skillsType }}
             </p>
             <ul class="flex flex-row flex-wrap items-start justify-start gap-0">
               <li
                 v-for="(content, idx) in skill.skillsContent"
                 :key="idx"
-                class="print:text-10pt relative flex flex-col items-center justify-center text-sm font-normal text-gray-950"
+                class="relative flex flex-col items-center justify-center text-sm font-normal text-gray-950 print:text-10pt"
                 :class="
-                  typeof content !== 'string' ? 'print:mb-24pt print:mt-12mt mx-auto my-2 px-1 xs:mx-0 xs:my-1' : ''
+                  typeof content !== 'string' ? 'print:mt-12mt mx-auto my-2 px-1 xs:mx-0 xs:my-1 print:mb-24pt' : ''
                 "
               >
                 <template v-if="typeof content === 'string'">{{ content }}</template>
@@ -302,12 +302,12 @@ const handlePrint = () => {
                     data-aos-delay="1000"
                   >
                     <p
-                      class="print:text-10pt absolute left-1/2 top-[22.5%] z-20 mt-2 flex w-fit -translate-x-1/2 items-center justify-center text-center text-lg font-normal leading-none tracking-tighter print:top-[calc(100%+5pt)]"
+                      class="absolute left-1/2 top-[22.5%] z-20 mt-2 flex w-fit -translate-x-1/2 items-center justify-center text-center text-lg font-normal leading-none tracking-tighter print:top-[calc(100%+5pt)] print:text-10pt"
                     >
                       {{ content.skillsContentTitle }}
                     </p>
                     <p
-                      class="print:text-12pt absolute left-1/2 top-[50%] z-20 -translate-x-1/2 text-center text-base font-semibold after:text-xs after:font-light after:content-['%'] print:-translate-y-1/2"
+                      class="absolute left-1/2 top-[50%] z-20 -translate-x-1/2 text-center text-base font-semibold after:text-xs after:font-light after:content-['%'] print:-translate-y-1/2 print:text-12pt"
                     >
                       {{ content.skillsContentProficiency }}
                     </p>
@@ -320,13 +320,13 @@ const handlePrint = () => {
         </ul>
       </section>
       <section
-        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:break-inside-avoid print:gap-2 print:border-t"
+        class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:break-inside-avoid print:gap-2 print:border-t print:py-10pt"
       >
         <h2
-          class="print:text-14pt inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+          class="inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed print:text-14pt"
         >
           語言能力
-          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Language</span>
+          <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2 print:text-12pt">Language</span>
         </h2>
         <ul class="flex w-full max-w-full flex-row flex-wrap gap-2 px-2 text-base text-gray-900">
           <li
@@ -334,21 +334,21 @@ const handlePrint = () => {
             :key="index"
             class="relative flex w-full flex-row flex-wrap items-start justify-start gap-0 xs:w-[calc((100%-1.5rem)/2)] sm:w-[calc((100%-2.5rem)/4)]"
           >
-            <p class="print:text-12pt inline-block w-full text-base font-normal text-gray-800">
+            <p class="inline-block w-full text-base font-normal text-gray-800 print:text-12pt">
               <span class="text-base font-bold text-blue-950">{{ language.languagesType }}</span> -
-              <span class="print:text-12pt text-sm font-normal">{{ language.languagesLevel }}</span>
+              <span class="text-sm font-normal print:text-12pt">{{ language.languagesLevel }}</span>
             </p>
           </li>
         </ul>
       </section>
       <section
-        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2"
+        class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:gap-2 print:py-10pt"
       >
         <h2
-          class="print:text-14pt inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
+          class="inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed print:text-14pt"
         >
           自傳
-          <span class="print:text-12pt ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2"
+          <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2 print:text-12pt"
             >Autobiography</span
           >
         </h2>
@@ -356,14 +356,14 @@ const handlePrint = () => {
           <p
             v-for="(line, index) in autobiographyLines"
             :key="index"
-            class="print:text-10pt mb-3 text-start text-base font-normal leading-normal text-gray-800 last:mb-0"
+            class="mb-3 text-start text-base font-normal leading-normal text-gray-800 last:mb-0 print:text-10pt"
           >
             {{ line }}
           </p>
         </div>
       </section>
       <section
-        class="print:py-10pt flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:relative"
+        class="flex w-full max-w-full flex-col flex-wrap items-start justify-between gap-4 border-b border-solid border-gray-100 py-6 print:relative print:py-10pt"
       >
         <h2
           class="inline-flex w-full max-w-full flex-col text-xl font-black leading-none text-gray-900 xs:inline-block xs:leading-relaxed"
@@ -371,7 +371,7 @@ const handlePrint = () => {
           作品集
           <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Portfolio</span>
         </h2>
-        <p class="print:text-10pt mb-3 text-start text-base font-normal leading-normal text-gray-800">
+        <p class="mb-3 text-start text-base font-normal leading-normal text-gray-800 print:text-10pt">
           <span
             class="mr-2 inline-flex items-center justify-start font-medium after:inline after:content-['：'] xl:mr-0"
             >線上作品集</span
@@ -399,7 +399,7 @@ const handlePrint = () => {
                 loading="lazy"
                 decoding="async"
               />
-              <figcaption class="text-10pt w-fit max-w-fit break-keep">掃描QR Code</figcaption>
+              <figcaption class="w-fit max-w-fit break-keep text-10pt">掃描QR Code</figcaption>
             </figure>
           </picture>
         </div>
