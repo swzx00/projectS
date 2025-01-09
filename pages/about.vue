@@ -2,36 +2,6 @@
 definePageMeta({
   // middleware: ['loading'], // 啟用 loading 中介層
 })
-
-// // .btn-resume滾動
-// const btnResume = ref<HTMLElement | null>(null)
-// let initialOffsetTop = 0
-
-// const handleScroll = () => {
-//   if (btnResume.value) {
-//     const scrollPosition = window.scrollY
-//     const divBottomPosition = initialOffsetTop + btnResume.value.offsetHeight
-
-//     if (scrollPosition >= divBottomPosition) {
-//       btnResume.value.querySelector('a')?.classList.add('original-scroll')
-//       btnResume.value.querySelector('a')?.classList.remove('original')
-//     } else {
-//       btnResume.value.querySelector('a')?.classList.add('original')
-//       btnResume.value.querySelector('a')?.classList.remove('original-scroll')
-//     }
-//   }
-// }
-
-// onMounted(() => {
-//   if (btnResume.value) {
-//     initialOffsetTop = btnResume.value.offsetTop
-//   }
-//   window.addEventListener('scroll', handleScroll)
-// })
-
-// onUnmounted(() => {
-//   window.removeEventListener('scroll', handleScroll)
-// })
 </script>
 <template>
   <div
@@ -51,8 +21,6 @@ definePageMeta({
             <div class="flex w-full flex-row flex-nowrap items-center justify-start gap-4">
               <picture
                 class="m-0 flex aspect-square size-32 max-h-32 max-w-32 overflow-hidden rounded-full border border-solid border-white shadow-md"
-                data-aos="pic"
-                data-aos-anchor-placement="top-top"
               >
                 <img
                   class="m-0 h-auto max-h-fit w-full max-w-full translate-x-[40%] translate-y-[60%] scale-[400%] object-cover object-center"
