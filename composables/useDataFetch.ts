@@ -45,7 +45,7 @@ export function useDataFetch(defaultTag: string) {
         }
       } else if (defaultTag === 'design') {
         if (currentTag.value === 'design' || currentTag.value === undefined) {
-          apiPath.value = `/api/dataCard?tag=web,edm,interface,publication,graphic,media,product&page=${currentPage.value}`
+          apiPath.value = `/api/dataCard?tag=web,edm,banner,video card,printed&page=${currentPage.value}`
         } else {
           apiPath.value = `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
         }

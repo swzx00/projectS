@@ -1,32 +1,28 @@
 export const getIconName = (_type: string, tag: string): string => {
   switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-    case 'product':
-    case 'media':
-    case 'graphic':
-    case 'publication':
-    case 'interface':
+    case 'printed':
+    case 'video card':
+    case 'banner':
     case 'web':
       return 'logos:adobe-photoshop'
     case 'edm':
       return 'vscode-icons:file-type-templ'
-    case 'javascript':
-      return 'vscode-icons:file-type-js-official'
     case 'typescript':
       return 'vscode-icons:file-type-typescript-official'
+    case 'nuxt':
+      return 'vscode-icons:file-type-nuxt'
+    case 'vue':
+      return 'vscode-icons:file-type-vue'
+    case 'tailwind':
+      return 'vscode-icons:file-type-tailwind'
+    case 'bootstrap':
+      return 'devicon:bootstrap'
+    case 'javascript':
+      return 'vscode-icons:file-type-js-official'
     case 'css':
       return 'vscode-icons:file-type-css'
     case 'html':
       return 'vscode-icons:file-type-html'
-    case 'bootstrap':
-      return 'devicon:bootstrap'
-    case 'tailwind':
-      return 'vscode-icons:file-type-tailwind'
-    case 'vue':
-      return 'vscode-icons:file-type-vue'
-    case 'nuxt':
-      return 'vscode-icons:file-type-nuxt'
-    case 'frontend':
-      return 'vscode-icons:file-type-vscode'
     default:
       return ''
   }
@@ -35,16 +31,12 @@ export const getIconName = (_type: string, tag: string): string => {
 export const getIconTitle = (_type: string, tag: string): string => {
   if (_type === 'design') {
     switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-      case 'product':
-        return 'Product'
-      case 'media':
-        return 'Media'
-      case 'graphic':
-        return 'Graphic'
-      case 'publication':
-        return 'Publication'
-      case 'interface':
-        return 'Interface'
+      case 'printed':
+        return 'Printed'
+      case 'video card':
+        return 'Video Dard'
+      case 'banner':
+        return 'Banner'
       case 'edm':
         return 'Edm Design'
       case 'web':
@@ -54,66 +46,55 @@ export const getIconTitle = (_type: string, tag: string): string => {
     }
   } else if (_type === 'frontend') {
     switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-      case 'product':
-      case 'media':
-      case 'graphic':
-      case 'publication':
-      case 'interface':
+      case 'printed':
+      case 'video card':
+      case 'banner':
       case 'web':
         return 'Design'
       case 'edm':
         return 'Edm'
-      case 'javascript':
-        return 'Javascript'
       case 'typescript':
         return 'Typescript'
+      case 'nuxt':
+        return 'Nuxt'
+      case 'vue':
+        return 'Vue'
+      case 'tailwind':
+        return 'Tailwind'
+      case 'bootstrap':
+        return 'Bootstrap'
+      case 'javascript':
+        return 'Javascript'
       case 'css':
         return 'Css'
       case 'html':
         return 'Html'
-      case 'bootstrap':
-        return 'Bootstrap'
-      case 'tailwind':
-        return 'Tailwind'
-      case 'vue':
-        return 'Vue'
-      case 'nuxt':
-        return 'Nuxt'
       default:
         return ''
     }
   } else {
     switch (tag.toLowerCase().replace(/['\s]/g, '')) {
-      case 'product':
-        return 'Product'
-      case 'media':
-        return 'Media'
-      case 'graphic':
-        return 'Graphic'
-      case 'publication':
-        return 'Publication'
-      case 'interface':
-        return 'Interface'
+      case 'printed':
+      case 'video card':
+      case 'banner':
       case 'web':
         return 'Web Design'
-      case 'edm':
-        return 'Edm'
-      case 'javascript':
-        return 'Javascript'
       case 'typescript':
         return 'Typescript'
+      case 'nuxt':
+        return 'Nuxt'
+      case 'vue':
+        return 'Vue'
+      case 'tailwind':
+        return 'Tailwind'
+      case 'bootstrap':
+        return 'Bootstrap'
+      case 'javascript':
+        return 'Javascript'
       case 'css':
         return 'Css'
       case 'html':
         return 'Html'
-      case 'bootstrap':
-        return 'Bootstrap'
-      case 'tailwind':
-        return 'Tailwind'
-      case 'vue':
-        return 'Vue'
-      case 'nuxt':
-        return 'Nuxt'
       default:
         return ''
     }

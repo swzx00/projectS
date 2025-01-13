@@ -36,66 +36,6 @@ const { isActive } = useActive('frontend')
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
           :class="
-            isActive('nuxt')
-              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
-              : 'text-white/80 after:hidden hover:text-white'
-          "
-          to="/portfolio/frontend?tag=nuxt"
-          @click="clickLink"
-        >
-          <Icon name="vscode-icons:file-type-nuxt" size="16" title="Nuxt" alt="Nuxt" />
-          Nuxt
-        </NuxtLink>
-      </li>
-      <li class="group">
-        <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
-          :class="
-            isActive('vue')
-              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
-              : 'text-white/80 after:hidden hover:text-white'
-          "
-          to="/portfolio/frontend?tag=vue"
-          @click="clickLink"
-        >
-          <Icon name="vscode-icons:file-type-vue" size="16" title="Vue" alt="Vue" />
-          Vue
-        </NuxtLink>
-      </li>
-      <li class="group">
-        <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
-          :class="
-            isActive('tailwind')
-              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
-              : 'text-white/80 after:hidden hover:text-white'
-          "
-          to="/portfolio/frontend?tag=tailwind"
-          @click="clickLink"
-        >
-          <Icon name="vscode-icons:file-type-tailwind" size="16" title="Tailwind" alt="Tailwind" />
-          Tailwind
-        </NuxtLink>
-      </li>
-      <li class="group">
-        <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
-          :class="
-            isActive('bootstrap')
-              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
-              : 'text-white/80 after:hidden hover:text-white'
-          "
-          to="/portfolio/frontend?tag=bootstrap"
-          @click="clickLink"
-        >
-          <Icon name="devicon:bootstrap" size="16" title="Bootstrap" alt="Bootstrap" />
-          Bootstrap
-        </NuxtLink>
-      </li>
-      <li class="group">
-        <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
-          :class="
             isActive('html')
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
@@ -126,21 +66,6 @@ const { isActive } = useActive('frontend')
         <NuxtLink
           class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
           :class="
-            isActive('typescript')
-              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
-              : 'text-white/80 after:hidden hover:text-white'
-          "
-          to="/portfolio/frontend?tag=typescript"
-          @click="clickLink"
-        >
-          <Icon name="vscode-icons:file-type-typescript-official" size="16" title="Typescript" alt="Typescript" />
-          Typescript
-        </NuxtLink>
-      </li>
-      <li class="group">
-        <NuxtLink
-          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
-          :class="
             isActive('javascript')
               ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
               : 'text-white/80 after:hidden hover:text-white'
@@ -150,6 +75,81 @@ const { isActive } = useActive('frontend')
         >
           <Icon name="vscode-icons:file-type-js-official" size="16" title="Javascript" alt="Javascript" />
           Javascript
+        </NuxtLink>
+      </li>
+      <li class="group">
+        <NuxtLink
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('bootstrap')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
+          to="/portfolio/frontend?tag=bootstrap"
+          @click="clickLink"
+        >
+          <Icon name="devicon:bootstrap" size="16" title="Bootstrap" alt="Bootstrap" />
+          Bootstrap
+        </NuxtLink>
+      </li>
+      <li class="group">
+        <NuxtLink
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('tailwind')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
+          to="/portfolio/frontend?tag=tailwind"
+          @click="clickLink"
+        >
+          <Icon name="vscode-icons:file-type-tailwind" size="16" title="Tailwind" alt="Tailwind" />
+          Tailwind
+        </NuxtLink>
+      </li>
+      <li class="group">
+        <NuxtLink
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('vue')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
+          to="/portfolio/frontend?tag=vue"
+          @click="clickLink"
+        >
+          <Icon name="vscode-icons:file-type-vue" size="16" title="Vue" alt="Vue" />
+          Vue
+        </NuxtLink>
+      </li>
+      <li class="group">
+        <NuxtLink
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('nuxt')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
+          to="/portfolio/frontend?tag=nuxt"
+          @click="clickLink"
+        >
+          <Icon name="vscode-icons:file-type-nuxt" size="16" title="Nuxt" alt="Nuxt" />
+          Nuxt
+        </NuxtLink>
+      </li>
+      <li class="group">
+        <NuxtLink
+          class="flex w-full cursor-pointer items-center justify-start gap-2 before:ml-12 before:mr-2 before:block before:h-full before:w-[1px] before:bg-white/20 before:content-[''] after:content-['M'] hover:font-semibold group-hover:bg-black/20"
+          :class="
+            isActive('typescript')
+              ? 'text-amber-200 after:ml-auto after:mr-2 after:inline-block after:h-4 after:w-4 after:text-sm after:font-bold hover:text-amber-400'
+              : 'text-white/80 after:hidden hover:text-white'
+          "
+          to="/portfolio/frontend?tag=typescript"
+          @click="clickLink"
+        >
+          <Icon name="vscode-icons:file-type-typescript-official" size="16" title="Typescript" alt="Typescript" />
+          Typescript
         </NuxtLink>
       </li>
       <li class="group">

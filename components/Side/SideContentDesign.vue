@@ -222,9 +222,9 @@ const hoveredData = computed(() => {
                 <div
                   class="ml-4 flex aspect-square size-6 items-center justify-center border border-solid border-gray-800 bg-white lg:ml-6 lg:size-8"
                 >
-                  <Icon class="size-fit" name="vscode-icons:file-type-vscode" size="18" title="Web" alt="Web" />
+                  <Icon class="size-fit" name="skill-icons:figma-dark" size="18" title="Web Design" alt="Web Design" />
                 </div>
-                Web
+                Web Design
               </div>
             </NuxtLink>
           </li>
@@ -250,16 +250,16 @@ const hoveredData = computed(() => {
                 <div
                   class="ml-4 flex aspect-square size-6 items-center justify-center border border-solid border-gray-800 bg-white lg:ml-6 lg:size-8"
                 >
-                  <Icon class="size-fit" name="logos:adobe-dreamweaver" size="18" title="Edm" alt="Edm" />
+                  <Icon class="size-fit" name="logos:adobe-illustrator" size="18" title="Edm Design" alt="Edm Design" />
                 </div>
-                Edm
+                Edm Design
               </div>
             </NuxtLink>
           </li>
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/portfolio/design?tag=interface"
+              to="/portfolio/design?tag=banner"
               @click="clickLink"
             >
               <div
@@ -267,7 +267,7 @@ const hoveredData = computed(() => {
               >
                 <div
                   class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
-                  :class="isActive('interface') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
+                  :class="isActive('banner') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
                 >
                   <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
                 </div>
@@ -278,16 +278,16 @@ const hoveredData = computed(() => {
                 <div
                   class="ml-4 flex aspect-square size-6 items-center justify-center border border-solid border-gray-800 bg-white lg:ml-6 lg:size-8"
                 >
-                  <Icon class="size-fit" name="skill-icons:figma-dark" size="18" title="Interface" alt="Interface" />
+                  <Icon class="size-fit" name="logos:adobe-photoshop" size="18" title="Banner" alt="Banner" />
                 </div>
-                Interface
+                Banner
               </div>
             </NuxtLink>
           </li>
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/portfolio/design?tag=publication"
+              to="/portfolio/design?tag=video card"
               @click="clickLink"
             >
               <div
@@ -295,7 +295,7 @@ const hoveredData = computed(() => {
               >
                 <div
                   class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
-                  :class="isActive('publication') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
+                  :class="isActive('video card') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
                 >
                   <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
                 </div>
@@ -306,16 +306,16 @@ const hoveredData = computed(() => {
                 <div
                   class="ml-4 flex aspect-square size-6 items-center justify-center border border-solid border-gray-800 bg-white lg:ml-6 lg:size-8"
                 >
-                  <Icon class="size-fit" name="logos:adobe-indesign" size="18" title="Publication" alt="Publication" />
+                  <Icon class="size-fit" name="logos:adobe-premiere" size="18" title="Video Card" alt="Video Card" />
                 </div>
-                Publication
+                Video Card
               </div>
             </NuxtLink>
           </li>
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/portfolio/design?tag=graphic"
+              to="/portfolio/design?tag=printed"
               @click="clickLink"
             >
               <div
@@ -323,7 +323,7 @@ const hoveredData = computed(() => {
               >
                 <div
                   class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
-                  :class="isActive('graphic') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
+                  :class="isActive('printed') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
                 >
                   <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
                 </div>
@@ -334,65 +334,9 @@ const hoveredData = computed(() => {
                 <div
                   class="ml-4 flex aspect-square size-6 items-center justify-center border border-solid border-gray-800 bg-white lg:ml-6 lg:size-8"
                 >
-                  <Icon class="size-fit" name="logos:adobe-photoshop" size="18" title="Graphic" alt="Graphic" />
+                  <Icon class="size-fit" name="logos:adobe-indesign" size="18" title="Printed" alt="Printed" />
                 </div>
-                Graphic
-              </div>
-            </NuxtLink>
-          </li>
-          <li class="group">
-            <NuxtLink
-              class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/portfolio/design?tag=media"
-              @click="clickLink"
-            >
-              <div
-                class="flex h-10 w-8 items-center justify-center border-r border-solid border-zinc-700 sm:h-12 sm:w-10"
-              >
-                <div
-                  class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
-                  :class="isActive('media') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
-                >
-                  <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
-                </div>
-              </div>
-              <div
-                class="flex h-full w-full max-w-[calc(100%-2rem)] cursor-pointer items-center justify-start gap-1 px-1 py-2 group-hover:bg-slate-500 sm:max-w-[calc(100%-2.5rem)] lg:gap-2 lg:px-2"
-              >
-                <div
-                  class="ml-4 flex aspect-square size-6 items-center justify-center border border-solid border-gray-800 bg-white lg:ml-6 lg:size-8"
-                >
-                  <Icon class="size-fit" name="logos:adobe-after-effects" size="18" title="Media" alt="Media" />
-                </div>
-                Media
-              </div>
-            </NuxtLink>
-          </li>
-          <li class="group">
-            <NuxtLink
-              class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/portfolio/design?tag=product"
-              @click="clickLink"
-            >
-              <div
-                class="flex h-10 w-8 items-center justify-center border-r border-solid border-zinc-700 sm:h-12 sm:w-10"
-              >
-                <div
-                  class="border-solid border-b-white/30 border-l-black/30 border-r-white/30 border-t-black/30 bg-zinc-600 shadow-inner"
-                  :class="isActive('product') ? '*:border-0 *:opacity-100' : 'border *:opacity-0'"
-                >
-                  <Icon name="mdi:eye" size="16" title="Show" alt="Show" />
-                </div>
-              </div>
-              <div
-                class="flex h-full w-full max-w-[calc(100%-2rem)] cursor-pointer items-center justify-start gap-1 px-1 py-2 group-hover:bg-slate-500 sm:max-w-[calc(100%-2.5rem)] lg:gap-2 lg:px-2"
-              >
-                <div
-                  class="ml-4 flex aspect-square size-6 items-center justify-center border border-solid border-gray-800 bg-white lg:ml-6 lg:size-8"
-                >
-                  <Icon class="size-fit" name="logos:adobe-illustrator" size="18" title="Product" alt="Product" />
-                </div>
-                Product
+                Printed
               </div>
             </NuxtLink>
           </li>

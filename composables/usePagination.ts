@@ -61,7 +61,7 @@ export function usePagination(
     }
 
     // 確保在導航前，抓取最新的頁碼陣列
-    const updatedPages = pagesArray.value
+    // const updatedPages = pagesArray.value
 
     // 更新 query 並導航
     query.page = String(currentPage.value)
