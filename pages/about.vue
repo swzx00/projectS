@@ -16,21 +16,11 @@ useGsapAnimations()
       class="relative z-0 ml-auto mr-0 h-full min-h-[calc(100dvh-8rem)] w-full max-w-full bg-gray-200 lg:max-w-[calc(100%-150px)] xl:max-w-[calc(100%-175px)] 2xl:max-w-[calc(100%-200px)]"
     >
       <div class="flex w-full max-w-full flex-col items-start justify-start gap-0">
-        <!-- .section-container-01 -->
+        <!-- .section-container -->
         <div
-          id="section-container-01"
-          class="relative h-[calc(100dvh-4rem)] max-h-[calc(100dvh-4rem)] w-full max-w-full"
+          id="section-container"
+          class="relative h-[calc(1200dvh-4rem)] max-h-[calc(1200dvh-4rem)] w-full max-w-full"
           style="border: 5px solid red"
-        ></div>
-        <div
-          id="section-container-02"
-          class="relative h-[calc(100dvh-4rem)] max-h-[calc(100dvh-4rem)] w-full max-w-full"
-          style="border: 5px solid green"
-        ></div>
-        <div
-          id="section-container-03"
-          class="relative h-[calc(100dvh-4rem)] max-h-[calc(100dvh-4rem)] w-full max-w-full"
-          style="border: 5px solid blue"
         ></div>
         <!-- #btn-resume -->
         <NuxtLink
@@ -52,33 +42,31 @@ useGsapAnimations()
         <section
           id="section-01"
           class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] h-fit max-h-[calc(100dvh-4rem)] w-full max-w-[calc((100%-4rem))] -translate-x-1/2 -translate-y-1/2 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100%/4*3)] xl:left-[calc((100dvw+175px)/2)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[calc(100%/3*2)]"
-          style="border: 5px solid cy"
         >
-          <div id="section-translate-01" class="size-fit max-h-full max-w-full" style="border: 1px solid gold">
-            <div class="flex w-full flex-row flex-nowrap items-center justify-start gap-4">
-              <picture
-                class="m-0 flex aspect-square size-32 overflow-hidden rounded-full border border-solid border-white shadow-md transition-all"
-              >
-                <img
-                  class="m-0 h-auto max-h-fit w-full max-w-full translate-x-[40%] translate-y-[60%] scale-[400%] object-cover object-center"
-                  src="/images/about.webp"
-                  title="大頭照"
-                  alt="大頭照"
-                  width="504"
-                  height="672"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
-              <h1
-                class="m-0 inline-flex flex-col items-start justify-center gap-2 text-4xl font-black leading-none text-gray-800"
-              >
-                林家丞
-                <span class="inline-block align-baseline font-Fira text-base font-bold leading-none text-gray-700">
-                  Chia-Cheng, Lin
-                </span>
-              </h1>
-            </div>
+          <div id="section-translate-01" class="flex size-fit max-h-full max-w-full flex-wrap gap-4">
+            <picture
+              id="section-01-pic"
+              class="absolute left-0 top-0 z-10 m-0 flex aspect-square size-32 overflow-hidden rounded-full border border-solid border-white shadow-md transition-all"
+            >
+              <img
+                class="m-0 aspect-auto h-auto max-h-fit w-full max-w-full translate-x-[0%] translate-y-[0%] scale-[100%] object-cover object-center"
+                src="/images/about-circle.webp"
+                title="大頭照"
+                alt="大頭照"
+                width="1109"
+                height="1479"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <h1
+              class="m-0 ml-36 inline-flex min-h-32 flex-col items-start justify-center gap-2 text-4xl font-black leading-none text-gray-800"
+            >
+              林家丞
+              <span class="inline-block align-baseline font-Fira text-base font-bold leading-none text-gray-700">
+                Chia-Cheng, Lin
+              </span>
+            </h1>
             <p class="m-0 w-full text-justify text-base font-normal text-gray-600">
               我是個前端，同時也是個設計。目前任職於1111人力銀行的前端設計，主要負責網站前端的開發與維護。在我成為前端前，我是個設計師，所以對於UI/UX相關領域也是相當瞭解。熟悉Html、Css、Javascript等網頁相關技術，同時也有在接觸Vue、Nuxt等框架。能結合前端技術與設計經驗，打造高效且美觀的網站，為使用者提供最佳體驗。
             </p>
@@ -121,115 +109,66 @@ useGsapAnimations()
                 View Resume
               </NuxtLink>
             </div>
+            <span class="mx-auto inline-block text-center text-sm text-gray-400">向下滑動查看更多</span>
           </div>
         </section>
         <!-- #section-02 -->
         <section
           id="section-02"
-          class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] h-fit max-h-[calc(100dvh-4rem)] w-full max-w-[calc(100dvw)] -translate-x-1/2 -translate-y-1/2 opacity-0 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100dvw-150px)] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[calc(100dvw-175px)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[calc(100dvw-200px)]"
-          style="border: 5px solid chartreuse"
+          class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] h-fit max-h-[calc(100dvh-4rem)] w-full max-w-[calc(100dvw)] -translate-x-1/2 -translate-y-1/2 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100dvw-150px)] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[calc(100dvw-175px)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[calc(100dvw-200px)]"
         >
           <div
-            id="section-translate-02"
-            class="flex size-full max-h-[calc(100dvh-4rem)] max-w-full flex-row flex-nowrap items-center justify-start gap-8"
-            style="border: 5px solid pink"
+            class="relative flex h-[calc(100dvh-4rem)] max-h-[calc(100dvh-4rem)] w-full max-w-full flex-row flex-nowrap items-center justify-start gap-8"
           >
             <picture
-              class="m-0 flex aspect-3/4 h-full max-h-[calc(100dvh-6rem)] w-auto overflow-hidden border border-solid border-white"
+              id="section-02-pic"
+              class="absolute bottom-4 left-16 m-0 flex aspect-3/4 h-[calc(100%-2rem)] w-auto overflow-hidden border border-solid border-white opacity-0"
             >
               <img
                 class="m-0 h-auto max-h-fit w-full max-w-full object-cover object-center"
-                src="/images/about.webp"
+                src="/images/about-picture.webp"
                 title="大頭照"
                 alt="大頭照"
-                width="504"
-                height="672"
+                width="888"
+                height="1185"
                 loading="lazy"
                 decoding="async"
               />
             </picture>
-          </div>
-        </section>
-        <!-- <section
-          class="section-02 mx-auto h-[calc(100dvh-4rem)] w-full max-w-full flex-row flex-wrap px-4 py-6"
-          style="border: 5px solid green"
-        >
-          <picture
-            class="m-0 flex aspect-3/4 h-full max-h-full w-auto overflow-hidden border border-solid border-white"
-          >
-            <img
-              class="m-0 h-auto max-h-fit w-full max-w-full object-cover object-center"
-              src="/images/about.webp"
-              title="大頭照"
-              alt="大頭照"
-              width="504"
-              height="672"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-        </section> -->
-        <!-- .section-03 -->
-        <!-- <section
-          class="section-03 mx-auto h-[calc(100dvh-4rem)] w-full max-w-full flex-row flex-wrap px-4 py-6"
-          style="border: 1px solid white"
-        >
-          <div
-            class="mx-auto flex h-full w-full max-w-[calc(100%/3*2)] flex-col flex-nowrap items-center justify-center gap-8"
-          >
-            <div class="flex w-full flex-row flex-nowrap items-center justify-start gap-4">
-              <picture
-                class="m-0 flex aspect-square size-32 max-h-32 max-w-32 overflow-hidden rounded-full border border-solid border-white shadow-md"
+            <picture
+              id="section-02-pic-matting"
+              class="absolute bottom-4 left-16 m-0 hidden aspect-3/4 h-[calc(100%-2rem)] w-auto overflow-hidden border border-solid border-white opacity-0"
+            >
+              <img
+                class="m-0 h-auto max-h-fit w-full max-w-full object-cover object-center"
+                src="/images/about-picture-matting.webp"
+                title="大頭照"
+                alt="大頭照"
+                width="888"
+                height="1185"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div id="section-02-text" class="absolute right-16 top-32 flex flex-col items-end gap-2 opacity-0">
+              <h2
+                class="m-0 inline-flex w-full flex-col items-end justify-center gap-2 text-6xl font-black leading-none text-gray-800"
               >
-                <img
-                  class="m-0 h-auto max-h-fit w-full max-w-full translate-x-[40%] translate-y-[60%] scale-[400%] object-cover object-center"
-                  src="/images/about.webp"
-                  title="大頭照"
-                  alt="大頭照"
-                  width="504"
-                  height="672"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
-              <h1
-                class="m-0 inline-flex flex-col items-start justify-center gap-2 text-4xl font-black leading-none text-gray-800"
-              >
-                LALALA
-                <span class="inline-block align-baseline font-Fira text-base font-bold leading-none text-gray-700">
+                林家丞
+                <span class="inline-block align-baseline font-Fira text-sm font-bold leading-none text-gray-700">
                   Chia-Cheng, Lin
                 </span>
-              </h1>
-            </div>
-            <p class="m-0 w-full text-justify text-base font-normal text-gray-600">
-              我是個前端，同時也是個設計。目前任職於1111人力銀行的前端設計，主要負責網站前端的開發與維護。在我成為前端前，我是個設計師，所以對於UI/UX相關領域也是相當瞭解。熟悉Html、Css、Javascript等網頁相關技術，同時也有在接觸Vue、Nuxt等框架。能結合前端技術與設計經驗，打造高效且美觀的網站，為使用者提供最佳體驗。
-            </p>
-            <div
-              class="m-0 flex w-full flex-row flex-nowrap items-center justify-start gap-8 text-start text-base font-normal text-gray-600"
-            >
-              <p class="flex flex-row items-center justify-start gap-2" title="連絡電話">
-                <Icon class="text-gray-600" name="uil:phone" size="20" title="連絡電話" alt="連絡電話" />
-                <a
-                  href="tel:8860921702528"
-                  target="_self"
-                  class="group flex flex-row items-center justify-start gap-0 underline-offset-2 transition-all hover:text-blue-600 hover:underline hover:underline-offset-4"
-                >
-                  <span class="text-sm text-gray-500 group-hover:text-blue-600">(+886)</span>&nbsp;0921-702-528
-                </a>
+                <hr class="my-2 w-full border border-solid border-blue-600" />
+              </h2>
+              <p id="section-02-p01" class="text-sm leading-none text-gray-700 opacity-0">
+                <span class="text-base font-bold">淡江大學 資訊傳播學系</span> 畢業 (2009-2013)
               </p>
-              <p class="flex flex-row items-center justify-start gap-2" title="電子信箱">
-                <Icon class="text-gray-600" name="uil:envelope" size="20" title="電子信箱" alt="電子信箱" />
-                <a
-                  href="mailto:swzx00@gmail.com"
-                  target="_self"
-                  class="group flex flex-row items-center justify-start gap-0 underline underline-offset-2 transition-all hover:text-blue-600 hover:underline hover:underline-offset-4"
-                >
-                  swzx00@gmail.com
-                </a>
+              <p id="section-02-p02" class="text-sm leading-none text-gray-700 opacity-0">
+                現職 <span class="text-base font-bold">1111人力銀行</span> 前端設計
               </p>
             </div>
           </div>
-        </section> -->
+        </section>
       </div>
     </main>
     <Icon
