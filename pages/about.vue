@@ -125,7 +125,7 @@ useGsapAnimations()
           >
             <img
               class="mx-0 mb-0 mt-auto aspect-3/4 h-auto max-h-fit w-full max-w-full origin-bottom-right scale-[1] object-cover object-center lg:scale-[1.1] xl:scale-[1.2] 2xl:scale-[1.3]"
-              src="/images/about-picture-matting.webp"
+              src="https://fakeimg.pl/300x200/200"
               title="形象照(去背)"
               alt="形象照(去背)"
               width="1109"
@@ -189,7 +189,8 @@ useGsapAnimations()
           <!-- 第三屏 -->
           <div
             id="screen03-container"
-            class="fixed left-0 top-16 box-border flex h-full max-h-[calc(100dvh-4rem)] w-full max-w-[100dvw] flex-col flex-nowrap items-start justify-center gap-4 overflow-hidden bg-transparent px-40 lg:left-[150px] lg:max-w-[calc(100dvw-150px)] xl:left-[175px] xl:max-w-[calc(100dvw-175px)] 2xl:left-[200px] 2xl:max-w-[calc(100dvw-200px)]"
+            class="fixed left-0 top-16 box-border flex h-full max-h-[calc(100dvh-4rem)] w-full max-w-[100dvw] flex-col flex-wrap items-start justify-center gap-4 overflow-hidden bg-transparent px-40 lg:left-[150px] lg:max-w-[calc(100dvw-150px)] xl:left-[175px] xl:max-w-[calc(100dvw-175px)] 2xl:left-[200px] 2xl:max-w-[calc(100dvw-200px)]"
+            style="border: 3px solid black"
           >
             <!-- 第三屏 bg -->
             <div id="screen03-bg" class="absolute left-0 top-0 z-0 h-full w-full bg-transparent"></div>
@@ -205,34 +206,34 @@ useGsapAnimations()
             <!-- 第三屏 Title -->
             <h2
               id="screen03-title"
-              class="z-10 hidden flex-col items-start justify-start gap-2 p-0 text-3xl font-black leading-none text-gray-800 drop-shadow-2xl transition-all"
+              class="z-10 inline-flex h-14 w-fit flex-col items-start justify-start gap-2 p-0 text-3xl font-black leading-none text-gray-100 drop-shadow-2xl transition-all before:absolute before:z-[-1] before:block before:h-full before:w-full before:-rotate-[5deg] before:-skew-x-12 before:scale-125 before:bg-blue-600"
             >
               經歷
-              <span class="ml-1 inline-flex align-baseline font-Fira text-base font-bold leading-none text-gray-600">
+              <span class="ml-1 inline-flex align-baseline font-Fira text-base font-bold leading-none text-gray-200">
                 Experience
               </span>
             </h2>
             <!-- 第三屏 Content -->
             <div
               id="screen03-content"
-              class="relative mt-8 hidden w-full max-w-[calc(100%/2)] flex-col items-center justify-between gap-0 transition-all"
+              class="ms:max-w-[calc(100%/7*6)] relative inline-flex h-fit max-h-[calc(90%-4.5rem)] w-full max-w-[calc(100%)] flex-col items-center justify-start gap-0 transition-all sm:max-w-[calc(100%/7*6)] md:max-w-[calc(100%/6*5)] lg:max-w-[calc(100%/5*4)] xl:max-w-[calc(100%/4*3)] 2xl:max-w-[calc(100%/3*2)]"
+              style="border: 1px solid red"
             >
               <div
                 id="screen03-timeline-00"
-                class="relative hidden w-full max-w-full origin-bottom flex-wrap items-start justify-start gap-4 transition-all"
-              >
-                <div class="max-full relative ml-24 h-full w-full max-w-[calc(100%-6rem)] pl-4 pt-7">
-                  <span
-                    class="line absolute bottom-0 left-0 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0 before:absolute before:block before:h-2 before:w-0.5 before:origin-top before:rotate-45 before:rounded-full before:bg-blue-950 after:absolute after:block after:h-2 after:w-0.5 after:origin-top after:-rotate-45 after:rounded-full after:bg-blue-950"
-                  ></span>
-                </div>
-              </div>
-              <div
-                id="screen03-timeline-01"
-                class="relative hidden w-full max-w-full origin-bottom flex-wrap items-start justify-start gap-4 transition-all"
+                class="relative flex h-full max-h-[3%] w-full max-w-full origin-bottom flex-col flex-wrap items-start justify-start gap-0 opacity-0 transition-all"
               >
                 <div
-                  class="timeline-title aspect-square size-20 max-h-full max-w-full origin-bottom rounded-full border border-solid border-gray-300 bg-white p-2 opacity-0"
+                  class="absolute bottom-0 left-20 block h-full w-0.5 -translate-x-1/2 bg-red-600 before:absolute before:block before:h-3 before:w-0.5 before:origin-top before:rotate-45 before:rounded-full before:bg-blue-950 after:absolute after:block after:h-3 after:w-0.5 after:origin-top after:-rotate-45 after:rounded-full after:bg-blue-950"
+                ></div>
+              </div>
+              <!-- timeline 01 -->
+              <div
+                id="screen03-timeline-01"
+                class="relative flex h-fit min-h-20 w-full max-w-full origin-bottom flex-col flex-nowrap items-start justify-start gap-0 py-4 opacity-0 transition-all"
+              >
+                <div
+                  class="absolute top-0 aspect-square h-16 max-h-full w-auto max-w-full origin-bottom overflow-hidden rounded-full border border-solid border-red-300 bg-white p-2"
                 >
                   <img
                     class="size-full max-h-full max-w-full object-contain"
@@ -245,51 +246,53 @@ useGsapAnimations()
                     decoding="async"
                   />
                 </div>
-                <div class="max-full relative h-full w-full max-w-[calc(100%-6rem)] pl-4 pt-7 transition-all">
-                  <span class="dot absolute -left-1 top-9 block size-2 rounded-full bg-blue-950 opacity-0"></span>
-                  <span
-                    class="line absolute bottom-0 left-0 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
-                  ></span>
-                  <div class="timeline-title mb-6 origin-bottom opacity-0">
-                    <p class="text-2xl font-black leading-6 text-gray-950">
-                      1111人力銀行 <span class="text-xl font-bold text-gray-700">網路相關、人力派遣 / 人力供應業</span>
-                    </p>
-                    <p class="describe-txt text-base font-normal leading-normal text-gray-800">
-                      台灣知名的人力仲介公司，提供企業與求職者的媒合服務。
-                    </p>
-                  </div>
-                  <div class="job-txt mb-3 hidden origin-top transition-all">
-                    <p class="mb-2 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
-                      <span
-                        class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
-                        >前端設計
-                      </span>
-                      (2023/02 - Now)
-                    </p>
-                    <p class="ml-2 text-lg font-normal leading-normal text-gray-800">
-                      負責公司網站的前端開發、切版以及維護，以及支援活動專區的網站相關開發。
-                    </p>
-                  </div>
-                  <div class="job-txt mb-3 hidden origin-top transition-all">
-                    <p class="mb-2 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
-                      <span
-                        class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
-                        >設計師
-                      </span>
-                      (2020/01 - 2023/02)
-                    </p>
-                    <p class="mb-3 ml-2 text-lg font-normal leading-normal text-gray-800">
-                      負責公司的網頁設計、EDM設計、DM設計 等相關設計。以及各類活動相關輸出物設計。
-                    </p>
-                  </div>
+                <div
+                  class="dot absolute left-20 top-8 block size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950 opacity-0"
+                ></div>
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="ml-24 inline-block w-fit text-2xl font-black leading-8 text-gray-950">
+                  1111人力銀行1
+                  <span class="text-xl font-bold leading-6 text-gray-700">網路相關、人力派遣 / 人力供應業</span>
+                </p>
+                <p class="describe-txt ml-24 inline-block w-fit text-base font-normal leading-5 text-gray-800">
+                  台灣知名的人力仲介公司，提供企業與求職者的媒合服務。
+                </p>
+
+                <div id="screen03-timeline-01-contents" class="relative hidden h-fit w-full max-w-full pb-4">
+                  <div
+                    class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950"
+                  ></div>
+                  <p class="mb-2 ml-24 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
+                    <span
+                      class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
+                      >前端設計
+                    </span>
+                    (2023/02 - Now)
+                  </p>
+                  <p class="mb-2 ml-24 text-lg font-normal leading-normal text-gray-800">
+                    負責公司網站的前端開發、切版以及維護，以及支援活動專區的網站相關開發。
+                  </p>
+                  <p class="ml-24 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
+                    <span
+                      class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
+                      >設計師
+                    </span>
+                    (2020/01 - 2023/02)
+                  </p>
+                  <p class="ml-24 text-lg font-normal leading-normal text-gray-800">
+                    負責公司的網頁設計、EDM設計、DM設計 等相關設計。以及各類活動相關輸出物設計。
+                  </p>
                 </div>
               </div>
+              <!-- timeline 02 -->
               <div
                 id="screen03-timeline-02"
-                class="relative hidden w-full max-w-full origin-bottom flex-wrap items-start justify-start gap-4 transition-all"
+                class="relative flex h-fit min-h-20 w-full max-w-full origin-bottom flex-col flex-nowrap items-start justify-start gap-0 py-4 opacity-0 transition-all"
               >
                 <div
-                  class="timeline-title aspect-square size-20 max-h-full max-w-full origin-bottom rounded-full border border-solid border-gray-300 bg-white p-2 opacity-0"
+                  class="absolute top-0 aspect-square h-16 max-h-full w-auto max-w-full origin-bottom overflow-hidden rounded-full border border-solid border-red-300 bg-white p-2"
                 >
                   <img
                     class="size-full max-h-full max-w-full object-contain"
@@ -302,39 +305,42 @@ useGsapAnimations()
                     decoding="async"
                   />
                 </div>
-                <div class="max-full relative h-full w-full max-w-[calc(100%-6rem)] pl-4 pt-7 transition-all">
-                  <span class="dot absolute -left-1 top-9 block size-2 rounded-full bg-blue-950 opacity-0"></span>
-                  <span
-                    class="line absolute bottom-0 left-0 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
-                  ></span>
-                  <div class="timeline-title mb-6 origin-bottom opacity-0">
-                    <p class="text-2xl font-black leading-6 text-gray-950">
-                      晏晟科技 <span class="text-xl font-bold text-gray-700">電腦軟體服務業</span>
-                    </p>
-                    <p class="describe-txt mb-6 text-base font-normal leading-normal text-gray-800">
-                      從事GIS資訊軟體開發，主要承接政府機關資訊軟體開發案。
-                    </p>
-                  </div>
-                  <div class="job-txt mb-6 hidden origin-top transition-all">
-                    <p class="mb-2 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
-                      <span
-                        class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
-                        >網頁設計師
-                      </span>
-                      (2019/04 - 2019/11)
-                    </p>
-                    <p class="mb-3 ml-2 text-lg font-normal leading-normal text-gray-800">
-                      負責公司的網頁設計、UI/UX設計、廣告DM設計、海報設計及展場規劃設計。
-                    </p>
-                  </div>
-                </div>
+                <div
+                  class="dot absolute left-20 top-8 block size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950 opacity-0"
+                ></div>
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="ml-24 inline-block w-fit text-2xl font-black leading-8 text-gray-950">
+                  晏晟科技
+                  <span class="text-xl font-bold leading-6 text-gray-700">電腦軟體服務業</span>
+                </p>
+                <p class="describe-txt ml-24 inline-block w-fit text-base font-normal leading-5 text-gray-800">
+                  從事GIS資訊軟體開發，主要承接政府機關資訊軟體開發案。
+                </p>
               </div>
+              <div id="screen03-timeline-02-content" class="relative hidden h-fit max-h-[25%] w-full max-w-full pb-4">
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="mb-2 ml-24 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
+                  <span
+                    class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
+                    >網頁設計師
+                  </span>
+                  (2019/04 - 2019/11)
+                </p>
+                <p class="mb-2 ml-24 text-lg font-normal leading-normal text-gray-800">
+                  負責公司的網頁設計、UI/UX設計、廣告DM設計、海報設計及展場規劃設計。
+                </p>
+              </div>
+              <!-- timeline 03 -->
               <div
                 id="screen03-timeline-03"
-                class="relative hidden w-full max-w-full origin-bottom flex-wrap items-start justify-start gap-4 transition-all"
+                class="relative flex h-fit min-h-20 w-full max-w-full origin-bottom flex-col flex-nowrap items-start justify-start gap-0 py-4 opacity-0 transition-all"
               >
                 <div
-                  class="timeline-title aspect-square size-20 max-h-full max-w-full origin-bottom rounded-full border border-solid border-gray-300 bg-white p-2 opacity-0"
+                  class="absolute top-0 aspect-square h-16 max-h-full w-auto max-w-full origin-bottom overflow-hidden rounded-full border border-solid border-red-300 bg-white p-2"
                 >
                   <img
                     class="size-full max-h-full max-w-full object-contain"
@@ -347,62 +353,84 @@ useGsapAnimations()
                     decoding="async"
                   />
                 </div>
-                <div class="max-full relative h-full w-full max-w-[calc(100%-6rem)] pl-4 pt-7 transition-all">
-                  <span class="dot absolute -left-1 top-9 block size-2 rounded-full bg-blue-950 opacity-0"></span>
-                  <span
-                    class="line absolute bottom-0 left-0 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
-                  ></span>
-                  <div class="timeline-title mb-6 origin-bottom opacity-0">
-                    <p class="text-2xl font-black leading-6 text-gray-950">
-                      Fluke 美國福祿克 <span class="text-xl font-bold text-gray-700">精密儀器相關製造業</span>
-                    </p>
-                    <p class="describe-txt mb-6 text-base font-normal leading-normal text-gray-800">
-                      提供各種工業領域測試和檢測故障的優質電子儀器儀表。
-                    </p>
-                  </div>
-                  <div class="job-txt mb-6 hidden">
-                    <p class="mb-2 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
-                      <span
-                        class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
-                        >市場行銷
-                      </span>
-                      (2015/05 - 2018/06)
-                    </p>
-                    <p class="mb-3 ml-2 text-lg font-normal leading-normal text-gray-800">
-                      型錄設計、廣告DM設計、E-DM製作及發送、網站修改以及新產品上市後的相關行銷活動企劃。另外也負責開設及管理臉書粉絲專頁。
-                    </p>
-                  </div>
-                </div>
+                <div
+                  class="dot absolute left-20 top-8 block size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950 opacity-0"
+                ></div>
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="ml-24 inline-block w-fit text-2xl font-black leading-8 text-gray-950">
+                  Fluke 美國福祿克
+                  <span class="text-xl font-bold leading-6 text-gray-700">精密儀器相關製造業</span>
+                </p>
+                <p class="describe-txt ml-24 inline-block w-fit text-base font-normal leading-5 text-gray-800">
+                  提供各種工業領域測試和檢測故障的優質電子儀器儀表。
+                </p>
               </div>
+              <div id="screen03-timeline-03-content" class="relative hidden h-fit max-h-[25%] w-full max-w-full pb-4">
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="mb-2 ml-24 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
+                  <span
+                    class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
+                    >市場行銷
+                  </span>
+                  (2015/05 - 2018/06)
+                </p>
+                <p class="mb-2 ml-24 text-lg font-normal leading-normal text-gray-800">
+                  型錄設計、廣告DM設計、E-DM製作及發送、網站修改以及新產品上市後的相關行銷活動企劃。另外也負責開設及管理臉書粉絲專頁。
+                </p>
+              </div>
+              <!-- timeline 04 -->
               <div
                 id="screen03-timeline-04"
-                class="relative hidden w-full max-w-full origin-bottom flex-wrap items-start justify-start gap-4 transition-all"
-              >
-                <div class="max-full relative ml-24 h-full w-full max-w-[calc(100%-6rem)] pl-4 pt-7 transition-all">
-                  <span class="dot absolute -left-1 top-9 block size-2 rounded-full bg-blue-950 opacity-0"></span>
-                  <span
-                    class="line absolute bottom-0 left-0 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
-                  ></span>
-                  <div class="timeline-title mb-6 origin-bottom opacity-0">
-                    <p class="text-2xl font-black leading-6 text-gray-950">兵役</p>
-                  </div>
-                  <div class="job-txt mb-6 hidden">
-                    <p class="mb-2 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
-                      <span
-                        class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
-                        >一般常備役
-                      </span>
-                      (2013/12 - 2014/11)
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
-                id="screen03-timeline-05"
-                class="relative hidden w-full max-w-full origin-bottom flex-wrap items-start justify-start gap-4 transition-all"
+                class="relative flex h-fit min-h-20 w-full max-w-full origin-bottom flex-col flex-nowrap items-start justify-start gap-0 py-4 opacity-0 transition-all"
               >
                 <div
-                  class="timeline-title aspect-square size-20 max-h-full max-w-full origin-bottom rounded-full border border-solid border-gray-300 bg-white p-2 opacity-0"
+                  class="absolute top-0 aspect-square h-16 max-h-full w-auto max-w-full origin-bottom overflow-hidden rounded-full border border-solid border-red-300 bg-white p-2"
+                >
+                  <img
+                    class="size-full max-h-full max-w-full object-contain"
+                    src="/images/logo-1111.svg"
+                    title="1111人力銀行(全球華人股份有限公司)"
+                    alt="1111人力銀行(全球華人股份有限公司)"
+                    width="107"
+                    height="27"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div
+                  class="dot absolute left-20 top-8 block size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950 opacity-0"
+                ></div>
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="ml-24 inline-block w-fit text-2xl font-black leading-8 text-gray-950">
+                  兵役
+                  <span class="text-xl font-bold leading-6 text-gray-700">網路相關、人力派遣 / 人力供應業</span>
+                </p>
+              </div>
+              <div id="screen03-timeline-04-content" class="relative hidden h-fit max-h-[25%] w-full max-w-full pb-4">
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="mb-2 ml-24 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
+                  <span
+                    class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
+                    >一般常備役
+                  </span>
+                  (2013/12 - 2014/11)
+                </p>
+              </div>
+              <!-- timeline 05 -->
+              <div
+                id="screen03-timeline-05"
+                class="relative flex h-fit min-h-20 w-full max-w-full origin-bottom flex-col flex-nowrap items-start justify-start gap-0 py-4 opacity-0 transition-all"
+              >
+                <div
+                  class="absolute top-0 aspect-square h-16 max-h-full w-auto max-w-full origin-bottom overflow-hidden rounded-full border border-solid border-red-300 bg-white p-2"
                 >
                   <img
                     class="size-full max-h-full max-w-full object-contain"
@@ -415,54 +443,77 @@ useGsapAnimations()
                     decoding="async"
                   />
                 </div>
-                <div class="max-full relative h-full w-full max-w-[calc(100%-6rem)] pl-4 pt-7 transition-all">
-                  <span class="dot absolute -left-1 top-9 block size-2 rounded-full bg-blue-950 opacity-0"></span>
-                  <span
-                    class="line absolute bottom-0 left-0 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
-                  ></span>
-                  <div class="timeline-title mb-6 origin-bottom opacity-0">
-                    <p class="text-2xl font-black leading-6 text-gray-950">淡江大學</p>
-                  </div>
-                  <div class="job-txt mb-6 hidden">
-                    <p class="mb-2 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
-                      <span
-                        class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
-                        >資訊傳播學系
-                      </span>
-                      (2009/09 - 2013/06)
-                    </p>
-                    <p class="mb-3 ml-2 text-lg font-normal leading-normal text-gray-800">
-                      跨學門、跨領域的系所。在學期間，學習到了網頁設計、電腦繪圖、影像編輯、影片剪輯及電腦動畫等多媒體製作的能力。另外還有關於行銷學、電子商務及資訊傳播實務的相關課程。
-                    </p>
-                  </div>
-                </div>
+                <div
+                  class="dot absolute left-20 top-8 block size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950 opacity-0"
+                ></div>
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="ml-24 inline-block w-fit text-2xl font-black leading-8 text-gray-950">
+                  淡江大學
+                  <span class="text-xl font-bold leading-6 text-gray-700">網路相關、人力派遣 / 人力供應業</span>
+                </p>
               </div>
+              <div id="screen03-timeline-05-content" class="relative hidden h-fit max-h-[25%] w-full max-w-full pb-4">
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="mb-2 ml-24 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
+                  <span
+                    class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
+                    >資訊傳播學系
+                  </span>
+                  (2009/09 - 2013/06)
+                </p>
+                <p class="mb-2 ml-24 text-lg font-normal leading-normal text-gray-800">
+                  跨學門、跨領域的系所。在學期間，學習到了網頁設計、電腦繪圖、影像編輯、影片剪輯及電腦動畫等多媒體製作的能力。另外還有關於行銷學、電子商務及資訊傳播實務的相關課程。
+                </p>
+              </div>
+              <!-- timeline 06 -->
               <div
                 id="screen03-timeline-06"
-                class="relative hidden w-full max-w-full origin-bottom flex-wrap items-start justify-start gap-4 transition-all"
+                class="relative flex h-fit min-h-20 w-full max-w-full origin-bottom flex-col flex-nowrap items-start justify-start gap-0 py-4 opacity-0 transition-all"
               >
-                <div class="max-full relative ml-24 h-full w-full max-w-[calc(100%-6rem)] pl-4 pt-7 transition-all">
-                  <span class="dot absolute -left-1 top-9 block size-2 rounded-full bg-blue-950 opacity-0"></span>
-                  <span
-                    class="line absolute left-0 top-0 block h-[2.5rem] w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
-                  ></span>
-                  <div class="timeline-title mb-6 origin-bottom opacity-0">
-                    <p class="text-2xl font-black leading-6 text-gray-950">一切的起點</p>
-                  </div>
-                  <div class="job-txt mb-6 hidden">
-                    <p class="mb-2 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
-                      <span
-                        class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
-                        >雙子座 / 羊
-                      </span>
-                      (1991/05/23)
-                    </p>
-                    <p class="mb-3 ml-2 text-lg font-normal leading-normal text-gray-800">
-                      懵懵懂懂的我，從台北縣新莊市<span class="text-sm"> (現 新北市新莊區) </span
-                      >，爽颯登場!<br />從未知 到探索 的旅程，從這開始啟程。
-                    </p>
-                  </div>
+                <div
+                  class="timeline-title absolute top-0 aspect-square h-16 max-h-full w-auto max-w-full origin-bottom overflow-hidden rounded-full border border-solid border-red-300 bg-white p-2"
+                >
+                  <img
+                    class="size-full max-h-full max-w-full object-contain"
+                    src="/images/logo-1111.svg"
+                    title="1111人力銀行(全球華人股份有限公司)"
+                    alt="1111人力銀行(全球華人股份有限公司)"
+                    width="107"
+                    height="27"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
+                <div
+                  class="dot absolute left-20 top-8 block size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950 opacity-0"
+                ></div>
+                <div
+                  class="line absolute left-20 top-0 block h-8 w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="timeline-title ml-24 inline-block w-fit text-2xl font-black leading-8 text-gray-950">
+                  一切的起點
+                  <span class="text-xl font-bold leading-6 text-gray-700">網路相關、人力派遣 / 人力供應業</span>
+                </p>
+              </div>
+              <div id="screen03-timeline-06-content" class="relative hidden h-fit max-h-[25%] w-full max-w-full pb-4">
+                <div
+                  class="line absolute bottom-0 left-20 block h-full w-0.5 origin-bottom -translate-x-1/2 bg-blue-950 opacity-0"
+                ></div>
+                <p class="mb-2 ml-24 align-baseline font-Fira text-base font-normal leading-7 text-gray-600">
+                  <span
+                    class="mr-1 inline-block w-fit rounded-md bg-gray-600 px-2 py-1 font-Noto text-xl font-bold text-gray-100"
+                    >雙子座 / 羊
+                  </span>
+                  (1991/05/23)
+                </p>
+                <p class="mb-2 ml-24 text-lg font-normal leading-normal text-gray-800">
+                  懵懵懂懂的我，從台北縣新莊市<span class="text-sm"> (現 新北市新莊區) </span>，爽颯登場!<br />
+                  從未知 到探索 的旅程，從這開始啟程。
+                </p>
               </div>
             </div>
           </div>
@@ -628,6 +679,6 @@ useGsapAnimations()
   }
 }
 #screen03-title {
-  text-shadow: #e5e7eb 0 0 20px;
+  /* text-shadow: #e5e7eb 0 0 20px; */
 }
 </style>
