@@ -371,13 +371,14 @@ export function useGsapAnimations() {
       '#screen03-container',
       {
         display: 'none',
-        opacity: 1,
-        pointerEvents: 'auto',
+        opacity: 0,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
           start: 'top top-=1000',
+          end: 'top top-=1001',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
@@ -401,7 +402,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-bg',
       {
-        display: 'none',
+        display: 'flex',
         opacity: 1,
         background: 'linear-gradient(75deg, transparent 100%, #e5e7eb 100%, #e5e7eb 100%)',
         pointerEvents: '',
@@ -438,7 +439,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       ['#screen03-corner-top-left', '#screen03-corner-bottom-right'],
       {
-        display: 'none',
+        display: 'block',
         scaleX: 0,
         opacity: 1,
       },
@@ -453,6 +454,29 @@ export function useGsapAnimations() {
         display: 'block',
         scaleX: 1,
         opacity: 1,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫
+    gsap.fromTo(
+      '#screen02-container',
+      {
+        display: 'block',
+        opacity: 1,
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1200',
+          end: 'top top-=1201',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -519,61 +543,54 @@ export function useGsapAnimations() {
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
-    // <!-- 第三屏 Timeline Item -->
+    // <!-- 第三屏 timeline -->
     // 初始狀態
     gsap.set(
       [
-        '#screen03-timeline-00',
-        '#screen03-timeline-01',
-        '#screen03-timeline-02',
-        '#screen03-timeline-03',
-        '#screen03-timeline-04',
-        '#screen03-timeline-05',
-        '#screen03-timeline-06',
-        '#screen03-timeline-01-content',
-        '#screen03-timeline-02-content',
-        '#screen03-timeline-03-content',
-        '#screen03-timeline-04-content',
-        '#screen03-timeline-05-content',
-        '#screen03-timeline-06-content',
+        '#screen03-timeline-01-company',
+        '#screen03-timeline-01-job01',
+        '#screen03-timeline-01-job02',
+        '#screen03-timeline-02-company',
+        '#screen03-timeline-02-job',
+        '#screen03-timeline-03-company',
+        '#screen03-timeline-03-job',
+        '#screen03-timeline-04-company',
+        '#screen03-timeline-05-company',
+        '#screen03-timeline-05-job',
+        '#screen03-timeline-06-company',
+        '#screen03-timeline-06-job',
       ],
       {
         display: 'none',
-
-        scaleY: 0,
         opacity: 0,
-        borderLeftColor: 'transparent',
         pointerEvents: 'none',
       },
     )
-    // 動畫(#screen03-timeline-06)
+    // 動畫(#screen-timeline-01)
     gsap.fromTo(
-      '#screen03-timeline-06',
+      '#screen03-timeline-01-company',
       {
         display: 'none',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
         opacity: 0,
         pointerEvents: 'none',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=1200',
-          end: 'top top-=1300',
+          start: 'top top-=1300',
+          end: 'top top-=1301',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
         display: 'flex',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
         opacity: 1,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // 動畫(#screen-timeline-01 .timeline-img)
     gsap.fromTo(
-      '#screen03-timeline-06 .dot',
+      '#screen03-timeline-01-company .timeline-img',
       {
         opacity: 0,
         pointerEvents: 'none',
@@ -581,8 +598,8 @@ export function useGsapAnimations() {
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=1200',
-          end: 'top top-=1300',
+          start: 'top top-=1300',
+          end: 'top top-=1400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
@@ -591,28 +608,12 @@ export function useGsapAnimations() {
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // 動畫(#screen-timeline-01 .timeline-title)
     gsap.fromTo(
-      '#screen03-timeline-06 .timeline-title',
+      '#screen03-timeline-01-company .timeline-title',
       {
         opacity: 0,
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=1250',
-          end: 'top top-=1350',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        opacity: 1,
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    gsap.fromTo(
-      '#screen03-timeline-06 .line',
-      {
-        scaleY: 0,
-        opacity: 0,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
@@ -622,78 +623,83 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        scaleY: 1,
         opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
-    // 動畫(#screen03-timeline-05)
+    // 動畫(#screen-timeline-01 .timeline-subtitle)
     gsap.fromTo(
-      '#screen03-timeline-05',
+      '#screen03-timeline-01-company .timeline-subtitle',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1500',
+          end: 'top top-=1600',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫(#screen-timeline-01)
+    gsap.fromTo(
+      '#screen03-timeline-01-job01',
       {
         display: 'none',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
         opacity: 0,
         pointerEvents: 'none',
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=1500',
-          end: 'top top-=1600',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        display: 'flex',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
-        opacity: 1,
-        pointerEvents: 'auto',
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    gsap.fromTo(
-      '#screen03-timeline-05 .dot',
-      {
-        opacity: 0,
-        pointerEvents: 'none',
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=1500',
-          end: 'top top-=1600',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        opacity: 1,
-        pointerEvents: 'auto',
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    gsap.fromTo(
-      '#screen03-timeline-05 .timeline-title',
-      {
-        opacity: 0,
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
           start: 'top top-=1550',
-          end: 'top top-=1650',
+          end: 'top top-=1551',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
+        display: 'flex',
         opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // 動畫(#screen-timeline-01 .line 前半)
     gsap.fromTo(
-      '#screen03-timeline-05 .line',
+      '#screen03-timeline-01-job01 .line',
       {
         scaleY: 0,
         opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1550',
+          end: 'top top-=1600',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 0.5,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen-timeline-01 .dot)
+    gsap.fromTo(
+      '#screen03-timeline-01-job01 .dot',
+      {
+        scale: 0,
+        opacity: 0,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
@@ -703,78 +709,104 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        scaleY: 1,
+        scale: 1,
         opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
-    // 動畫(#screen03-timeline-04)
+    // 動畫(#screen-timeline-01 .job-chat)
     gsap.fromTo(
-      '#screen03-timeline-04',
+      '#screen03-timeline-01-job01 .job-chat',
+      {
+        left: '-5rem',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1600',
+          end: 'top top-=1700',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        left: 'calc(40% + 5rem)',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen-timeline-01 .line 後半)
+    gsap.fromTo(
+      '#screen03-timeline-01-job01 .line',
+      {
+        scaleY: 0.5,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1700',
+          end: 'top top-=1750',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫(#screen-timeline-01)
+    gsap.fromTo(
+      '#screen03-timeline-01-job02',
       {
         display: 'none',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
         opacity: 0,
         pointerEvents: 'none',
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=1700',
-          end: 'top top-=1800',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        display: 'flex',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
-        opacity: 1,
-        pointerEvents: 'auto',
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    gsap.fromTo(
-      '#screen03-timeline-04 .dot',
-      {
-        opacity: 0,
-        pointerEvents: 'none',
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=1700',
-          end: 'top top-=1800',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        opacity: 1,
-        pointerEvents: 'auto',
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    gsap.fromTo(
-      '#screen03-timeline-04 .timeline-title',
-      {
-        opacity: 0,
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
           start: 'top top-=1750',
-          end: 'top top-=1850',
+          end: 'top top-=1751',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
+        display: 'flex',
         opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // 動畫(#screen-timeline-01 .line 前半)
     gsap.fromTo(
-      '#screen03-timeline-04 .line',
+      '#screen03-timeline-01-job02 .line',
       {
         scaleY: 0,
         opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1750',
+          end: 'top top-=1800',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 0.5,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen-timeline-01 .dot)
+    gsap.fromTo(
+      '#screen03-timeline-01-job02 .dot',
+      {
+        scale: 0,
+        opacity: 0,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
@@ -784,60 +816,120 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        scaleY: 1,
+        scale: 1,
         opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
-    // 動畫(#screen03-timeline-03)
+    // 動畫(#screen-timeline-01 .job-chat)
     gsap.fromTo(
-      '#screen03-timeline-03',
+      '#screen03-timeline-01-job02 .job-chat',
       {
-        display: 'none',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
+        left: '-5rem',
         opacity: 0,
         pointerEvents: 'none',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
+          start: 'top top-=1800',
+          end: 'top top-=1900',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        left: 'calc(40% + 5rem)',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen-timeline-01 .line 後半)
+    gsap.fromTo(
+      '#screen03-timeline-01-job02 .line',
+      {
+        scaleY: 0.5,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
           start: 'top top-=1900',
-          end: 'top top-=2000',
+          end: 'top top-=1950',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫(#screen-timeline-02)
+    gsap.fromTo(
+      '#screen03-timeline-02-company',
+      {
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1950',
+          end: 'top top-=1951',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
         display: 'flex',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
         opacity: 1,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // 向上位移
     gsap.fromTo(
-      '#screen03-timeline-03 .dot',
+      '#screen03-title',
       {
-        opacity: 0,
-        pointerEvents: 'none',
+        top: '10rem',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=1900',
-          end: 'top top-=2000',
+          start: 'top top-=1950',
+          end: 'top top-=2400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        opacity: 1,
-        pointerEvents: 'auto',
+        top: 'calc(10rem - 25dvh)',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
     gsap.fromTo(
-      '#screen03-timeline-03 .timeline-title',
+      '#screen03-content',
+      {
+        top: 0,
+        borderColor: 'red',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1950',
+          end: 'top top-=2400',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        top: 'calc(15rem - 25dvh)',
+
+        borderColor: 'green',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫(#screen03-timeline-02-company  .timeline-img)
+    gsap.fromTo(
+      '#screen03-timeline-02-company .timeline-img',
       {
         opacity: 0,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
@@ -848,56 +940,13 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
         },
         opacity: 1,
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    gsap.fromTo(
-      '#screen03-timeline-03 .line',
-      {
-        scaleY: 0,
-        opacity: 0,
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=2000',
-          end: 'top top-=2100',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        scaleY: 1,
-        opacity: 1,
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    // 動畫(#screen03-timeline-02)
-    gsap.fromTo(
-      '#screen03-timeline-02',
-      {
-        display: 'none',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
-        opacity: 0,
-        pointerEvents: 'none',
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=2100',
-          end: 'top top-=2200',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        display: 'flex',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
-        opacity: 1,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // 動畫(#screen03-timeline-02-company  .timeline-title)
     gsap.fromTo(
-      '#screen03-timeline-02 .dot',
+      '#screen03-timeline-02-company .timeline-title',
       {
         opacity: 0,
         pointerEvents: 'none',
@@ -905,8 +954,8 @@ export function useGsapAnimations() {
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=2100',
-          end: 'top top-=2200',
+          start: 'top top-=2050',
+          end: 'top top-=2150',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
@@ -915,10 +964,12 @@ export function useGsapAnimations() {
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // 動畫(#screen03-timeline-02-company  .timeline-subtitle)
     gsap.fromTo(
-      '#screen03-timeline-02 .timeline-title',
+      '#screen03-timeline-02-company .timeline-subtitle',
       {
         opacity: 0,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
@@ -929,57 +980,59 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
         },
         opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+
+    // 動畫(#screen-timeline-02)
     gsap.fromTo(
-      '#screen03-timeline-02 .line',
-      {
-        scaleY: 0,
-        opacity: 0,
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=2200',
-          end: 'top top-=2300',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        scaleY: 1,
-        opacity: 1,
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    // 動畫(#screen03-timeline-01)
-    gsap.fromTo(
-      '#screen03-timeline-01',
+      '#screen03-timeline-02-job',
       {
         display: 'none',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
         opacity: 0,
         pointerEvents: 'none',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=2300',
-          end: 'top top-=2400',
+          start: 'top top-=2250',
+          end: 'top top-=2251',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
         display: 'flex',
-        maxHeight: 'calc(97%/6)',
-        scaleY: 1,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-02 .line 前半)
+    gsap.fromTo(
+      '#screen03-timeline-02-job .line',
+      {
+        scaleY: 0,
+        opacity: 1,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2250',
+          end: 'top top-=2300',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 0.5,
         opacity: 1,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
     gsap.fromTo(
-      '#screen03-timeline-01 .dot',
+      '#screen03-timeline-02-job .dot',
       {
+        scale: 0,
         opacity: 0,
         pointerEvents: 'none',
       },
@@ -991,96 +1044,223 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
+        scale: 1,
         opacity: 1,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
     gsap.fromTo(
-      '#screen03-timeline-01 .timeline-title',
+      '#screen03-timeline-02-job .job-chat',
       {
+        left: '-5rem',
         opacity: 0,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=2350',
-          end: 'top top-=2450',
+          start: 'top top-=2300',
+          end: 'top top-=2400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
+        left: 'calc(40% + 5rem)',
         opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // 動畫(#screen03-timeline-02 .line 後半)
     gsap.fromTo(
-      '#screen03-timeline-01 .line',
+      '#screen03-timeline-02-job .line',
       {
-        scaleY: 0,
-        opacity: 0,
+        scaleY: 0.5,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
           start: 'top top-=2400',
-          end: 'top top-=2500',
+          end: 'top top-=2450',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
         scaleY: 1,
-        opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
-    // 動畫(#screen03-timeline-00)
-    gsap.fromTo(
-      '#screen03-timeline-00',
-      {
-        display: 'none',
 
-        scaleY: 1,
+    // 動畫(#screen03-timeline-03)
+    gsap.fromTo(
+      '#screen03-timeline-03-company',
+      {
+        display: 'end',
         opacity: 0,
         pointerEvents: 'none',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=2500',
-          end: 'top top-=2600',
+          start: 'top top-=2450',
+          end: 'top top-=2451',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
         display: 'flex',
-        scaleY: 1,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 向上位移
+    gsap.fromTo(
+      '#screen03-title',
+      {
+        top: 'calc(10rem - 25dvh)',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2450',
+          end: 'top top-=2900',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        top: 'calc(10rem - 50dvh)',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen03-content',
+      {
+        top: 'calc(15rem - 25dvh)',
+        borderColor: 'green',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2450',
+          end: 'top top-=2900',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        borderColor: 'blue',
+        top: 'calc(15rem - 50dvh)',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-03-company .timeline-img)
+    gsap.fromTo(
+      '#screen03-timeline-03-company .timeline-img',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2450',
+          end: 'top top-=2550',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-03-company .timeline-title)
+    gsap.fromTo(
+      '#screen03-timeline-03-company .timeline-title',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2550',
+          end: 'top top-=2650',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-03-company .timeline-subtitle)
+    gsap.fromTo(
+      '#screen03-timeline-03-company .timeline-subtitle',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2650',
+          end: 'top top-=2750',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen-timeline-03)
+    gsap.fromTo(
+      '#screen03-timeline-03-job',
+      {
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2750',
+          end: 'top top-=2751',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'flex',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-03 .line 前半)
+    gsap.fromTo(
+      '#screen03-timeline-03-job .line',
+      {
+        scaleY: 0,
+        opacity: 1,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2750',
+          end: 'top top-=2800',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 0.5,
         opacity: 1,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
     gsap.fromTo(
-      '#screen03-timeline-00 .line',
+      '#screen03-timeline-03-job .dot',
       {
-        scaleY: 0,
+        scale: 0,
         opacity: 0,
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=2500',
-          end: 'top top-=2600',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-        },
-        scaleY: 1,
-        opacity: 1,
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
-    // 動畫(#screen03-timeline-01-content)
-    gsap.fromTo(
-      '#screen03-timeline-01',
-      {
-        maxHeight: 'calc(97%/6)',
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
@@ -1090,1182 +1270,689 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        maxHeight: 'calc((100% - (97%/6*5)) + (97%/6))',
+        scale: 1,
+        opacity: 1,
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
     gsap.fromTo(
-      '#screen03-timeline-01-content',
+      '#screen03-timeline-03-job .job-chat',
+      {
+        left: '-5rem',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2800',
+          end: 'top top-=2900',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        left: 'calc(40% + 5rem)',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-03 .line 後半)
+    gsap.fromTo(
+      '#screen03-timeline-03-job .line',
+      {
+        scaleY: 0.5,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2900',
+          end: 'top top-=2950',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫(#screen03-timeline-04)
+    gsap.fromTo(
+      '#screen03-timeline-04-company',
       {
         display: 'none',
-        scaleY: 0,
         opacity: 0,
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=2800',
-          end: 'top top-=2900',
+          start: 'top top-=2950',
+          end: 'top top-=2951',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        display: 'block',
-        scaleY: 1,
+        display: 'flex',
         opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 向上位移
+    gsap.fromTo(
+      '#screen03-title',
+      {
+        top: 'calc(10rem - 50dvh)',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2900',
+          end: 'top top-=3200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        top: 'calc(10rem - 75dvh)',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
     gsap.fromTo(
-      [
-        '#screen03-timeline-02 .describe-txt',
-        '#screen03-timeline-03 .describe-txt',
-        '#screen03-timeline-04 .describe-txt',
-        '#screen03-timeline-05 .describe-txt',
-        '#screen03-timeline-06 .describe-txt',
-      ],
+      '#screen03-content',
       {
+        top: 'calc(15rem - 50dvh)',
+        borderColor: 'blue',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2900',
+          end: 'top top-=3200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        top: 'calc(15rem - 75dvh)',
+        borderColor: 'red',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-04-company .line前半)
+    gsap.fromTo(
+      '#screen03-timeline-04-company .line',
+      {
+        scaleY: 0,
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2950',
+          end: 'top top-=3000',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 0.5,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-04-company .dot)
+    gsap.fromTo(
+      '#screen03-timeline-04-company .dot',
+      {
+        scale: 0,
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3000',
+          end: 'top top-=3100',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scale: 1,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-04-company .timeline-title)
+    gsap.fromTo(
+      '#screen03-timeline-04-company .timeline-title',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3000',
+          end: 'top top-=3100',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen-timeline-04)
+    gsap.fromTo(
+      '#screen03-timeline-04-company .timeline-subtitle',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3100',
+          end: 'top top-=3200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-04-company .line後半)
+    gsap.fromTo(
+      '#screen03-timeline-04-company .line',
+      {
+        scaleY: 0.5,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3200',
+          end: 'top top-=3250',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
         scaleY: 1,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫(#screen03-timeline-05)
+    gsap.fromTo(
+      '#screen03-timeline-05-company',
+      {
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3250',
+          end: 'top top-=3251',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'flex',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 向上位移
+    gsap.fromTo(
+      '#screen03-title',
+      {
+        top: 'calc(10rem - 75dvh)',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3250',
+          end: 'top top-=3600',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        top: 'calc(10rem - 100dvh)',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen03-content',
+      {
+        top: 'calc(15rem - 75dvh)',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3250',
+          end: 'top top-=3600',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        top: 'calc(15rem - 100dvh)',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-05-company .timeline-img)
+    gsap.fromTo(
+      '#screen03-timeline-05-company .timeline-img',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3250',
+          end: 'top top-=3350',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-05-company .timeline-title)
+    gsap.fromTo(
+      '#screen03-timeline-05-company .timeline-title',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3350',
+          end: 'top top-=3450',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen-timeline-05)
+    gsap.fromTo(
+      '#screen03-timeline-05-job',
+      {
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3450',
+          end: 'top top-=3451',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'flex',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-05 .line 前半)
+    gsap.fromTo(
+      '#screen03-timeline-05-job .line',
+      {
+        scaleY: 0,
+        opacity: 1,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3450',
+          end: 'top top-=3500',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 0.5,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen03-timeline-05-job .dot',
+      {
+        scale: 0,
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3500',
+          end: 'top top-=3600',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scale: 1,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen03-timeline-05-job .job-chat',
+      {
+        left: '-5rem',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3500',
+          end: 'top top-=3600',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        left: 'calc(40% + 5rem)',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-05 .line 後半)
+    gsap.fromTo(
+      '#screen03-timeline-05-job .line',
+      {
+        scaleY: 0.5,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3600',
+          end: 'top top-=3650',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫(#screen03-timeline-06)
+    gsap.fromTo(
+      '#screen03-timeline-06-company',
+      {
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3650',
+          end: 'top top-=3651',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'flex',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 向上位移
+    gsap.fromTo(
+      '#screen03-title',
+      {
+        top: 'calc(10rem - 100dvh)',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3650',
+          end: 'top top-=3900',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        top: 'calc(10rem - 125dvh)',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen03-content',
+      {
+        top: 'calc(15rem - 100dvh)',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3650',
+          end: 'top top-=3900',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        top: 'calc(15rem - 125dvh)',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-06 .line)
+    gsap.fromTo(
+      '#screen03-timeline-06-company .line',
+      {
+        scaleY: 0,
+        opacity: 1,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3650',
+          end: 'top top-=3700',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-06-company .dot)
+    gsap.fromTo(
+      '#screen03-timeline-06-company .dot',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3700',
+          end: 'top top-=3800',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-06-company .timeline-title)
+    gsap.fromTo(
+      '#screen03-timeline-06-company .timeline-title',
+      {
+        left: '100%',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3700',
+          end: 'top top-=3800',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        left: 0,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-06-company .timeline-subtitle)
+    gsap.fromTo(
+      '#screen03-timeline-06-company .timeline-subtitle',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3800',
+          end: 'top top-=3900',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-06-job)
+    gsap.fromTo(
+      '#screen03-timeline-06-job',
+      {
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3900',
+          end: 'top top-=3901',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'flex',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫(#screen03-timeline-06-job)
+    gsap.fromTo(
+      '#screen03-timeline-06-job .timeline-subtitle',
+      {
+        opacity: 0,
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3900',
+          end: 'top top-=4000',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 向上位移
+    gsap.fromTo(
+      '#screen03-title',
+      {
+        display: 'inline-flex',
+        top: 'calc(10rem - 125dvh)',
         opacity: 1,
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=2800',
-          end: 'top top-=2900',
+          start: 'top top-=4100',
+          end: 'top top-=4300',
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        display: 'block',
-        scaleY: 0,
+        display: 'none',
+        top: 'calc(15rem - 150dvh)',
         opacity: 0,
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
-    // // 動畫(#screen03-timeline-05)
+    gsap.fromTo(
+      '#screen03-content',
+      {
+        display: 'inline-flex',
+        top: 'calc(15rem - 125dvh)',
+        opacity: 1,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4100',
+          end: 'top top-=4300',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'none',
+        top: 'calc(15rem - 150dvh)',
+        opacity: 0,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen03-container',
+      {
+        display: 'flex',
+        opacity: 1,
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4100',
+          end: 'top top-=4300',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
     // gsap.fromTo(
-    //   '#screen03-timeline-05',
+    //   '#screen03-container',
     //   {
     //     display: 'none',
-
-    //     scaleY: 0,
     //     opacity: 0,
     //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1500',
-    //       end: 'top top-=1600',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'flex',
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-05 .dot',
-    //   {
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1500',
-    //       end: 'top top-=1600',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-05 .timeline-title',
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1550',
-    //       end: 'top top-=1650',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-05 .line',
-    //   {
-    //     scaleY: 0,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1600',
-    //       end: 'top top-=1700',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-04)
-    // gsap.fromTo(
-    //   '#screen03-timeline-04',
-    //   {
-    //     display: 'none',
-
-    //     scaleY: 0,
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1700',
-    //       end: 'top top-=1800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'flex',
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-04 .dot',
-    //   {
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1700',
-    //       end: 'top top-=1800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-04 .timeline-title',
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1750',
-    //       end: 'top top-=1850',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-04 .line',
-    //   {
-    //     scaleY: 0,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1800',
-    //       end: 'top top-=1900',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-03)
-    // gsap.fromTo(
-    //   '#screen03-timeline-03',
-    //   {
-    //     display: 'none',
-
-    //     scaleY: 0,
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1800',
-    //       end: 'top top-=1900',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'flex',
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-03 .dot',
-    //   {
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1800',
-    //       end: 'top top-=1900',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-03 .timeline-title',
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1950',
-    //       end: 'top top-=2050',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-03 .line',
-    //   {
-    //     scaleY: 0,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2000',
-    //       end: 'top top-=2100',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-02)
-    // gsap.fromTo(
-    //   '#screen03-timeline-02',
-    //   {
-    //     display: 'none',
-
-    //     scaleY: 0,
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2100',
-    //       end: 'top top-=2200',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'flex',
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-02 .dot',
-    //   {
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2100',
-    //       end: 'top top-=2200',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-02 .timeline-title',
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2150',
-    //       end: 'top top-=2250',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-02 .line',
-    //   {
-    //     scaleY: 0,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2200',
-    //       end: 'top top-=2300',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-01)
-    // gsap.fromTo(
-    //   '#screen03-timeline-01',
-    //   {
-    //     display: 'none',
-
-    //     scaleY: 0,
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2300',
-    //       end: 'top top-=2400',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'flex',
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-01 .dot',
-    //   {
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2300',
-    //       end: 'top top-=2400',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-01 .timeline-title',
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2350',
-    //       end: 'top top-=2450',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-01 .line',
-    //   {
-    //     scaleY: 0,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2400',
-    //       end: 'top top-=2500',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-00)
-    // gsap.fromTo(
-    //   '#screen03-timeline-00',
-    //   {
-    //     display: 'none',
-
-    //     scaleY: 0,
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2500',
-    //       end: 'top top-=2600',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'flex',
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-00 .line',
-    //   {
-    //     scaleY: 0,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2500',
-    //       end: 'top top-=2600',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     scaleY: 1,
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-01 展開)
-    // gsap.fromTo(
-    //   '#screen03-timeline-01 .job-txt:nth-of-type(2)',
-    //   {
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2700',
-    //       end: 'top top-=2800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#screen03-timeline-01 .job-txt:nth-of-type(3)',
-    //   {
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=2800',
-    //       end: 'top top-=2900',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-01 收合)
-    // gsap.fromTo(
-    //   '#screen03-timeline-01 .job-txt',
-    //   {
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=3100',
-    //       end: 'top top-=3300',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-02 展開)
-    // gsap.fromTo(
-    //   '#screen03-timeline-02 .job-txt',
-    //   {
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=3300',
-    //       end: 'top top-=3500',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-02 收合)
-    // gsap.fromTo(
-    //   '#screen03-timeline-02 .job-txt',
-    //   {
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=3700',
-    //       end: 'top top-=3900',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-03 展開)
-    // gsap.fromTo(
-    //   '#screen03-timeline-03 .job-txt',
-    //   {
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=3900',
-    //       end: 'top top-=4100',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-03 收合)
-    // gsap.fromTo(
-    //   '#screen03-timeline-03 .job-txt',
-    //   {
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
     //   },
     //   {
     //     scrollTrigger: {
     //       trigger: '#section-container',
     //       start: 'top top-=4300',
-    //       end: 'top top-=4500',
     //       scrub: true,
     //       toggleActions: 'play reverse play reverse',
     //     },
     //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-04 展開)
-    // gsap.fromTo(
-    //   '#screen03-timeline-04 .job-txt',
-    //   {
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=4500',
-    //       end: 'top top-=4700',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-04 收合)
-    // gsap.fromTo(
-    //   '#screen03-timeline-04 .job-txt',
-    //   {
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=4900',
-    //       end: 'top top-=5100',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'none',
-    //     y: '-100%',
     //     opacity: 0,
     //     pointerEvents: 'none',
     //     immediateRender: false, // 避免初始值在載入時被套用
     //   },
     // )
 
-    // // 動畫(#screen03-timeline-05 展開)
-    // gsap.fromTo(
-    //   '#screen03-timeline-05 .job-txt',
-    //   {
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=5100',
-    //       end: 'top top-=5300',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-05 收合)
-    // gsap.fromTo(
-    //   '#screen03-timeline-05 .job-txt',
-    //   {
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=5500',
-    //       end: 'top top-=5700',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-06 展開)
-    // gsap.fromTo(
-    //   '#screen03-timeline-06 .job-txt',
-    //   {
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=5700',
-    //       end: 'top top-=5900',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // 動畫(#screen03-timeline-06 收合)
-    // gsap.fromTo(
-    //   '#screen03-timeline-06 .job-txt',
-    //   {
-    //     display: 'block',
-    //     y: '0%',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=6100',
-    //       end: 'top top-=6300',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'none',
-    //     y: '-100%',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-
-    // #section-01 opacity變化
-    // gsap.fromTo(
-    //   '#section-01',
-    //   {
-    //     display: 'block',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top+=64',
-    //       end: 'top top-=200',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'none',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // #section-01-pic (圓形照片) translate變化
-    // gsap.fromTo(
-    //   '#section-01-pic',
-    //   {
-    //     left: '0',
-    //     scale: 1,
-    //     x: '0',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top+=64',
-    //       end: 'top top-=200',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     left: '50%',
-    //     scale: 5,
-    //     x: '-50%',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // #section-01-pic (圓形照片) blur變化
-    // gsap.fromTo(
-    //   '#section-01-pic',
-    //   {
-    //     blur: 0,
-    //     filter: 'blur(0px)',
-    //     webkitFilter: 'blur(0px)',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=100',
-    //       end: 'top top-=200',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     blur: 10,
-    //     filter: 'blur(10px)',
-    //     webkitFilter: 'blur(10px)',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // #section-translate-01>* 文字變化
-    // gsap.fromTo(
-    //   '#section-translate-01>*:not(#section-01-pic)',
-    //   {
-    //     scale: 1,
-    //     blur: 0,
-    //     filter: 'blur(0px)',
-    //     webkitFilter: 'blur(0px)',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top+=64',
-    //       end: 'top top-=200',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     scale: 0.5,
-    //     blur: 10,
-    //     filter: 'blur(10px)',
-    //     webkitFilter: 'blur(10px)',
-    //   },
-    // )
-    // // #section-01 復原
-    // gsap.to('#section-01', {
-    //   scrollTrigger: {
-    //     trigger: '#section-container',
-    //     start: 'top top-=200',
-    //     scrub: true,
-    //     toggleActions: 'play reverse play reverse',
-    //   },
-    //   display: 'none',
-    //   pointerEvents: 'none',
-    //   immediateRender: false, // 避免初始值在載入時被套用
-    // })
-    // gsap.to('#section-01-pic', {
-    //   scrollTrigger: {
-    //     trigger: '#section-container',
-    //     start: 'top top-=200',
-    //     scrub: true,
-    //     toggleActions: 'play reverse play reverse',
-    //   },
-    //   left: '0',
-    //   scale: 1,
-    //   x: '0',
-    //   blur: 0,
-    //   filter: 'blur(0px)',
-    //   webkitFilter: 'blur(0px)',
-    //   immediateRender: false, // 避免初始值在載入時被套用
-    // })
-    // gsap.to('#section-translate-01>*:not(#section-01-pic)', {
-    //   scrollTrigger: {
-    //     trigger: '#section-container',
-    //     start: 'top top-=200',
-    //     scrub: true,
-    //     toggleActions: 'play reverse play reverse',
-    //   },
-    //   scale: 1,
-    //   blur: 0,
-    //   filter: 'blur(0px)',
-    //   webkitFilter: 'blur(0px)',
-    //   immediateRender: false, // 避免初始值在載入時被套用
-    // })
-
-    // // #section-02-pic 照片變化
-    // gsap.fromTo(
-    //   '#section-02-pic',
-    //   {
-    //     left: '-50%',
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=200',
-    //       end: 'top top-=400',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     left: '4rem',
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // #section-02-pic-matting 照片變化
-    // gsap.fromTo(
-    //   '#section-02-pic-matting',
-    //   {
-    //     left: '-50%',
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=200',
-    //       end: 'top top-=400',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     left: '4rem',
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-
-    // // #section-02-text 文字變化
-    // gsap.fromTo(
-    //   '#section-02-text',
-    //   {
-    //     right: '50%',
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=200',
-    //       end: 'top top-=400',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     right: '4rem',
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // #section-02-p01 文字變化
-    // gsap.fromTo(
-    //   '#section-02-p01',
-    //   {
-    //     y: '-50%',
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=400',
-    //       end: 'top top-=500',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     y: 0,
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // // #section-02-p02 文字變化
-    // gsap.fromTo(
-    //   '#section-02-p02',
-    //   {
-    //     y: '-50%',
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=500',
-    //       end: 'top top-=600',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     y: 0,
-    //     opacity: 1,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-
-    // // #section-02-pic 照片變化
-    // gsap.fromTo(
-    //   '#section-02-pic',
-    //   {
-    //     height: 'calc(100dvh - 6rem)',
-    //     left: '4rem',
-    //     bottom: '1rem',
-    //     x: 0,
-    //     opacity: 1,
-    //     borderWidth: 1,
-    //     borderColor: '#ffffff',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=600',
-    //       end: 'top top-=800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     height: '100%',
-    //     left: 'calc(100% - 4rem)',
-    //     bottom: 0,
-    //     x: '-100%',
-    //     opacity: 0,
-    //     borderWidth: 0,
-    //     borderColor: 'transparent',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-
-    // // #section-02-pic-matting 照片變化
-    // gsap.fromTo(
-    //   '#section-02-pic-matting',
-    //   {
-    //     display: 'flex',
-    //     height: 'calc(100dvh - 6rem)',
-    //     left: '4rem',
-    //     bottom: '1rem',
-    //     x: 0,
-    //     opacity: 1,
-    //     borderWidth: 1,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=600',
-    //       end: 'top top-=800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'flex',
-    //     height: '100%',
-    //     left: 'calc(100% - 4rem)',
-    //     bottom: 0,
-    //     x: '-100%',
-    //     opacity: 1,
-    //     borderWidth: 0,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-
-    // // #section-02-text 文字變化
-    // gsap.fromTo(
-    //   '#section-02-text',
-    //   {
-    //     alignItems: 'flex-end',
-    //     right: '4rem',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=700',
-    //       end: 'top top-=800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     alignItems: 'flex-start',
-    //     right: 'calc(100% - 12rem)',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#section-02-text h2',
-    //   {
-    //     alignItems: 'flex-end',
-    //     fontSize: '3.75rem',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=700',
-    //       end: 'top top-=800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     alignItems: 'flex-start',
-    //     fontSize: '2rem',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   '#section-02-text hr',
-    //   {
-    //     width: '100%',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=700',
-    //       end: 'top top-=800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     width: '150%',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
-    // gsap.fromTo(
-    //   ['#section-02-p01', '#section-02-p02'],
-    //   {
-    //     display: 'none',
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=700',
-    //       end: 'top top-=800',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //     },
-    //     display: 'none',
-    //     opacity: 0,
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
+    //
   })
 }
