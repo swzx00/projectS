@@ -6,6 +6,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 export function useGsapAnimations() {
   onMounted(() => {
+    // 判斷螢幕寬度
+    const isMobile = window.matchMedia('(max-width: 640px)').matches
     // <!-- #btn-resume -->
     // 初始狀態
     gsap.set('#screen01-container', {
@@ -648,6 +650,26 @@ export function useGsapAnimations() {
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+    // #screen03-timeline-01-main .timeline-line 背後線
+    gsap.fromTo(
+      '#screen03-timeline-01-main .timeline-line',
+      {
+        scaleY: 0,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1200',
+          end: 'top top-=1300',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
+        opacity: 1,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
     // #screen03-timeline-01-main .timeline-title
     gsap.fromTo(
       '#screen03-timeline-01-main .timeline-title',
@@ -899,7 +921,7 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        y: '-10rem',
+        y: isMobile ? '-20dvh' : '-10rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -978,6 +1000,26 @@ export function useGsapAnimations() {
         },
         y: 0,
         scale: 1,
+        opacity: 1,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen03-timeline-02-main .timeline-line 背後線
+    gsap.fromTo(
+      '#screen03-timeline-02-main .timeline-line',
+      {
+        scaleY: 0,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1900',
+          end: 'top top-=2000',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1105,7 +1147,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
-        y: '-10rem',
+        y: isMobile ? '-20dvh' : '-10rem', // 根據螢幕寬度決定 Y 位移
       },
       {
         scrollTrigger: {
@@ -1115,7 +1157,7 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        y: '-20rem',
+        y: isMobile ? '-40dvh' : '-20rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -1194,6 +1236,26 @@ export function useGsapAnimations() {
         },
         y: 0,
         scale: 1,
+        opacity: 1,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen03-timeline-03-main .timeline-line 背後線
+    gsap.fromTo(
+      '#screen03-timeline-03-main .timeline-line',
+      {
+        scaleY: 0,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=2350',
+          end: 'top top-=2450',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1321,7 +1383,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
-        y: '-20rem',
+        y: isMobile ? '-40dvh' : '-20rem', // 根據螢幕寬度決定 Y 位移
       },
       {
         scrollTrigger: {
@@ -1331,7 +1393,7 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        y: '-25rem',
+        y: isMobile ? '-50dvh' : '-25rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -1495,7 +1557,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
-        y: '-25rem',
+        y: isMobile ? '-50dvh' : '-25rem', // 根據螢幕寬度決定 Y 位移
       },
       {
         scrollTrigger: {
@@ -1505,7 +1567,7 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        y: '-30rem',
+        y: isMobile ? '-60dvh' : '-30rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -1584,6 +1646,26 @@ export function useGsapAnimations() {
         },
         y: 0,
         scale: 1,
+        opacity: 1,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen03-timeline-05-main .timeline-line 背後線
+    gsap.fromTo(
+      '#screen03-timeline-05-main .timeline-line',
+      {
+        scaleY: 0,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=3100',
+          end: 'top top-=3200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1691,7 +1773,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
-        y: '-30rem',
+        y: isMobile ? '-60dvh' : '-30rem', // 根據螢幕寬度決定 Y 位移
       },
       {
         scrollTrigger: {
@@ -1701,7 +1783,7 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
         },
-        y: '-40rem',
+        y: isMobile ? '-90dvh' : '-40rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )

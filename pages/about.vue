@@ -247,8 +247,11 @@ useGsapAnimations()
                 </div>
                 <div
                   id="screen03-timeline-01-main"
-                  class="max-w-ful flex w-full flex-row flex-wrap items-center justify-start gap-0 opacity-0"
+                  class="max-w-ful relative flex w-full flex-row flex-wrap items-center justify-start gap-0 opacity-0"
                 >
+                  <div
+                    class="timeline-line absolute left-10 top-0 z-0 h-full w-px origin-top -translate-x-1/2 rounded-full bg-blue-950 opacity-0 sm:hidden"
+                  ></div>
                   <div
                     class="timeline-title hidden w-full max-w-[40%] flex-col items-end justify-end pr-4 opacity-0 sm:flex"
                   >
@@ -308,10 +311,10 @@ useGsapAnimations()
                     class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
                   >
                     <p
-                      class="mb-2 inline-flex flex-row items-baseline justify-start whitespace-nowrap break-keep align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
                         >前端設計
                       </span>
                       (2023/02 - Now)
@@ -339,10 +342,10 @@ useGsapAnimations()
                     class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
                   >
                     <p
-                      class="mb-2 inline-flex flex-row items-baseline justify-start whitespace-nowrap break-keep align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
                         >設計師
                       </span>
                       (2020/01 - 2023/02)
@@ -354,8 +357,11 @@ useGsapAnimations()
                 </div>
                 <div
                   id="screen03-timeline-02-main"
-                  class="max-w-ful flex w-full flex-row flex-wrap items-center justify-start gap-0 opacity-0"
+                  class="max-w-ful relative flex w-full flex-row flex-wrap items-center justify-start gap-0 opacity-0"
                 >
+                  <div
+                    class="timeline-line absolute left-10 top-0 z-0 h-full w-px origin-top -translate-x-1/2 rounded-full bg-blue-950 opacity-0 sm:hidden"
+                  ></div>
                   <div
                     class="timeline-title hidden w-full max-w-[40%] flex-col items-end justify-end pr-4 opacity-0 sm:flex"
                   >
@@ -413,10 +419,10 @@ useGsapAnimations()
                     class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
                   >
                     <p
-                      class="mb-2 inline-flex flex-row items-baseline justify-start whitespace-nowrap break-keep align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
                         >網頁設計師
                       </span>
                       (2019/04 - 2019/11)
@@ -428,8 +434,11 @@ useGsapAnimations()
                 </div>
                 <div
                   id="screen03-timeline-03-main"
-                  class="max-w-ful flex w-full flex-row flex-wrap items-center justify-start gap-0 opacity-0"
+                  class="max-w-ful relative flex w-full flex-row flex-wrap items-center justify-start gap-0 opacity-0"
                 >
+                  <div
+                    class="timeline-line absolute left-10 top-0 z-0 h-full w-px origin-top -translate-x-1/2 rounded-full bg-blue-950 opacity-0 sm:hidden"
+                  ></div>
                   <div
                     class="timeline-title hidden w-full max-w-[40%] flex-col items-end justify-end pr-4 opacity-0 sm:flex"
                   >
@@ -488,10 +497,10 @@ useGsapAnimations()
                     class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
                   >
                     <p
-                      class="mb-2 inline-flex flex-row items-baseline justify-start whitespace-nowrap break-keep align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
                         >市場行銷
                       </span>
                       (2015/05 - 2018/06)
@@ -527,10 +536,10 @@ useGsapAnimations()
                       兵役
                     </p>
                     <p
-                      class="mb-2 inline-flex flex-row items-baseline justify-start whitespace-nowrap break-keep pl-4 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 sm:pl-0 lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-row items-baseline justify-start pl-4 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 sm:pl-0 lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
                         >一般常備役
                       </span>
                       (2013/12 - 2014/11)
@@ -539,8 +548,11 @@ useGsapAnimations()
                 </div>
                 <div
                   id="screen03-timeline-05-main"
-                  class="max-w-ful flex w-full flex-row flex-wrap items-center justify-start gap-0 opacity-0"
+                  class="max-w-ful relative flex w-full flex-row flex-wrap items-center justify-start gap-0 opacity-0"
                 >
+                  <div
+                    class="timeline-line absolute left-10 top-0 z-0 h-full w-px origin-top -translate-x-1/2 rounded-full bg-blue-950 opacity-0 sm:hidden"
+                  ></div>
                   <div
                     class="timeline-title hidden w-full max-w-[40%] flex-col items-end justify-end pr-4 opacity-0 sm:flex"
                   >
@@ -586,10 +598,10 @@ useGsapAnimations()
                     class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
                   >
                     <p
-                      class="mb-2 inline-flex flex-row items-baseline justify-start whitespace-nowrap break-keep align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
                         >資訊傳播學系
                       </span>
                       (2009/09 - 2013/06)
@@ -630,7 +642,7 @@ useGsapAnimations()
                       class="inline-flex flex-col items-baseline justify-start gap-y-2 pl-4 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 sm:flex-row sm:pl-0 lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
                         >雙子座 / 羊
                       </span>
                       (1991/05/23)
