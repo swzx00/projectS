@@ -215,7 +215,7 @@ useGsapAnimations()
 
             <div
               id="screen03-outside"
-              class="absolute left-1/2 flex w-[calc(100%-2rem)] -translate-x-1/2 flex-col justify-end gap-4 lg:w-4/5 xl:w-3/4 2xl:w-2/3"
+              class="absolute left-1/2 hidden w-[calc(100%-2rem)] -translate-x-1/2 flex-col justify-end gap-4 lg:w-4/5 xl:w-3/4 2xl:w-2/3"
             >
               <!-- 第三屏 Title -->
               <h2
@@ -665,6 +665,534 @@ useGsapAnimations()
               </div>
             </div>
           </div>
+          <!-- 第四屏 -->
+          <div
+            id="screen04-container"
+            class="mx-auto my-8 grid h-full max-h-[calc(100dvh-8rem)] w-[calc(100%-2rem)] max-w-[100dvw] grid-cols-[2fr_1fr_1fr] grid-rows-[min-content_1fr_1fr] gap-x-4 gap-y-2 lg:max-w-[768px] xl:max-w-[1024px] 2xl:max-w-[1280px]"
+            style="border: 1px solid red"
+          >
+            <p
+              class="col-span-3 row-span-1 block w-full max-w-full text-2xl font-bold leading-normal text-gray-800"
+              style="border: 1px solid green"
+            >
+              技能樹 <span class="inline text-lg text-gray-600">Skill Tree</span>
+            </p>
+            <div
+              class="col-span-1 row-span-2 flex h-full max-h-full w-full max-w-full flex-col items-center justify-center gap-4 rounded-md border-2 border-solid border-[#3590F3] bg-gradient-to-b from-[#78B5F7] to-[#0D77E7] px-4 py-6"
+            >
+              <p
+                class="text-stroke text-stroke-01 relative z-0 mx-auto mb-auto mt-0 block w-fit max-w-full text-xl font-semibold text-slate-100 drop-shadow"
+                data-stroke="前端技能"
+              >
+                前端技能
+              </p>
+              <div
+                class="pointer-events-none relative m-auto flex aspect-square h-auto max-h-full w-full max-w-full justify-center *:pointer-events-auto"
+                style="border: 1px solid red"
+              >
+                <div
+                  class="group absolute left-1/2 top-0 flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-html5"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="devicon:html5"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Html</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[20%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-full translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-css3"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="devicon:css3"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Css</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[20%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-0 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="cib:javascript"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="logos:javascript"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Javascript</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[40%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-[150%] translate-y-0 flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-sass"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="vscode-icons:file-type-scss2"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Sass / Scss</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[40%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-1/2 translate-y-0 flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-git"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="vscode-icons:file-type-git"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Git</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[40%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-1/2 translate-y-0 flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-typescript"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="devicon:typescript"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Typescript</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[60%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-[200%] translate-y-0 flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-bootstrap"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="devicon:bootstrap"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Bootstrap</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[60%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-full translate-y-0 flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-tailwind"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="devicon:tailwindcss"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Tailwind</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[60%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-0 translate-y-0 flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-vue"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="vscode-icons:file-type-vue"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Vue</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[60%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-full translate-y-0 flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-nuxt"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-full text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="vscode-icons:file-type-nuxt"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Nuxt</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-span-2 row-span-1 flex h-full max-h-full w-full max-w-full flex-col items-center justify-center gap-0 rounded-md border-2 border-solid border-[#1B998B] bg-gradient-to-b from-[#25D0BC] to-[#12685E] px-4 py-6"
+            >
+              <p
+                class="text-stroke text-stroke-02 relative z-0 mx-auto mb-auto mt-0 block w-fit max-w-full text-xl font-semibold text-slate-100 drop-shadow"
+                data-stroke="設計技能"
+              >
+                設計技能
+              </p>
+              <div
+                class="pointer-events-none relative m-auto mt-4 flex aspect-square h-auto max-h-full w-2/3 max-w-full justify-center *:pointer-events-auto"
+                style="border: 1px solid red"
+              >
+                <div
+                  class="group absolute left-1/2 top-0 flex aspect-square h-auto max-h-full w-1/3 max-w-full -translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="simple-icons:adobephotoshop"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="logos:adobe-photoshop"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Photoshop</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[27.5%] flex aspect-square h-auto max-h-full w-1/3 max-w-full -translate-x-full translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="simple-icons:adobeillustrator"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="logos:adobe-illustrator"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Illustrator</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[27.5%] flex aspect-square h-auto max-h-full w-1/3 max-w-full translate-x-0 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="tabler:brand-figma"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="skill-icons:figma-dark"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Figma</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[55%] flex aspect-square h-auto max-h-full w-1/3 max-w-full -translate-x-[150%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="simple-icons:adobeindesign"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="logos:adobe-indesign"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >InDesign</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[55%] flex aspect-square h-auto max-h-full w-1/3 max-w-full -translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="simple-icons:adobepremierepro"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="logos:adobe-premiere"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                    >Premiere Pro</span
+                  >
+                </div>
+                <div
+                  class="group absolute left-1/2 top-[55%] flex aspect-square h-auto max-h-full w-1/3 max-w-full translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                >
+                  <svg
+                    class="absolute left-1/2 top-1/2 size-full h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 32 36"
+                  >
+                    <path
+                      class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
+                      d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
+                    />
+                  </svg>
+                  <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
+                      name="simple-icons:adobeaftereffects"
+                    ></Icon>
+                    <Icon
+                      class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
+                      name="logos:adobe-after-effects"
+                    ></Icon>
+                  </div>
+                  <span
+                    class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
+                  >
+                    After Effects</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-span-1 row-span-1 flex h-full max-h-full w-full max-w-full flex-col items-center justify-center gap-0 rounded-md border-2 border-solid border-[#BB4430] bg-gradient-to-b from-[#D56F5D] to-[#923626] px-4 py-6"
+            >
+              <p
+                class="text-stroke text-stroke-03 relative z-0 mx-auto mb-auto mt-0 block w-fit max-w-full text-xl font-semibold text-slate-100 drop-shadow"
+                data-stroke="辦公室技能"
+              >
+                辦公室技能
+              </p>
+            </div>
+            <div
+              class="col-span-1 row-span-1 h-full max-h-full w-full max-w-full rounded-md border-2 border-solid border-[#231F20] bg-gradient-to-b from-[#4C4345] to-[#0B0A0A] px-4 py-6"
+            >
+              <p
+                class="text-stroke text-stroke-04 relative z-0 mx-auto mb-auto mt-0 block w-fit max-w-full text-xl font-semibold text-slate-100 drop-shadow"
+                data-stroke="語言能力"
+              >
+                語言能力
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -705,5 +1233,26 @@ useGsapAnimations()
   height: 0;
   border: 0.875rem solid;
   border-color: transparent #f3f4f6 transparent transparent;
+}
+.text-stroke::before {
+  content: attr(data-stroke);
+  position: absolute;
+  z-index: -1;
+}
+.text-stroke.text-stroke-01::before {
+  -webkit-text-stroke: 3px #3590f3;
+  text-stroke: 3px #3590f3;
+}
+.text-stroke.text-stroke-02::before {
+  -webkit-text-stroke: 3px #1b998b;
+  text-stroke: 3px #1b998b;
+}
+.text-stroke.text-stroke-03::before {
+  -webkit-text-stroke: 3px #bb4430;
+  text-stroke: 3px #bb4430;
+}
+.text-stroke.text-stroke-04::before {
+  -webkit-text-stroke: 3px #231f20;
+  text-stroke: 3px #231f20;
 }
 </style>

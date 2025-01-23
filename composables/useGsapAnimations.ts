@@ -525,6 +525,8 @@ export function useGsapAnimations() {
       ['#screen03-corner-top-left', '#screen03-corner-bottom-right'],
       {
         display: 'block',
+        x: 0,
+        y: 0,
         scaleX: 0,
         opacity: 1,
       },
@@ -538,6 +540,8 @@ export function useGsapAnimations() {
           invalidateOnRefresh: true,
         },
         display: 'block',
+        x: 0,
+        y: 0,
         scaleX: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1021,6 +1025,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-corner-top-left',
       {
+        x: 0,
         y: 0,
       },
       {
@@ -1032,6 +1037,7 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
+        x: 0,
         y: '-10%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1039,6 +1045,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-corner-bottom-right',
       {
+        x: 0,
         y: 0,
       },
       {
@@ -1050,6 +1057,7 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
+        x: 0,
         y: '10%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1283,6 +1291,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-corner-top-left',
       {
+        x: 0,
         y: '-10%',
       },
       {
@@ -1294,6 +1303,7 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
+        x: 0,
         y: '-20%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1545,6 +1555,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-corner-top-left',
       {
+        x: 0,
         y: '-20%',
       },
       {
@@ -1556,6 +1567,7 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
+        x: 0,
         y: '-30%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1738,6 +1750,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-corner-top-left',
       {
+        x: 0,
         y: '-30%',
       },
       {
@@ -1749,7 +1762,8 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
-        y: '-40%',
+        x: 0,
+        y: '-45%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -1767,7 +1781,7 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
-        y: '40%',
+        y: '45%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -1979,7 +1993,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-corner-top-left',
       {
-        y: '-40%',
+        x: 0,
+        y: '-45%',
       },
       {
         scrollTrigger: {
@@ -1990,14 +2005,16 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
-        y: '-50%',
+        x: 0,
+        y: '-100%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
     gsap.fromTo(
       '#screen03-corner-bottom-right',
       {
-        y: '40%',
+        x: 0,
+        y: '45%',
       },
       {
         scrollTrigger: {
@@ -2008,7 +2025,8 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
-        y: '50%',
+        x: 0,
+        y: '100%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -2144,6 +2162,49 @@ export function useGsapAnimations() {
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+
+    // #screen03-outside (位移)
+    gsap.fromTo(
+      '#screen03-outside',
+      {
+        x: '-50%',
+        y: isMobile ? '-60dvh' : '-30rem', // 根據螢幕寬度決定 Y 位移
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4000',
+          end: 'top top-=4500',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        x: '-50%',
+        y: isMobile ? '-100dvh' : '-60rem', // 根據螢幕寬度決定 Y 位移
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen03-outside (fadeout)
+    gsap.fromTo(
+      '#screen03-outside',
+      {
+        display: 'flex',
+        opacity: 1,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4300',
+          end: 'top top-=4500',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'none',
+        opacity: 0,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
   }
 
   const clearAnimations = () => {
@@ -2173,7 +2234,6 @@ export function useGsapAnimations() {
         ScrollTrigger.refresh()
 
         isAnimating.value = false
-        console.log('Animations reinitialized and ScrollTrigger refreshed')
       })
     }
     window.addEventListener('resize', handleResize)
