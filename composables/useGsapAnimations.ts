@@ -5,12 +5,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export function useGsapAnimations() {
-  onMounted(() => {
+  const initAnimations = () => {
+    // 清除所有 ScrollTrigger（避免多次初始化）
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+
     // 判斷螢幕寬度
     const isMobile = window.matchMedia('(max-width: 640px)').matches
     // <!-- #btn-resume -->
     // 初始狀態
-    gsap.set('#screen01-container', {
+    gsap.set('#btn-resume', {
       display: 'none',
       opacity: 0,
       pointerEvents: 'none',
@@ -39,14 +42,35 @@ export function useGsapAnimations() {
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
-
     // <!-- 第一屏 區域 -->
     // 初始狀態
     gsap.set('#screen01-container', {
-      display: 'flex',
-      opacity: 1,
-      pointerEvents: 'auto',
+      display: 'none',
+      opacity: 0,
+      pointerEvents: 'none',
     })
+    // 動畫
+    gsap.fromTo(
+      '#screen01-container',
+      {
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top+=65',
+          end: 'top top+=65',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+        },
+        display: 'flex',
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
     // 動畫
     gsap.fromTo(
       '#screen01-container',
@@ -1944,5 +1968,20 @@ export function useGsapAnimations() {
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
+  }
+  onMounted(() => {
+    // 初始化動畫
+    initAnimations()
+
+    // 監聽視窗縮放事件
+    const handleResize = () => {
+      initAnimations() // 重新初始化動畫
+    }
+    window.addEventListener('resize', handleResize)
+
+    // 在組件卸載時移除監聽事件
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', handleResize)
+    })
   })
 }
