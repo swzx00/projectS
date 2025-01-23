@@ -5,6 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export function useGsapAnimations() {
+  const isAnimating = ref(false)
+
   const initAnimations = () => {
     // 清除所有 ScrollTrigger（避免多次初始化）
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
@@ -34,6 +36,7 @@ export function useGsapAnimations() {
           end: 'top top-=200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         top: '4rem',
         display: 'inline-flex',
@@ -64,6 +67,7 @@ export function useGsapAnimations() {
           end: 'top top+=65',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
@@ -86,6 +90,7 @@ export function useGsapAnimations() {
           end: 'top top-=200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'none',
         opacity: 0,
@@ -122,6 +127,7 @@ export function useGsapAnimations() {
           end: 'top top-=200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'none',
         left: '50%',
@@ -163,6 +169,7 @@ export function useGsapAnimations() {
           end: 'top top-=200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'none',
         y: '50%',
@@ -180,7 +187,7 @@ export function useGsapAnimations() {
     // 初始狀態
     gsap.set('#screen02-container', {
       display: 'none',
-      backgroundColor: 'transparent',
+      backgroundColor: 'rgb(96 165 250 / 0)',
       pointerEvents: 'none',
     })
     // 動畫 (顯示)
@@ -190,6 +197,7 @@ export function useGsapAnimations() {
         start: 'top top-=0',
         scrub: true,
         toggleActions: 'play reverse play reverse',
+        invalidateOnRefresh: true,
       },
       display: 'block',
       pointerEvents: 'auto',
@@ -200,7 +208,7 @@ export function useGsapAnimations() {
       '#screen02-container',
       {
         display: 'block',
-        backgroundColor: 'transparent',
+        backgroundColor: 'rgb(96 165 250 / 0)',
         pointerEvents: 'none',
       },
       {
@@ -210,6 +218,7 @@ export function useGsapAnimations() {
           end: 'top top-=400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'block',
         backgroundColor: 'rgb(96 165 250 / 0.2)',
@@ -251,6 +260,7 @@ export function useGsapAnimations() {
           end: 'top top-=100',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'block',
         scaleX: 1,
@@ -275,6 +285,7 @@ export function useGsapAnimations() {
           end: 'top top-=200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'block',
         scaleX: 1,
@@ -306,6 +317,7 @@ export function useGsapAnimations() {
           end: 'top top-=400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         bottom: 0,
@@ -337,6 +349,7 @@ export function useGsapAnimations() {
           end: 'top top-=400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         top: '50%',
@@ -368,6 +381,7 @@ export function useGsapAnimations() {
           end: 'top top-=550',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'inline-block',
         y: 0,
@@ -392,6 +406,7 @@ export function useGsapAnimations() {
           end: 'top top-=700',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'inline-block',
         y: 0,
@@ -416,6 +431,7 @@ export function useGsapAnimations() {
           end: 'top top-=850',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'inline-block',
         y: 0,
@@ -448,6 +464,7 @@ export function useGsapAnimations() {
           end: 'top top-=1000',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
@@ -484,6 +501,7 @@ export function useGsapAnimations() {
           end: 'top top-=1200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
@@ -517,6 +535,7 @@ export function useGsapAnimations() {
           end: 'top top-=1200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'block',
         scaleX: 1,
@@ -530,7 +549,6 @@ export function useGsapAnimations() {
       {
         display: 'block',
         opacity: 1,
-        backgroundColor: 'rgb(96 165 250 / 0.2)',
         pointerEvents: 'auto',
       },
       {
@@ -540,10 +558,10 @@ export function useGsapAnimations() {
           end: 'top top-=1200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'none',
         opacity: 0,
-        backgroundColor: 'transparent',
         pointerEvents: 'none',
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -553,6 +571,8 @@ export function useGsapAnimations() {
     gsap.set('#screen03-outside', {
       display: 'none',
       opacity: 0,
+      x: '-50%',
+      y: 0,
       pointerEvents: 'none',
     })
     // #screen03-outside (show)
@@ -561,6 +581,8 @@ export function useGsapAnimations() {
       {
         display: 'none',
         opacity: 0,
+        x: '-50%',
+        y: 0,
         pointerEvents: 'none',
       },
       {
@@ -570,9 +592,12 @@ export function useGsapAnimations() {
           end: 'top top-=1200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
+        x: '-50%',
+        y: 0,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -593,6 +618,7 @@ export function useGsapAnimations() {
           end: 'top top-=1900',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'none',
         x: '100%',
@@ -620,8 +646,8 @@ export function useGsapAnimations() {
         '#screen03-timeline-06-secondary',
       ],
       {
-        display: 'none',
-        opacity: 0,
+        display: 'flex',
+        opacity: 1,
         pointerEvents: 'none',
       },
     )
@@ -634,8 +660,8 @@ export function useGsapAnimations() {
         '#screen03-timeline-01-secondary02',
       ],
       {
-        display: 'none',
-        opacity: 0,
+        // display: 'none',
+        // opacity: 0,
         pointerEvents: 'none',
       },
       {
@@ -645,9 +671,10 @@ export function useGsapAnimations() {
           end: 'top top-=1200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
-        display: 'flex',
-        opacity: 1,
+        // display: 'flex',
+        // opacity: 1,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -667,6 +694,7 @@ export function useGsapAnimations() {
           end: 'top top-=1300',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         scale: 1,
@@ -678,6 +706,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-01-main .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -688,7 +718,10 @@ export function useGsapAnimations() {
           end: 'top top-=1300',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -708,6 +741,7 @@ export function useGsapAnimations() {
           end: 'top top-=1350',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -728,6 +762,7 @@ export function useGsapAnimations() {
           end: 'top top-=1400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -738,6 +773,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-01-secondary01 .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -748,7 +785,10 @@ export function useGsapAnimations() {
           end: 'top top-=1450',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -758,6 +798,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-00 .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -768,7 +810,10 @@ export function useGsapAnimations() {
           end: 'top top-=1450',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -788,6 +833,7 @@ export function useGsapAnimations() {
           end: 'top top-=1500',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         scaleY: 1,
         opacity: 1,
@@ -808,6 +854,7 @@ export function useGsapAnimations() {
           end: 'top top-=1550',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         scale: 1,
         opacity: 1,
@@ -828,6 +875,7 @@ export function useGsapAnimations() {
           end: 'top top-=1650',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         x: 0,
         opacity: 1,
@@ -838,6 +886,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-01-secondary01 .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
       },
       {
@@ -847,7 +897,10 @@ export function useGsapAnimations() {
           end: 'top top-=1675',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -856,6 +909,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-01-secondary02 .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -866,7 +921,10 @@ export function useGsapAnimations() {
           end: 'top top-=1700',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -886,6 +944,7 @@ export function useGsapAnimations() {
           end: 'top top-=1800',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         scale: 1,
         opacity: 1,
@@ -906,6 +965,7 @@ export function useGsapAnimations() {
           end: 'top top-=1850',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         x: 0,
         opacity: 1,
@@ -916,6 +976,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-01-secondary02 .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
       },
       {
@@ -925,7 +987,10 @@ export function useGsapAnimations() {
           end: 'top top-=1900',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -935,6 +1000,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
+        x: '-50%',
         y: 0,
       },
       {
@@ -944,7 +1010,9 @@ export function useGsapAnimations() {
           end: 'top top-=1900',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
         y: isMobile ? '-20dvh' : '-10rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -962,6 +1030,7 @@ export function useGsapAnimations() {
           end: 'top top-=1900',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '-10%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -979,6 +1048,7 @@ export function useGsapAnimations() {
           end: 'top top-=1900',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '10%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -999,6 +1069,7 @@ export function useGsapAnimations() {
           end: 'top top-=1900',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
@@ -1021,6 +1092,7 @@ export function useGsapAnimations() {
           end: 'top top-=2000',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         scale: 1,
@@ -1032,6 +1104,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-02-main .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -1042,7 +1116,10 @@ export function useGsapAnimations() {
           end: 'top top-=2000',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1062,6 +1139,7 @@ export function useGsapAnimations() {
           end: 'top top-=2050',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1082,6 +1160,7 @@ export function useGsapAnimations() {
           end: 'top top-=2100',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1092,6 +1171,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-02-secondary .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -1102,7 +1183,10 @@ export function useGsapAnimations() {
           end: 'top top-=2150',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1122,6 +1206,7 @@ export function useGsapAnimations() {
           end: 'top top-=2250',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         scale: 1,
         opacity: 1,
@@ -1142,6 +1227,7 @@ export function useGsapAnimations() {
           end: 'top top-=2350',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         x: 0,
         opacity: 1,
@@ -1152,6 +1238,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-02-secondary .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
       },
       {
@@ -1161,7 +1249,10 @@ export function useGsapAnimations() {
           end: 'top top-=2400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1171,6 +1262,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
+        x: '-50%',
         y: isMobile ? '-20dvh' : '-10rem', // 根據螢幕寬度決定 Y 位移
       },
       {
@@ -1180,7 +1272,9 @@ export function useGsapAnimations() {
           end: 'top top-=2400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
         y: isMobile ? '-40dvh' : '-20rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1198,6 +1292,7 @@ export function useGsapAnimations() {
           end: 'top top-=2400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '-20%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1215,6 +1310,7 @@ export function useGsapAnimations() {
           end: 'top top-=2400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '20%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1235,6 +1331,7 @@ export function useGsapAnimations() {
           end: 'top top-=2350',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
@@ -1257,6 +1354,7 @@ export function useGsapAnimations() {
           end: 'top top-=2450',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         scale: 1,
@@ -1268,6 +1366,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-03-main .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -1278,7 +1378,10 @@ export function useGsapAnimations() {
           end: 'top top-=2450',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1298,6 +1401,7 @@ export function useGsapAnimations() {
           end: 'top top-=2500',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1318,6 +1422,7 @@ export function useGsapAnimations() {
           end: 'top top-=2550',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1328,6 +1433,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-03-secondary .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -1338,7 +1445,10 @@ export function useGsapAnimations() {
           end: 'top top-=2600',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1358,6 +1468,7 @@ export function useGsapAnimations() {
           end: 'top top-=2700',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         scale: 1,
         opacity: 1,
@@ -1378,6 +1489,7 @@ export function useGsapAnimations() {
           end: 'top top-=2800',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         x: 0,
         opacity: 1,
@@ -1388,6 +1500,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-03-secondary .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
       },
       {
@@ -1397,7 +1511,10 @@ export function useGsapAnimations() {
           end: 'top top-=2825',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1407,6 +1524,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
+        x: '-50%',
         y: isMobile ? '-40dvh' : '-20rem', // 根據螢幕寬度決定 Y 位移
       },
       {
@@ -1416,7 +1534,9 @@ export function useGsapAnimations() {
           end: 'top top-=2850',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
         y: isMobile ? '-50dvh' : '-25rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1434,6 +1554,7 @@ export function useGsapAnimations() {
           end: 'top top-=2850',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '-30%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1451,6 +1572,7 @@ export function useGsapAnimations() {
           end: 'top top-=2850',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '30%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1471,6 +1593,7 @@ export function useGsapAnimations() {
           end: 'top top-=2825',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
@@ -1482,6 +1605,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-04-main .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -1492,7 +1617,10 @@ export function useGsapAnimations() {
           end: 'top top-=2850',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1512,6 +1640,7 @@ export function useGsapAnimations() {
           end: 'top top-=2950',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         scale: 1,
         opacity: 1,
@@ -1532,6 +1661,7 @@ export function useGsapAnimations() {
           end: 'top top-=3000',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1552,6 +1682,7 @@ export function useGsapAnimations() {
           end: 'top top-=3050',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1562,6 +1693,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-04-main .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
       },
       {
@@ -1571,7 +1704,10 @@ export function useGsapAnimations() {
           end: 'top top-=3100',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1581,6 +1717,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
+        x: '-50%',
         y: isMobile ? '-50dvh' : '-25rem', // 根據螢幕寬度決定 Y 位移
       },
       {
@@ -1590,7 +1727,9 @@ export function useGsapAnimations() {
           end: 'top top-=3100',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
         y: isMobile ? '-60dvh' : '-30rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1608,6 +1747,7 @@ export function useGsapAnimations() {
           end: 'top top-=3100',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '-40%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1625,6 +1765,7 @@ export function useGsapAnimations() {
           end: 'top top-=3100',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '40%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1645,6 +1786,7 @@ export function useGsapAnimations() {
           end: 'top top-=3100',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
@@ -1667,6 +1809,7 @@ export function useGsapAnimations() {
           end: 'top top-=3200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         scale: 1,
@@ -1678,6 +1821,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-05-main .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -1688,7 +1833,10 @@ export function useGsapAnimations() {
           end: 'top top-=3200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1708,6 +1856,7 @@ export function useGsapAnimations() {
           end: 'top top-=3250',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1718,6 +1867,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-05-secondary .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0,
         opacity: 0,
       },
@@ -1728,7 +1879,10 @@ export function useGsapAnimations() {
           end: 'top top-=3300',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1748,6 +1902,7 @@ export function useGsapAnimations() {
           end: 'top top-=3400',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         scale: 1,
         opacity: 1,
@@ -1768,6 +1923,7 @@ export function useGsapAnimations() {
           end: 'top top-=3500',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         x: 0,
         opacity: 1,
@@ -1778,6 +1934,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-05-secondary .timeline-line',
       {
+        x: '-50%',
+        y: '-50%',
         scaleY: 0.5,
       },
       {
@@ -1787,7 +1945,10 @@ export function useGsapAnimations() {
           end: 'top top-=3550',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '-50%',
         scaleY: 1,
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1797,6 +1958,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-outside',
       {
+        x: '-50%',
         y: isMobile ? '-60dvh' : '-30rem', // 根據螢幕寬度決定 Y 位移
       },
       {
@@ -1806,7 +1968,9 @@ export function useGsapAnimations() {
           end: 'top top-=3550',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
         y: isMobile ? '-90dvh' : '-40rem', // 根據螢幕寬度決定 Y 位移
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -1824,6 +1988,7 @@ export function useGsapAnimations() {
           end: 'top top-=3550',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '-50%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1841,6 +2006,7 @@ export function useGsapAnimations() {
           end: 'top top-=3550',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: '50%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1861,6 +2027,7 @@ export function useGsapAnimations() {
           end: 'top top-=3550',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         display: 'flex',
         opacity: 1,
@@ -1872,6 +2039,8 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen03-timeline-06-main .timeline-line',
       {
+        x: '-50%',
+        y: '0',
         scaleY: 0,
         opacity: 0,
       },
@@ -1882,7 +2051,10 @@ export function useGsapAnimations() {
           end: 'top top-=3600',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
+        x: '-50%',
+        y: '0',
         scaleY: 1,
         opacity: 1,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -1902,6 +2074,7 @@ export function useGsapAnimations() {
           end: 'top top-=3700',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         scale: 1,
         opacity: 1,
@@ -1922,6 +2095,7 @@ export function useGsapAnimations() {
           end: 'top top-=3750',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1942,6 +2116,7 @@ export function useGsapAnimations() {
           end: 'top top-=3800',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1962,6 +2137,7 @@ export function useGsapAnimations() {
           end: 'top top-=3800',
           scrub: true,
           toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
         },
         y: 0,
         opacity: 1,
@@ -1969,13 +2145,36 @@ export function useGsapAnimations() {
       },
     )
   }
+
+  const clearAnimations = () => {
+    // 清除所有 GSAP 動畫和 ScrollTrigger
+    ScrollTrigger.getAll().forEach((st) => st.kill())
+    gsap.killTweensOf('*')
+  }
+
   onMounted(() => {
     // 初始化動畫
     initAnimations()
 
     // 監聽視窗縮放事件
     const handleResize = () => {
-      initAnimations() // 重新初始化動畫
+      if (isAnimating.value) return
+      isAnimating.value = true
+
+      // 清除現有動畫
+      clearAnimations()
+
+      // 使用 RAF 來確保在下一幀執行初始化
+      requestAnimationFrame(() => {
+        // 重新初始化動畫
+        initAnimations()
+
+        // 刷新所有 ScrollTrigger 實例
+        ScrollTrigger.refresh()
+
+        isAnimating.value = false
+        console.log('Animations reinitialized and ScrollTrigger refreshed')
+      })
     }
     window.addEventListener('resize', handleResize)
 

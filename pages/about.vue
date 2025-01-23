@@ -241,7 +241,7 @@ useGsapAnimations()
                       class="timeline-topLine absolute left-1/2 top-0 h-0.5 w-4 origin-bottom -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950 opacity-0"
                     ></div>
                     <div
-                      class="timeline-line absolute left-1/2 top-1/2 h-full w-px origin-bottom -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950 opacity-0"
+                      class="timeline-line opacity-1 absolute left-1/2 top-1/2 h-full w-px origin-bottom -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-950"
                     ></div>
                   </div>
                 </div>
