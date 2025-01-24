@@ -1332,6 +1332,38 @@ useGsapAnimations()
               </div>
             </div>
           </div>
+          <!-- 第五屏 -->
+          <div
+            id="screen05-container"
+            class="fixed left-1/2 top-1/2 mx-auto my-auto flex h-fit max-h-[calc(100dvh-6rem)] w-[calc(100%-2rem)] max-w-[100dvw] -translate-x-1/2 -translate-y-[calc((100%-4rem)/2)] flex-col items-start justify-start gap-0 overflow-hidden rounded-md shadow-md lg:left-[calc((100dvw+150px)/2)] lg:max-w-[992px] xl:left-[calc((100dvw+175px)/2)] 2xl:left-[calc((100dvw+200px)/2)]"
+          >
+            <p
+              class="mb-0 mt-0 block w-full max-w-full rounded-t-md border border-solid border-gray-300 bg-gray-100 py-2 text-center text-xl font-bold text-gray-900"
+            >
+              About Me
+            </p>
+            <div
+              class="my-0 flex h-full w-full flex-col items-start justify-start gap-8 rounded-b-md bg-gray-800 p-8 text-lg font-normal leading-relaxed text-slate-200"
+            >
+              <p
+                class="flex h-8 items-center justify-start text-gray-800 after:inline-block after:aspect-square after:size-0 after:border-[1rem] after:border-solid after:border-[transparent_transparent_transparent_#94a3b8]"
+              >
+                <span class="bg-slate-200 px-4">Who am I ?</span>
+              </p>
+              <p>
+                我是一位擁有9年工作經驗的網頁開發者，曾擔任過前端設計、網頁設計師以及市場行銷人員等職務。我的經歷使我能夠同時站在工程師、設計師以及行銷企劃的不同角度來看待專案。這能讓團隊間的溝通更加的無礙。
+              </p>
+              <p>
+                在我的職涯中，我積累了豐富的網頁設計和前端開發經驗，能夠熟練運用Html、Css、JavaScript等前端基礎技術，同時也曾運用過Bootstrap、Tailwind、Vue、Nuxt等框架技術，來因應各式不同的專案環境。透過不同的工具以及方式，設計出具有視覺吸引力和良好使用者體驗的網頁。
+              </p>
+              <p>
+                未來，我期望能夠在前端工程師的職務上持續精進自己的專業技能，並且將所學應用於實際專案中，為客戶創造價值和成就。我對於前端開發充滿熱情，希望能夠不斷學習和成長，成為一位專業且具影響力的前端工程師。
+              </p>
+              <p>
+                我相信自己的豐富經驗和專業技能，將能夠在未來的職涯中取得更大的成就，並且為貴公司帶來價值和創新。我期待能夠在這個充滿挑戰和機遇的領域中，不斷挑戰自我，實現職業目標。
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
