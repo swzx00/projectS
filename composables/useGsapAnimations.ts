@@ -2168,7 +2168,7 @@ export function useGsapAnimations() {
       '#screen03-outside',
       {
         x: '-50%',
-        y: isMobile ? '-60dvh' : '-30rem', // 根據螢幕寬度決定 Y 位移
+        y: isMobile ? '-90dvh' : '-40rem', // 根據螢幕寬度決定 Y 位移
       },
       {
         scrollTrigger: {
@@ -2202,6 +2202,145 @@ export function useGsapAnimations() {
         },
         display: 'none',
         opacity: 0,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen04-container
+    gsap.set('#screen04-container', {
+      display: 'none',
+      x: '-50%',
+      y: 0,
+      opacity: 0,
+      pointerEvents: 'none',
+    })
+
+    // #screen04-container
+    gsap.fromTo(
+      '#screen04-container',
+      {
+        display: 'none',
+        top: '-12rem',
+        x: '-50%',
+        y: '-100%',
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4300',
+          end: 'top top-=4400',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'flex',
+        top: '6rem',
+        x: '-50%',
+        y: 0,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen04-skill01
+    gsap.fromTo(
+      '#screen04-skill01',
+      {
+        x: '-100%',
+        opacity: 0,
+        visibility: 'hidden',
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4400',
+          end: 'top top-=4500',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        x: '0%',
+        opacity: 1,
+        visibility: 'visible',
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen04-skill02
+    gsap.fromTo(
+      '#screen04-skill02',
+      {
+        y: '-100%',
+        opacity: 0,
+        visibility: 'hidden',
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4500',
+          end: 'top top-=4600',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        y: '0%',
+        opacity: 1,
+        visibility: 'visible',
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen04-skill03
+    gsap.fromTo(
+      '#screen04-skill03',
+      {
+        y: '100%',
+        opacity: 0,
+        visibility: 'hidden',
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4600',
+          end: 'top top-=4700',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        y: '0%',
+        opacity: 1,
+        visibility: 'visible',
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen04-skill04
+    gsap.fromTo(
+      '#screen04-skill04',
+      {
+        x: '100%',
+        opacity: 0,
+        visibility: 'hidden',
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4700',
+          end: 'top top-=4800',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        x: '0%',
+        opacity: 1,
+        visibility: 'visible',
+        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
