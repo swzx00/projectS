@@ -2,7 +2,7 @@
 import { useGsapAnimations } from '../composables/useGsapAnimations'
 
 definePageMeta({
-  // middleware: ['loading'], // 啟用 loading 中介層
+  middleware: ['loading'], // 啟用 loading 中介層
 })
 
 useGsapAnimations()

@@ -2491,7 +2491,7 @@ export function useGsapAnimations() {
       duration: 0.5, // 初始打字速度
     })
 
-    text00.split('').forEach((value, index) => {
+    text00.split('').forEach((_value, index) => {
       tl00.to(textCmdName, {
         textContent: text00.slice(0, index + 1), // 顯示逐字內容
         duration: 0.1, // 單字速度
@@ -2581,7 +2581,7 @@ export function useGsapAnimations() {
       duration: 0.5, // 初始打字速度
     })
 
-    text01.split('').forEach((value, index) => {
+    text01.split('').forEach((_value, index) => {
       tl01.to(textP01, {
         textContent: text01.slice(0, index + 1), // 顯示逐字內容
         duration: 0.1, // 單字速度
@@ -2666,7 +2666,7 @@ export function useGsapAnimations() {
       duration: 0.5, // 初始打字速度
     })
 
-    text02.split('').forEach((value, index) => {
+    text02.split('').forEach((_value, index) => {
       tl02.to(textP02, {
         textContent: text02.slice(0, index + 1), // 顯示逐字內容
         duration: 0.1, // 單字速度
@@ -2751,7 +2751,7 @@ export function useGsapAnimations() {
       duration: 0.5, // 初始打字速度
     })
 
-    text03.split('').forEach((value, index) => {
+    text03.split('').forEach((_value, index) => {
       tl03.to(textP03, {
         textContent: text03.slice(0, index + 1), // 顯示逐字內容
         duration: 0.1, // 單字速度
@@ -2836,7 +2836,7 @@ export function useGsapAnimations() {
       duration: 0.5, // 初始打字速度
     })
 
-    text04.split('').forEach((value, index) => {
+    text04.split('').forEach((_value, index) => {
       tl04.to(textP04, {
         textContent: text04.slice(0, index + 1), // 顯示逐字內容
         duration: 0.1, // 單字速度
