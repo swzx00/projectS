@@ -49,6 +49,7 @@ export function useGsapAnimations() {
     // 初始狀態
     gsap.set('#screen01-container', {
       display: 'none',
+      visibility: 'hidden',
       opacity: 0,
       pointerEvents: 'none',
     })
@@ -57,6 +58,7 @@ export function useGsapAnimations() {
       '#screen01-container',
       {
         display: 'none',
+        visibility: 'hidden',
         opacity: 0,
         pointerEvents: 'none',
       },
@@ -70,6 +72,7 @@ export function useGsapAnimations() {
           invalidateOnRefresh: true,
         },
         display: 'flex',
+        visibility: 'visible',
         opacity: 1,
         pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -79,20 +82,18 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen01-container',
       {
-        display: 'flex',
         opacity: 1,
         pointerEvents: 'auto',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
-          start: 'top top-=200',
+          start: 'top top-=64',
           end: 'top top-=200',
           scrub: true,
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
-        display: 'none',
         opacity: 0,
         pointerEvents: 'none',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -102,6 +103,7 @@ export function useGsapAnimations() {
     // 初始狀態
     gsap.set('#screen01-headshot', {
       display: 'flex',
+      visibility: 'visible',
       opacity: 1,
       pointerEvents: 'auto',
     })
@@ -109,7 +111,6 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen01-headshot',
       {
-        display: 'flex',
         left: '0',
         x: 0,
         y: 0,
@@ -128,8 +129,9 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
+          // onEnter: () => gsap.set('#screen01-headshot', { opacity: 1 }),
+          // onLeaveBack: () => gsap.set('#screen01-headshot', { opacity: 0 }),
         },
-        display: 'none',
         left: '50%',
         x: '-50%',
         y: '175%',
@@ -146,6 +148,7 @@ export function useGsapAnimations() {
     // 初始狀態
     gsap.set('#screen01-text', {
       display: 'block',
+      visibility: 'visible',
       opacity: 1,
       pointerEvents: 'auto',
     })
@@ -153,7 +156,6 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen01-text',
       {
-        display: 'block',
         y: 0,
         scale: 1,
         opacity: 1,
@@ -171,7 +173,6 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
-        display: 'none',
         y: '50%',
         scale: 0.5,
         opacity: 0,
@@ -442,7 +443,6 @@ export function useGsapAnimations() {
     )
 
     // <!-- 第三屏 -->
-    // TODO
     // 初始狀態
     gsap.set('#screen03-container', {
       display: 'none',
@@ -2206,6 +2206,30 @@ export function useGsapAnimations() {
       },
     )
 
+    // #screen03-container (fadeout)
+    gsap.fromTo(
+      '#screen03-container',
+      {
+        visibility: 'visible',
+        opacity: 1,
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=4500',
+          end: 'top top-=4500',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        visibility: 'hidden',
+        opacity: 0,
+        pointerEvents: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
     // #screen04-container
     gsap.set('#screen04-container', {
       display: 'none',
@@ -2341,6 +2365,655 @@ export function useGsapAnimations() {
         opacity: 1,
         visibility: 'visible',
         pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen04-container 縮小
+    gsap.fromTo(
+      '#screen04-container',
+      {
+        display: 'flex',
+        scale: 1,
+        opacity: 1,
+        filter: 'blur(0px) brightness(1) contrast(1) grayscale(0%) saturate(1)',
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5000',
+          end: 'top top-=5200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'none',
+        scale: 0,
+        opacity: 0,
+        filter: 'blur(5px) brightness(2) contrast(0) grayscale(100%) saturate(0)',
+        pointerEvents: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen05-container
+    gsap.set('#screen05-container', {
+      display: 'none',
+      scale: 0,
+      opacity: 0,
+      pointerEvents: 'none',
+    })
+
+    // // #screen05-container
+    // gsap.fromTo(
+    //   '#screen05-container',
+    //   {
+    //     display: 'none',
+    //     pointerEvents: 'none',
+    //   },
+    //   {
+    //     scrollTrigger: {
+    //       trigger: '#section-container',
+    //       start: 'top top-=5200',
+    //       end: 'top top-=5200',
+    //       scrub: true,
+    //       toggleActions: 'play reverse play reverse',
+    //       invalidateOnRefresh: true,
+    //       onEnter: () => gsap.set('#screen05-container', { display: 'flex' }), // 顯示
+    //       onLeaveBack: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
+    //     },
+    //     display: 'flex',
+    //     pointerEvents: 'auto',
+    //     immediateRender: false, // 避免初始值在載入時被套用
+    //   },
+    // )
+    gsap.fromTo(
+      '#screen05-container',
+      {
+        scale: 0,
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5200',
+          end: 'top top-=5400',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+          onEnter: () => gsap.set('#screen05-container', { display: 'flex' }), // 顯示
+          onLeaveBack: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
+        },
+        scale: 1,
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen05-container .cmd-name
+    gsap.fromTo(
+      '#screen05-container .cmd-name',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5400',
+          end: 'top top-=5500',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'flex',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    const text00 = '林家丞 Chia-Cheng, Lin' // 文字內容
+    const textCmdName = document.querySelector('#screen05-container .cmd-name')
+    // 設定 GSAP Timeline
+    const tl00 = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#section-container',
+        start: 'top top-=5400',
+        end: 'top top-=5500',
+        scrub: true,
+        toggleActions: 'play reverse play reverse',
+        invalidateOnRefresh: true,
+      },
+    })
+
+    // GSAP 打字動畫
+    tl00.to('#section-container', {
+      width: 'auto', // 擴展寬度
+      duration: 0.5, // 初始打字速度
+    })
+
+    text00.split('').forEach((value, index) => {
+      tl00.to(textCmdName, {
+        textContent: text00.slice(0, index + 1), // 顯示逐字內容
+        duration: 0.1, // 單字速度
+        ease: 'none',
+      })
+    })
+
+    // 當滾回時重置動畫
+    tl00.to('#section-container', {
+      width: '0',
+      duration: 0.5,
+    })
+    gsap.fromTo(
+      '#screen05-container .cmd-name ~ .animate-blink',
+      {
+        display: 'inline-block',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5500',
+          end: 'top top-=5500',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen05-container .p01
+    gsap.fromTo(
+      '#screen05-container .p01 .animate-blink',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5500',
+          end: 'top top-=5500',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'inline-block',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen05-container .p01 p',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5500',
+          end: 'top top-=5800',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'inline-block',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    const text01 =
+      '我是一位擁有9年工作經驗的網頁開發者，曾擔任過前端設計、網頁設計師以及市場行銷人員等職務。我的經歷使我能夠同時站在工程師、設計師以及行銷企劃的不同角度來看待專案。這能讓團隊間的溝通更加的無礙。' // 文字內容
+    const textP01 = document.querySelector('#screen05-container .p01 p')
+    // 設定 GSAP Timeline
+    const tl01 = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#section-container',
+        start: 'top top-=5500',
+        end: 'top top-=5800',
+        scrub: true,
+        toggleActions: 'play reverse play reverse',
+        invalidateOnRefresh: true,
+      },
+    })
+
+    // GSAP 打字動畫
+    tl01.to('#section-container', {
+      width: 'auto', // 擴展寬度
+      duration: 0.5, // 初始打字速度
+    })
+
+    text01.split('').forEach((value, index) => {
+      tl01.to(textP01, {
+        textContent: text01.slice(0, index + 1), // 顯示逐字內容
+        duration: 0.1, // 單字速度
+        ease: 'none',
+      })
+    })
+
+    gsap.fromTo(
+      '#screen05-container .p01 .animate-blink',
+      {
+        display: 'inline',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5800',
+          end: 'top top-=5800',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen05-container .p02
+    gsap.fromTo(
+      '#screen05-container .p02 .animate-blink',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5800',
+          end: 'top top-=5800',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'inline-block',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen05-container .p02 p',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=5800',
+          end: 'top top-=6100',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'inline-block',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    const text02 =
+      '在我的職涯中，我積累了豐富的網頁設計和前端開發經驗，能夠熟練運用Html、Css、JavaScript等前端基礎技術，同時也曾運用過Bootstrap、Tailwind、Vue、Nuxt等框架技術，來因應各式不同的專案環境。透過不同的工具以及方式，設計出具有視覺吸引力和良好使用者體驗的網頁。' // 文字內容
+    const textP02 = document.querySelector('#screen05-container .p02 p')
+    // 設定 GSAP Timeline
+    const tl02 = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#section-container',
+        start: 'top top-=5800',
+        end: 'top top-=6100',
+        scrub: true,
+        toggleActions: 'play reverse play reverse',
+        invalidateOnRefresh: true,
+      },
+    })
+
+    // GSAP 打字動畫
+    tl02.to('#section-container', {
+      width: 'auto', // 擴展寬度
+      duration: 0.5, // 初始打字速度
+    })
+
+    text02.split('').forEach((value, index) => {
+      tl02.to(textP02, {
+        textContent: text02.slice(0, index + 1), // 顯示逐字內容
+        duration: 0.1, // 單字速度
+        ease: 'none',
+      })
+    })
+
+    gsap.fromTo(
+      '#screen05-container .p02 .animate-blink',
+      {
+        display: 'inline',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=6100',
+          end: 'top top-=6100',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen05-container .p03
+    gsap.fromTo(
+      '#screen05-container .p03 .animate-blink',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=6100',
+          end: 'top top-=6100',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'inline-block',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen05-container .p03 p',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=6100',
+          end: 'top top-=6400',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'inline-block',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    const text03 =
+      '未來，我期望能夠在前端工程師的職務上持續精進自己的專業技能，並且將所學應用於實際專案中，為客戶創造價值和成就。我對於前端開發充滿熱情，希望能夠不斷學習和成長，成為一位專業且具影響力的前端工程師。' // 文字內容
+    const textP03 = document.querySelector('#screen05-container .p03 p')
+    // 設定 GSAP Timeline
+    const tl03 = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#section-container',
+        start: 'top top-=6100',
+        end: 'top top-=6400',
+        scrub: true,
+        toggleActions: 'play reverse play reverse',
+        invalidateOnRefresh: true,
+      },
+    })
+
+    // GSAP 打字動畫
+    tl03.to('#section-container', {
+      width: 'auto', // 擴展寬度
+      duration: 0.5, // 初始打字速度
+    })
+
+    text03.split('').forEach((value, index) => {
+      tl03.to(textP03, {
+        textContent: text03.slice(0, index + 1), // 顯示逐字內容
+        duration: 0.1, // 單字速度
+        ease: 'none',
+      })
+    })
+
+    gsap.fromTo(
+      '#screen05-container .p03 .animate-blink',
+      {
+        display: 'inline',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=6400',
+          end: 'top top-=6400',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen05-container .p04
+    gsap.fromTo(
+      '#screen05-container .p04 .animate-blink',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=6400',
+          end: 'top top-=6400',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'inline-block',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    gsap.fromTo(
+      '#screen05-container .p04 p',
+      {
+        display: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=6400',
+          end: 'top top-=6700',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'inline-block',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    const text04 =
+      '我相信自己的豐富經驗和專業技能，將能夠在未來的職涯中取得更大的成就，並且為貴公司帶來價值和創新。我期待能夠在這個充滿挑戰和機遇的領域中，不斷挑戰自我，實現職業目標。' // 文字內容
+    const textP04 = document.querySelector('#screen05-container .p04 p')
+    // 設定 GSAP Timeline
+    const tl04 = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#section-container',
+        start: 'top top-=6400',
+        end: 'top top-=6700',
+        scrub: true,
+        toggleActions: 'play reverse play reverse',
+        invalidateOnRefresh: true,
+      },
+    })
+
+    // GSAP 打字動畫
+    tl04.to('#section-container', {
+      width: 'auto', // 擴展寬度
+      duration: 0.5, // 初始打字速度
+    })
+
+    text04.split('').forEach((value, index) => {
+      tl04.to(textP04, {
+        textContent: text04.slice(0, index + 1), // 顯示逐字內容
+        duration: 0.1, // 單字速度
+        ease: 'none',
+      })
+    })
+
+    gsap.fromTo(
+      '#screen05-container .p04 .animate-blink',
+      {
+        display: 'inline',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=6700',
+          end: 'top top-=6700',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen05-container 縮小
+    gsap.fromTo(
+      '#screen05-container',
+      {
+        scale: 1,
+        opacity: 1,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=7000',
+          end: 'top top-=7200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        scale: 0,
+        opacity: 0,
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // #screen05-container 縮小
+    gsap.fromTo(
+      '#screen05-container',
+      {},
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=7200',
+          end: 'top top-=7200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+          onEnter: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
+          onLeaveBack: () => gsap.set('#screen05-container', { display: 'flex' }), // 顯示
+        },
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // #screen01-container 顯示
+    gsap.fromTo(
+      '#screen01-container',
+      {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=7000',
+          end: 'top top-=7200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        opacity: 1,
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫 #screen01-headshot 圖片回歸
+    gsap.fromTo(
+      '#screen01-headshot',
+      {
+        left: '0',
+        x: 0,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        blur: 0,
+        filter: 'blur(0px)',
+        webkitFilter: 'blur(0px)',
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=7000',
+          end: 'top top-=7000',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        left: '0',
+        x: 0,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        blur: 0,
+        filter: 'blur(0px)',
+        webkitFilter: 'blur(0px)',
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // <!-- 第一屏 文字區域 -->
+    // 動畫
+    gsap.fromTo(
+      '#screen01-text',
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        blur: 0,
+        filter: 'blur(0px)',
+        webkitFilter: 'blur(0px)',
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=7000',
+          end: 'top top-=7000',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        blur: 0,
+        filter: 'blur(0px)',
+        webkitFilter: 'blur(0px)',
+        pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+
+    // 動畫 按鈕隱藏
+    gsap.fromTo(
+      '#btn-resume',
+      {
+        top: '4rem',
+        display: 'inline-flex',
+        opacity: 1,
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=7000',
+          end: 'top top-=7200',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        top: '2rem',
+        display: 'none',
+        opacity: 0,
+        pointerEvents: 'none',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )

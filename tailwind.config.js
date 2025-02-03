@@ -71,6 +71,14 @@ module.exports = {
         '4/3': '4 / 3',
         '3/4': '3 / 4',
       },
+      animation: {
+        blink: 'blink 1s step-end infinite',
+      },
+      keyframes: {
+        blink: {
+          '50%': { opacity: '0' },
+        },
+      },
       // maxWidth: {
       //   A4: '210mm',
       // },

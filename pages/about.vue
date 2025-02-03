@@ -17,10 +17,7 @@ useGsapAnimations()
     >
       <div class="flex w-full max-w-full flex-col items-start justify-start gap-0">
         <!-- .section-container -->
-        <div
-          id="section-container"
-          class="relative h-[calc(1200dvh-4rem)] max-h-[calc(1200dvh-4rem)] w-full max-w-full"
-        >
+        <div id="section-container" class="relative h-[calc(8000px)] max-h-[calc(8000px)] w-full max-w-full">
           <!-- #btn-resume -->
           <div
             id="btn-resume"
@@ -44,7 +41,7 @@ useGsapAnimations()
           <!-- 第一屏  -->
           <div
             id="screen01-container"
-            class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] hidden h-fit w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-3/4 flex-row flex-wrap items-start justify-start opacity-0 sm:max-w-[calc(100%-4rem)] lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100%/4*3)] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[calc(100%/3*2)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[40%]"
+            class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] flex h-fit w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-3/4 flex-row flex-wrap items-start justify-start opacity-0 sm:max-w-[calc(100%-4rem)] lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100%/4*3)] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[calc(100%/3*2)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[40%]"
           >
             <!-- 第一屏 大頭照 -->
             <picture
@@ -668,7 +665,7 @@ useGsapAnimations()
           <!-- 第四屏 -->
           <div
             id="screen04-container"
-            class="fixed left-1/2 mx-auto hidden h-full max-h-[calc(100dvh-8rem)] w-[calc(100%-2rem)] max-w-[100dvw] -translate-x-1/2 flex-col items-start justify-center gap-y-2 opacity-0 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[768px] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[1024px] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[1280px]"
+            class="fixed left-1/2 mx-auto hidden h-full max-h-[calc(100dvh-8rem)] w-[calc(100%-2rem)] max-w-[100dvw] origin-bottom -translate-x-1/2 flex-col items-start justify-center gap-y-2 opacity-0 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[768px] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[1024px] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[1280px]"
           >
             <p class="block h-9 w-full max-w-full text-2xl font-bold leading-normal text-gray-800">
               技能樹 <span class="inline text-lg text-gray-600">Skill Tree</span>
@@ -687,10 +684,10 @@ useGsapAnimations()
                   前端技能
                 </p>
                 <div
-                  class="pointer-events-none relative m-auto flex aspect-square h-auto max-h-full w-full max-w-full justify-center *:pointer-events-auto"
+                  class="pointer-events-none relative m-auto flex aspect-square h-full max-h-full w-auto max-w-full justify-center *:pointer-events-auto"
                 >
                   <div
-                    class="group absolute left-1/2 top-[7.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[0] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -719,7 +716,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[27.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-full translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[24%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-full translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -748,7 +745,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[27.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-0 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[24%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full translate-x-0 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -777,7 +774,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[47.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-[150%] translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[48%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-[150%] translate-y-0 flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -806,7 +803,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[47.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-1/2 translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[48%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-1/2 translate-y-0 flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -835,7 +832,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[47.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-1/2 translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[48%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full translate-x-1/2 translate-y-0 flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -864,7 +861,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[67.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-[200%] translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[72%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-[200%] translate-y-0 flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -893,7 +890,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[67.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-full translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[72%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-full translate-y-0 flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -922,7 +919,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[67.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-0 translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[72%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full translate-x-0 translate-y-0 flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -951,7 +948,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[67.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-full translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[72%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full translate-x-full translate-y-0 flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -995,7 +992,7 @@ useGsapAnimations()
                   class="pointer-events-none relative m-auto flex aspect-[7/4] h-auto max-h-full w-full max-w-full justify-center *:pointer-events-auto"
                 >
                   <div
-                    class="group absolute left-1/2 top-[5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-[95%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[7.5%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full -translate-x-[95%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -1024,7 +1021,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-[80%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[7.5%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full translate-x-[80%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -1053,7 +1050,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[27.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-[180%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[30%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full -translate-x-[180%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -1082,7 +1079,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[27.5%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-[10%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[30%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full -translate-x-[10%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -1111,7 +1108,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[50%] flex aspect-square h-auto max-h-full w-1/4 max-w-full -translate-x-[95%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[52.5%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full -translate-x-[95%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -1140,7 +1137,7 @@ useGsapAnimations()
                     >
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[50%] flex aspect-square h-auto max-h-full w-1/4 max-w-full translate-x-[80%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group absolute left-1/2 top-[52.5%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full translate-x-[80%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
                   >
                     <svg
                       class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
@@ -1335,7 +1332,7 @@ useGsapAnimations()
           <!-- 第五屏 -->
           <div
             id="screen05-container"
-            class="fixed left-1/2 top-1/2 mx-auto my-auto flex h-fit max-h-[calc(100dvh-6rem)] w-[calc(100%-2rem)] max-w-[100dvw] -translate-x-1/2 -translate-y-[calc((100%-4rem)/2)] flex-col items-start justify-start gap-0 overflow-hidden rounded-md shadow-md lg:left-[calc((100dvw+150px)/2)] lg:max-w-[992px] xl:left-[calc((100dvw+175px)/2)] 2xl:left-[calc((100dvw+200px)/2)]"
+            class="fixed left-1/2 top-1/2 mx-auto my-auto hidden h-fit max-h-[calc(100dvh-6rem)] w-[calc(100%-2rem)] max-w-[100dvw] origin-bottom-right -translate-x-1/2 -translate-y-[calc((100%-4rem)/2)] flex-col items-start justify-start gap-0 overflow-hidden rounded-md opacity-0 shadow-md lg:left-[calc((100dvw+150px)/2)] lg:max-w-[992px] xl:left-[calc((100dvw+175px)/2)] 2xl:left-[calc((100dvw+200px)/2)]"
           >
             <p
               class="mb-0 mt-0 block w-full max-w-full rounded-t-md border border-solid border-gray-300 bg-gray-100 py-2 text-center text-xl font-bold text-gray-900"
@@ -1343,25 +1340,37 @@ useGsapAnimations()
               About Me
             </p>
             <div
-              class="my-0 flex h-full w-full flex-col items-start justify-start gap-8 rounded-b-md bg-gray-800 p-8 text-lg font-normal leading-relaxed text-slate-200"
+              class="my-0 flex h-auto min-h-[500px] w-full flex-col items-start justify-start gap-8 rounded-b-md bg-gray-800 px-4 py-6 text-lg font-normal leading-relaxed text-slate-200"
             >
-              <p
-                class="flex h-8 items-center justify-start text-gray-800 after:inline-block after:aspect-square after:size-0 after:border-[1rem] after:border-solid after:border-[transparent_transparent_transparent_#94a3b8]"
-              >
-                <span class="bg-slate-200 px-4">Who am I ?</span>
+              <p class="inline-flex h-6 items-center justify-start p-0">
+                <span class="inline-block h-full bg-slate-200 px-1 text-gray-800" style="border: 1px solid yellow"
+                  >Who aim I ?</span
+                >
+                <span
+                  class="flex h-full w-fit items-center justify-start bg-slate-600 text-gray-200 before:inline-block before:size-0 before:border-[0.75rem] before:border-solid before:border-[transparent_transparent_transparent_#e2e8f0] before:bg-slate-600 after:inline-block after:size-0 after:border-[0.75rem] after:border-solid after:border-[transparent_transparent_transparent_#475569] after:bg-gray-800"
+                  >&nbsp;~&nbsp;</span
+                >
+                <span class="cmd-name hidden bg-gray-800 text-slate-200"></span>
+                <span class="inline-block h-6 w-2 animate-blink bg-slate-200" style="display: none"></span>
               </p>
-              <p>
-                我是一位擁有9年工作經驗的網頁開發者，曾擔任過前端設計、網頁設計師以及市場行銷人員等職務。我的經歷使我能夠同時站在工程師、設計師以及行銷企劃的不同角度來看待專案。這能讓團隊間的溝通更加的無礙。
-              </p>
-              <p>
-                在我的職涯中，我積累了豐富的網頁設計和前端開發經驗，能夠熟練運用Html、Css、JavaScript等前端基礎技術，同時也曾運用過Bootstrap、Tailwind、Vue、Nuxt等框架技術，來因應各式不同的專案環境。透過不同的工具以及方式，設計出具有視覺吸引力和良好使用者體驗的網頁。
-              </p>
-              <p>
-                未來，我期望能夠在前端工程師的職務上持續精進自己的專業技能，並且將所學應用於實際專案中，為客戶創造價值和成就。我對於前端開發充滿熱情，希望能夠不斷學習和成長，成為一位專業且具影響力的前端工程師。
-              </p>
-              <p>
-                我相信自己的豐富經驗和專業技能，將能夠在未來的職涯中取得更大的成就，並且為貴公司帶來價值和創新。我期待能夠在這個充滿挑戰和機遇的領域中，不斷挑戰自我，實現職業目標。
-              </p>
+              <div class="p01 w-full">
+                <p class="hidden w-fit max-w-full"></p>
+                <span class="inline-block h-6 w-2 animate-blink bg-slate-200" style="display: none"></span>
+              </div>
+              <div class="p02 w-full">
+                <p class="hidden w-fit max-w-full"></p>
+
+                <span class="inline-block h-6 w-2 animate-blink bg-slate-200" style="display: none"></span>
+              </div>
+              <div class="p03 w-full">
+                <p class="hidden w-fit max-w-full"></p>
+
+                <span class="inline-block h-6 w-2 animate-blink bg-slate-200" style="display: none"></span>
+              </div>
+              <div class="p04 w-full">
+                <p class="hidden w-fit max-w-full"></p>
+                <span class="inline-block h-6 w-2 animate-blink bg-slate-200" style="display: none"></span>
+              </div>
             </div>
           </div>
         </div>
