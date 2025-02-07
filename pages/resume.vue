@@ -281,33 +281,9 @@ const handlePrint = () => {
                 v-for="(content, idx) in skill.skillsContent"
                 :key="idx"
                 class="relative flex flex-col items-center justify-center text-sm font-normal text-gray-950 print:text-10pt"
-                :class="
-                  typeof content !== 'string' ? 'print:mt-12mt mx-auto my-2 px-1 xs:mx-0 xs:my-1 print:mb-24pt' : ''
-                "
               >
-                <template v-if="typeof content === 'string'">{{ content }}</template>
-                <template v-else>
-                  <div
-                    class="relative size-[var(--size)] overflow-hidden rounded-full bg-gray-200 before:absolute before:right-[calc(var(--size)/2)] before:top-0 before:z-[1] before:box-border before:h-[var(--size)] before:w-[calc(var(--size)/2)] before:origin-[calc(var(--size)/2)_calc(var(--size)/2)] before:rotate-[var(--rotate-deg)] before:rounded-bl-[calc(var(--size)/2)] before:rounded-tl-[calc(var(--size)/2)] before:bg-blue-600 after:absolute after:right-[calc(var(--size)/2)] after:top-0 after:z-[2] after:box-border after:h-[var(--size)] after:w-[calc(var(--size)/2)] after:origin-[calc(var(--size)/2)_calc(var(--size)/2)] after:rotate-180 after:rounded-bl-[calc(var(--size)/2)] after:rounded-tl-[calc(var(--size)/2)] after:bg-blue-600 print:size-[47.5pt] print:before:right-[25pt] print:before:h-[50pt] print:before:w-[25pt] print:before:origin-[25pt_25pt] print:before:rounded-bl-[25pt] print:before:rounded-tl-[25pt] print:after:h-[50pt] print:after:w-[25pt] print:after:origin-[32pt_25pt] print:after:rounded-bl-[25pt] print:after:rounded-tl-[25pt]"
-                    :style="{
-                      '--size': '6.5rem',
-                      '--rotate-deg': `${(Number(content.skillsContentProficiency) / 100) * 360}deg`,
-                    }"
-                  ></div>
-                  <div class="absolute z-[3] aspect-square size-[5.5rem] rounded-full bg-white print:size-[37.5pt]">
-                    <p
-                      class="absolute left-1/2 top-[22.5%] z-20 mt-2 flex w-fit -translate-x-1/2 items-center justify-center text-center text-lg font-normal leading-none tracking-tighter print:top-[calc(100%+5pt)] print:text-10pt"
-                    >
-                      {{ content.skillsContentTitle }}
-                    </p>
-                    <p
-                      class="absolute left-1/2 top-[50%] z-20 -translate-x-1/2 text-center text-base font-semibold after:text-xs after:font-light after:content-['%'] print:-translate-y-1/2 print:text-12pt"
-                    >
-                      {{ content.skillsContentProficiency }}
-                    </p>
-                  </div>
-                </template>
-                <template v-if="idx < skill.skillsContent.length - 1 && typeof content === 'string'">、</template>
+                {{ content }}
+                <template v-if="idx < skill.skillsContent.length - 1">、</template>
               </li>
             </ul>
           </li>

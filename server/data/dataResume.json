@@ -59,46 +59,17 @@
       {
         "skillsType": "前端技術",
         "skillsContent": [
-          {
-            "skillsContentTitle": "Html",
-            "skillsContentProficiency": "90"
-          },
-          {
-            "skillsContentTitle": "Css",
-            "skillsContentProficiency": "90"
-          },
-          {
-            "skillsContentTitle": "Javascript",
-            "skillsContentProficiency": "85"
-          },
-          {
-            "skillsContentTitle": "Sass",
-            "skillsContentProficiency": "80"
-          },
-          {
-            "skillsContentTitle": "Scss",
-            "skillsContentProficiency": "90"
-          },
-          {
-            "skillsContentTitle": "Bootstrap",
-            "skillsContentProficiency": "90"
-          },
-          {
-            "skillsContentTitle": "Tailwind",
-            "skillsContentProficiency": "80"
-          },
-          {
-            "skillsContentTitle": "Vue",
-            "skillsContentProficiency": "70"
-          },
-          {
-            "skillsContentTitle": "Nuxt",
-            "skillsContentProficiency": "65"
-          },
-          {
-            "skillsContentTitle": "Git",
-            "skillsContentProficiency": "70"
-          }
+          "Html",
+          "Css",
+          "Javascript",
+          "Sass",
+          "Scss",
+          "Git",
+          "TypeScript",
+          "Bootstrap",
+          "Tailwind",
+          "Vue",
+          "Nuxt"
         ]
       },
       {

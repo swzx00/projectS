@@ -129,8 +129,6 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
-          // onEnter: () => gsap.set('#screen01-headshot', { opacity: 1 }),
-          // onLeaveBack: () => gsap.set('#screen01-headshot', { opacity: 0 }),
         },
         left: '50%',
         x: '-50%',
@@ -191,19 +189,29 @@ export function useGsapAnimations() {
       backgroundColor: 'rgb(96 165 250 / 0)',
       pointerEvents: 'none',
     })
-    // 動畫 (顯示)
-    gsap.to('#screen02-container', {
-      scrollTrigger: {
-        trigger: '#section-container',
-        start: 'top top-=0',
-        scrub: true,
-        toggleActions: 'play reverse play reverse',
-        invalidateOnRefresh: true,
+    // 動畫
+    gsap.fromTo(
+      '#screen02-container',
+      {
+        display: 'block',
+        backgroundColor: 'rgb(96 165 250 / 0)',
+        pointerEvents: 'none',
       },
-      display: 'block',
-      pointerEvents: 'auto',
-      immediateRender: false, // 避免初始值在載入時被套用
-    })
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=0',
+          end: 'top top-=0',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'block',
+        backgroundColor: 'rgb(96 165 250 / 0)',
+        pointerEvents: 'none',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
     // 動畫
     gsap.fromTo(
       '#screen02-container',
@@ -438,6 +446,27 @@ export function useGsapAnimations() {
         y: 0,
         opacity: 1,
         pointerEvents: 'auto',
+        immediateRender: false, // 避免初始值在載入時被套用
+      },
+    )
+    // 動畫
+    gsap.fromTo(
+      '#screen02-container',
+      {
+        display: 'block',
+        pointerEvents: 'auto',
+      },
+      {
+        scrollTrigger: {
+          trigger: '#section-container',
+          start: 'top top-=1000',
+          end: 'top top-=1000',
+          scrub: true,
+          toggleActions: 'play reverse play reverse',
+          invalidateOnRefresh: true,
+        },
+        display: 'none',
+        pointerEvents: 'none',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -2244,7 +2273,7 @@ export function useGsapAnimations() {
       '#screen04-container',
       {
         display: 'none',
-        top: '-12rem',
+        top: '-11rem',
         x: '-50%',
         y: '-100%',
         opacity: 0,
@@ -2260,7 +2289,7 @@ export function useGsapAnimations() {
           invalidateOnRefresh: true,
         },
         display: 'flex',
-        top: '6rem',
+        top: '5.5rem',
         x: '-50%',
         y: 0,
         opacity: 1,
@@ -2272,7 +2301,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen04-skill01',
       {
-        x: '-100%',
+        y: '-100%',
         opacity: 0,
         visibility: 'hidden',
         pointerEvents: 'none',
@@ -2286,7 +2315,7 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
-        x: '0%',
+        y: '0%',
         opacity: 1,
         visibility: 'visible',
         pointerEvents: 'auto',
@@ -2322,7 +2351,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen04-skill03',
       {
-        y: '100%',
+        y: '-100%',
         opacity: 0,
         visibility: 'hidden',
         pointerEvents: 'none',
@@ -2347,7 +2376,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen04-skill04',
       {
-        x: '100%',
+        y: '-100%',
         opacity: 0,
         visibility: 'hidden',
         pointerEvents: 'none',
@@ -2361,7 +2390,7 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
-        x: '0%',
+        y: '0%',
         opacity: 1,
         visibility: 'visible',
         pointerEvents: 'auto',
@@ -2399,37 +2428,15 @@ export function useGsapAnimations() {
     // #screen05-container
     gsap.set('#screen05-container', {
       display: 'none',
+      x: '-50%',
       scale: 0,
       opacity: 0,
       pointerEvents: 'none',
     })
-
-    // // #screen05-container
-    // gsap.fromTo(
-    //   '#screen05-container',
-    //   {
-    //     display: 'none',
-    //     pointerEvents: 'none',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=5200',
-    //       end: 'top top-=5200',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //       invalidateOnRefresh: true,
-    //       onEnter: () => gsap.set('#screen05-container', { display: 'flex' }), // 顯示
-    //       onLeaveBack: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
-    //     },
-    //     display: 'flex',
-    //     pointerEvents: 'auto',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
     gsap.fromTo(
       '#screen05-container',
       {
+        x: '-50%',
         scale: 0,
         opacity: 0,
         pointerEvents: 'none',
@@ -2445,6 +2452,7 @@ export function useGsapAnimations() {
           onEnter: () => gsap.set('#screen05-container', { display: 'flex' }), // 顯示
           onLeaveBack: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
         },
+        x: '-50%',
         scale: 1,
         opacity: 1,
         pointerEvents: 'auto',
@@ -2867,6 +2875,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen05-container',
       {
+        x: '-50%',
         scale: 1,
         opacity: 1,
       },
@@ -2879,6 +2888,7 @@ export function useGsapAnimations() {
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
+        x: '-50%',
         scale: 0,
         opacity: 0,
         immediateRender: false, // 避免初始值在載入時被套用
@@ -2887,7 +2897,9 @@ export function useGsapAnimations() {
     // #screen05-container 縮小
     gsap.fromTo(
       '#screen05-container',
-      {},
+      {
+        x: '-50%',
+      },
       {
         scrollTrigger: {
           trigger: '#section-container',
@@ -2899,6 +2911,7 @@ export function useGsapAnimations() {
           onEnter: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
           onLeaveBack: () => gsap.set('#screen05-container', { display: 'flex' }), // 顯示
         },
+        x: '-50%',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -2997,7 +3010,6 @@ export function useGsapAnimations() {
       '#btn-resume',
       {
         top: '4rem',
-        display: 'inline-flex',
         opacity: 1,
         pointerEvents: 'auto',
       },
@@ -3011,7 +3023,6 @@ export function useGsapAnimations() {
           invalidateOnRefresh: true,
         },
         top: '2rem',
-        display: 'none',
         opacity: 0,
         pointerEvents: 'none',
         immediateRender: false, // 避免初始值在載入時被套用

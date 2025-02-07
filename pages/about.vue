@@ -6,6 +6,46 @@ definePageMeta({
 })
 
 useGsapAnimations()
+
+const isVisible = ref(true)
+let scrollTimeout: number | null = null
+
+const handleScroll = () => {
+  isVisible.value = false
+
+  // 清除之前的計時器
+  if (scrollTimeout !== null) {
+    clearTimeout(scrollTimeout)
+  }
+
+  // 設定新的計時器
+  scrollTimeout = window.setTimeout(() => {
+    if (window.scrollY + window.innerHeight < document.documentElement.scrollHeight) {
+      isVisible.value = true
+    }
+  }, 3000)
+}
+
+const checkScrollEnd = () => {
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+    isVisible.value = false
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', checkScrollEnd)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('scroll', checkScrollEnd)
+
+  // 確保在離開元件時清除計時器
+  if (scrollTimeout !== null) {
+    clearTimeout(scrollTimeout)
+  }
+})
 </script>
 
 <template>
@@ -17,7 +57,7 @@ useGsapAnimations()
     >
       <div class="flex w-full max-w-full flex-col items-start justify-start gap-0">
         <!-- .section-container -->
-        <div id="section-container" class="relative h-[calc(8000px)] max-h-[calc(8000px)] w-full max-w-full">
+        <div id="section-container" class="relative h-[calc(8500px)] max-h-[calc(8500px)] w-full max-w-full">
           <!-- #btn-resume -->
           <div
             id="btn-resume"
@@ -81,7 +121,7 @@ useGsapAnimations()
                   <a
                     href="tel:8860921702528"
                     target="_self"
-                    class="group flex flex-row items-center justify-start gap-0 break-keep underline-offset-2 transition-all hover:text-blue-600 hover:underline hover:underline-offset-4"
+                    class="-row group flex items-center justify-start gap-0 break-keep underline-offset-2 transition-all hover:text-blue-600 hover:underline hover:underline-offset-4"
                   >
                     <span class="break-keep text-sm text-gray-500 group-hover:text-blue-600">(+886)</span
                     >&nbsp;0921-702-528
@@ -95,7 +135,7 @@ useGsapAnimations()
                   <a
                     href="mailto:swzx00@gmail.com"
                     target="_self"
-                    class="group flex flex-row items-center justify-start gap-0 break-keep underline underline-offset-2 transition-all hover:text-blue-600 hover:underline hover:underline-offset-4"
+                    class="-row group flex items-center justify-start gap-0 break-keep underline underline-offset-2 transition-all hover:text-blue-600 hover:underline hover:underline-offset-4"
                   >
                     swzx00@gmail.com
                   </a>
@@ -665,666 +705,631 @@ useGsapAnimations()
           <!-- 第四屏 -->
           <div
             id="screen04-container"
-            class="fixed left-1/2 mx-auto hidden h-full max-h-[calc(100dvh-8rem)] w-[calc(100%-2rem)] max-w-[100dvw] origin-bottom -translate-x-1/2 flex-col items-start justify-center gap-y-2 opacity-0 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[768px] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[1024px] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[1280px]"
+            class="fixed left-1/2 mx-auto hidden h-full max-h-[calc(100dvh-6rem)] w-[calc(100%-2rem)] max-w-[100dvw] origin-bottom -translate-x-1/2 flex-col items-start justify-center gap-y-2 opacity-0 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[768px] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[1024px] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[1280px]"
           >
             <p class="block h-9 w-full max-w-full text-2xl font-bold leading-normal text-gray-800">
               技能樹 <span class="inline text-lg text-gray-600">Skill Tree</span>
             </p>
-            <div
-              class="relative grid h-full max-h-[calc(100dvh-4rem-2.25rem-0.5rem)] w-full max-w-full grid-cols-[2fr_1fr_1fr] grid-rows-[calc((100%-1rem)/3*2)_calc((100%-1rem)/3*1)] gap-4"
-            >
+            <div class="relative flex h-full max-h-[calc(100%-2.25rem)] w-full max-w-full flex-col gap-2 lg:gap-4">
               <div
                 id="screen04-skill01"
-                class="invisible col-span-1 row-span-2 flex h-full max-h-full w-full max-w-full flex-col items-center justify-start gap-4 rounded-md border-2 border-solid border-[#3590F3] bg-gradient-to-b from-[#78B5F7] to-[#0D77E7] px-4 py-6 opacity-0"
+                class="flex h-full max-h-[calc((100%-1.5rem)/5*2)] w-full max-w-full flex-col items-start justify-start rounded-md border-2 border-solid border-[#3590F3] bg-gradient-to-b from-[#78B5F7] to-[#0D77E7] p-2 sm:max-h-[calc((100%-1.5rem)/4)] sm:p-4 lg:max-h-[calc((100%-3rem)/4)]"
               >
                 <p
-                  class="text-stroke text-stroke-01 relative z-0 mx-auto block w-fit max-w-full text-xl font-semibold text-slate-100 drop-shadow"
+                  class="text-stroke text-stroke-01 mb-2 block w-fit max-w-full text-base font-semibold text-slate-100"
                   data-stroke="前端技能"
                 >
                   前端技能
                 </p>
                 <div
-                  class="pointer-events-none relative m-auto flex aspect-square h-full max-h-full w-auto max-w-full justify-center *:pointer-events-auto"
+                  class="relative m-auto flex h-[calc(100%-2rem)] max-h-full w-full max-w-full flex-wrap items-start justify-start gap-x-2 gap-y-0 lg:gap-x-4"
                 >
                   <div
-                    class="group absolute left-1/2 top-[0] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-html5"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="devicon:html5"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Html</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-html-b.svg"
+                      title="Html"
+                      alt="Html"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-html-c.svg"
+                      title="Html"
+                      alt="Html"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[24%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-full translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-css3"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="devicon:css3"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Css</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-css-b.svg"
+                      title="Css"
+                      alt="Css"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-css-c.svg"
+                      title="Css"
+                      alt="Css"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[24%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full translate-x-0 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="cib:javascript"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="logos:javascript"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Javascript</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-javascript-b.svg"
+                      title="Javascript"
+                      alt="Javascript"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-javascript-c.svg"
+                      title="Javascript"
+                      alt="Javascript"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[48%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-[150%] translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-sass"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="vscode-icons:file-type-scss2"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Sass / Scss</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-sass_scss-b.svg"
+                      title="Sass / Scss"
+                      alt="Sass / Scss"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-sass_scss-c.svg"
+                      title="Sass / Scss"
+                      alt="Sass / Scss"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[48%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-1/2 translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-git"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="vscode-icons:file-type-git"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Git</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-git-b.svg"
+                      title="Git"
+                      alt="Git"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-bottom opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-git-c.svg"
+                      title="Git"
+                      alt="Git"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="block h-2 w-full max-w-full sm:hidden"></div>
+                  <div
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
+                  >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-typescript-b.svg"
+                      title="Typescript"
+                      alt="Typescript"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-typescript-c.svg"
+                      title="Typescript"
+                      alt="Typescript"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[48%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full translate-x-1/2 translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-typescript"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="devicon:typescript"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Typescript</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-bootstrap-b.svg"
+                      title="Bootstrap"
+                      alt="Bootstrap"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-bootstrap-c.svg"
+                      title="Bootstrap"
+                      alt="Bootstrap"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[72%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-[200%] translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-bootstrap"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="devicon:bootstrap"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Bootstrap</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-tailwind-b.svg"
+                      title="Tailwind"
+                      alt="Tailwind"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-tailwind-c.svg"
+                      title="Tailwind"
+                      alt="Tailwind"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[72%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full -translate-x-full translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-tailwind"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="devicon:tailwindcss"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Tailwind</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-vue-b.svg"
+                      title="Vue"
+                      alt="Vue"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-vue-c.svg"
+                      title="Vue"
+                      alt="Vue"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[72%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full translate-x-0 translate-y-0 flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-[calc((100%-0.5rem)/2)] max-h-full w-auto max-w-[calc((100%-2rem)/5)] cursor-auto flex-col items-center justify-center sm:h-full sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-vue"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[90%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="vscode-icons:file-type-vue"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Vue</span
-                    >
-                  </div>
-                  <div
-                    class="group absolute left-1/2 top-[72%] flex aspect-[8/9] h-auto max-h-full w-1/4 max-w-full translate-x-full translate-y-0 flex-col items-center justify-center gap-0"
-                  >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 32 36"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#9FCAF9/20] group-hover:stroke-[#1881F2]"
-                        d="M.912 9.289 16 .577 31.088 9.29V26.71L16 35.423.912 26.71V9.29Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-nuxt"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="vscode-icons:file-type-nuxt"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[90%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0B63C1] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Nuxt</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-100 transition-all duration-500 group-hover:opacity-0 sm:object-center"
+                      src="/images/skills-nuxt-b.svg"
+                      title="Nuxt"
+                      alt="Nuxt"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain object-top opacity-0 transition-all duration-500 group-hover:opacity-100 sm:object-center"
+                      src="/images/skills-nuxt-c.svg"
+                      title="Nuxt"
+                      alt="Nuxt"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
               <div
                 id="screen04-skill02"
-                class="invisible col-span-2 row-span-1 flex h-full max-h-full w-full max-w-full flex-col items-center justify-center gap-0 rounded-md border-2 border-solid border-[#1B998B] bg-gradient-to-b from-[#25D0BC] to-[#12685E] px-4 py-6 opacity-0"
+                class="flex h-full max-h-[calc((100%-1.5rem)/5)] w-full max-w-full flex-col items-start justify-start rounded-md border-2 border-solid border-[#1B998B] bg-gradient-to-b from-[#25D0BC] to-[#12685E] p-2 sm:max-h-[calc((100%-1.5rem)/4)] sm:p-4 lg:max-h-[calc((100%-3rem)/4)]"
               >
                 <p
-                  class="text-stroke text-stroke-02 relative z-0 mx-auto mb-auto mt-0 block w-fit max-w-full text-xl font-semibold text-slate-100 drop-shadow"
+                  class="text-stroke text-stroke-02 mb-2 block w-fit max-w-full text-base font-semibold text-slate-100"
                   data-stroke="設計技能"
                 >
                   設計技能
                 </p>
                 <div
-                  class="pointer-events-none relative m-auto flex aspect-[7/4] h-auto max-h-full w-full max-w-full justify-center *:pointer-events-auto"
+                  class="relative m-auto flex h-[calc(100%-2rem)] max-h-full w-full max-w-full flex-wrap items-start justify-start gap-2 lg:gap-4"
                 >
                   <div
-                    class="group absolute left-1/2 top-[7.5%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full -translate-x-[95%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-2.5rem)/6)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 32"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
-                        d="M26.7113 0.911543L35.4226 16L26.7113 31.0885H9.28868L0.577351 16L9.28868 0.911543H26.7113Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="simple-icons:adobephotoshop"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="logos:adobe-photoshop"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Photoshop</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-photoshop-b.svg"
+                      title="Photoshop"
+                      alt="Photoshop"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-photoshop-c.svg"
+                      title="Photoshop"
+                      alt="Photoshop"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[7.5%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full translate-x-[80%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-2.5rem)/6)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 32"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
-                        d="M26.7113 0.911543L35.4226 16L26.7113 31.0885H9.28868L0.577351 16L9.28868 0.911543H26.7113Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="simple-icons:adobeillustrator"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="logos:adobe-illustrator"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Illustrator</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-illustrator-b.svg"
+                      title="Illustrator"
+                      alt="Illustrator"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-illustrator-c.svg"
+                      title="Illustrator"
+                      alt="Illustrator"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[30%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full -translate-x-[180%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-2.5rem)/6)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 32"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
-                        d="M26.7113 0.911543L35.4226 16L26.7113 31.0885H9.28868L0.577351 16L9.28868 0.911543H26.7113Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="tabler:brand-figma"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="skill-icons:figma-dark"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Figma</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-figma-b.svg"
+                      title="Figma"
+                      alt="Figma"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-figma-c.svg"
+                      title="Figma"
+                      alt="Figma"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[30%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full -translate-x-[10%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-2.5rem)/6)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 32"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
-                        d="M26.7113 0.911543L35.4226 16L26.7113 31.0885H9.28868L0.577351 16L9.28868 0.911543H26.7113Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="simple-icons:adobeindesign"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="logos:adobe-indesign"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >InDesign</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-indesign-b.svg"
+                      title="InDesign"
+                      alt="InDesign"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-indesign-c.svg"
+                      title="InDesign"
+                      alt="InDesign"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[52.5%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full -translate-x-[95%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-2.5rem)/6)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 32"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
-                        d="M26.7113 0.911543L35.4226 16L26.7113 31.0885H9.28868L0.577351 16L9.28868 0.911543H26.7113Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="simple-icons:adobepremierepro"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="logos:adobe-premiere"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Premiere Pro</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-premiere_pro-b.svg"
+                      title="Premiere Pro"
+                      alt="Premiere Pro"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-premiere_pro-c.svg"
+                      title="Premiere Pro"
+                      alt="Premiere Pro"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-[52.5%] flex aspect-[9/8] h-auto max-h-full w-1/4 max-w-full translate-x-[80%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-2.5rem)/6)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 32"
-                    >
-                      <path
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#40DDCB/20] group-hover:stroke-[#15796E]"
-                        d="M26.7113 0.911543L35.4226 16L26.7113 31.0885H9.28868L0.577351 16L9.28868 0.911543H26.7113Z"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="simple-icons:adobeaftereffects"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-[80%] text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="logos:adobe-after-effects"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-75 cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#0F574E] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                    >
-                      After Effects</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-after_effects-b.svg"
+                      title="After Effects"
+                      alt="After Effects"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-after_effects-c.svg"
+                      title="After Effects"
+                      alt="After Effects"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
               <div
                 id="screen04-skill03"
-                class="invisible col-span-1 row-span-1 flex h-full max-h-full w-full max-w-full flex-col items-center justify-center gap-0 rounded-md border-2 border-solid border-[#BB4430] bg-gradient-to-b from-[#D56F5D] to-[#923626] px-4 py-6 opacity-0"
+                class="flex h-full max-h-[calc((100%-1.5rem)/5)] w-full max-w-full flex-col items-start justify-start rounded-md border-2 border-solid border-[#BB4430] bg-gradient-to-b from-[#D56F5D] to-[#923626] p-2 sm:max-h-[calc((100%-1.5rem)/4)] sm:p-4 lg:max-h-[calc((100%-3rem)/4)]"
               >
                 <p
-                  class="text-stroke text-stroke-03 relative z-0 mx-auto mb-auto mt-0 block w-fit max-w-full text-xl font-semibold text-slate-100 drop-shadow"
+                  class="text-stroke text-stroke-03 mb-2 block w-fit max-w-full text-base font-semibold text-slate-100"
                   data-stroke="辦公室技能"
                 >
                   辦公室技能
                 </p>
                 <div
-                  class="pointer-events-none relative m-auto flex aspect-[3/1] h-auto max-h-full w-full max-w-full justify-center *:pointer-events-auto"
+                  class="relative m-auto flex h-[calc(100%-2rem)] max-h-full w-full max-w-full flex-wrap items-start justify-start gap-2 lg:gap-4"
                 >
                   <div
-                    class="group absolute left-1/2 top-0 flex aspect-square h-auto max-h-full w-1/3 max-w-full -translate-x-[150%] translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-1rem)/3)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 36"
-                    >
-                      <circle
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#DE8C7D/20] group-hover:stroke-[#A23C2A]"
-                        cx="18"
-                        cy="18"
-                        r="17"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[90%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="file-icons:microsoft-word"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="vscode-icons:file-type-word2"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[65%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#823021] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Word</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-word-b.svg"
+                      title="Word"
+                      alt="Word"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-word-c.svg"
+                      title="Word"
+                      alt="Word"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-0 flex aspect-square h-auto max-h-full w-1/3 max-w-full -translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-1rem)/3)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 36"
-                    >
-                      <circle
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#DE8C7D/20] group-hover:stroke-[#A23C2A]"
-                        cx="18"
-                        cy="18"
-                        r="17"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[90%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="file-icons:microsoft-excel"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="vscode-icons:file-type-excel2"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[65%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#823021] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Excel</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-excel-b.svg"
+                      title="Excel"
+                      alt="Excel"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-excel-c.svg"
+                      title="Excel"
+                      alt="Excel"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                   <div
-                    class="group absolute left-1/2 top-0 flex aspect-square h-auto max-h-full w-1/3 max-w-full translate-x-1/2 translate-y-0 cursor-auto flex-col items-center justify-center gap-0"
+                    class="group relative flex aspect-square h-full max-h-full w-auto max-w-[calc((100%-1rem)/3)] cursor-auto flex-col items-center justify-center sm:max-w-[calc((100%-4.5rem)/10)] lg:max-w-[calc((100%-9rem)/10)]"
                   >
-                    <svg
-                      class="absolute left-1/2 top-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 drop-shadow-md transition-all duration-700 hover:drop-shadow-none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 36 36"
-                    >
-                      <circle
-                        class="fill-slate-200/20 stroke-white transition-all duration-500 group-hover:fill-[#DE8C7D/20] group-hover:stroke-[#A23C2A]"
-                        cx="18"
-                        cy="18"
-                        r="17"
-                      />
-                    </svg>
-                    <div class="relative flex aspect-square h-fit w-1/3 items-center justify-center xl:w-1/2">
-                      <Icon
-                        class="absolute size-[90%] text-slate-100 opacity-100 drop-shadow-md transition-all duration-500 group-hover:opacity-0"
-                        name="file-icons:microsoft-powerpoint"
-                      ></Icon>
-                      <Icon
-                        class="absolute size-full text-slate-100 opacity-0 drop-shadow-none transition-all duration-500 group-hover:opacity-100"
-                        name="vscode-icons:file-type-powerpoint2"
-                      ></Icon>
-                    </div>
-                    <span
-                      class="-mt-1 scale-[65%] cursor-default text-xs font-semibold text-slate-100 drop-shadow-md transition-all duration-500 group-hover:text-[#823021] xl:text-base 2xl:-mt-2 2xl:text-lg"
-                      >Powerpoint</span
-                    >
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-100 transition-all duration-500 group-hover:opacity-0"
+                      src="/images/skills-powerpoint-b.svg"
+                      title="Powerpoint"
+                      alt="Powerpoint"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                    <img
+                      class="absolute aspect-square size-full max-h-full max-w-full object-contain opacity-0 transition-all duration-500 group-hover:opacity-100"
+                      src="/images/skills-powerpoint-c.svg"
+                      title="Powerpoint"
+                      alt="Powerpoint"
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
               <div
                 id="screen04-skill04"
-                class="invisible col-span-1 row-span-1 flex h-full max-h-full w-full max-w-full flex-col items-center justify-center gap-0 rounded-md border-2 border-solid border-[#231F20] bg-gradient-to-b from-[#4C4345] to-[#0B0A0A] px-4 py-6 opacity-0"
+                class="flex h-full max-h-[calc((100%-1.5rem)/5)] w-full max-w-full flex-col items-start justify-start rounded-md border-2 border-solid border-[#231F20] bg-gradient-to-b from-[#4C4345] to-[#0B0A0A] p-2 sm:max-h-[calc((100%-1.5rem)/4)] sm:p-4 lg:max-h-[calc((100%-3rem)/4)]"
               >
                 <p
-                  class="text-stroke text-stroke-04 relative z-0 mx-auto mb-auto mt-0 block w-fit max-w-full text-xl font-semibold text-slate-100 drop-shadow"
+                  class="text-stroke text-stroke-04 mb-2 block w-fit max-w-full text-base font-semibold text-slate-100"
                   data-stroke="語言能力"
                 >
                   語言能力
                 </p>
                 <div
-                  class="mt-2 flex h-full max-h-full w-full max-w-full flex-row flex-wrap items-start justify-between gap-y-2"
+                  class="relative m-auto my-auto flex h-fit max-h-[calc(100%-2rem)] w-full max-w-full flex-wrap items-start justify-start gap-x-2 gap-y-0 lg:gap-x-4"
                 >
-                  <span
-                    class="relative inline-block h-4 text-xs font-light text-white after:absolute after:left-0 after:top-full after:h-2 after:w-0.5 after:translate-x-0 after:bg-white"
-                    >不懂</span
+                  <div
+                    class="relative m-auto my-auto flex h-6 max-h-full w-full max-w-[calc((100%-0.5rem)/2)] flex-wrap items-start justify-start gap-0 lg:max-w-[calc((100%-3rem)/4)]"
                   >
-                  <span
-                    class="relative inline-block h-4 text-xs font-light text-white after:absolute after:left-1/2 after:top-full after:h-2 after:w-0.5 after:-translate-x-1/2 after:bg-white"
-                    >略懂</span
+                    <span
+                      class="absolute left-0 block h-3 translate-x-0 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-0 after:block after:h-1 after:w-0.5 after:translate-x-0 after:bg-white"
+                      >不懂</span
+                    >
+                    <span
+                      class="absolute left-1/3 block h-3 -translate-x-1/2 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-1/2 after:block after:h-1 after:w-0.5 after:-translate-x-1/2 after:bg-white"
+                      >略懂</span
+                    >
+                    <span
+                      class="absolute left-2/3 block h-3 -translate-x-1/2 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-1/2 after:block after:h-1 after:w-0.5 after:-translate-x-1/2 after:bg-white"
+                      >中等</span
+                    >
+                    <span
+                      class="absolute left-full block h-3 -translate-x-full break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-full after:block after:h-1 after:w-0.5 after:-translate-x-full after:bg-white"
+                      >精通</span
+                    >
+                  </div>
+                  <div
+                    class="relative m-auto my-auto flex h-6 max-h-full w-full max-w-[calc((100%-0.5rem)/2)] flex-wrap items-start justify-start gap-0 lg:max-w-[calc((100%-3rem)/4)]"
                   >
-                  <span
-                    class="relative inline-block h-4 text-xs font-light text-white after:absolute after:left-1/2 after:top-full after:h-2 after:w-0.5 after:-translate-x-1/2 after:bg-white"
-                    >中等</span
+                    <span
+                      class="absolute left-0 block h-3 translate-x-0 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-0 after:block after:h-1 after:w-0.5 after:translate-x-0 after:bg-white"
+                      >不懂</span
+                    >
+                    <span
+                      class="absolute left-1/3 block h-3 -translate-x-1/2 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-1/2 after:block after:h-1 after:w-0.5 after:-translate-x-1/2 after:bg-white"
+                      >略懂</span
+                    >
+                    <span
+                      class="absolute left-2/3 block h-3 -translate-x-1/2 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-1/2 after:block after:h-1 after:w-0.5 after:-translate-x-1/2 after:bg-white"
+                      >中等</span
+                    >
+                    <span
+                      class="absolute left-full block h-3 -translate-x-full break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-full after:block after:h-1 after:w-0.5 after:-translate-x-full after:bg-white"
+                      >精通</span
+                    >
+                  </div>
+                  <div
+                    class="relative m-auto my-auto hidden h-6 max-h-full w-full max-w-[calc((100%-3rem)/4)] flex-wrap items-start justify-start gap-0 lg:flex"
                   >
-                  <span
-                    class="relative inline-block h-4 text-xs font-light text-white after:absolute after:left-full after:top-full after:h-2 after:w-0.5 after:-translate-x-full after:bg-white"
-                    >精通</span
+                    <span
+                      class="absolute left-0 block h-3 translate-x-0 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-0 after:block after:h-1 after:w-0.5 after:translate-x-0 after:bg-white"
+                      >不懂</span
+                    >
+                    <span
+                      class="absolute left-1/3 block h-3 -translate-x-1/2 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-1/2 after:block after:h-1 after:w-0.5 after:-translate-x-1/2 after:bg-white"
+                      >略懂</span
+                    >
+                    <span
+                      class="absolute left-2/3 block h-3 -translate-x-1/2 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-1/2 after:block after:h-1 after:w-0.5 after:-translate-x-1/2 after:bg-white"
+                      >中等</span
+                    >
+                    <span
+                      class="absolute left-full block h-3 -translate-x-full break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-full after:block after:h-1 after:w-0.5 after:-translate-x-full after:bg-white"
+                      >精通</span
+                    >
+                  </div>
+                  <div
+                    class="relative m-auto my-auto hidden h-6 max-h-full w-full max-w-[calc((100%-3rem)/4)] flex-wrap items-start justify-start gap-0 lg:flex"
                   >
-                  <p
-                    class="font-base relative inline-flex h-full max-h-[calc((100%-3rem)/4)] w-full max-w-full cursor-default items-center justify-start border border-solid border-white bg-white/20 px-2 py-1 text-xs text-[#0B0A0A] transition-all duration-500 before:absolute before:left-0 before:top-0 before:z-0 before:block before:h-full before:w-full before:bg-white xl:text-sm"
+                    <span
+                      class="absolute left-0 block h-3 translate-x-0 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-0 after:block after:h-1 after:w-0.5 after:translate-x-0 after:bg-white"
+                      >不懂</span
+                    >
+                    <span
+                      class="absolute left-1/3 block h-3 -translate-x-1/2 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-1/2 after:block after:h-1 after:w-0.5 after:-translate-x-1/2 after:bg-white"
+                      >略懂</span
+                    >
+                    <span
+                      class="absolute left-2/3 block h-3 -translate-x-1/2 break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-1/2 after:block after:h-1 after:w-0.5 after:-translate-x-1/2 after:bg-white"
+                      >中等</span
+                    >
+                    <span
+                      class="absolute left-full block h-3 -translate-x-full break-keep text-xs font-thin leading-none tracking-tighter text-slate-100 after:absolute after:left-full after:block after:h-1 after:w-0.5 after:-translate-x-full after:bg-white"
+                      >精通</span
+                    >
+                  </div>
+                  <div
+                    class="relative m-auto my-auto flex h-fit max-h-[calc((100%-1.5rem))] w-full max-w-full flex-wrap items-start justify-start gap-x-2 gap-y-1 lg:gap-x-4"
                   >
-                    <span class="relative z-10 inline-block h-fit w-fit">中文</span>
-                  </p>
-                  <p
-                    class="font-base relative inline-flex h-full max-h-[calc((100%-3rem)/4)] w-full max-w-full cursor-default items-center justify-start border border-solid border-white bg-white/20 px-2 py-1 text-xs text-[#0B0A0A] transition-all duration-500 before:absolute before:left-0 before:top-0 before:z-0 before:block before:h-full before:w-2/3 before:bg-white xl:text-sm"
-                  >
-                    <span class="relative z-10 inline-block h-fit w-fit">英文</span>
-                  </p>
-                  <p
-                    class="font-base relative inline-flex h-full max-h-[calc((100%-3rem)/4)] w-full max-w-full cursor-default items-center justify-start border border-solid border-white bg-white/20 px-2 py-1 text-xs text-[#0B0A0A] transition-all duration-500 before:absolute before:left-0 before:top-0 before:z-0 before:block before:h-full before:w-4/5 before:bg-white xl:text-sm"
-                  >
-                    <span class="relative z-10 inline-block h-fit w-fit">台語</span>
-                  </p>
-                  <p
-                    class="font-base relative inline-flex h-full max-h-[calc((100%-3rem)/4)] w-full max-w-full cursor-default items-center justify-start border border-solid border-white bg-white/20 px-2 py-1 text-xs text-[#0B0A0A] transition-all duration-500 before:absolute before:left-0 before:top-0 before:z-0 before:block before:h-full before:w-1/3 before:bg-white xl:text-sm"
-                  >
-                    <span class="relative z-10 inline-block h-fit w-fit">客語</span>
-                  </p>
+                    <div
+                      class="relative flex h-fit max-h-full w-full max-w-[calc((100%-0.5rem)/2)] items-center border border-solid border-white bg-gradient-to-r from-[#4C4345]/20 to-[#0B0A0A]/20 transition-all duration-500 before:absolute before:left-0 before:top-0 before:z-0 before:h-full before:max-h-full before:w-full before:bg-gradient-to-r before:from-[#ffffff] before:to-[#f1f5f9] hover:from-[#4C4345]/80 hover:to-[#0B0A0A]/80 hover:before:from-[#f9fafb] hover:before:to-[#e5e7eb] lg:max-w-[calc((100%-3rem)/4)]"
+                    >
+                      <span class="z-10 m-1 inline-block text-xs font-bold leading-none text-gray-600">中文</span>
+                    </div>
+                    <div
+                      class="relative flex h-fit max-h-full w-full max-w-[calc((100%-0.5rem)/2)] items-center border border-solid border-white bg-gradient-to-r from-[#4C4345]/20 to-[#0B0A0A]/20 transition-all duration-500 before:absolute before:left-0 before:top-0 before:z-0 before:h-full before:max-h-full before:w-2/3 before:bg-gradient-to-r before:from-[#ffffff] before:to-[#f1f5f9] hover:from-[#4C4345]/80 hover:to-[#0B0A0A]/80 hover:before:from-[#f9fafb] hover:before:to-[#e5e7eb] lg:max-w-[calc((100%-3rem)/4)]"
+                    >
+                      <span class="z-10 m-1 inline-block text-xs font-bold leading-none text-gray-600">英文</span>
+                    </div>
+                    <div
+                      class="relative flex h-fit max-h-full w-full max-w-[calc((100%-0.5rem)/2)] items-center border border-solid border-white bg-gradient-to-r from-[#4C4345]/20 to-[#0B0A0A]/20 transition-all duration-500 before:absolute before:left-0 before:top-0 before:z-0 before:h-full before:max-h-full before:w-2/3 before:bg-gradient-to-r before:from-[#ffffff] before:to-[#f1f5f9] hover:from-[#4C4345]/80 hover:to-[#0B0A0A]/80 hover:before:from-[#f9fafb] hover:before:to-[#e5e7eb] lg:max-w-[calc((100%-3rem)/4)]"
+                    >
+                      <span class="z-10 m-1 inline-block text-xs font-bold leading-none text-gray-600">台語</span>
+                    </div>
+                    <div
+                      class="relative flex h-fit max-h-full w-full max-w-[calc((100%-0.5rem)/2)] items-center border border-solid border-white bg-gradient-to-r from-[#4C4345]/20 to-[#0B0A0A]/20 transition-all duration-500 before:absolute before:left-0 before:top-0 before:z-0 before:h-full before:max-h-full before:w-1/3 before:bg-gradient-to-r before:from-[#ffffff] before:to-[#f1f5f9] hover:from-[#4C4345]/80 hover:to-[#0B0A0A]/80 hover:before:from-[#f9fafb] hover:before:to-[#e5e7eb] lg:max-w-[calc((100%-3rem)/4)]"
+                    >
+                      <span class="z-10 m-1 inline-block text-xs font-bold leading-none text-gray-600">客語</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1332,7 +1337,7 @@ useGsapAnimations()
           <!-- 第五屏 -->
           <div
             id="screen05-container"
-            class="fixed left-1/2 top-1/2 mx-auto my-auto hidden h-fit max-h-[calc(100dvh-6rem)] w-[calc(100%-2rem)] max-w-[100dvw] origin-bottom-right -translate-x-1/2 -translate-y-[calc((100%-4rem)/2)] flex-col items-start justify-start gap-0 overflow-hidden rounded-md opacity-0 shadow-md lg:left-[calc((100dvw+150px)/2)] lg:max-w-[992px] xl:left-[calc((100dvw+175px)/2)] 2xl:left-[calc((100dvw+200px)/2)]"
+            class="fixed left-1/2 top-1/2 mx-auto my-auto hidden h-fit max-h-[calc(100dvh-8rem)] w-[calc(100dvw-2rem)] max-w-[874px] origin-bottom-right -translate-x-1/2 -translate-y-[calc((100%-4rem)/2)] flex-col items-start justify-start gap-0 overflow-hidden rounded-md opacity-0 shadow-md lg:left-[calc((100%+150px)/2)] lg:w-[calc(100dvw-150px-2rem)] xl:left-[calc((100%+175px)/2)] xl:w-[calc(100dvw-175px-2rem)] xl:max-w-[992px] 2xl:left-[calc((100%+200px)/2)] 2xl:w-[calc(100dvw-200px-2rem)]"
           >
             <p
               class="mb-0 mt-0 block w-full max-w-full rounded-t-md border border-solid border-gray-300 bg-gray-100 py-2 text-center text-xl font-bold text-gray-900"
@@ -1343,9 +1348,7 @@ useGsapAnimations()
               class="my-0 flex h-auto min-h-[500px] w-full flex-col items-start justify-start gap-8 rounded-b-md bg-gray-800 px-4 py-6 text-lg font-normal leading-relaxed text-slate-200"
             >
               <p class="inline-flex h-6 items-center justify-start p-0">
-                <span class="inline-block h-full bg-slate-200 px-1 text-gray-800" style="border: 1px solid yellow"
-                  >Who aim I ?</span
-                >
+                <span class="inline-block h-full bg-slate-200 px-1 text-gray-800">Who aim I ?</span>
                 <span
                   class="flex h-full w-fit items-center justify-start bg-slate-600 text-gray-200 before:inline-block before:size-0 before:border-[0.75rem] before:border-solid before:border-[transparent_transparent_transparent_#e2e8f0] before:bg-slate-600 after:inline-block after:size-0 after:border-[0.75rem] after:border-solid after:border-[transparent_transparent_transparent_#475569] after:bg-gray-800"
                   >&nbsp;~&nbsp;</span
@@ -1376,16 +1379,30 @@ useGsapAnimations()
         </div>
       </div>
     </main>
-    <p class="fixed bottom-[5rem] left-[50dvw] z-50 flex -translate-x-1/2 flex-col items-center justify-center gap-2">
-      <span class="mx-auto inline-block text-center text-sm text-gray-400">向下滑動查看更多</span>
-      <Icon
-        class="animate-pulse text-lg text-gray-800"
-        name="lineicons:scroll-down-2"
-        size="36"
-        title="Scroll Down"
-        alt="Scroll Down"
-      />
-    </p>
+    <Transition
+      name="scroll-fade"
+      mode="out-in"
+      enter-active-class="transition-all duration-300 ease-linear"
+      enter-from-class="opacity-0 translate-y-full"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition-all duration-300 ease-linear"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-full"
+    >
+      <p
+        v-show="isVisible"
+        class="fixed bottom-4 left-[50dvw] z-50 flex -translate-x-1/2 flex-col items-center justify-center gap-2"
+      >
+        <span class="mx-auto inline-block text-center text-sm text-gray-500">向下滑動查看更多</span>
+        <Icon
+          class="animate-pulse text-lg text-gray-600"
+          name="lineicons:scroll-down-2"
+          size="36"
+          title="Scroll Down"
+          alt="Scroll Down"
+        />
+      </p>
+    </Transition>
   </div>
 </template>
 
