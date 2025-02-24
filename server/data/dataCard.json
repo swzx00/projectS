@@ -9,7 +9,8 @@
       "typeScript",
       "tailwind",
       "vue",
-      "nuxt"
+      "nuxt",
+      "web"
     ],
     "content": "匯聚近年作品之整理。",
     "date": "2025-02-07",
