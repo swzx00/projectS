@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  html,
+  body {
+    @apply box-border h-full font-Noto text-base font-normal;
+  }
+  img {
+    @apply h-full max-h-full w-full max-w-full;
+  }
+  body:has(.layout-default.scrollbar) {
+    @apply overflow-y-auto overflow-x-hidden;
+  }
+  body:has(.layout-default.scrollbar)::-webkit-scrollbar {
+    @apply w-5 border border-solid border-gray-400 bg-transparent;
+  }
+  body:has(.layout-default.scrollbar)::-webkit-scrollbar-track {
+    @apply bg-gray-300;
+  }
+  body:has(.layout-default.scrollbar)::-webkit-scrollbar-thumb {
+    @apply border border-solid border-gray-300 bg-white/80;
+  }
+  body:has(.layout-default.scrollbar)::-webkit-scrollbar-button {
+    @apply h-5 w-5 cursor-pointer bg-white bg-contain bg-center opacity-50;
+  }
+  body:has(.layout-default.scrollbar)::-webkit-scrollbar-button:single-button:vertical:decrement {
+    @apply bg-[url(/images/UilAngleUp-b.svg)];
+  }
+  body:has(.layout-default.scrollbar)::-webkit-scrollbar-button:single-button:vertical:increment {
+    @apply bg-[url(/images/UilAngleDown-b.svg)] brightness-0 grayscale-0;
+  }
+
+  .layout-frontend .scrollbar::-webkit-scrollbar {
+    @apply w-3 border-y-0 border-l border-r border-solid border-slate-600 bg-transparent sm:w-5 sm:border-l-2 sm:border-r-2;
+  }
+  .layout-frontend .scrollbar::-webkit-scrollbar-button {
+    @apply hidden;
+  }
+  .layout-frontend .scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full border border-solid border-slate-600 bg-black/30 sm:rounded-none sm:border-l-2 sm:border-r-2;
+  }
+
+  .layout-design .scrollbar::-webkit-scrollbar {
+    @apply w-3 border-y-0 border-l border-r border-solid border-zinc-800 sm:w-5 sm:border-l-2 sm:border-r-2 sm:border-zinc-600;
+  }
+  .layout-design .scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent sm:bg-zinc-600;
+  }
+  .layout-design .scrollbar::-webkit-scrollbar-button {
+    @apply hidden h-3 w-3 cursor-pointer bg-zinc-600 bg-contain bg-center opacity-50 sm:h-5 sm:w-5;
+  }
+  .layout-design .scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement {
+    @apply bg-[url(/images/UilAngleUp-c.svg)] sm:block;
+  }
+  .layout-design .scrollbar::-webkit-scrollbar-button:single-button:vertical:increment {
+    @apply bg-[url(/images/UilAngleDown-c.svg)] sm:block;
+  }
+  .layout-design .scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full border-y-0 border-l border-r border-solid border-zinc-600 bg-white/30 sm:rounded-none sm:border-l-2 sm:border-r-2;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-4;
+  }
+  html:has(.layout-frontend),
+  body:has(.layout-frontend),
+  html:has(.layout-design),
+  body:has(.layout-design) {
+    overflow: hidden;
+  }
+}

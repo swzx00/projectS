@@ -1,0 +1,50 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // 使用 Prettier 格式化
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // 明確為 .vue 文件設置格式化工具
+  },
+  "editor.formatOnSave": true, // 儲存時自動格式化
+  "prettier.requireConfig": true, // 確保 Prettier 使用專案內的設定
+  "prettier.enableDebugLogs": true, // 啟用除錯日誌以檢查問題
+  "tailwindCSS.experimental.classRegex": ["tw`([^`]*)", "tw\\(([^)]*)\\)"],
+  "files.eol": "\n",
+  "cSpell.words": [
+    "autodocs",
+    "composables",
+    "DDTHH",
+    "defval",
+    "dompurify",
+    "endregion",
+    "Fira",
+    "framename",
+    "groot",
+    "gsap",
+    "JhengHei",
+    "jschardet",
+    "materialdesignicons",
+    "nitropack",
+    "nosf",
+    "Noto",
+    "Nuxt",
+    "nuxtjs",
+    "ofetch",
+    "persistedstate",
+    "Pinia",
+    "postcss",
+    "rowspan",
+    "swiper",
+    "tabpanel",
+    "tailwindcss",
+    "Treebuy",
+    "usetype",
+    "VITE",
+    "vuedraggable",
+    "vuetify",
+    "vueuse",
+    "youtu"
+  ],
+  "css.customData": [".vscode/css_custom_data.json"]
+}
