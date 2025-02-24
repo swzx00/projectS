@@ -193,7 +193,7 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen02-container',
       {
-        display: 'block',
+        display: 'none',
         backgroundColor: 'rgb(96 165 250 / 0)',
         pointerEvents: 'none',
       },
@@ -454,18 +454,20 @@ export function useGsapAnimations() {
       '#screen02-container',
       {
         display: 'block',
+        backgroundColor: 'rgb(96 165 250 / 0.2)',
         pointerEvents: 'auto',
       },
       {
         scrollTrigger: {
           trigger: '#section-container',
           start: 'top top-=1000',
-          end: 'top top-=1000',
+          end: 'top top-=1001',
           scrub: true,
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
         },
         display: 'none',
+        backgroundColor: 'rgb(96 165 250 / 0)',
         pointerEvents: 'none',
         immediateRender: false, // 避免初始值在載入時被套用
       },
@@ -577,28 +579,28 @@ export function useGsapAnimations() {
       },
     )
     // 隱藏 第二屏
-    gsap.fromTo(
-      '#screen02-container',
-      {
-        display: 'block',
-        opacity: 1,
-        pointerEvents: 'auto',
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=1200',
-          end: 'top top-=1200',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-          invalidateOnRefresh: true,
-        },
-        display: 'none',
-        opacity: 0,
-        pointerEvents: 'none',
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
+    // gsap.fromTo(
+    //   '#screen02-container',
+    //   {
+    //     display: 'block',
+    //     opacity: 1,
+    //     pointerEvents: 'auto',
+    //   },
+    //   {
+    //     scrollTrigger: {
+    //       trigger: '#section-container',
+    //       start: 'top top-=1200',
+    //       end: 'top top-=1200',
+    //       scrub: true,
+    //       toggleActions: 'play reverse play reverse',
+    //       invalidateOnRefresh: true,
+    //     },
+    //     display: 'none',
+    //     opacity: 0,
+    //     pointerEvents: 'none',
+    //     immediateRender: false, // 避免初始值在載入時被套用
+    //   },
+    // )
     // #screen03-outside
     // 初始狀態
     gsap.set('#screen03-outside', {
