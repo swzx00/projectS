@@ -3,10 +3,10 @@ import { useDataResumeFetch } from '~/composables/useDataResumeFetch'
 import { useImageLoading } from '~/composables/useImageLoading'
 
 definePageMeta({
-  // middleware: ['loading'], // 啟用 loading 中介層
+  middleware: ['loading'], // 啟用 loading 中介層
 })
 
-const pending = ref(false)
+const pending = ref(true)
 const error = ref<Error | null>(null)
 const data = ref<DataResume | null>(null)
 const introductionLines = ref<string[]>([])
@@ -15,25 +15,43 @@ const autobiographyLines = ref<string[]>([])
 onMounted(async () => {
   try {
     const response = await useDataResumeFetch()
-    if (response.data) {
-      data.value = response.data.dataResume[0]
-      introductionLines.value = data.value.introduction.split('\n')
-      autobiographyLines.value = data.value.autobiography.split('\n')
 
-      // 處理 experience 的 end 字段
-      data.value.experience = data.value.experience.map((exp) => {
-        if (exp.end === 'now') {
-          exp.end = '至今'
-        }
-        return exp
-      })
+    if (!response.data) {
+      throw new Error('找不到資料')
+    }
 
-      pending.value = false
+    // 檢查 response.data 是否為陣列
+    if (Array.isArray(response.data)) {
+      data.value = response.data[0] as DataResume
     } else {
-      throw new Error('No data returned')
+      // 如果不是陣列，直接賦值
+      data.value = response.data as unknown as DataResume
+    }
+
+    // 確保資料存在且有必要的欄位
+    if (!data.value) {
+      throw new Error('找不到履歷資料')
+    }
+
+    // 處理資料
+    if (data.value.introduction) {
+      introductionLines.value = data.value.introduction.split('\n')
+    }
+
+    if (data.value.autobiography) {
+      autobiographyLines.value = data.value.autobiography.split('\n')
+    }
+
+    if (data.value.experience) {
+      data.value.experience = data.value.experience.map((exp) => ({
+        ...exp,
+        end: exp.end === 'now' ? '至今' : exp.end,
+      }))
     }
   } catch (err) {
-    error.value = err as Error
+    console.error('詳細錯誤資訊:', err)
+    error.value = err instanceof Error ? err : new Error('載入資料時發生未知錯誤')
+  } finally {
     pending.value = false
   }
 })

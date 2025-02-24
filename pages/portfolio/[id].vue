@@ -6,7 +6,7 @@ import type { ResponseData } from '~/composables/interface'
 import { useImageLoading } from '~/composables/useImageLoading'
 
 const route = useRoute()
-const pending = ref(false)
+const pending = ref(true)
 const error = ref<Error | null>(null)
 const data = ref<ResponseData | null>(null)
 const dataLoaded = ref(false)

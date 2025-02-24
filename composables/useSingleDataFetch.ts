@@ -9,8 +9,23 @@ export async function useSingleDataFetch(providedId?: string): Promise<FetchResu
   const safeId = Array.isArray(id) ? id[0] : id || ''
 
   try {
-    // 使用 fetch 發送請求並等待回應
-    const response = await fetch(`/api/dataSingleCard?id=${safeId}`)
+    // 加入完整的 URL 路徑檢查
+    const url = `/api/dataSingleCard?id=${safeId}`
+
+    // 加入 fetch 選項
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+
+    // 檢查回應狀態
+    if (!response.ok) {
+      throw new Error(`API 請求失敗: ${response.status} ${response.statusText}`)
+    }
+
     const data: ResponseData = await response.json()
 
     // 處理 dataCard 為 null 的情況
@@ -24,12 +39,12 @@ export async function useSingleDataFetch(providedId?: string): Promise<FetchResu
       error: '',
     }
   } catch (err) {
-    // 使用 console.warn 替代 console.error
-    console.warn('Error fetching data:', err)
+    // 更詳細的錯誤記錄
+    console.error('資料獲取錯誤:', err)
     return {
       data: null,
       pending: false,
-      error: err instanceof Error ? err.message : 'Unknown error',
+      error: err instanceof Error ? err.message : '資料獲取失敗',
     }
   }
 }

@@ -52,7 +52,21 @@ export function useDataFetch(defaultTag: string) {
       } else {
         apiPath.value = `/api/dataCard?page=${currentPage.value}`
       }
-      const response = await fetch(apiPath.value)
+
+      // 加入 fetch 選項
+      const response = await fetch(apiPath.value, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+
+      // 檢查回應狀態
+      if (!response.ok) {
+        throw new Error(`API 請求失敗: ${response.status} ${response.statusText}`)
+      }
+
       const responseData: ResponseData = await response.json()
 
       // 當資料加載完成後，將 totalCount 和 perPage 賦值
@@ -67,7 +81,7 @@ export function useDataFetch(defaultTag: string) {
 
   // 使用 ref 和 watchEffect 來儲存狀態
   const data = ref<ResponseData | null>(null)
-  const pending = ref<boolean>(false)
+  const pending = ref<boolean>(true)
   const error = ref<any>(null)
 
   const totalCount = ref<number | null>(null)
