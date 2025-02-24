@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   // imports: {  // 關閉自動導入的元件
   //   autoImport: false,
   // },
-  app: {
-    baseURL: '/projectS/',
-  },
+  // app: {
+  //   baseURL: '/projectS/',
+  // },
 })
