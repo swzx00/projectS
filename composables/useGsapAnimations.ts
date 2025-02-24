@@ -317,7 +317,6 @@ export function useGsapAnimations() {
         display: 'none',
         bottom: '-100%',
         opacity: 0,
-        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
@@ -331,7 +330,6 @@ export function useGsapAnimations() {
         display: 'flex',
         bottom: 0,
         opacity: 1,
-        pointerEvents: 'auto',
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
@@ -453,9 +451,9 @@ export function useGsapAnimations() {
     gsap.fromTo(
       '#screen02-container',
       {
-        display: 'block',
-        backgroundColor: 'rgb(96 165 250 / 0.2)',
-        pointerEvents: 'auto',
+        display: 'none',
+        backgroundColor: 'rgb(96 165 250 / 0.0)',
+        pointerEvents: 'none',
       },
       {
         scrollTrigger: {
@@ -578,29 +576,6 @@ export function useGsapAnimations() {
         immediateRender: false, // 避免初始值在載入時被套用
       },
     )
-    // 隱藏 第二屏
-    // gsap.fromTo(
-    //   '#screen02-container',
-    //   {
-    //     display: 'block',
-    //     opacity: 1,
-    //     pointerEvents: 'auto',
-    //   },
-    //   {
-    //     scrollTrigger: {
-    //       trigger: '#section-container',
-    //       start: 'top top-=1200',
-    //       end: 'top top-=1200',
-    //       scrub: true,
-    //       toggleActions: 'play reverse play reverse',
-    //       invalidateOnRefresh: true,
-    //     },
-    //     display: 'none',
-    //     opacity: 0,
-    //     pointerEvents: 'none',
-    //     immediateRender: false, // 避免初始值在載入時被套用
-    //   },
-    // )
     // #screen03-outside
     // 初始狀態
     gsap.set('#screen03-outside', {
