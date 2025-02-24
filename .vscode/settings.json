@@ -18,12 +18,16 @@
     "defval",
     "dompurify",
     "endregion",
+    "Fira",
     "framename",
     "groot",
+    "gsap",
+    "JhengHei",
     "jschardet",
     "materialdesignicons",
     "nitropack",
     "nosf",
+    "Noto",
     "Nuxt",
     "nuxtjs",
     "ofetch",
@@ -40,8 +44,7 @@
     "vuedraggable",
     "vuetify",
     "vueuse",
-    "youtu",
-    "Noto"
+    "youtu"
   ],
   "css.customData": [".vscode/css_custom_data.json"]
 }

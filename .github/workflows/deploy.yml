@@ -1,15 +1,15 @@
-name: Deploy to GitHub Pages
+name: Branch-specific Deployment
 
 on:
   workflow_dispatch:
   push:
     branches:
       - dev
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       # 1. Checkout the repository
       - uses: actions/checkout@v4
@@ -24,17 +24,20 @@ jobs:
       - run: npm install
 
       # 4. Build static files
-      - run: npm run generate # 使用 nuxt generate 來生成靜態頁面
+      - run: npm run generate
 
       # 5. Upload the generated files as an artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # 確保是輸出到 dist 資料夾
+          path: ./dist
+        if: github.ref == 'refs/heads/dev' # 只在 dev 分支上傳到 GitHub Pages
 
-  deploy:
+  deploy-to-pages:
     needs: build
     runs-on: ubuntu-latest
+    # 只在 dev 分支執行
+    if: github.ref == 'refs/heads/dev'
     permissions:
       pages: write
       id-token: write
@@ -46,3 +49,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-to-vercel:
+    needs: build
+    runs-on: ubuntu-latest
+    # 只在 main 分支執行
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npm i -g vercel
+          vercel deploy --token $VERCEL_TOKEN --prod
