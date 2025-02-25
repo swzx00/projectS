@@ -5,6 +5,21 @@ definePageMeta({
   middleware: ['loading'], // 啟用 loading 中介層
 })
 
+// meta設定
+const metaTitle: string = 'About | 關於林家丞'
+const metaDescription: string =
+  '我是個前端，同時也是個設計。目前任職於1111人力銀行的前端設計，主要負責網站前端的開發與維護。在我成為前端前，我是個設計師，所以對於UI/UX相關領域也是相當瞭解。熟悉Html、Css、Javascript等網頁相關技術，同時也有在接觸Vue、Nuxt等框架。能結合前端技術與設計經驗，打造高效且美觀的網站，為使用者提供最佳體驗。'
+
+useHead({
+  title: `${metaTitle}`,
+  meta: [
+    { name: 'title', content: `${metaTitle}` },
+    { name: 'description', content: `${metaDescription}` },
+    { property: 'og:title', content: `${metaTitle}` },
+    { property: 'og:description', content: `${metaDescription}` },
+  ],
+})
+
 useGsapAnimations()
 
 const isVisible = ref(true)

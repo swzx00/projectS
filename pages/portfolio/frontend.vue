@@ -8,6 +8,24 @@ definePageMeta({
   layout: 'frontend',
   // middleware: ['loading'], // 啟用 loading 中介層
 })
+
+// meta設定
+const metaTitle: string = 'Frontend | 前端作品集'
+const metaDescription: string = 'Frontend 是 林家丞前端相關的作品集分類。'
+const metaKeywords: string =
+  'html, css ,javascript, bootstrap, tailwind, vue, nuxt, typescript, git, edm, web, 作品集, portfolio, project'
+
+useHead({
+  title: `${metaTitle}`,
+  meta: [
+    { name: 'title', content: `${metaTitle}` },
+    { name: 'description', content: `${metaDescription}` },
+    { name: 'keywords', content: `${metaKeywords}` },
+    { property: 'og:title', content: `${metaTitle}` },
+    { property: 'og:description', content: `${metaDescription}` },
+  ],
+})
+
 const route = useRoute()
 
 const iconName = ref('vscode-icons:file-type-vscode')

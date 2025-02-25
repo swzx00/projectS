@@ -9,6 +9,24 @@ definePageMeta({
   layout: 'design',
   // middleware: ['loading'], // 啟用 loading 中介層
 })
+
+// meta設定
+const metaTitle: string = 'Design | 設計作品集'
+const metaDescription: string = 'Design 是 林家丞設計相關的作品集分類。'
+const metaKeywords: string =
+  'web, edm, banner, video card, printed, photoshop, illustrator, figma, inDesign, premiere pro, after effects, 作品集, portfolio, project'
+
+useHead({
+  title: `${metaTitle}`,
+  meta: [
+    { name: 'title', content: `${metaTitle}` },
+    { name: 'description', content: `${metaDescription}` },
+    { name: 'keywords', content: `${metaKeywords}` },
+    { property: 'og:title', content: `${metaTitle}` },
+    { property: 'og:description', content: `${metaDescription}` },
+  ],
+})
+
 const route = useRoute()
 
 const title = ref('design')

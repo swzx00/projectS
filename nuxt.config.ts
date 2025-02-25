@@ -33,7 +33,40 @@ export default defineNuxtConfig({
   // imports: {  // 關閉自動導入的元件
   //   autoImport: false,
   // },
-  // app: {
-  //   baseURL: '/projectS/',
-  // },
+  app: {
+    // baseURL: '/projectS/',
+    head: {
+      htmlAttrs: {
+        lang: 'zh-Hant-TW', // 設定 <html> 標籤的 lang 屬性
+      },
+      title: '林家丞 作品集 | Portfolio WebSite Chia-Cheng, Lin',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
+        { name: 'title', content: '林家丞 作品集 | Portfolio WebSite Chia-Cheng, Lin [swzx00]' },
+        {
+          name: 'description',
+          content:
+            '這是林家丞的作品集網站，This WebSite is Portfolio of Chia-Cheng, Lin (swzx00)，集結林家丞相關之作品。',
+        },
+        {
+          name: 'keywords',
+          content:
+            '林家丞, swzx00, 皇家聖, Chia-Cheng, ChiaCheng, Chia-Cheng-Lin, 作品集, Portfolio, Project, ProjectS, 前端開發, 前端設計, 前端工程, 設計, 網頁設計, 平面設計, frontend,design, web',
+        },
+        { name: 'author', content: 'swzx00' },
+        { name: 'copyright', content: '林家丞@swzx00' },
+        { property: 'og:title', content: '林家丞 作品集 | Portfolio WebSite Chia-Cheng, Lin [swzx00]' },
+        {
+          property: 'og:description',
+          content:
+            '這是林家丞的作品集網站，This WebSite is Portfolio of Chia-Cheng, Lin (swzx00)，集結林家丞相關之作品。',
+        },
+        {
+          property: 'og:url',
+          content: 'https://swzx00.vercel.app/',
+        },
+      ],
+    },
+  },
 })

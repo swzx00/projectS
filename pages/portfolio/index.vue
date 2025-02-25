@@ -7,6 +7,23 @@ const { currentPage, data, pending, error, totalCount, perPage } = useDataFetch(
 definePageMeta({
   middleware: ['loading'], // 啟用 loading 中介層
 })
+
+// meta設定
+const metaTitle: string = 'Portfolio | 作品集總覽'
+const metaDescription: string = 'Portfolio 是集結了 林家丞前端以及設計相關的作品集總覽。'
+const metaKeywords: string =
+  'html, css ,javascript, bootstrap, tailwind, vue, nuxt, typescript, git, edm, web, banner, video card, printed, photoshop, illustrator, figma, inDesign, premiere pro, after effects, 作品集, portfolio, project'
+
+useHead({
+  title: `${metaTitle}`,
+  meta: [
+    { name: 'title', content: `${metaTitle}` },
+    { name: 'description', content: `${metaDescription}` },
+    { name: 'keywords', content: `${metaKeywords}` },
+    { property: 'og:title', content: `${metaTitle}` },
+    { property: 'og:description', content: `${metaDescription}` },
+  ],
+})
 </script>
 
 <template>
