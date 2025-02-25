@@ -5,6 +5,21 @@ definePageMeta({
   middleware: ['loading'], // 啟用 loading 中介層
 })
 
+// meta設定
+const metaTitle: string = 'About | 關於林家丞'
+const metaDescription: string =
+  '我是個前端，同時也是個設計。目前任職於1111人力銀行的前端設計，主要負責網站前端的開發與維護。在我成為前端前，我是個設計師，所以對於UI/UX相關領域也是相當瞭解。熟悉Html、Css、Javascript等網頁相關技術，同時也有在接觸Vue、Nuxt等框架。能結合前端技術與設計經驗，打造高效且美觀的網站，為使用者提供最佳體驗。'
+
+useHead({
+  title: `${metaTitle}`,
+  meta: [
+    { name: 'title', content: `${metaTitle}` },
+    { name: 'description', content: `${metaDescription}` },
+    { property: 'og:title', content: `${metaTitle}` },
+    { property: 'og:description', content: `${metaDescription}` },
+  ],
+})
+
 useGsapAnimations()
 
 const isVisible = ref(true)
@@ -81,7 +96,7 @@ onUnmounted(() => {
           <!-- 第一屏  -->
           <div
             id="screen01-container"
-            class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] flex h-fit w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-3/4 flex-row flex-wrap items-start justify-start opacity-0 sm:max-w-[calc(100%-4rem)] lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100%/4*3)] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[calc(100%/3*2)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[40%]"
+            class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] flex h-fit w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 flex-row flex-wrap items-start justify-start opacity-0 sm:max-w-[calc(100%-4rem)] sm:-translate-y-3/4 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100%/4*3)] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[calc(100%/3*2)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[40%]"
           >
             <!-- 第一屏 大頭照 -->
             <picture

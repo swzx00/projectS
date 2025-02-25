@@ -1,4 +1,4 @@
-import dataResume from '~/public/data/dataResume.json' // 直接引入 JSON 檔案
+import dataResume from '~/server/data/dataResume.json' // 直接引入 JSON 檔案
 
 export default defineEventHandler(async () => {
   // 模擬延遲 (例如延遲 0 秒)

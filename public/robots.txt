@@ -1,1 +1,19 @@
 
+# 允許所有爬蟲抓取網站的內容
+User-agent: *
+Disallow: /nuxt/
+Disallow: /server/
+Disallow: /components/
+Disallow: /composables/
+Disallow: /layouts/
+Disallow: /middleware/
+Disallow: /stores/
+Disallow: /pages/
+Disallow: /assets/
+Disallow: /.nuxt/
+Disallow: /node_modules/
+Disallow: /public/robots.txt/
+Disallow: /public/resume-林家丞_0921702528.pdf/
+Disallow: /_nuxt/
+Disallow: /robots.txt/
+Disallow: /resume-林家丞_0921702528.pdf/

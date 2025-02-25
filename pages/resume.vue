@@ -6,6 +6,21 @@ definePageMeta({
   middleware: ['loading'], // 啟用 loading 中介層
 })
 
+// meta設定
+const metaTitle: string = '林家丞 Chia-Cheng, Lin'
+const metaDescription: string =
+  '我是個前端，同時也是個設計。目前任職於1111人力銀行的前端設計，主要負責網站前端的開發與維護。在我成為前端前，我是個設計師，所以對於UI/UX相關領域也是相當瞭解。熟悉Html、Css、Javascript等網頁相關技術，同時也有在接觸Vue、Nuxt等框架。能結合前端技術與設計經驗，打造高效且美觀的網站，為使用者提供最佳體驗。'
+
+useHead({
+  title: `${metaTitle}`,
+  meta: [
+    { name: 'title', content: `${metaTitle}` },
+    { name: 'description', content: `${metaDescription}` },
+    { property: 'og:title', content: `${metaTitle}` },
+    { property: 'og:description', content: `${metaDescription}` },
+  ],
+})
+
 const pending = ref(true)
 const error = ref<Error | null>(null)
 const data = ref<DataResume | null>(null)
@@ -359,7 +374,9 @@ const handlePrint = () => {
           作品集
           <span class="ml-0 inline-block text-lg font-extrabold text-gray-800 xs:ml-2">Portfolio</span>
         </h2>
-        <p class="mb-3 text-start text-base font-normal leading-normal text-gray-800 print:text-10pt">
+        <p
+          class="mb-3 inline-flex items-center text-start text-base font-normal leading-normal text-gray-800 print:text-10pt"
+        >
           <span
             class="mr-2 inline-flex items-center justify-start font-medium after:inline after:content-['：'] xl:mr-0"
             >線上作品集</span
@@ -373,13 +390,30 @@ const handlePrint = () => {
             >{{ data.portfolios[0].url }}</a
           >
         </p>
+        <p
+          class="mb-3 inline-flex items-center text-start text-base font-normal leading-normal text-gray-800 print:text-10pt"
+        >
+          <Icon class="mr-1 inline-block size-5" name="logos:github-icon" size="24" title="Github" alt="Github" />
+          <span
+            class="mr-2 inline-flex items-center justify-start font-medium after:inline after:content-['：'] xl:mr-0"
+            >Github</span
+          >
+          <a
+            class="break-all text-blue-600 underline underline-offset-2 transition-all duration-300 hover:text-blue-800 hover:underline-offset-4"
+            :href="data.portfolios[0].github"
+            title="Github"
+            alt="Github"
+            target="_blank"
+            >{{ data.portfolios[0].github }}</a
+          >
+        </p>
 
         <div class="absolute left-auto right-[10pt] top-[5pt] hidden w-fit print:inline-block">
           <picture class="block">
             <figure class="flex w-fit flex-col items-center justify-center">
               <img
                 class="size-[50pt]"
-                src="/images/qrcode-portfolioS.svg"
+                :src="data.portfolios[0].qrcode"
                 title="線上作品集"
                 alt="線上作品集"
                 width="80"
@@ -447,12 +481,15 @@ const handlePrint = () => {
   </div>
 </template>
 
-<style scoped>
+<style>
 @media print {
   body,
   * {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact; /* for Chrome, Edge, Opera */
+  }
+  .layout-default {
+    background: none;
   }
 }
 

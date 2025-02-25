@@ -68,6 +68,8 @@ export interface Languages {
 
 export interface Portfolios {
   url: string
+  qrcode: string
+  github: string
 }
 
 export interface DataResume {

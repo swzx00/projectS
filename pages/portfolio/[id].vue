@@ -20,6 +20,36 @@ onMounted(async () => {
     pending.value = false
 
     item.value = data.value?.dataCard ?? null
+
+    // meta設定
+    const metaTitle = item.value.title
+    const metaDescription = item.value.content
+    const metaKeywords = item.value.tag
+
+    const frontendKeywords = ['nuxt', 'vue', 'tailwind', 'bootstrap', 'html', 'css', 'typescript', 'javascript', 'edm']
+    const designKeywords = ['web', 'edm', 'banner', 'video card', 'printed']
+
+    const isFrontend = frontendKeywords.some((keyword) => metaKeywords.includes(keyword))
+    const isDesign = designKeywords.some((keyword) => metaKeywords.includes(keyword))
+
+    const category = computed(() => {
+      if (isFrontend && isDesign) return 'frontend, design' // 如果符合兩種，顯示兩個
+      if (isFrontend) return 'frontend'
+      if (isDesign) return 'design'
+      return 'other' // 若都不符合，顯示 other
+    })
+
+    // 設定 useHead()
+    useHead(() => ({
+      title: `${metaTitle}`,
+      meta: [
+        { name: 'title', content: `${metaTitle}` },
+        { name: 'description', content: `${metaDescription}` },
+        { name: 'keywords', content: `${category.value}, ${metaKeywords}, 作品集, portfolio, project` },
+        { property: 'og:title', content: `${metaTitle}` },
+        { property: 'og:description', content: `${metaDescription}` },
+      ],
+    }))
   } catch (err) {
     error.value = err as Error
     pending.value = false
