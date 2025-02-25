@@ -1,7 +1,7 @@
 // import { readFileSync } from 'fs'
 // import { resolve } from 'path'
 import { defineEventHandler, getQuery } from 'h3'
-import dataCard from '~/public/data/dataCard.json' // 直接引入 JSON 檔案
+import dataCard from '~/server/data/dataCard.json' // 直接引入 JSON 檔案
 
 export default defineEventHandler(async (event) => {
   // 模擬延遲 (例如延遲 0 秒)
