@@ -81,7 +81,7 @@ onUnmounted(() => {
           <!-- 第一屏  -->
           <div
             id="screen01-container"
-            class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] flex h-fit w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-3/4 flex-row flex-wrap items-start justify-start opacity-0 sm:max-w-[calc(100%-4rem)] lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100%/4*3)] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[calc(100%/3*2)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[40%]"
+            class="fixed left-[calc(100dvw/2)] top-[calc((100dvh+4rem)/2)] flex h-fit w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 flex-row flex-wrap items-start justify-start opacity-0 sm:max-w-[calc(100%-4rem)] sm:-translate-y-3/4 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[calc(100%/4*3)] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[calc(100%/3*2)] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[40%]"
           >
             <!-- 第一屏 大頭照 -->
             <picture

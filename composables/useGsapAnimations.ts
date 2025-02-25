@@ -48,57 +48,36 @@ export function useGsapAnimations() {
     // <!-- 第一屏 區域 -->
     // 初始狀態
     gsap.set('#screen01-container', {
-      display: 'none',
-      visibility: 'hidden',
-      opacity: 0,
-      pointerEvents: 'none',
+      display: 'flex',
+      visibility: 'visible',
+      opacity: 1,
+      pointerEvents: 'auto',
     })
     // 動畫
-    gsap.fromTo(
-      '#screen01-container',
-      {
-        display: 'none',
-        visibility: 'hidden',
-        opacity: 0,
-        pointerEvents: 'none',
+    ScrollTrigger.create({
+      trigger: '#section-container',
+      start: 'top top-=64',
+      end: 'top top-=200',
+      scrub: true,
+      toggleActions: 'play reverse play reverse',
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        gsap.to('#screen01-container', {
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          pointerEvents: 'none',
+        })
       },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top+=65',
-          end: 'top top+=65',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-          invalidateOnRefresh: true,
-        },
-        display: 'flex',
-        visibility: 'visible',
-        opacity: 1,
-        pointerEvents: 'auto',
-        immediateRender: false, // 避免初始值在載入時被套用
+      onLeaveBack: () => {
+        gsap.to('#screen01-container', {
+          display: 'flex',
+          visibility: 'visible',
+          opacity: 1,
+          pointerEvents: 'auto',
+        })
       },
-    )
-    // 動畫
-    gsap.fromTo(
-      '#screen01-container',
-      {
-        opacity: 1,
-        pointerEvents: 'auto',
-      },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=64',
-          end: 'top top-=200',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-          invalidateOnRefresh: true,
-        },
-        opacity: 0,
-        pointerEvents: 'none',
-        immediateRender: false, // 避免初始值在載入時被套用
-      },
-    )
+    })
     // <!-- 第一屏 大頭照 -->
     // 初始狀態
     gsap.set('#screen01-headshot', {
@@ -2894,26 +2873,30 @@ export function useGsapAnimations() {
     )
 
     // #screen01-container 顯示
-    gsap.fromTo(
-      '#screen01-container',
-      {
-        opacity: 0,
-        pointerEvents: 'none',
+    ScrollTrigger.create({
+      trigger: '#section-container',
+      start: 'top top-=7000',
+      end: 'top top-=7200',
+      scrub: true,
+      toggleActions: 'play reverse play reverse',
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        gsap.to('#screen01-container', {
+          display: 'flex',
+          visibility: 'visible',
+          opacity: 1,
+          pointerEvents: 'auto',
+        })
       },
-      {
-        scrollTrigger: {
-          trigger: '#section-container',
-          start: 'top top-=7000',
-          end: 'top top-=7200',
-          scrub: true,
-          toggleActions: 'play reverse play reverse',
-          invalidateOnRefresh: true,
-        },
-        opacity: 1,
-        pointerEvents: 'auto',
-        immediateRender: false, // 避免初始值在載入時被套用
+      onLeaveBack: () => {
+        gsap.to('#screen01-container', {
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          pointerEvents: 'none',
+        })
       },
-    )
+    })
     // 動畫 #screen01-headshot 圖片回歸
     gsap.fromTo(
       '#screen01-headshot',
