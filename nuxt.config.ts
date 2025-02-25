@@ -56,16 +56,18 @@ export default defineNuxtConfig({
         },
         { name: 'author', content: 'swzx00' },
         { name: 'copyright', content: '林家丞@swzx00' },
+        { property: 'og:url', content: 'https://swzx00.vercel.app/' },
+        { property: 'og:locale', content: 'zh-Hant-TW' },
+        { property: 'og:type', content: 'website' },
         { property: 'og:title', content: '林家丞 作品集 | Portfolio WebSite Chia-Cheng, Lin [swzx00]' },
         {
           property: 'og:description',
           content:
             '這是林家丞的作品集網站，This WebSite is Portfolio of Chia-Cheng, Lin (swzx00)，集結林家丞相關之作品。',
         },
-        {
-          property: 'og:url',
-          content: 'https://swzx00.vercel.app/',
-        },
+        { property: 'og:image', content: 'https://swzx00.vercel.app/og-img.jpg' },
+        { property: 'og:image:alt', content: '林家丞 作品集' },
+        { property: 'og:image:type', content: 'image/jpg' },
       ],
     },
   },
