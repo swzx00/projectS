@@ -169,7 +169,6 @@ onUnmounted(() => {
                   />
                   View Resume
                 </NuxtLink>
-                <!-- <span class="mx-auto inline-block text-center text-sm text-gray-400">向下滑動查看更多</span> -->
               </div>
             </div>
           </div>
@@ -1406,7 +1405,7 @@ onUnmounted(() => {
     >
       <p
         v-show="isVisible"
-        class="fixed bottom-4 left-[50dvw] z-50 flex -translate-x-1/2 flex-col items-center justify-center gap-2"
+        class="scroll-more fixed bottom-4 left-[50dvw] z-[19] flex -translate-x-1/2 flex-col items-center justify-center gap-2"
       >
         <span class="mx-auto inline-block text-center text-sm text-gray-500">向下滑動查看更多</span>
         <Icon
