@@ -113,7 +113,7 @@ useHead({
       <!-- 資料渲染 -->
       <div
         v-else-if="data?.dataCard && data?.dataCard.length"
-        class="mx-auto flex w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-4 gap-y-8 px-4 *:sm:max-w-[calc((100%-(1*1rem))/2)] md:max-w-[960px] *:md:max-w-[calc((100%-(2*1rem))/3)] lg:max-w-[960px] *:lg:max-w-[calc((100%-(3*1rem))/4)] xl:max-w-[1024px] 2xl:max-w-[1280px]"
+        class="mx-auto flex w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-4 gap-y-4 px-4 sm:gap-y-8 *:sm:max-w-[calc((100%-(1*1rem))/2)] md:max-w-[960px] *:md:max-w-[calc((100%-(2*1rem))/3)] lg:max-w-[960px] *:lg:max-w-[calc((100%-(3*1rem))/4)] xl:max-w-[1024px] 2xl:max-w-[1280px]"
       >
         <CardDefault
           v-for="card in data?.dataCard"

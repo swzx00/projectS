@@ -105,7 +105,9 @@ watch(
       <Icon :name="iconName" size="16" :title="title" :alt="title" />
       {{ title }}
     </h2>
-    <div class="scrollbar h-full max-h-[calc(100%)] overflow-x-hidden overflow-y-scroll bg-slate-600 px-4 py-6">
+    <div
+      class="workspace scrollbar h-full max-h-[calc(100%)] overflow-x-hidden overflow-y-scroll bg-slate-600 px-4 py-6"
+    >
       <Transition
         name="zoom-in"
         mode="out-in"
@@ -142,7 +144,7 @@ watch(
           class="mx-auto flex h-fit w-full max-w-full flex-col flex-wrap items-start justify-start"
         >
           <div
-            class="mx-auto flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-3 gap-y-6 *:max-w-full *:sm:max-w-full *:md:max-w-[calc((100%-(1*.75rem))/2)] *:lg:max-w-[calc((100%-(2*.75rem))/3)] *:xl:max-w-[calc((100%-(3*.75rem))/4)]"
+            class="mx-auto flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-3 gap-y-4 *:max-w-full sm:gap-y-6 *:sm:max-w-full *:md:max-w-[calc((100%-(1*.75rem))/2)] *:lg:max-w-[calc((100%-(2*.75rem))/3)] *:xl:max-w-[calc((100%-(3*.75rem))/4)]"
           >
             <CardFrontend
               v-for="card in data?.dataCard"

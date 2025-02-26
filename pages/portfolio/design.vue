@@ -115,7 +115,7 @@ const numbersY = computed(() => generateNumbers(maxY, step))
         class="relative hidden size-5 bg-zinc-600 before:absolute before:bottom-1/3 before:block before:h-px before:w-full before:bg-zinc-500 before:content-[''] after:absolute after:right-1/3 after:h-full after:w-px after:bg-zinc-500 after:content-[''] sm:block"
       ></div>
       <div
-        class="scrollbar col-span-full col-start-2 col-end-3 row-start-1 row-end-3 h-full overflow-x-hidden overflow-y-scroll"
+        class="workspace scrollbar col-span-full col-start-2 col-end-3 row-start-1 row-end-3 h-full overflow-x-hidden overflow-y-scroll"
       >
         <div
           class="sticky top-0 z-10 hidden h-5 w-full flex-row flex-nowrap items-end justify-start gap-0 overflow-hidden bg-zinc-700 bg-[url(/images/bg-rulersX.svg)] bg-auto bg-[bottom_left_1rem] bg-repeat-x *:pointer-events-none *:mb-1 *:block *:h-full *:w-10 *:flex-shrink-0 *:flex-grow-0 *:select-none *:pl-1 *:text-[11px] *:font-thin *:text-zinc-300 first:*:ml-4 sm:flex"
@@ -159,7 +159,7 @@ const numbersY = computed(() => generateNumbers(maxY, step))
               class="mx-auto flex h-fit w-full max-w-full flex-col flex-wrap items-start justify-start"
             >
               <div
-                class="mx-auto flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-5 gap-y-12 *:max-w-full *:sm:max-w-full *:md:max-w-[calc((100%-(1*1.25rem))/2)] *:lg:max-w-[calc((100%-(2*1.25rem))/3)] *:xl:max-w-[calc((100%-(3*1.25rem))/4)]"
+                class="mx-0 flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-5 gap-y-4 *:max-w-full sm:gap-y-12 *:sm:max-w-full *:md:max-w-[calc((100%-(1*1.25rem))/2)] *:lg:max-w-[calc((100%-(2*1.25rem))/3)] *:xl:max-w-[calc((100%-(3*1.25rem))/4)]"
               >
                 <CardDesign
                   v-for="card in data?.dataCard"

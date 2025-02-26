@@ -5,7 +5,7 @@ const showDivProject = ref(false)
 const isMobile = ref(false) // 控制是否為手機尺寸
 
 // 切換顯示狀態
-const toggleNav = (type: 'menu' | 'project') => {
+const toggleNav = (type: 'menu' | 'project' | 'backdrop') => {
   if (isMobile.value) {
     if (type === 'menu') {
       showDivMenu.value = !showDivMenu.value
@@ -13,9 +13,27 @@ const toggleNav = (type: 'menu' | 'project') => {
     } else if (type === 'project') {
       showDivProject.value = !showDivProject.value
       showDivMenu.value = false // 關閉 Menu
+    } else if (type === 'backdrop') {
+      showDivProject.value = false // 關閉 Project
+      showDivMenu.value = false // 關閉 Menu
     }
   }
 }
+
+// 計算屬性，當 showDivMenu 或 showDivProject 為 true 時返回 true
+const isAnyDivVisible = computed(() => showDivMenu.value || showDivProject.value)
+
+// 監聽 isAnyDivVisible 的變化
+watch(isAnyDivVisible, (newValue) => {
+  const workSpace = document.querySelector('.workspace') as HTMLElement | null
+  if (newValue) {
+    if (workSpace) {
+      workSpace.classList.add('no-scroll')
+    }
+  } else if (workSpace) {
+    workSpace.classList.remove('no-scroll')
+  }
+})
 
 // 監聽螢幕大小變化
 const handleResize = () => {
@@ -53,6 +71,23 @@ onUnmounted(() => {
         alt="Menu"
       />
     </button>
+    <Teleport to="body" :disabled="!isMobile">
+      <Transition
+        name="menu-backdrop"
+        enter-active-class="transition-all duration-300 ease-in-out overflow-hidden"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="transition-all duration-300 ease-in-out overflow-hidden"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
+      >
+        <div
+          v-if="isMobile && isAnyDivVisible === true"
+          class="nav-backdrop fixed bottom-0 left-0 right-0 top-0 z-30 block hidden h-dvh w-dvw bg-black/50 backdrop-blur-md xs:block sm:hidden"
+          @click="toggleNav('backdrop')"
+        ></div>
+      </Transition>
+    </Teleport>
     <Teleport to="body">
       <Transition
         name="menu-header"
