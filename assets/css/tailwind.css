@@ -10,6 +10,9 @@
   img {
     @apply h-full max-h-full w-full max-w-full;
   }
+  body.no-scroll {
+    @apply !overflow-x-hidden !overflow-y-hidden;
+  }
   body:has(.layout-default.scrollbar) {
     @apply overflow-y-auto overflow-x-hidden;
   }
@@ -32,6 +35,9 @@
     @apply bg-[url(/images/UilAngleDown-b.svg)] brightness-0 grayscale-0;
   }
 
+  .layout-frontend .workspace.no-scroll {
+    @apply !pointer-events-none !overflow-hidden;
+  }
   .layout-frontend .scrollbar::-webkit-scrollbar {
     @apply w-3 border-y-0 border-l border-r border-solid border-slate-600 bg-transparent sm:w-5 sm:border-l-2 sm:border-r-2;
   }
@@ -42,6 +48,9 @@
     @apply rounded-full border border-solid border-slate-600 bg-black/30 sm:rounded-none sm:border-l-2 sm:border-r-2;
   }
 
+  .layout-design .workspace.no-scroll {
+    @apply !pointer-events-none !overflow-hidden;
+  }
   .layout-design .scrollbar::-webkit-scrollbar {
     @apply w-3 border-y-0 border-l border-r border-solid border-zinc-800 sm:w-5 sm:border-l-2 sm:border-r-2 sm:border-zinc-600;
   }

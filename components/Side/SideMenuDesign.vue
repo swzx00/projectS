@@ -17,6 +17,21 @@ const toggleNav = (type: 'menu' | 'project') => {
   }
 }
 
+// 計算屬性，當 showDivMenu 或 showDivProject 為 true 時返回 true
+const isAnyDivVisible = computed(() => showDivMenu.value || showDivProject.value)
+
+// 監聽 isAnyDivVisible 的變化
+watch(isAnyDivVisible, (newValue) => {
+  const workSpace = document.querySelector('.workspace') as HTMLElement | null
+  if (newValue) {
+    if (workSpace) {
+      workSpace.classList.add('no-scroll')
+    }
+  } else if (workSpace) {
+    workSpace.classList.remove('no-scroll')
+  }
+})
+
 // 監聽螢幕大小變化
 const handleResize = () => {
   const currentWidth = window.innerWidth
