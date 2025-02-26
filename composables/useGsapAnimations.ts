@@ -2229,7 +2229,7 @@ export function useGsapAnimations() {
       '#screen04-container',
       {
         display: 'none',
-        top: '-11rem',
+        top: '-13rem',
         x: '-50%',
         y: '-100%',
         opacity: 0,
@@ -2245,7 +2245,7 @@ export function useGsapAnimations() {
           invalidateOnRefresh: true,
         },
         display: 'flex',
-        top: '5.5rem',
+        top: '6.5rem',
         x: '-50%',
         y: 0,
         opacity: 1,
@@ -2385,6 +2385,7 @@ export function useGsapAnimations() {
     gsap.set('#screen05-container', {
       display: 'none',
       x: '-50%',
+      y: '-50%',
       scale: 0,
       opacity: 0,
       pointerEvents: 'none',
@@ -2393,6 +2394,7 @@ export function useGsapAnimations() {
       '#screen05-container',
       {
         x: '-50%',
+        y: '-50%',
         scale: 0,
         opacity: 0,
         pointerEvents: 'none',
@@ -2409,6 +2411,7 @@ export function useGsapAnimations() {
           onLeaveBack: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
         },
         x: '-50%',
+        y: '-50%',
         scale: 1,
         opacity: 1,
         pointerEvents: 'auto',
@@ -2883,6 +2886,7 @@ export function useGsapAnimations() {
       onEnter: () => {
         gsap.to('#screen01-container', {
           display: 'flex',
+          paddingBottom: '100px',
           visibility: 'visible',
           opacity: 1,
           pointerEvents: 'auto',
@@ -2891,6 +2895,7 @@ export function useGsapAnimations() {
       onLeaveBack: () => {
         gsap.to('#screen01-container', {
           display: 'none',
+          paddingBottom: '0',
           visibility: 'hidden',
           opacity: 0,
           pointerEvents: 'none',

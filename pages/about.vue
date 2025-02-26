@@ -231,7 +231,7 @@ onUnmounted(() => {
                 class="mt-3 hidden align-baseline text-xs font-medium leading-none text-gray-600 sm:text-sm"
               >
                 <span class="text-base font-semibold text-gray-700 sm:text-lg">淡江大學</span> 資訊傳播學系 畢業(2009-09
-                - 2013-06)
+                -2013-06)
               </p>
               <p
                 id="screen02-text-p02"
@@ -359,16 +359,16 @@ onUnmounted(() => {
                     ></div>
                   </div>
                   <div
-                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
+                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-3 py-3 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)] sm:px-6 sm:py-4"
                   >
                     <p
-                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-xs font-normal leading-5 text-gray-600 xs:flex-row sm:text-sm lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-1 py-1 font-Noto text-base font-bold text-gray-100 sm:px-2 sm:text-lg lg:text-xl"
                         >前端設計
                       </span>
-                      (2023/02 - Now)
+                      (2023/02-Now)
                     </p>
                     <p class="ml-2 text-base font-normal leading-normal text-gray-800 lg:text-lg">
                       負責公司網站的前端開發、切版以及維護，以及支援活動專區的網站相關開發。
@@ -390,16 +390,16 @@ onUnmounted(() => {
                     ></div>
                   </div>
                   <div
-                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
+                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-3 py-3 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)] sm:px-6 sm:py-4"
                   >
                     <p
-                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-xs font-normal leading-5 text-gray-600 xs:flex-row sm:text-sm lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-1 py-1 font-Noto text-base font-bold text-gray-100 sm:px-2 sm:text-lg lg:text-xl"
                         >設計師
                       </span>
-                      (2020/01 - 2023/02)
+                      (2020/01-2023/02)
                     </p>
                     <p class="ml-2 text-base font-normal leading-normal text-gray-800 lg:text-lg">
                       負責公司的網頁設計、EDM設計、DM設計 等相關設計。以及各類活動相關輸出物設計。
@@ -467,16 +467,16 @@ onUnmounted(() => {
                     ></div>
                   </div>
                   <div
-                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
+                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-3 py-3 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)] sm:px-6 sm:py-4"
                   >
                     <p
-                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-xs font-normal leading-5 text-gray-600 xs:flex-row sm:text-sm lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-1 py-1 font-Noto text-base font-bold text-gray-100 sm:px-2 sm:text-lg lg:text-xl"
                         >網頁設計師
                       </span>
-                      (2019/04 - 2019/11)
+                      (2019/04-2019/11)
                     </p>
                     <p class="ml-2 text-base font-normal leading-normal text-gray-800 lg:text-lg">
                       負責公司的網頁設計、UI/UX設計、廣告DM設計、海報設計及展場規劃設計。
@@ -545,16 +545,16 @@ onUnmounted(() => {
                     ></div>
                   </div>
                   <div
-                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
+                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-3 py-3 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)] sm:px-6 sm:py-4"
                   >
                     <p
-                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-xs font-normal leading-5 text-gray-600 xs:flex-row sm:text-sm lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-1 py-1 font-Noto text-base font-bold text-gray-100 sm:px-2 sm:text-lg lg:text-xl"
                         >市場行銷
                       </span>
-                      (2015/05 - 2018/06)
+                      (2015/05-2018/06)
                     </p>
                     <p class="ml-2 text-base font-normal leading-normal text-gray-800 lg:text-lg">
                       型錄設計、廣告DM設計、E-DM製作及發送、網站修改以及新產品上市後的相關行銷活動企劃。另外也負責開設及管理臉書粉絲專頁。
@@ -587,13 +587,13 @@ onUnmounted(() => {
                       兵役
                     </p>
                     <p
-                      class="mb-2 inline-flex flex-row items-baseline justify-start pl-4 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 sm:pl-0 lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-row items-baseline justify-start pl-4 align-baseline font-Fira font-normal leading-5 text-gray-600 xs:text-xs sm:pl-0 sm:text-sm lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-1 py-1 font-Noto text-base font-bold text-gray-100 sm:px-2 sm:text-lg lg:text-xl"
                         >一般常備役
                       </span>
-                      (2013/12 - 2014/11)
+                      (2013/12-2014/11)
                     </p>
                   </div>
                 </div>
@@ -646,16 +646,16 @@ onUnmounted(() => {
                     ></div>
                   </div>
                   <div
-                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-6 py-4 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)]"
+                    class="job-chat relative left-20 my-2 w-full max-w-[calc(100%-5rem)] rounded-md bg-gray-100 px-3 py-3 opacity-0 drop-shadow sm:left-[calc(40%+5rem)] sm:max-w-[calc(60%-5rem)] sm:px-6 sm:py-4"
                   >
                     <p
-                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 xs:flex-row lg:text-base lg:leading-7"
+                      class="mb-2 inline-flex flex-col items-baseline justify-start gap-y-1 align-baseline font-Fira text-xs font-normal leading-5 text-gray-600 xs:flex-row sm:text-sm lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-1 py-1 font-Noto text-base font-bold text-gray-100 sm:px-2 sm:text-lg lg:text-xl"
                         >資訊傳播學系
                       </span>
-                      (2009/09 - 2013/06)
+                      (2009/09-2013/06)
                     </p>
                     <p class="ml-2 text-base font-normal leading-normal text-gray-800 lg:text-lg">
                       跨學門、跨領域的系所。在學期間，學習到了網頁設計、電腦繪圖、影像編輯、影片剪輯及電腦動畫等多媒體製作的能力。另外還有關於行銷學、電子商務及資訊傳播實務的相關課程。
@@ -690,10 +690,10 @@ onUnmounted(() => {
                       一切的起點
                     </p>
                     <p
-                      class="inline-flex flex-col items-baseline justify-start gap-y-2 pl-4 align-baseline font-Fira text-sm font-normal leading-5 text-gray-600 sm:flex-row sm:pl-0 lg:text-base lg:leading-7"
+                      class="inline-flex flex-col items-baseline justify-start gap-y-2 pl-4 align-baseline font-Fira text-xs font-normal leading-5 text-gray-600 sm:flex-row sm:pl-0 sm:text-sm lg:text-base lg:leading-7"
                     >
                       <span
-                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-2 py-1 font-Noto text-lg font-bold text-gray-100 lg:text-xl"
+                        class="mr-1 inline-block w-fit gap-x-2 break-keep rounded-md bg-gray-600 px-1 py-1 font-Noto text-base font-bold text-gray-100 sm:px-2 sm:text-lg lg:text-xl"
                         >雙子座 / 羊
                       </span>
                       (1991/05/23)
@@ -719,15 +719,17 @@ onUnmounted(() => {
           <!-- 第四屏 -->
           <div
             id="screen04-container"
-            class="fixed left-1/2 mx-auto hidden h-full max-h-[calc(100dvh-6rem)] w-[calc(100%-2rem)] max-w-[100dvw] origin-bottom -translate-x-1/2 flex-col items-start justify-center gap-y-2 opacity-0 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[768px] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[1024px] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[1280px]"
+            class="fixed left-1/2 mx-auto hidden h-full max-h-[calc(100dvh-8.5rem)] w-[calc(100%-2rem)] max-w-[100dvw] origin-bottom -translate-x-1/2 flex-col items-start justify-center gap-y-2 opacity-0 lg:left-[calc((100dvw+150px)/2)] lg:max-w-[768px] xl:left-[calc((100dvw+175px)/2)] xl:max-w-[1024px] 2xl:left-[calc((100dvw+200px)/2)] 2xl:max-w-[1280px]"
           >
-            <p class="block h-9 w-full max-w-full text-2xl font-bold leading-normal text-gray-800">
+            <p class="block h-9 w-full max-w-full shrink grow text-2xl font-bold leading-normal text-gray-800">
               技能樹 <span class="inline text-lg text-gray-600">Skill Tree</span>
             </p>
-            <div class="relative flex h-full max-h-[calc(100%-2.25rem)] w-full max-w-full flex-col gap-2 lg:gap-4">
+            <div
+              class="flex-nosh relative flex h-full max-h-[calc(100%-2.25rem)] w-full max-w-full shrink-0 grow-0 flex-col gap-2 lg:gap-4"
+            >
               <div
                 id="screen04-skill01"
-                class="flex h-full max-h-[calc((100%-1.5rem)/5*2)] w-full max-w-full flex-col items-start justify-start rounded-md border-2 border-solid border-[#3590F3] bg-gradient-to-b from-[#78B5F7] to-[#0D77E7] p-2 sm:max-h-[calc((100%-1.5rem)/4)] sm:p-4 lg:max-h-[calc((100%-3rem)/4)]"
+                class="flex h-full max-h-[calc((100%-1.5rem)/5*1.75)] w-full max-w-full flex-col items-start justify-start rounded-md border-2 border-solid border-[#3590F3] bg-gradient-to-b from-[#78B5F7] to-[#0D77E7] p-2 sm:max-h-[calc((100%-1.5rem)/4)] sm:p-4 lg:max-h-[calc((100%-3rem)/4)]"
               >
                 <p
                   class="text-stroke text-stroke-01 mb-2 block w-fit max-w-full text-base font-semibold text-slate-100"
@@ -1229,7 +1231,7 @@ onUnmounted(() => {
               </div>
               <div
                 id="screen04-skill04"
-                class="flex h-full max-h-[calc((100%-1.5rem)/5)] w-full max-w-full flex-col items-start justify-start rounded-md border-2 border-solid border-[#231F20] bg-gradient-to-b from-[#4C4345] to-[#0B0A0A] p-2 sm:max-h-[calc((100%-1.5rem)/4)] sm:p-4 lg:max-h-[calc((100%-3rem)/4)]"
+                class="flex h-full max-h-[calc((100%-1.5rem)/5*1.25)] w-full max-w-full flex-col items-start justify-start rounded-md border-2 border-solid border-[#231F20] bg-gradient-to-b from-[#4C4345] to-[#0B0A0A] p-2 sm:max-h-[calc((100%-1.5rem)/4)] sm:p-4 lg:max-h-[calc((100%-3rem)/4)]"
               >
                 <p
                   class="text-stroke text-stroke-04 mb-2 block w-fit max-w-full text-base font-semibold text-slate-100"
@@ -1351,15 +1353,15 @@ onUnmounted(() => {
           <!-- 第五屏 -->
           <div
             id="screen05-container"
-            class="fixed left-1/2 top-1/2 mx-auto my-auto hidden h-fit max-h-[calc(100dvh-8rem)] w-[calc(100dvw-2rem)] max-w-[874px] origin-bottom-right -translate-x-1/2 -translate-y-[calc((100%-4rem)/2)] flex-col items-start justify-start gap-0 overflow-hidden rounded-md opacity-0 shadow-md lg:left-[calc((100%+150px)/2)] lg:w-[calc(100dvw-150px-2rem)] xl:left-[calc((100%+175px)/2)] xl:w-[calc(100dvw-175px-2rem)] xl:max-w-[992px] 2xl:left-[calc((100%+200px)/2)] 2xl:w-[calc(100dvw-200px-2rem)]"
+            class="fixed left-1/2 top-[calc((100%+8rem)/2)] mx-auto my-auto hidden h-fit max-h-[calc(100dvh-10rem)] w-[calc(100dvw-2rem)] max-w-[874px] origin-bottom-right -translate-x-1/2 -translate-y-1/2 flex-col items-start justify-start gap-0 overflow-hidden rounded-md opacity-0 shadow-md sm:top-1/2 lg:left-[calc((100%+150px)/2)] lg:w-[calc(100dvw-150px-2rem)] xl:left-[calc((100%+175px)/2)] xl:w-[calc(100dvw-175px-2rem)] xl:max-w-[992px] 2xl:left-[calc((100%+200px)/2)] 2xl:w-[calc(100dvw-200px-2rem)]"
           >
             <p
-              class="mb-0 mt-0 block w-full max-w-full rounded-t-md border border-solid border-gray-300 bg-gray-100 py-2 text-center text-xl font-bold text-gray-900"
+              class="mb-0 mt-0 block w-full max-w-full rounded-t-md border border-solid border-gray-300 bg-gray-100 py-1 text-center text-base font-bold text-gray-900 sm:py-2 sm:text-xl"
             >
               About Me
             </p>
             <div
-              class="my-0 flex h-auto min-h-[500px] w-full flex-col items-start justify-start gap-8 rounded-b-md bg-gray-800 px-4 py-6 text-lg font-normal leading-relaxed text-slate-200"
+              class="my-0 flex h-auto min-h-[450px] w-full flex-col items-start justify-start gap-2 rounded-b-md bg-gray-800 p-2 text-sm font-normal leading-tight text-slate-200 sm:min-h-[500px] sm:gap-8 sm:px-4 sm:py-6 sm:text-lg sm:leading-relaxed"
             >
               <p class="inline-flex h-6 items-center justify-start p-0">
                 <span class="inline-block h-full bg-slate-200 px-1 text-gray-800">Who aim I ?</span>
@@ -1376,7 +1378,6 @@ onUnmounted(() => {
               </div>
               <div class="p02 w-full">
                 <p class="hidden w-fit max-w-full"></p>
-
                 <span class="inline-block h-6 w-2 animate-blink bg-slate-200" style="display: none"></span>
               </div>
               <div class="p03 w-full">
@@ -1407,14 +1408,25 @@ onUnmounted(() => {
         v-show="isVisible"
         class="scroll-more fixed bottom-4 left-[50dvw] z-[19] flex -translate-x-1/2 flex-col items-center justify-center gap-2"
       >
-        <span class="mx-auto inline-block text-center text-sm text-gray-500">向下滑動查看更多</span>
-        <Icon
-          class="animate-pulse text-lg text-gray-600"
-          name="lineicons:scroll-down-2"
-          size="36"
-          title="Scroll Down"
-          alt="Scroll Down"
-        />
+        <span
+          class="text-stroke text-stroke-ex mx-auto inline-block text-center text-sm text-gray-500"
+          data-stroke="向下滑動查看更多"
+          >向下滑動查看更多</span
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-9 animate-pulse" title="Scroll Down" alt="Scroll Down">
+          <rect class="size-9 fill-white/40" rx="18" />
+          <path
+            class="fill-gray-500"
+            fill="#000"
+            d="M17.205 24.417a1.125 1.125 0 0 0 1.59 0l3.375-3.373a1.125 1.125 0 0 0-1.59-1.59L18 22.029l-2.58-2.578a1.127 1.127 0 0 0-1.85.356 1.125 1.125 0 0 0 .26 1.235l3.375 3.375ZM18 13.583a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Zm-1.2 3.024a1.2 1.2 0 1 0 2.4 0 1.2 1.2 0 0 0-2.4 0Z"
+          />
+          <path
+            class="fill-gray-500"
+            fill-rule="evenodd"
+            d="M18 3.001a11.25 11.25 0 0 0-11.25 11.25v7.5a11.25 11.25 0 0 0 22.5 0v-7.5A11.25 11.25 0 0 0 18 3.002Zm-9 11.25a9 9 0 1 1 18 0v7.5a9 9 0 0 1-18 0v-7.5Z"
+            clip-rule="evenodd"
+          />
+        </svg>
       </p>
     </Transition>
   </div>
@@ -1465,5 +1477,9 @@ onUnmounted(() => {
 .text-stroke.text-stroke-04::before {
   -webkit-text-stroke: 3px #231f20;
   text-stroke: 3px #231f20;
+}
+.text-stroke.text-stroke-ex::before {
+  -webkit-text-stroke: 3px #ffffff33;
+  text-stroke: 3px ffffff33;
 }
 </style>

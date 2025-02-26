@@ -67,7 +67,7 @@ watch(route, (newValue) => {
 
 // 監聽 showDivHeader 的變化
 watch(showDivHeader, (newValue) => {
-  if (newValue) {
+  if (newValue && isMobile.value === true) {
     document.body.classList.add('no-scroll')
   } else {
     document.body.classList.remove('no-scroll')
