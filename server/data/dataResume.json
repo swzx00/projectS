@@ -114,8 +114,7 @@
     "portfolios": [
       {
         "url": "https://swzx00.vercel.app/",
-        "qrcode": "/images/qrcode-portfolioS.svg",
-        "github": "https://github.com/swzx00"
+        "qrcode": "/images/qrcode-portfolioS.svg"
       }
     ]
   }
