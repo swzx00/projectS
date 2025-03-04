@@ -391,6 +391,7 @@ const handlePrint = () => {
           >
         </p>
         <p
+          v-if="data.portfolios[0].github"
           class="mb-3 inline-flex items-center text-start text-base font-normal leading-normal text-gray-800 print:text-10pt"
         >
           <Icon class="mr-1 inline-block size-5" name="logos:github-icon" size="24" title="Github" alt="Github" />
