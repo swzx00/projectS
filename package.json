@@ -15,6 +15,8 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "@pinia/nuxt": "^0.5.4",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
     "gsap": "^3.12.5",
     "nuxt": "^3.14.1592",
     "pinia": "^2.2.6",
