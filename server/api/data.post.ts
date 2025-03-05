@@ -3,7 +3,7 @@ import { join } from 'path'
 import { defineEventHandler, readBody } from 'h3'
 
 export default defineEventHandler(async (event) => {
-  const filePath = join(process.cwd(), 'server/data/data.json')
+  const filePath = join(process.cwd(), process.env.DATA_FILE_PATH || '~/server/data/data.json')
 
   const body = await readBody(event)
 
