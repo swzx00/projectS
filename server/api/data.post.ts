@@ -1,31 +1,38 @@
 import fs from 'fs/promises'
 import { join } from 'path'
 import { defineEventHandler, readBody } from 'h3'
+import data from '~/server/data/data.json' // 直接引入 JSON 檔案
 
 export default defineEventHandler(async (event) => {
-  const filePath = join(process.cwd(), 'server/data/data.json')
+  // 模擬延遲 (例如延遲 0 秒)
+  await new Promise((resolve) => setTimeout(resolve, 0))
 
-  const body = await readBody(event)
+  if (event.req.method === 'GET') {
+    try {
+      return data
+    } catch (error) {
+      console.error('API 錯誤:', error)
+      return { message: 'Failed to read data', error }
+    }
+  } else if (event.req.method === 'POST') {
+    const body = await readBody(event)
 
-  try {
-    const fileData = await fs.readFile(filePath, 'utf-8')
-    let jsonData = JSON.parse(fileData) // 使用 let 而不是 const
-    if (Array.isArray(jsonData)) {
-      const index = jsonData.findIndex((item: { title: string }) => item.title === body.title)
+    try {
+      const index = data.findIndex((item: { title: string }) => item.title === body.title)
       if (index !== -1) {
         // 更新現有數據
-        jsonData[index] = body
+        data[index] = body
       } else {
         // 新增數據
-        jsonData.push(body)
+        data.push(body)
       }
-    } else {
-      jsonData = [body]
+      // 寫入文件
+      const filePath = join(process.cwd(), 'server/data/data.json')
+      await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8')
+      return { message: 'Data saved successfully' }
+    } catch (error) {
+      console.error('API 錯誤:', error)
+      return { message: 'Failed to save data', error }
     }
-    await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), 'utf-8')
-    return { message: 'Data saved successfully' }
-  } catch (error) {
-    console.error('API 錯誤:', error)
-    return { message: 'Failed to save data', error }
   }
 })
