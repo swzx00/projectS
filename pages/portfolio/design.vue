@@ -100,7 +100,7 @@ const numbersY = computed(() => generateNumbers(maxY, step))
 
 <template>
   <main
-    class="relative flex h-full max-h-full w-full flex-col bg-zinc-700 sm:w-[calc(100%-250px)] md:w-[calc(100%-200px)] lg:w-[calc(100%-250px)] xl:w-[calc(100%-300px)]"
+    class="relative flex h-full max-h-full w-full max-w-full flex-col bg-zinc-700 sm:w-[calc(100%-250px)] md:w-[calc(100%-200px)] lg:w-[calc(100%-250px)] xl:w-[calc(100%-300px)]"
   >
     <h2
       class="flex h-8 w-full max-w-full flex-row items-center justify-center gap-2 bg-zinc-600 py-1 pl-2 pr-4 text-base font-medium text-white sm:w-fit sm:max-w-fit sm:justify-start"
@@ -109,20 +109,20 @@ const numbersY = computed(() => generateNumbers(maxY, step))
       {{ title }}<span class="text-xs font-thin">@&nbsp;100%&nbsp;(RGB/8)</span>
     </h2>
     <div
-      class="flex h-full max-h-full grid-cols-[1.25rem_auto] grid-rows-[1.25rem_auto] gap-0 overflow-hidden bg-zinc-800 sm:grid sm:max-h-[calc(100%-1.25rem)]"
+      class="flex h-full max-h-full w-full max-w-full grid-cols-[1.25rem_auto] grid-rows-[1.25rem_auto] gap-0 overflow-hidden bg-zinc-800 sm:grid sm:max-h-[calc(100%-1.25rem)]"
     >
       <div
         class="relative hidden size-5 bg-zinc-600 before:absolute before:bottom-1/3 before:block before:h-px before:w-full before:bg-zinc-500 before:content-[''] after:absolute after:right-1/3 after:h-full after:w-px after:bg-zinc-500 after:content-[''] sm:block"
       ></div>
       <div
-        class="workspace scrollbar col-span-full col-start-2 col-end-3 row-start-1 row-end-3 h-full overflow-x-hidden overflow-y-scroll"
+        class="workspace scrollbar col-span-full col-start-2 col-end-3 row-start-1 row-end-3 h-full w-full max-w-full overflow-x-hidden overflow-y-scroll"
       >
         <div
           class="sticky top-0 z-10 hidden h-5 w-full flex-row flex-nowrap items-end justify-start gap-0 overflow-hidden bg-zinc-700 bg-[url(/images/bg-rulersX.svg)] bg-auto bg-[bottom_left_1rem] bg-repeat-x *:pointer-events-none *:mb-1 *:block *:h-full *:w-10 *:flex-shrink-0 *:flex-grow-0 *:select-none *:pl-1 *:text-[11px] *:font-thin *:text-zinc-300 first:*:ml-4 sm:flex"
         >
           <span v-for="num in numbersX" :key="num">{{ num }}</span>
         </div>
-        <div class="relative z-0 h-full px-4 py-6">
+        <div class="relative z-0 h-full w-full max-w-full px-4 py-6">
           <Transition
             name="zoom-in"
             mode="out-in"
