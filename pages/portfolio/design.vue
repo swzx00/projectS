@@ -101,32 +101,28 @@ const numbersY = computed(() => generateNumbers(maxY, step))
 <template>
   <main
     class="relative flex h-full max-h-full w-full max-w-full flex-col bg-zinc-700 sm:w-[calc(100%-250px)] md:w-[calc(100%-200px)] lg:w-[calc(100%-250px)] xl:w-[calc(100%-300px)]"
-    style="border: 3px solid red"
   >
     <h2
       class="flex h-8 w-full max-w-full flex-row items-center justify-center gap-2 bg-zinc-600 py-1 pl-2 pr-4 text-base font-medium text-white sm:w-fit sm:max-w-fit sm:justify-start"
-      style="border: 3px solid green"
     >
       <!-- <Icon :name="iconName" size="12" :title="title" :alt="title" /> -->
       {{ title }}<span class="text-xs font-thin">@&nbsp;100%&nbsp;(RGB/8)</span>
     </h2>
     <div
       class="flex h-full max-h-full w-full max-w-full grid-cols-[1.25rem_auto] grid-rows-[1.25rem_auto] gap-0 overflow-hidden bg-zinc-800 sm:grid sm:max-h-[calc(100%-1.25rem)]"
-      style="border: 3px solid green"
     >
       <div
         class="relative hidden size-5 bg-zinc-600 before:absolute before:bottom-1/3 before:block before:h-px before:w-full before:bg-zinc-500 before:content-[''] after:absolute after:right-1/3 after:h-full after:w-px after:bg-zinc-500 after:content-[''] sm:block"
       ></div>
       <div
         class="workspace scrollbar col-span-full col-start-2 col-end-3 row-start-1 row-end-3 h-full w-full max-w-full overflow-x-hidden overflow-y-scroll"
-        style="border: 3px solid blue"
       >
         <div
           class="sticky top-0 z-10 hidden h-5 w-full flex-row flex-nowrap items-end justify-start gap-0 overflow-hidden bg-zinc-700 bg-[url(/images/bg-rulersX.svg)] bg-auto bg-[bottom_left_1rem] bg-repeat-x *:pointer-events-none *:mb-1 *:block *:h-full *:w-10 *:flex-shrink-0 *:flex-grow-0 *:select-none *:pl-1 *:text-[11px] *:font-thin *:text-zinc-300 first:*:ml-4 sm:flex"
         >
           <span v-for="num in numbersX" :key="num">{{ num }}</span>
         </div>
-        <div class="relative z-0 h-full w-full max-w-full px-4 py-6" style="border: 3px solid purple">
+        <div class="relative z-0 h-full w-full max-w-full px-4 py-6">
           <Transition
             name="zoom-in"
             mode="out-in"
@@ -138,24 +134,20 @@ const numbersY = computed(() => generateNumbers(maxY, step))
             leave-to-class="opacity-0"
           >
             <!-- 載入中狀態 -->
-            <div v-if="pending" class="mx-auto w-full max-w-full px-4" style="border: 3px solid yellow">
+            <div v-if="pending" class="mx-auto w-full max-w-full px-4">
               <p class="flex items-center justify-start gap-2 text-lg text-white">
                 <Icon class="text-lg" name="line-md:loading-twotone-loop" size="20" title="Loading" alt="Loading" />
                 資料載入中...
               </p>
             </div>
             <!-- 錯誤處理 -->
-            <div v-else-if="error" class="mx-auto w-full max-w-full px-4" style="border: 3px solid yellow">
+            <div v-else-if="error" class="mx-auto w-full max-w-full px-4">
               <p class="flex items-center justify-start gap-2 text-lg text-white">
                 <Icon class="text-lg" name="material-symbols:error" size="20" title="Error" alt="Error" />
                 載入資料時出現錯誤：<span class="text-yellow-400">{{ error.message }}</span>
               </p>
             </div>
-            <div
-              v-else-if="data?.dataCard.length === 0"
-              class="mx-auto w-full max-w-full px-4"
-              style="border: 3px solid yellow"
-            >
+            <div v-else-if="data?.dataCard.length === 0" class="mx-auto w-full max-w-full px-4">
               <p class="flex items-center justify-start gap-2 text-lg text-white">
                 <Icon class="text-lg" name="material-symbols:amp-error" size="20" title="Warning" alt="Warning" />
                 唉呦！好像沒有這方面的作品喲.....
@@ -165,11 +157,9 @@ const numbersY = computed(() => generateNumbers(maxY, step))
             <div
               v-else-if="Array.isArray(data?.dataCard) && data?.dataCard.length"
               class="mx-auto flex h-fit w-full max-w-full flex-col flex-wrap items-start justify-start"
-              style="border: 3px solid yellow"
             >
               <div
                 class="mx-0 flex h-fit w-full max-w-full flex-row flex-wrap items-stretch justify-start gap-x-5 gap-y-4 *:max-w-full sm:gap-y-12 *:sm:max-w-full *:md:max-w-[calc((100%-(1*1.25rem))/2)] *:lg:max-w-[calc((100%-(2*1.25rem))/3)] *:xl:max-w-[calc((100%-(3*1.25rem))/4)]"
-                style="border: 3px solid orangered"
               >
                 <CardDesign
                   v-for="card in data?.dataCard"
