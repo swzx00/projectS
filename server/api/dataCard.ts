@@ -1,5 +1,3 @@
-// import { readFileSync } from 'fs'
-// import { resolve } from 'path'
 import { defineEventHandler, getQuery } from 'h3'
 import dataCard from '~/server/data/dataCard.json' // 直接引入 JSON 檔案
 

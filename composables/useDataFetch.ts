@@ -36,21 +36,22 @@ export function useDataFetch(defaultTag: string) {
 
   // 定義 async 函數來使用 await 獲取資料
   const fetchData = async () => {
+    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : ''
     try {
       if (defaultTag === 'frontend') {
         if (currentTag.value === 'frontend' || currentTag.value === undefined) {
-          apiPath.value = `/api/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/api/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${currentPage.value}`
         } else {
-          apiPath.value = `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
         }
       } else if (defaultTag === 'design') {
         if (currentTag.value === 'design' || currentTag.value === undefined) {
-          apiPath.value = `/api/dataCard?tag=web,edm,banner,video card,printed&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/api/dataCard?tag=web,edm,banner,video%20card,printed&page=${currentPage.value}`
         } else {
-          apiPath.value = `/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
         }
       } else {
-        apiPath.value = `/api/dataCard?page=${currentPage.value}`
+        apiPath.value = `${baseUrl}/api/dataCard?page=${currentPage.value}`
       }
 
       // 加入 fetch 選項

@@ -287,7 +287,7 @@ const hoveredData = computed(() => {
           <li class="group">
             <NuxtLink
               class="flex w-full cursor-pointer items-center justify-start gap-0 border-b border-solid border-zinc-700 text-sm lg:text-base"
-              to="/portfolio/design?tag=video card"
+              to="/portfolio/design?tag=video%20card"
               @click="clickLink"
             >
               <div
