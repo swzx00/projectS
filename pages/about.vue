@@ -1364,7 +1364,7 @@ onUnmounted(() => {
               class="my-0 flex h-auto min-h-[450px] w-full flex-col items-start justify-start gap-2 rounded-b-md bg-gray-800 p-2 text-sm font-normal leading-tight text-slate-200 sm:min-h-[500px] sm:gap-8 sm:px-4 sm:py-6 sm:text-lg sm:leading-relaxed"
             >
               <p class="inline-flex h-6 items-center justify-start p-0">
-                <span class="inline-block h-full bg-slate-200 px-1 text-gray-800">Who aim I ?</span>
+                <span class="inline-block h-full bg-slate-200 px-1 text-gray-800">Who am I ?</span>
                 <span
                   class="flex h-full w-fit items-center justify-start bg-slate-600 text-gray-200 before:inline-block before:size-0 before:border-[0.75rem] before:border-solid before:border-[transparent_transparent_transparent_#e2e8f0] before:bg-slate-600 after:inline-block after:size-0 after:border-[0.75rem] after:border-solid after:border-[transparent_transparent_transparent_#475569] after:bg-gray-800"
                   >&nbsp;~&nbsp;</span
