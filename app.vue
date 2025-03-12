@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Analytics } from '@vercel/analytics/nuxt'
+import { SpeedInsights } from '@vercel/speed-insights/nuxt'
+</script>
 
 <template>
   <div class="background-container bg-gray-100">
@@ -7,6 +10,8 @@
     <NuxtLayout>
       <NuxtPage></NuxtPage>
     </NuxtLayout>
+    <Analytics />
+    <SpeedInsights />
   </div>
 </template>
 

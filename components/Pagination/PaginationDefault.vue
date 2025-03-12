@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineModel } from 'vue'
 import { usePagination } from '~/composables/usePagination'
 
 // 取得 defineModel 的數據
