@@ -83,17 +83,17 @@ const onLeave = () => {
 
 <template>
   <div
-    class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-start overflow-hidden rounded bg-transparent transition-all duration-300 ease-linear"
+    class="group flex w-full max-w-full flex-col flex-nowrap items-start justify-between overflow-hidden rounded bg-transparent transition-all duration-300 ease-linear"
     @mouseenter="onHover"
     @mouseleave="onLeave"
   >
     <NuxtLink
-      class="flex aspect-square size-full max-h-max min-h-fit min-w-fit max-w-full items-center justify-center rounded bg-zinc-700/80 p-4"
+      class="flex aspect-square size-full max-h-max max-w-full shrink grow-0 items-center justify-center rounded bg-zinc-700/80 p-4"
       :to="`/portfolio/${cardId}?from=design`"
       target="_blank"
     >
       <div
-        class="flex aspect-square size-full max-h-fit min-h-full min-w-full max-w-full items-center justify-center overflow-hidden rounded-sm bg-white/80 p-0 group-hover:bg-white/100"
+        class="flex aspect-square size-full max-h-fit max-w-fit items-center justify-center overflow-hidden rounded-sm bg-white/80 p-0 group-hover:bg-white/100"
       >
         <Icon
           v-if="!isImageLoaded"
@@ -118,7 +118,7 @@ const onLeave = () => {
       </div>
     </NuxtLink>
     <div
-      class="card-body flex size-full max-h-full max-w-full flex-col flex-nowrap items-start justify-start gap-1.5 overflow-hidden py-2"
+      class="card-body flex size-full max-h-full max-w-full shrink grow flex-col flex-nowrap items-start justify-start gap-1.5 overflow-hidden py-2"
     >
       <h3
         class="m-0 inline-block w-fit max-w-full cursor-default truncate p-0 text-start text-base font-bold text-zinc-50/80 group-hover:text-zinc-50/100"
