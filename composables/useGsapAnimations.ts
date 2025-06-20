@@ -62,20 +62,26 @@ export function useGsapAnimations() {
       toggleActions: 'play reverse play reverse',
       invalidateOnRefresh: true,
       onEnter: () => {
-        gsap.to('#screen01-container', {
-          display: 'none',
-          visibility: 'hidden',
-          opacity: 0,
-          pointerEvents: 'none',
-        })
+        const target = document.querySelector('#screen01-container')
+        if (target) {
+          gsap.to(target, {
+            display: 'none',
+            visibility: 'hidden',
+            opacity: 0,
+            pointerEvents: 'none',
+          })
+        }
       },
       onLeaveBack: () => {
-        gsap.to('#screen01-container', {
-          display: 'flex',
-          visibility: 'visible',
-          opacity: 1,
-          pointerEvents: 'auto',
-        })
+        const target = document.querySelector('#screen01-container')
+        if (target) {
+          gsap.to(target, {
+            display: 'flex',
+            visibility: 'visible',
+            opacity: 1,
+            pointerEvents: 'auto',
+          })
+        }
       },
     })
     // <!-- 第一屏 大頭照 -->
@@ -2407,8 +2413,18 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
-          onEnter: () => gsap.set('#screen05-container', { display: 'flex' }), // 顯示
-          onLeaveBack: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
+          onEnter: () => {
+            const target = document.querySelector('#screen05-container')
+            if (target) {
+              gsap.set(target, { display: 'flex' })
+            }
+          }, // 顯示
+          onLeaveBack: () => {
+            const target = document.querySelector('#screen05-container')
+            if (target) {
+              gsap.set(target, { display: 'none' })
+            }
+          }, // 隱藏
         },
         x: '-50%',
         y: '-50%',
@@ -2867,8 +2883,18 @@ export function useGsapAnimations() {
           scrub: true,
           toggleActions: 'play reverse play reverse',
           invalidateOnRefresh: true,
-          onEnter: () => gsap.set('#screen05-container', { display: 'none' }), // 隱藏
-          onLeaveBack: () => gsap.set('#screen05-container', { display: 'flex' }), // 顯示
+          onEnter: () => {
+            const target = document.querySelector('#screen05-container')
+            if (target) {
+              gsap.set(target, { display: 'none' })
+            }
+          }, // 隱藏
+          onLeaveBack: () => {
+            const target = document.querySelector('#screen05-container')
+            if (target) {
+              gsap.set(target, { display: 'flex' })
+            }
+          }, // 顯示
         },
         x: '-50%',
         immediateRender: false, // 避免初始值在載入時被套用
@@ -2884,22 +2910,28 @@ export function useGsapAnimations() {
       toggleActions: 'play reverse play reverse',
       invalidateOnRefresh: true,
       onEnter: () => {
-        gsap.to('#screen01-container', {
-          display: 'flex',
-          paddingBottom: '100px',
-          visibility: 'visible',
-          opacity: 1,
-          pointerEvents: 'auto',
-        })
+        const target = document.querySelector('#screen01-container')
+        if (target) {
+          gsap.to(target, {
+            display: 'flex',
+            paddingBottom: '100px',
+            visibility: 'visible',
+            opacity: 1,
+            pointerEvents: 'auto',
+          })
+        }
       },
       onLeaveBack: () => {
-        gsap.to('#screen01-container', {
-          display: 'none',
-          paddingBottom: '0',
-          visibility: 'hidden',
-          opacity: 0,
-          pointerEvents: 'none',
-        })
+        const target = document.querySelector('#screen01-container')
+        if (target) {
+          gsap.to(target, {
+            display: 'none',
+            paddingBottom: '0',
+            visibility: 'hidden',
+            opacity: 0,
+            pointerEvents: 'none',
+          })
+        }
       },
     })
     // 動畫 #screen01-headshot 圖片回歸
