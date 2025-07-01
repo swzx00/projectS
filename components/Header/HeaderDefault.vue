@@ -59,6 +59,10 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
 
+const homeRoute = computed(() => {
+  return route.path.startsWith('/preview')
+})
+
 // 判斷 active 的變化
 watch(route, (newValue) => {
   const path = newValue.path
@@ -80,7 +84,7 @@ watch(showDivHeader, (newValue) => {
     class="sticky top-0 z-20 mx-auto h-16 min-h-16 w-full max-w-full bg-gray-100/80 px-4 shadow-sm backdrop-blur-md print:!hidden"
   >
     <nav class="header-nav relative flex h-full flex-row flex-nowrap items-stretch justify-between *:items-center">
-      <NuxtLink class="block h-full p-1 text-3xl font-bold" to="/">
+      <NuxtLink class="block h-full p-1 text-3xl font-bold" :to="homeRoute ? '#' : '/'">
         <img src="/images/logo-01.svg" title="Logo" alt="logo" width="48" height="48" loading="eager" decoding="sync" />
       </NuxtLink>
       <button
@@ -142,20 +146,21 @@ watch(showDivHeader, (newValue) => {
             </button>
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
-              to="/"
+              :to="homeRoute ? '#' : '/'"
               :class="isActive === 'home' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
               @click="toggleNav"
               >Home</NuxtLink
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
-              to="/about"
+              :to="homeRoute ? '#' : '/about'"
               :class="isActive === 'about' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
               @click="toggleNav"
               >About</NuxtLink
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
+              :to="homeRoute ? '#' : '/portfolio'"
               :class="
                 isActive === 'portfolioItem'
                   ? 'text-blue-900 hover:text-blue-500'
@@ -163,20 +168,19 @@ watch(showDivHeader, (newValue) => {
                     ? 'text-blue-900 hover:text-blue-900'
                     : 'hover:text-blue-500'
               "
-              to="/portfolio"
               @click="toggleNav"
               >Portfolio</NuxtLink
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
-              to="/portfolio/frontend"
+              :to="homeRoute ? '#' : '/portfolio/frontend'"
               :class="isActive === 'frontend' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
               @click="toggleNav"
               >Frontend</NuxtLink
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
-              to="/portfolio/design"
+              :to="homeRoute ? '#' : '/portfolio/design'"
               :class="isActive === 'design' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
               @click="toggleNav"
               >Design</NuxtLink

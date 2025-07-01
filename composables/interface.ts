@@ -2,10 +2,11 @@ export interface DataCard {
   id: number
   title: string
   tag: string[]
-  content: string
+  content?: string
   images: string[]
   date: string
   demo?: string // 可選屬性
+  status: number
 }
 
 export interface ResponseData {
@@ -20,6 +21,7 @@ export interface FetchResult {
   data: ResponseData | null
   pending: boolean
   error: string
+  status?: number
 }
 
 export interface Pagination {
@@ -95,4 +97,11 @@ export interface DataResume {
 export interface ResponseDataResume {
   dataResume: DataResume[]
   error?: string
+}
+
+export interface TokenCheckResult {
+  hasToken: boolean
+  currentToken: string | null
+  storedToken: string | null
+  timedOut: boolean
 }
