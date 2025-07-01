@@ -120,6 +120,7 @@ const { tags, image } = defineProps<{
         <NuxtLink
           v-if="demo"
           :to="demo"
+          target="_blank"
           class="text-end font-Fira text-sm font-light text-gray-600 underline underline-offset-2 transition-all hover:font-normal hover:text-gray-800 hover:underline-offset-4 group-hover:text-gray-800"
         >
           &lt;Demo&gt;
