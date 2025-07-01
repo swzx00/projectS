@@ -6,6 +6,8 @@ const showDivHeader = ref(false)
 const isMobile = ref(false) // 控制是否為手機尺寸
 const isActive = ref('')
 
+const adminUrl = import.meta.env.VITE_ADMIN_BASE_URL
+
 // 切換顯示狀態
 const toggleNav = (type: 'header') => {
   if (isMobile.value) {
@@ -184,6 +186,13 @@ watch(showDivHeader, (newValue) => {
               :class="isActive === 'design' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
               @click="toggleNav"
               >Design</NuxtLink
+            >
+            <a
+              class="mt-auto flex h-fit w-full items-center justify-center px-2 text-center text-xl font-medium tracking-tighter text-gray-600 transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] sm:mt-0 sm:h-full sm:w-fit sm:justify-center sm:text-center sm:text-sm"
+              :href="homeRoute ? '#' : `${adminUrl}/login`"
+              target="_blank"
+              @click="() => toggleNav('header')"
+              >Admin</a
             >
           </div>
         </Transition>

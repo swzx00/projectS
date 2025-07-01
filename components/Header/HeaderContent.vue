@@ -2,6 +2,8 @@
 const route = useRoute()
 const isActive = ref('')
 
+const adminUrl = import.meta.env.VITE_ADMIN_BASE_URL
+
 // 判斷 active 的變化
 const isRoute = (value: string) => {
   if (value === '/') {
@@ -33,7 +35,7 @@ watch(route, (newValue) => {
 
 <template>
   <nav
-    class="fixed left-10 top-0 z-30 flex h-full min-w-[calc(100dvw-40px)] flex-col items-start justify-start gap-y-2 border-l border-r border-solid px-2 py-5 font-Fira text-xl font-normal text-white/50 shadow-lg *:rounded xs:min-w-[calc(66dvw-40px)] sm:relative sm:left-0 sm:min-w-0 sm:flex-row sm:items-center sm:gap-y-0 sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-base sm:shadow-none"
+    class="fixed left-10 top-0 z-30 flex h-full min-w-[calc(100dvw-40px)] flex-col items-start justify-start gap-y-2 border-l border-r border-solid px-2 py-5 font-Fira text-xl font-normal text-white/50 shadow-lg *:rounded xs:min-w-[calc(66dvw-40px)] sm:relative sm:left-0 sm:w-full sm:min-w-0 sm:flex-row sm:items-center sm:gap-y-0 sm:border-l-0 sm:border-r-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-base sm:shadow-none"
   >
     <NuxtLink
       class="flex h-fit w-full items-center px-2 transition-all duration-300 sm:h-full sm:w-fit"
@@ -64,6 +66,12 @@ watch(route, (newValue) => {
       :class="isActive === 'design' ? 'text-white hover:bg-transparent' : 'hover:bg-white/10 hover:text-white'"
       to="/portfolio/design"
       >Design</NuxtLink
+    >
+    <a
+      class="ml-auto mr-auto mt-auto flex h-fit w-full items-center justify-center px-2 text-center text-base text-white/30 transition-all duration-300 hover:bg-white/10 hover:text-white sm:mr-0 sm:mt-0 sm:h-full sm:w-fit sm:justify-start sm:text-sm"
+      :href="`${adminUrl}/login`"
+      target="_blank"
+      >Admin</a
     >
   </nav>
 </template>
