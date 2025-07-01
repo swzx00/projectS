@@ -119,7 +119,7 @@ function handleImageLoadCombined(index: number, event: Event) {
             class="mb-0 mt-8 w-full max-w-full border-x-0 border-y-2 border-solid border-white bg-white shadow-lg sm:mb-12 sm:border-4"
           >
             <picture
-              v-for="(image, index) in item.image"
+              v-for="(images, index) in item.images"
               :key="index"
               class="block w-full max-w-full border-x-0 border-y-4 border-solid border-white first:border-t-2 last:border-b-2 sm:border-x sm:border-y-2 first:sm:border-t-0 last:sm:border-b-0"
             >
@@ -134,7 +134,7 @@ function handleImageLoadCombined(index: number, event: Event) {
               <img
                 ref="imageRef"
                 class="border-x-0 border-y border-solid border-gray-300 object-contain lg:border-2"
-                :src="image"
+                :src="images"
                 :title="`${item.title}-${index + 1}`"
                 :alt="`${item.title}-${index + 1}`"
                 :width="imageSizes[index]?.width || ''"

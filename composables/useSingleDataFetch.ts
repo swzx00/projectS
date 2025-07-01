@@ -4,17 +4,21 @@ export async function useSingleDataFetch(providedId?: string): Promise<FetchResu
   const route = useRoute()
   const router = useRouter()
 
+  // 使用 Vite 環境變數
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || ''
+
   // 使用提供的 ID 或從路由中獲取 ID 參數
   const id = providedId || route.params.id
   const safeId = Array.isArray(id) ? id[0] : id || ''
 
   try {
     // 加入完整的 URL 路徑檢查
-    const url = `/api/dataSingleCard?id=${safeId}`
+    const url = `${baseUrl}/public/dataCard/${safeId}`
 
     // 加入 fetch 選項
     const response = await fetch(url, {
       method: 'GET',
+      credentials: 'include',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

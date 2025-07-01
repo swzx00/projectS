@@ -57,9 +57,9 @@ const hoveredData = computed(() => {
           leave-to-class="opacity-0 scale-100 blur-sm"
         >
           <img
-            v-if="hoveredData?.image"
+            v-if="hoveredData?.images"
             class="absolute z-10 aspect-4/3 size-full max-h-full max-w-full object-cover object-top"
-            :src="hoveredData.image[0]"
+            :src="hoveredData.images[0]"
             :title="hoveredData.title"
             :alt="hoveredData.title"
             width="400"

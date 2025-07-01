@@ -1,9 +1,9 @@
 export interface DataCard {
-  id: string
+  id: number
   title: string
   tag: string[]
   content: string
-  image: string[]
+  images: string[]
   date: string
   demo?: string // 可選屬性
 }
