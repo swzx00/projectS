@@ -4,6 +4,7 @@ import type { ResponseData, TokenCheckResult, FetchResult } from '~/composables/
 
 const route = useRoute()
 const router = useRouter()
+const auth = useAuthStore()
 
 const pending = ref(true)
 const error = ref<Error | null>(null)
@@ -29,7 +30,7 @@ onMounted(async () => {
     if (event.origin !== adminUrl || event.source !== window.opener) return
 
     if (event.data?.type === 'logout') {
-      localStorage.removeItem('google_id_token')
+      auth.removeToken()
       token.value = null
       error.value = new Error('已從後台登出，請重新登入後再預覽')
       resetData()
@@ -42,7 +43,7 @@ onMounted(async () => {
     if (!receivedToken) return
 
     tokenReceived = true
-    localStorage.setItem('google_id_token', receivedToken)
+    auth.setToken(receivedToken)
     token.value = receivedToken
 
     const response = await useSinglePreviewFetch(safeId)
@@ -68,7 +69,7 @@ onMounted(async () => {
 // 認證檢查流程
 async function performAuthCheck() {
   try {
-    const { hasToken, currentToken, storedToken, timedOut } = await waitForTokenReady()
+    const { hasToken, storedToken, timedOut } = await waitForTokenReady()
 
     if (!hasToken) {
       error.value = new Error('未授權預覽，請從後台登入後使用預覽功能')
@@ -79,8 +80,9 @@ async function performAuthCheck() {
       return
     }
 
-    if (storedToken && !currentToken) {
-      token.value = storedToken
+    // 這裡同步 Pinia
+    if (storedToken && !auth.idToken) {
+      auth.setToken(storedToken)
     }
 
     const response = await useSinglePreviewFetch(safeId)
@@ -104,10 +106,11 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
       pending.value = true
       dataLoaded.value = true
 
-      if (token.value || storedToken || elapsed >= maxWaitTime) {
+      // 判斷 Pinia 的 token
+      if (auth.idToken || storedToken || elapsed >= maxWaitTime) {
         resolve({
-          hasToken: !!(token.value || storedToken),
-          currentToken: token.value,
+          hasToken: !!(auth.idToken || storedToken),
+          currentToken: auth.idToken,
           storedToken,
           timedOut: elapsed >= maxWaitTime,
         })
@@ -126,7 +129,7 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
 // 統一處理 fetch 結果
 function handleFetchResult(response: FetchResult) {
   if (response.status === 403 && response.error.includes('已上線')) {
-    console.warn('🔁 文章已上線，導向正式頁面')
+    console.warn('文章已上線，導向正式頁面')
     return router.push(`/portfolio/${safeId}`)
   }
 

@@ -11,8 +11,10 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
   const id = providedId || route.params.id
   const safeId = Array.isArray(id) ? id[0] : id || ''
 
-  // 從 localStorage 抓 token
-  const token = localStorage.getItem('google_id_token') || ''
+  // 用 Pinia 取得 token
+  const auth = useAuthStore()
+  auth.setToken(localStorage.getItem('google_id_token') || '')
+  const token = auth.idToken // Pinia 的 token
 
   try {
     // 加入完整的 URL 路徑檢查
@@ -33,7 +35,7 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
     if (!response.ok) {
       const errorData: ResponseData = await response.json()
       if (response.status === 401 || response.status === 403) {
-        localStorage.removeItem('google_id_token')
+        auth.removeToken() // 用 Pinia 的方法移除 token
       }
 
       return {

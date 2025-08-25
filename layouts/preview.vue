@@ -1,23 +1,34 @@
 <script setup lang="ts">
-const route = useRoute()
+// import { useGoogleTokenValid } from '~/composables/useGoogleTokenValid'
 
+const route = useRoute()
 const router = useRouter()
+
+// const auth = useAuthStore()
+// const { idToken } = storeToRefs(auth)
 
 const homeRoute = computed(() => {
   return route.path.startsWith('/preview')
 })
 
 function closeWindow() {
+  // if (!idToken.value) return
+
+  // const { valid } = await useGoogleTokenValid(idToken.value)
+
+  // if (!valid) return
+
+  // auth.removeToken()
+
   // 嘗試關閉視窗
   window.close()
-
   // 延遲一點再導回首頁（讓 browser 有時間關閉）
   setTimeout(() => {
     // 如果視窗沒被關閉，就導回首頁
     if (!window.closed) {
       router.push('/')
     }
-  }, 200)
+  }, 300)
 }
 </script>
 

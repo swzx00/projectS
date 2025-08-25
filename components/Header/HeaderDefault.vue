@@ -188,12 +188,14 @@ watch(showDivHeader, (newValue) => {
               >Design</NuxtLink
             >
             <a
-              class="mt-auto flex h-fit w-full items-center justify-center px-2 text-center text-xl font-medium tracking-tighter text-gray-600 transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] sm:mt-0 sm:h-full sm:w-fit sm:justify-center sm:text-center sm:text-sm"
+              class="mt-auto flex h-fit w-full items-center justify-center gap-2 px-2 text-center text-xl font-medium tracking-tighter text-gray-600 transition-all duration-300 hover:text-blue-500 xs:w-[66dvw] sm:mt-0 sm:h-full sm:w-fit sm:justify-center sm:text-center sm:text-sm"
               :href="homeRoute ? '#' : `${adminUrl}/login`"
               target="_blank"
               @click="() => toggleNav('header')"
-              >Admin</a
             >
+              <Icon class="text-lg" name="dashicons:admin-generic" size="20" title="Admin" alt="Admin" />
+              <span class="inline sm:hidden">Admin</span>
+            </a>
           </div>
         </Transition>
       </Teleport>

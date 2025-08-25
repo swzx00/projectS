@@ -68,11 +68,13 @@ watch(route, (newValue) => {
       >Design</NuxtLink
     >
     <a
-      class="ml-auto mr-auto mt-auto flex h-fit w-full items-center justify-center px-2 text-center text-base text-white/30 transition-all duration-300 hover:bg-white/10 hover:text-white sm:mr-0 sm:mt-0 sm:h-full sm:w-fit sm:justify-start sm:text-sm"
+      class="ml-auto mr-auto mt-auto flex h-fit w-full items-center justify-center gap-2 px-2 text-center text-base text-white/30 transition-all duration-300 hover:bg-white/10 hover:text-white sm:mr-0 sm:mt-0 sm:h-full sm:w-fit sm:justify-start sm:text-sm"
       :href="`${adminUrl}/login`"
       target="_blank"
-      >Admin</a
     >
+      <Icon class="text-lg" name="dashicons:admin-generic" size="20" title="Admin" alt="Admin" />
+      <span class="inline sm:hidden">Admin</span>
+    </a>
   </nav>
 </template>
 
