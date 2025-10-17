@@ -114,7 +114,7 @@ const handlePrint = () => {
         href="/resume-林家丞_0921702528.pdf"
         target="_blank"
         class="order-3 flex w-fit max-w-fit items-center justify-center gap-1 rounded-md bg-blue-500 px-4 py-2 text-base font-normal text-slate-200 shadow transition-all hover:bg-blue-700 hover:text-white hover:shadow-md"
-        download
+        download="resume-林家丞_0921702528.pdf"
       >
         <Icon class="text-base" name="uil:file-download" size="18" title="下載" alt="下載" />
         下載
