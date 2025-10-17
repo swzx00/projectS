@@ -7,7 +7,7 @@ const hoverStore = useHoverStore()
 
 // 使用 defineModel 定義傳遞資料
 const cardId = defineModel('cardId', {
-  type: String,
+  type: Number,
   required: true,
 })
 defineModel('title', {
@@ -25,7 +25,7 @@ defineModel('content', {
   required: true,
 })
 
-defineModel('image', {
+defineModel('images', {
   type: Array as PropType<string[]>, // 定義 tags 的型別
   required: true,
 })
@@ -45,9 +45,9 @@ defineModel('demo', {
 const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
 
 // 在 setup 函數內部，使用 `props` 存取 `tags` 變數
-const { tags, image } = defineProps<{
+const { tags, images } = defineProps<{
   tags: string[]
-  image: string[]
+  images: string[]
 }>()
 
 // 獲取當前路由的查詢參數
@@ -106,7 +106,7 @@ const onLeave = () => {
         <img
           ref="imageRef"
           class="z-10 h-full max-h-full w-full max-w-full object-contain transition-all duration-300 ease-linear group-hover:scale-105"
-          :src="image[0]"
+          :src="images[0]"
           :title="title"
           :alt="title"
           width="400"

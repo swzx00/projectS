@@ -168,7 +168,7 @@ const numbersY = computed(() => generateNumbers(maxY, step))
                   :title="card.title"
                   :tags="card.tag"
                   :content="card.content"
-                  :image="card.image"
+                  :images="card.images"
                   :date="card.date"
                   :demo="card.demo || ''"
                 ></CardDesign>
