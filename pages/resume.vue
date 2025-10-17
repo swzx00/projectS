@@ -114,7 +114,7 @@ const handlePrint = () => {
         href="/resume-林家丞_0921702528.pdf"
         target="_blank"
         class="order-3 flex w-fit max-w-fit items-center justify-center gap-1 rounded-md bg-blue-500 px-4 py-2 text-base font-normal text-slate-200 shadow transition-all hover:bg-blue-700 hover:text-white hover:shadow-md"
-        download
+        download="resume-林家丞_0921702528.pdf"
       >
         <Icon class="text-base" name="uil:file-download" size="18" title="下載" alt="下載" />
         下載
@@ -132,7 +132,7 @@ const handlePrint = () => {
       class="mx-auto mb-10 mt-0 w-full max-w-full bg-white px-4 py-8 shadow-lg sm:px-8 sm:py-16 md:max-w-screen-sm md:px-12 md:py-24 lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl print:my-0 print:p-10pt print:shadow-none"
     >
       <section
-        class="grid w-full max-w-full grid-flow-row-dense grid-cols-[1fr] grid-rows-[auto_200px_1fr] gap-4 border-b border-solid border-gray-100 pb-6 sm:grid-cols-[1fr_150px] sm:grid-rows-[2rem_1fr] print:pb-10pt"
+        class="grid w-full max-w-full grid-flow-row-dense grid-cols-[1fr] grid-rows-[auto_200px_1fr] gap-4 border-b border-solid border-gray-100 pb-6 sm:grid-cols-[1fr_150px] sm:grid-rows-[2rem_1fr] print:grid-cols-[1fr_80pt] print:pb-10pt"
       >
         <h1
           class="col-span-2 col-start-1 col-end-2 row-span-1 row-start-1 row-end-2 mb-0 inline-flex flex-col text-2xl font-black text-black xs:inline sm:col-span-1 sm:col-start-1 sm:col-end-2 sm:row-span-1 sm:row-start-1 sm:row-end-1 print:mb-4pt print:text-14pt"
