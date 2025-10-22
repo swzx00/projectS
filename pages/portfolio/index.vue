@@ -30,6 +30,7 @@ useHead({
   <div
     class="h-full max-h-full w-full max-w-full before:fixed before:left-0 before:top-0 before:block before:h-full before:bg-white/30 before:backdrop-blur-sm before:content-[''] before:lg:w-[150px] before:xl:w-[175px] before:2xl:w-[200px]"
   >
+    <!-- {{ data }} -->
     <main
       class="relative z-0 ml-auto mr-0 h-full min-h-[calc(100dvh-8rem)] w-full max-w-full bg-gray-200 py-6 lg:max-w-[calc(100%-150px)] xl:max-w-[calc(100%-175px)] 2xl:max-w-[calc(100%-200px)]"
     >
@@ -122,7 +123,7 @@ useHead({
           :title="card.title"
           :tags="card.tag"
           :content="card.content"
-          :image="card.image"
+          :images="card.images"
           :date="card.date"
           :demo="card.demo || ''"
         ></CardDefault>

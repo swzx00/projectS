@@ -36,27 +36,30 @@ export function useDataFetch(defaultTag: string) {
 
   // 定義 async 函數來使用 await 獲取資料
   const fetchData = async () => {
-    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : ''
+    // 使用 Vite 環境變數
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || ''
+
     try {
       if (defaultTag === 'frontend') {
         if (currentTag.value === 'frontend' || currentTag.value === undefined) {
-          apiPath.value = `${baseUrl}/api/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/public/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${currentPage.value}`
         } else {
-          apiPath.value = `${baseUrl}/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/public/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
         }
       } else if (defaultTag === 'design') {
         if (currentTag.value === 'design' || currentTag.value === undefined) {
-          apiPath.value = `${baseUrl}/api/dataCard?tag=web,edm,banner,video%20card,printed&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/public/dataCard?tag=web,edm,banner,video%20card,printed&page=${currentPage.value}`
         } else {
-          apiPath.value = `${baseUrl}/api/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/public/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
         }
       } else {
-        apiPath.value = `${baseUrl}/api/dataCard?page=${currentPage.value}`
+        apiPath.value = `${baseUrl}/public/dataCard?page=${currentPage.value}`
       }
 
       // 加入 fetch 選項
       const response = await fetch(apiPath.value, {
         method: 'GET',
+        credentials: 'include',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -95,6 +98,7 @@ export function useDataFetch(defaultTag: string) {
 
     try {
       const result = await fetchData()
+
       data.value = result
     } catch (err) {
       error.value = err

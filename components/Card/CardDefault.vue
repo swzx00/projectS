@@ -4,7 +4,7 @@ import { useImageLoading } from '~/composables/useImageLoading'
 
 // 使用 defineModel 定義傳遞資料
 const cardId = defineModel('cardId', {
-  type: String,
+  type: Number,
   required: true,
 })
 // 使用 defineModel 定義傳遞資料
@@ -23,7 +23,7 @@ defineModel('content', {
   required: true,
 })
 
-defineModel('image', {
+defineModel('images', {
   type: Array as PropType<string[]>, // 定義 tags 的型別
   required: true,
 })
@@ -41,10 +41,10 @@ defineModel('demo', {
 // 圖片Loading
 const { isImageLoaded, imageRef, handleImageLoad } = useImageLoading()
 
-// 在 setup 函數內部，使用 `props` 存取 `tags`, `image` 變數
-const { tags, image } = defineProps<{
+// 在 setup 函數內部，使用 `props` 存取 `tags`, `images` 變數
+const { tags, images } = defineProps<{
   tags: string[]
-  image: string[]
+  images: string[]
 }>()
 </script>
 
@@ -73,7 +73,7 @@ const { tags, image } = defineProps<{
         <img
           ref="imageRef"
           class="relative z-10 aspect-4/3 size-full max-h-full max-w-full object-cover transition-all duration-300 ease-linear group-hover:scale-105"
-          :src="image[0]"
+          :src="images[0]"
           :title="title"
           :alt="title"
           width="400"
