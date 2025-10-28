@@ -92,7 +92,7 @@ watch(showDivHeader, (newValue) => {
       <button
         v-if="isMobile"
         class="flex size-10 h-full items-center justify-center p-1 text-3xl font-bold text-black"
-        @click="toggleNav('header')"
+        @click="() => toggleNav('header')"
       >
         <Icon
           :name="showDivHeader ? 'material-symbols-light:menu-open-rounded' : 'material-symbols-light:menu-rounded'"
@@ -135,7 +135,7 @@ watch(showDivHeader, (newValue) => {
             <button
               v-if="isMobile"
               class="mx-4 flex h-16 w-10 items-center justify-center p-1 text-3xl font-bold text-black"
-              @click="toggleNav('header')"
+              @click="() => toggleNav('header')"
             >
               <Icon
                 :name="
@@ -150,14 +150,14 @@ watch(showDivHeader, (newValue) => {
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               :to="homeRoute ? '#' : '/'"
               :class="isActive === 'home' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
-              @click="toggleNav"
+              @click="() => toggleNav"
               >Home</NuxtLink
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               :to="homeRoute ? '#' : '/about'"
               :class="isActive === 'about' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
-              @click="toggleNav"
+              @click="() => toggleNav"
               >About</NuxtLink
             >
             <NuxtLink
@@ -170,21 +170,21 @@ watch(showDivHeader, (newValue) => {
                     ? 'text-blue-900 hover:text-blue-900'
                     : 'hover:text-blue-500'
               "
-              @click="toggleNav"
+              @click="() => toggleNav"
               >Portfolio</NuxtLink
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               :to="homeRoute ? '#' : '/portfolio/frontend'"
               :class="isActive === 'frontend' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
-              @click="toggleNav"
+              @click="() => toggleNav"
               >Frontend</NuxtLink
             >
             <NuxtLink
               class="flex h-fit w-full items-center justify-center px-2 text-center transition-all duration-300 xs:w-[66dvw] xs:justify-end xs:text-end sm:h-full sm:w-fit sm:justify-center sm:text-center"
               :to="homeRoute ? '#' : '/portfolio/design'"
               :class="isActive === 'design' ? 'text-blue-900 hover:text-blue-900' : 'hover:text-blue-500'"
-              @click="toggleNav"
+              @click="() => toggleNav"
               >Design</NuxtLink
             >
             <a
