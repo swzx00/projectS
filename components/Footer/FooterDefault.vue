@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const currentYear = new Date().getFullYear()
+</script>
 
 <template>
   <footer class="relative z-10 h-auto w-full max-w-full bg-gray-950 px-4 py-4 sm:h-16 sm:px-8 print:!hidden">
@@ -6,7 +8,7 @@
       <p
         class="text-start align-baseline font-Fira text-sm font-thin leading-normal tracking-tighter text-slate-50 sm:text-center"
       >
-        Produced by swzx00 (Chia-Cheng, Lin @ 2025)
+        Produced by swzx00 (Chia-Cheng, Lin @ {{ currentYear }})
       </p>
       <span
         class="text-start align-baseline font-Fira text-xs font-thin leading-none tracking-tighter text-slate-200 sm:text-center"
