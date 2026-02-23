@@ -34,7 +34,7 @@ export const getIconTitle = (_type: string, tag: string): string => {
       case 'printed':
         return 'Printed'
       case 'video card':
-        return 'Video Dard'
+        return 'Video Card'
       case 'banner':
         return 'Banner'
       case 'edm':
