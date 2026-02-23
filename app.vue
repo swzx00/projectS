@@ -7,7 +7,6 @@ const auth = useAuthStore()
 const { idToken } = storeToRefs(auth)
 
 onMounted(() => {
-  auth.syncFromLocalStorage()
   window.addEventListener('storage', (e) => {
     if (e.key === 'google_id_token') {
       auth.syncFromLocalStorage()
@@ -17,7 +16,7 @@ onMounted(() => {
 
 // 監聽 idToken 變化
 watch(idToken, async (newToken, oldToken) => {
-  if (newToken !== oldToken) {
+  if (newToken && newToken !== oldToken) {
     const { valid } = await useGoogleTokenValid(newToken)
     if (!valid) {
       console.warn('未通過驗證! 請登入系統!')

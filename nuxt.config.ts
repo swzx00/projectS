@@ -6,13 +6,7 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/google-fonts',
-    '@nuxt/icon',
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxtjs/google-fonts', '@nuxt/icon'],
   googleFonts: {
     families: {
       // 指定您想要的字體

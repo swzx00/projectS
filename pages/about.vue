@@ -1460,22 +1460,17 @@ onUnmounted(() => {
 }
 .text-stroke.text-stroke-01::before {
   -webkit-text-stroke: 3px #3590f3;
-  text-stroke: 3px #3590f3;
 }
 .text-stroke.text-stroke-02::before {
   -webkit-text-stroke: 3px #1b998b;
-  text-stroke: 3px #1b998b;
 }
 .text-stroke.text-stroke-03::before {
   -webkit-text-stroke: 3px #bb4430;
-  text-stroke: 3px #bb4430;
 }
 .text-stroke.text-stroke-04::before {
   -webkit-text-stroke: 3px #231f20;
-  text-stroke: 3px #231f20;
 }
 .text-stroke.text-stroke-ex::before {
   -webkit-text-stroke: 3px #ffffff33;
-  text-stroke: 3px ffffff33;
 }
 </style>
