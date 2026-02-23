@@ -66,13 +66,13 @@ function handleImageLoadCombined(index: number, event: Event) {
           ref="imageRef"
           class="border-x-0 border-y border-solid border-gray-300 object-contain lg:border-2"
           :src="images"
-          :title="`${item.title}-${index + 1}`"
-          :alt="`${item.title}-${index + 1}`"
+          :title="`${item.title}-${Number(index) + 1}`"
+          :alt="`${item.title}-${Number(index) + 1}`"
           :width="imageSizes[index]?.width || ''"
           :height="imageSizes[index]?.height || ''"
           loading="lazy"
           decoding="async"
-          @load="handleImageLoadCombined(index, $event)"
+          @load="handleImageLoadCombined(Number(index), $event)"
         />
       </picture>
       <article class="article flx-col mb-12 mt-8 px-4 text-start text-base font-normal leading-normal lg:my-12 lg:px-8">
