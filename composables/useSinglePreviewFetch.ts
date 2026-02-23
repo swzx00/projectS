@@ -13,7 +13,6 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
 
   // 用 Pinia 取得 token
   const auth = useAuthStore()
-  auth.setToken(localStorage.getItem('google_id_token') || '')
   const token = auth.idToken // Pinia 的 token
 
   try {
@@ -60,12 +59,22 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
       status: response.status,
     }
   } catch (err) {
-    // 更詳細的錯誤記錄
-    console.error('資料獲取錯誤:', err)
+    let errorMessage = err instanceof Error ? err.message : '資料獲取失敗'
+    const isNetworkError = err instanceof TypeError && err.message === 'Failed to fetch'
+
+    // 針對 fetch 失敗 (通常是網路問題) 提供更友善的訊息
+    if (isNetworkError) {
+      errorMessage = '無法連接至伺服器，請確認後端服務是否已啟動'
+      console.warn('連線失敗:', errorMessage)
+    } else {
+      // 其他未預期的錯誤才使用 error
+      console.error('資料獲取錯誤:', err)
+    }
+
     return {
       data: null,
       pending: false,
-      error: err instanceof Error ? err.message : '資料獲取失敗',
+      error: errorMessage,
       status: undefined,
     }
   }

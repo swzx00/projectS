@@ -89,7 +89,8 @@ async function performAuthCheck() {
     await handleFetchResult(response)
   } catch (err) {
     console.error('認證檢查出錯:', err)
-    error.value = new Error('認證檢查失敗')
+    const errorMessage = err instanceof Error ? err.message : '認證檢查失敗'
+    error.value = new Error(errorMessage)
     pending.value = false
     dataLoaded.value = true
   }
@@ -101,7 +102,15 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
 
   return new Promise((resolve) => {
     const checkToken = () => {
-      const storedToken = localStorage.getItem('google_id_token')
+      let storedToken: string | null = null
+      try {
+        const raw = localStorage.getItem('google_id_token')
+        if (raw) {
+          const parsed = JSON.parse(raw)
+          storedToken = parsed.idToken || null
+        }
+      } catch {}
+
       const elapsed = Date.now() - startTime
       pending.value = true
       dataLoaded.value = true

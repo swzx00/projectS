@@ -1,12 +1,11 @@
 import { defineStore } from 'pinia'
 
-export const useHoverStore = defineStore('hover', {
-  state: () => ({
-    hoveredId: null as number | null,
-  }),
-  actions: {
-    setHoveredId(id: number | null) {
-      this.hoveredId = id
-    },
-  },
+export const useHoverStore = defineStore('hover', () => {
+  const hoveredId = ref<number | null>(null)
+
+  function setHoveredId(id: number | null) {
+    hoveredId.value = id
+  }
+
+  return { hoveredId, setHoveredId }
 })
