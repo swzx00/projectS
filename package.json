@@ -53,5 +53,5 @@
     "minimatch": "^10.2.1",
     "serialize-javascript": "^7.0.3"
   },
-  "version": "2.4.0"
+  "version": "2.4.1"
 }
