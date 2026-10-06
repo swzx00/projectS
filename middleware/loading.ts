@@ -4,8 +4,10 @@ let hideTimer: ReturnType<typeof setTimeout> | null = null
 export default defineNuxtRouteMiddleware((to, from) => {
   // 同一頁面只改 query / hash（換頁碼等）時不開啟，頁面本身會顯示載入中；
   // 若開啟，頁碼解析後沒變就不會重新抓資料，waitForData 頁面的 Loading 會關不掉
-  // from.matched 為空代表首次載入（server 已開啟 Loading），仍要繼續處理
-  if (import.meta.client && from.matched.length > 0 && to.path === from.path) return
+  // 首次載入（hydration 期間）不可略過：Nuxt 會在 app:created 以 router.replace({ force: true })
+  // 再跑一次 middleware，這時 from 與 to 是同一頁且 from.matched 不為空；
+  // server 已開啟 Loading，若在這裡 return 就不會排程關閉，遮罩會一直蓋著
+  if (import.meta.client && !useNuxtApp().isHydrating && to.path === from.path) return
 
   const loadingStore = useLoadingStore()
 
