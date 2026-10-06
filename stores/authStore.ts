@@ -16,10 +16,8 @@ export const useAuthStore = defineStore(
     function syncFromLocalStorage() {
       try {
         const stored = localStorage.getItem('google_id_token')
-        if (stored) {
-          const parsed = JSON.parse(stored)
-          idToken.value = parsed.idToken || ''
-        }
+        // 其他分頁移除 token（removeItem / clear）時，這裡也要清空
+        idToken.value = stored ? JSON.parse(stored).idToken || '' : ''
       } catch {
         idToken.value = ''
       }
