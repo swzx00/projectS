@@ -54,7 +54,7 @@ Nuxt 預設目錄結構（未使用 `app/` 目錄），`components/`、`composab
 - `middleware/loading.ts` 換頁時開啟 `AppLoading`，預設 350ms 後關閉。server 端也要開啟（SSR 時 `isLoading` 會傳到 client，client 在 hydration 前也會執行 middleware，兩邊不一致會造成 hydration mismatch），關閉的計時器只在 client 執行。
 - 會抓資料的頁面設定 `definePageMeta({ middleware: ['loading'], waitForData: true })` 並呼叫 `usePageLoading(pending)`，等 `pending` 變為 `false` 才關閉。目前套用在 `/portfolio`、`/portfolio/[id]`、`/resume`。
 - 新增會抓資料的頁面時，`waitForData` 與 `usePageLoading` 要一起加，只加其中一個會讓 Loading 不關閉或提早關閉。
-- 同一頁面只改 query / hash（例如換頁碼）時 middleware 不開啟 Loading，由頁面自己顯示「載入中」。
+- 同一頁面只改 query / hash（例如換頁碼）時 middleware 不開啟 Loading，由頁面自己顯示「載入中」。判斷時必須排除 hydration 期間（`useNuxtApp().isHydrating`）：Nuxt 會在 `app:created` 以 `router.replace({ force: true })` 讓 client 再跑一次 middleware，這次 `from` 與 `to` 是同一頁，若略過，server 開啟的 Loading 就不會關閉。
 - 資料還沒載入完就離開時，`usePageLoading` 會在卸載時關閉 Loading（新頁面沒有 `waitForData` 時）。
 
 ### 預覽頁與 token
