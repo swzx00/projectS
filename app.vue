@@ -8,7 +8,8 @@ const { idToken } = storeToRefs(auth)
 
 onMounted(() => {
   window.addEventListener('storage', (e) => {
-    if (e.key === 'google_id_token') {
+    // e.key 為 null 代表其他分頁執行了 localStorage.clear()
+    if (e.key === 'google_id_token' || e.key === null) {
       auth.syncFromLocalStorage()
     }
   })
