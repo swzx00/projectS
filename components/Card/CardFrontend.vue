@@ -49,14 +49,12 @@ const { tags, images } = defineProps<{
 
 // 獲取當前路由的查詢參數
 const route = useRoute()
-const queryTag = route.query.tag ? String(route.query.tag).toLowerCase() : null
-
-// 原始的 tags
-const originalTags = tags
+// 用 computed 跟著路由更新（切換 tag 時同一張卡片可能不會重新掛載）
+const queryTag = computed(() => (route.query.tag ? String(route.query.tag).toLowerCase() : null))
 
 // 標準化和去重複
 const uniqueTags = computed(() => {
-  const standardizedTags = originalTags.map((tag) => {
+  const standardizedTags = tags.map((tag) => {
     if (['web', 'interface', 'publication', 'graphic', 'media', 'product'].includes(tag.toLowerCase())) {
       return 'design'
     }
@@ -67,9 +65,9 @@ const uniqueTags = computed(() => {
   const uniqueTagsSet = [...new Set(standardizedTags)]
 
   // 如果有 queryTag，將其排到第一個
-  if (queryTag && uniqueTagsSet.includes(queryTag)) {
-    uniqueTagsSet.splice(uniqueTagsSet.indexOf(queryTag), 1)
-    uniqueTagsSet.unshift(queryTag)
+  if (queryTag.value && uniqueTagsSet.includes(queryTag.value)) {
+    uniqueTagsSet.splice(uniqueTagsSet.indexOf(queryTag.value), 1)
+    uniqueTagsSet.unshift(queryTag.value)
   }
 
   return uniqueTagsSet
