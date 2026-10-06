@@ -29,8 +29,11 @@ onMounted(async () => {
   }
 })
 
+usePageLoading(pending)
+
 definePageMeta({
   middleware: ['loading'],
+  waitForData: true,
 })
 </script>
 

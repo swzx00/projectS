@@ -4,6 +4,7 @@ import { useImageLoading } from '~/composables/useImageLoading'
 
 definePageMeta({
   middleware: ['loading'], // 啟用 loading 中介層
+  waitForData: true, // 資料載入完成後才關閉 Loading
 })
 
 // meta設定
@@ -26,6 +27,8 @@ const error = ref<Error | null>(null)
 const data = ref<DataResume | null>(null)
 const introductionLines = ref<string[]>([])
 const autobiographyLines = ref<string[]>([])
+
+usePageLoading(pending)
 
 onMounted(async () => {
   try {
