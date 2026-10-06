@@ -51,7 +51,7 @@ Nuxt 預設目錄結構（未使用 `app/` 目錄），`components/`、`composab
 
 ### Loading 畫面
 
-- `middleware/loading.ts`（只在 client 執行）換頁時開啟 `AppLoading`，預設 350ms 後關閉。
+- `middleware/loading.ts` 換頁時開啟 `AppLoading`，預設 350ms 後關閉。server 端也要開啟（SSR 時 `isLoading` 會傳到 client，client 在 hydration 前也會執行 middleware，兩邊不一致會造成 hydration mismatch），關閉的計時器只在 client 執行。
 - 會抓資料的頁面設定 `definePageMeta({ middleware: ['loading'], waitForData: true })` 並呼叫 `usePageLoading(pending)`，等 `pending` 變為 `false` 才關閉。目前套用在 `/portfolio`、`/portfolio/[id]`、`/resume`。
 - 新增會抓資料的頁面時，`waitForData` 與 `usePageLoading` 要一起加，只加其中一個會讓 Loading 不關閉或提早關閉。
 
