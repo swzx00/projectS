@@ -11,9 +11,15 @@ export async function useSingleDataFetch(providedId?: string): Promise<FetchResu
   const id = providedId || route.params.id
   const safeId = Array.isArray(id) ? id[0] : id || ''
 
+  if (!isValidDataCardId(safeId)) {
+    router.push('/error404') // 與後端回 400（無效的 ID）時相同處理
+    return { data: null, pending: false, error: '無效的 ID' }
+  }
+
   try {
     // 加入完整的 URL 路徑檢查
-    const url = `${baseUrl}/public/dataCard/${safeId}`
+    // route param 已被解碼，需重新編碼，避免 `..%2F` 變成 `../` 造成路徑穿越
+    const url = `${baseUrl}/public/dataCard/${encodeURIComponent(safeId)}`
 
     // 加入 fetch 選項
     const response = await fetch(url, {

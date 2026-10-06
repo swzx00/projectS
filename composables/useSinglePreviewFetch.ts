@@ -15,9 +15,14 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
   const auth = useAuthStore()
   const token = auth.idToken // Pinia 的 token
 
+  if (!isValidDataCardId(safeId)) {
+    return { data: null, pending: false, error: '無效的 ID', status: 400 }
+  }
+
   try {
     // 加入完整的 URL 路徑檢查
-    const url = `${baseUrl}/admin/preview/${safeId}`
+    // route param 已被解碼，需重新編碼，避免 `..%2F` 變成 `../` 造成路徑穿越（此請求帶有 Bearer token）
+    const url = `${baseUrl}/admin/preview/${encodeURIComponent(safeId)}`
 
     // 加入 fetch 選項
     const response = await fetch(url, {
