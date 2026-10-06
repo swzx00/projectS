@@ -6,65 +6,52 @@ const parsePage = (page: unknown): number => {
   return Number.isFinite(parsed) && parsed >= 1 ? parsed : 1
 }
 
+// 頁碼超出範圍時後端回 200 與空列表；仍有資料時回傳應導向的最後一頁，否則回傳 null
+const getOutOfRangeLastPage = (result: ResponseData | null | undefined, page: number): number | null => {
+  if (!result || result.dataCard?.length !== 0 || !(result.totalCount > 0) || !(result.perPage > 0)) return null
+  const lastPage = Math.ceil(result.totalCount / result.perPage)
+  return page > lastPage ? lastPage : null
+}
+
 export function useDataFetch(defaultTag: string) {
   const route = useRoute()
   const router = useRouter()
 
-  // 頁數狀態
-  const currentPage = ref(parsePage(route.query.page))
+  // 頁數狀態（從 URL 取得）
+  const currentPage = computed(() => parsePage(route.query.page))
 
-  // 動態 tag 參數，從 URL 取得或者給定預設值
-  const currentTag = ref<string>(route.query.tag ? String(route.query.tag) : defaultTag)
+  // 動態 tag 參數，從 URL 取得或者給定預設值（只有 frontend / design 頁面使用 tag）
+  const currentTag = computed(() => {
+    if ((defaultTag === 'frontend' || defaultTag === 'design') && route.query.tag !== undefined) {
+      return String(route.query.tag)
+    }
+    return defaultTag
+  })
 
-  const apiPath = ref<string | null>(null)
-
-  if (defaultTag === 'frontend' || defaultTag === 'design') {
-    // 當頁數或 tag 改變時，重新抓取資料
-    watch(
-      () => [route.query.page, route.query.tag],
-      () => {
-        currentPage.value = parsePage(route.query.page)
-        if (route.query.tag === undefined) {
-          currentTag.value = defaultTag
-        } else {
-          currentTag.value = String(route.query.tag)
-        }
-      },
-    )
-  } else {
-    // 當頁數改變時，重新抓取資料
-    watch(
-      () => route.query.page,
-      (newPage) => {
-        currentPage.value = parsePage(newPage)
-      },
-    )
-  }
-
-  // 定義 async 函數來使用 await 獲取資料
-  const fetchData = async () => {
+  const buildApiPath = (page: number, tag: string) => {
     // 使用 Vite 環境變數
     const baseUrl = import.meta.env.VITE_API_BASE_URL || ''
 
-    try {
-      if (defaultTag === 'frontend') {
-        if (currentTag.value === 'frontend' || currentTag.value === undefined) {
-          apiPath.value = `${baseUrl}/public/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${currentPage.value}`
-        } else {
-          apiPath.value = `${baseUrl}/public/dataCard?tag=${encodeURIComponent(currentTag.value)}&page=${currentPage.value}`
-        }
-      } else if (defaultTag === 'design') {
-        if (currentTag.value === 'design' || currentTag.value === undefined) {
-          apiPath.value = `${baseUrl}/public/dataCard?tag=web,edm,banner,video%20card,printed&page=${currentPage.value}`
-        } else {
-          apiPath.value = `${baseUrl}/public/dataCard?tag=${encodeURIComponent(currentTag.value)}&page=${currentPage.value}`
-        }
-      } else {
-        apiPath.value = `${baseUrl}/public/dataCard?page=${currentPage.value}`
+    if (defaultTag === 'frontend') {
+      if (tag === 'frontend') {
+        return `${baseUrl}/public/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${page}`
       }
+      return `${baseUrl}/public/dataCard?tag=${encodeURIComponent(tag)}&page=${page}`
+    }
+    if (defaultTag === 'design') {
+      if (tag === 'design') {
+        return `${baseUrl}/public/dataCard?tag=web,edm,banner,video%20card,printed&page=${page}`
+      }
+      return `${baseUrl}/public/dataCard?tag=${encodeURIComponent(tag)}&page=${page}`
+    }
+    return `${baseUrl}/public/dataCard?page=${page}`
+  }
 
+  // 定義 async 函數來使用 await 獲取資料
+  const fetchData = async (page: number, tag: string): Promise<ResponseData> => {
+    try {
       // 加入 fetch 選項
-      const response = await fetch(apiPath.value, {
+      const response = await fetch(buildApiPath(page, tag), {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -88,52 +75,35 @@ export function useDataFetch(defaultTag: string) {
     }
   }
 
-  // 使用 ref 和 watchEffect 來儲存狀態
-  const data = ref<ResponseData | null>(null)
-  const pending = ref<boolean>(true)
-  const error = ref<any>(null)
+  // useAsyncData：SSR 時在 server 抓資料並輸出列表（SEO），client hydration 直接沿用，不會重複請求
+  // 頁數或 tag 改變時重新抓取；dedupe 預設為 cancel，舊請求的回應不會覆蓋新資料
+  const { data, pending, error } = useAsyncData(
+    `dataCard-list:${defaultTag || 'all'}`,
+    async () => {
+      const page = currentPage.value
+      const result = await fetchData(page, currentTag.value)
 
-  const totalCount = ref<number | null>(null)
-  const perPage = ref<number | null>(null)
-
-  // 使用 watchEffect 來觸發資料請求
-  watchEffect(async (onCleanup) => {
-    // 頁數或 tag 再次改變時，舊請求的回應作廢，避免較晚回來的舊資料覆蓋新資料
-    let isStale = false
-    onCleanup(() => {
-      isStale = true
-    })
-    // 導向最後一頁期間維持 pending，避免先閃過「沒有作品」
-    let isRedirecting = false
-
-    pending.value = true
-    error.value = null
-
-    try {
-      const result = await fetchData()
-      if (isStale) return
-
-      // 頁碼超出範圍時後端回 200 與空列表；仍有資料時導向最後一頁
-      if (import.meta.client && result.dataCard?.length === 0 && result.totalCount > 0 && result.perPage > 0) {
-        const lastPage = Math.ceil(result.totalCount / result.perPage)
-        if (currentPage.value > lastPage) {
-          isRedirecting = true
-          router.replace({ query: { ...route.query, page: String(lastPage) } })
-          return
-        }
+      // client 換頁時頁碼超出範圍，導向最後一頁（導向後會重新抓取，這次的結果作廢）
+      const lastPage = import.meta.client ? getOutOfRangeLastPage(result, page) : null
+      if (lastPage) {
+        await router.replace({ query: { ...route.query, page: String(lastPage) } })
       }
+      return result
+    },
+    { watch: [currentPage, currentTag] },
+  )
 
-      data.value = result
-      // 當資料加載完成後，將 totalCount 和 perPage 賦值
-      totalCount.value = result.totalCount
-      perPage.value = result.perPage
-    } catch (err) {
-      if (isStale) return
-      error.value = err
-    } finally {
-      if (!isStale && !isRedirecting) pending.value = false
-    }
-  })
+  // SSR 輸出的頁碼超出範圍時（直接開啟 ?page=999），hydration 後在 client 導向最後一頁
+  if (import.meta.client) {
+    onMounted(() => {
+      const lastPage = getOutOfRangeLastPage(data.value, currentPage.value)
+      if (lastPage) router.replace({ query: { ...route.query, page: String(lastPage) } })
+    })
+  }
+
+  // 當資料加載完成後，提供 totalCount 和 perPage 給分頁元件
+  const totalCount = computed(() => data.value?.totalCount ?? null)
+  const perPage = computed(() => data.value?.perPage ?? null)
 
   return {
     currentPage,
