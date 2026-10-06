@@ -4,8 +4,11 @@ import { useDataFetch } from '~/composables/useDataFetch'
 // 使用整合後的 useDataFetch
 const { currentPage, data, pending, error, totalCount, perPage } = useDataFetch('')
 
+usePageLoading(pending)
+
 definePageMeta({
   middleware: ['loading'], // 啟用 loading 中介層
+  waitForData: true, // 資料載入完成後才關閉 Loading
 })
 
 // meta設定
