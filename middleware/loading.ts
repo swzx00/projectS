@@ -2,13 +2,13 @@
 let hideTimer: ReturnType<typeof setTimeout> | null = null
 
 export default defineNuxtRouteMiddleware((to) => {
-  // Loading 畫面只在 client 顯示，server 端不需要排程
-  if (import.meta.server) return
-
   const loadingStore = useLoadingStore()
 
-  // 開啟 Loading 畫面
+  // 開啟 Loading 畫面（server 與 client 都要開啟，hydration 時兩邊的 isLoading 才會一致）
   loadingStore.showLoading()
+
+  // 關閉 Loading 的排程只在 client 執行
+  if (import.meta.server) return
 
   if (hideTimer) {
     clearTimeout(hideTimer)
