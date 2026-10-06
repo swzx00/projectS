@@ -10,7 +10,7 @@ const cardId = defineModel('cardId', {
   type: Number,
   required: true,
 })
-defineModel('title', {
+const title = defineModel('title', {
   type: String,
   required: true,
 })
@@ -73,11 +73,11 @@ const uniqueTags = computed(() => {
 
 // 新增 hover 事件處理函數
 const onHover = () => {
-  hoverStore.setHoveredId(cardId.value)
+  hoverStore.setHoveredCard({ id: cardId.value, title: title.value, images })
 }
 
 const onLeave = () => {
-  hoverStore.setHoveredId(null)
+  hoverStore.setHoveredCard(null)
 }
 </script>
 
