@@ -63,6 +63,19 @@ Nuxt 預設目錄結構（未使用 `app/` 目錄），`components/`、`composab
 - 後端 `/admin/preview/:id` 只允許預覽草稿（`status = 0`）；已上線的文章回 403，前台會導向 `/portfolio/[id]`。
 - 修改預覽或登入流程時，要一併確認後端與後台的對應實作。
 
+### API 錯誤處理
+
+後端錯誤回應的格式為 `{ error: string }`，前台顯示錯誤時優先使用 `error`（body 不一定是 JSON，解析要 `.catch(() => null)`）。
+
+| API                    | 狀態碼處理                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------------- |
+| `/public/dataCard`     | 400（page、tag 不合法）/ 500：顯示錯誤訊息。頁碼超出範圍回 200 + 空列表，有資料時導向最後一頁 |
+| `/public/dataCard/:id` | 400（無效 ID）/ 404：導向 `/error404`；500：留在原頁顯示錯誤訊息                              |
+| `/admin/preview/:id`   | **只有 401 移除 token**；403 代表文章已上線（不是驗證失敗），其他錯誤顯示訊息後導向 404       |
+| `/auth/verify`         | 只有 401 移除 token；400 / 500 / 網路錯誤保留                                                 |
+
+前台送出前會先避免 400：頁碼非正整數一律視為 1（`useDataFetch` 的 `parsePage`），tag 以 `encodeURIComponent` 編碼。
+
 ## 環境變數
 
 使用 Vite 的 `.env.[mode]`（`.env.*` 都在 `.gitignore` 內，不會進版控），以 `import.meta.env.VITE_*` 讀取：
