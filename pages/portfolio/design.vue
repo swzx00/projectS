@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { useDataFetch } from '~/composables/useDataFetch'
+import { getIconTitle } from '~/composables/useTag'
 
 // 使用整合後的 useDataFetch
 const { currentPage, data, pending, error, totalCount, perPage } = useDataFetch('design')
@@ -29,56 +30,11 @@ useHead({
 
 const route = useRoute()
 
-const title = ref('design')
-
-watch(
-  () => route.query.tag,
-  (newTag) => {
-    if (!newTag) {
-      const cleanTag = 'Design'
-      switch (cleanTag) {
-        default:
-          // 如果沒有匹配的 tag，使用默認值
-          title.value = 'Design'
-          break
-      }
-    } else {
-      // 先去除引號和空格，然後轉換為小寫
-      const cleanTag = (newTag as string).replace(/['\s]/g, '').toLowerCase()
-      switch (cleanTag) {
-        case 'product':
-          title.value = 'Product Create'
-          break
-        case 'media':
-          title.value = 'Media Create'
-          break
-        case 'graphic':
-          title.value = 'Graphic Design'
-          break
-        case 'publication':
-          title.value = 'Publication Design'
-          break
-        case 'interface':
-          title.value = 'Interface Design'
-          break
-        case 'edm':
-          title.value = 'Edm Design'
-          break
-        case 'web':
-          title.value = 'Web Design'
-          break
-        case 'design':
-          title.value = 'Design'
-          break
-        default:
-          // 如果沒有匹配的 tag，使用默認值
-          title.value = 'Design'
-          break
-      }
-    }
-  },
-  { immediate: true },
-)
+// 標題依 tag 顯示，與卡片標籤共用 useTag 的對應表
+const title = computed(() => {
+  const tag = route.query.tag
+  return (tag && getIconTitle('design', String(tag))) || 'Design'
+})
 
 // 設定範圍與間距
 const maxX = 1920 // 最大值
