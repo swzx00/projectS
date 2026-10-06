@@ -32,7 +32,8 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
 
     // 檢查回應狀態
     if (!response.ok) {
-      if (response.status === 401 || response.status === 403) {
+      // 只有 401 代表 token 失效；403 是「此內容已上線，無法預覽」，token 仍有效
+      if (response.status === 401) {
         auth.removeToken() // 用 Pinia 的方法移除 token
       }
 

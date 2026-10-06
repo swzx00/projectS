@@ -1,10 +1,16 @@
 import type { ResponseData } from './interface'
 
+// 後端只接受大於 0 的頁碼（否則回 400），非正整數一律視為第 1 頁
+const parsePage = (page: unknown): number => {
+  const parsed = Math.floor(Number(page))
+  return Number.isFinite(parsed) && parsed >= 1 ? parsed : 1
+}
+
 export function useDataFetch(defaultTag: string) {
   const route = useRoute()
 
   // 頁數狀態
-  const currentPage = ref(Number(route.query.page) || 1)
+  const currentPage = ref(parsePage(route.query.page))
 
   // 動態 tag 參數，從 URL 取得或者給定預設值
   const currentTag = ref<string>(route.query.tag ? String(route.query.tag) : defaultTag)
@@ -16,7 +22,7 @@ export function useDataFetch(defaultTag: string) {
     watch(
       () => [route.query.page, route.query.tag],
       () => {
-        currentPage.value = Number(route.query.page) || 1
+        currentPage.value = parsePage(route.query.page)
         if (route.query.tag === undefined) {
           currentTag.value = defaultTag
         } else {
@@ -29,7 +35,7 @@ export function useDataFetch(defaultTag: string) {
     watch(
       () => route.query.page,
       (newPage) => {
-        currentPage.value = Number(newPage) || 1
+        currentPage.value = parsePage(newPage)
       },
     )
   }
@@ -44,13 +50,13 @@ export function useDataFetch(defaultTag: string) {
         if (currentTag.value === 'frontend' || currentTag.value === undefined) {
           apiPath.value = `${baseUrl}/public/dataCard?tag=nuxt,vue,tailwind,bootstrap,html,css,typescript,javascript,edm&page=${currentPage.value}`
         } else {
-          apiPath.value = `${baseUrl}/public/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/public/dataCard?tag=${encodeURIComponent(currentTag.value)}&page=${currentPage.value}`
         }
       } else if (defaultTag === 'design') {
         if (currentTag.value === 'design' || currentTag.value === undefined) {
           apiPath.value = `${baseUrl}/public/dataCard?tag=web,edm,banner,video%20card,printed&page=${currentPage.value}`
         } else {
-          apiPath.value = `${baseUrl}/public/dataCard?tag=${currentTag.value}&page=${currentPage.value}`
+          apiPath.value = `${baseUrl}/public/dataCard?tag=${encodeURIComponent(currentTag.value)}&page=${currentPage.value}`
         }
       } else {
         apiPath.value = `${baseUrl}/public/dataCard?page=${currentPage.value}`
@@ -68,7 +74,9 @@ export function useDataFetch(defaultTag: string) {
 
       // 檢查回應狀態
       if (!response.ok) {
-        throw new Error(`API 請求失敗: ${response.status} ${response.statusText}`)
+        // 優先使用後端回傳的錯誤訊息（例如 400「無效的 tag」）；body 不一定是 JSON
+        const errorData: ResponseData | null = await response.json().catch(() => null)
+        throw new Error(errorData?.error || `API 請求失敗: ${response.status} ${response.statusText}`)
       }
 
       const responseData: ResponseData = await response.json()
