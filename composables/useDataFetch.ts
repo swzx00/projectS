@@ -8,6 +8,7 @@ const parsePage = (page: unknown): number => {
 
 export function useDataFetch(defaultTag: string) {
   const route = useRoute()
+  const router = useRouter()
 
   // 頁數狀態
   const currentPage = ref(parsePage(route.query.page))
@@ -102,6 +103,8 @@ export function useDataFetch(defaultTag: string) {
     onCleanup(() => {
       isStale = true
     })
+    // 導向最後一頁期間維持 pending，避免先閃過「沒有作品」
+    let isRedirecting = false
 
     pending.value = true
     error.value = null
@@ -109,6 +112,16 @@ export function useDataFetch(defaultTag: string) {
     try {
       const result = await fetchData()
       if (isStale) return
+
+      // 頁碼超出範圍時後端回 200 與空列表；仍有資料時導向最後一頁
+      if (import.meta.client && result.dataCard?.length === 0 && result.totalCount > 0 && result.perPage > 0) {
+        const lastPage = Math.ceil(result.totalCount / result.perPage)
+        if (currentPage.value > lastPage) {
+          isRedirecting = true
+          router.replace({ query: { ...route.query, page: String(lastPage) } })
+          return
+        }
+      }
 
       data.value = result
       // 當資料加載完成後，將 totalCount 和 perPage 賦值
@@ -118,7 +131,7 @@ export function useDataFetch(defaultTag: string) {
       if (isStale) return
       error.value = err
     } finally {
-      if (!isStale) pending.value = false
+      if (!isStale && !isRedirecting) pending.value = false
     }
   })
 
