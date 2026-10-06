@@ -16,8 +16,47 @@ const token = ref<string | null>(null)
 const adminUrl = import.meta.env.VITE_ADMIN_BASE_URL
 const safeId = route.params.id as string
 
+// SEO 標題設定
+useHead(() => ({
+  title: item.value ? `(預覽)-${item.value.title}` : '林家丞 作品集 | Portfolio WebSite Chia-Cheng, Lin',
+}))
+
+let tokenReceived = false
+// 每次請求的序號，只採用最新一次請求的結果（後台送來新 token 後，舊 token 的回應作廢）
+let latestRequestId = 0
+
+// 處理訊息事件（token or logout）
+const handleMessage = async (event: MessageEvent) => {
+  if (event.origin !== adminUrl || event.source !== window.opener) return
+
+  if (event.data?.type === 'logout') {
+    latestRequestId++ // 進行中的請求作廢
+    tokenReceived = false // 後台重新登入後送來的新 token 仍可套用
+    auth.removeToken()
+    token.value = null
+    error.value = new Error('已從後台登出，請重新登入後再預覽')
+    resetData()
+    redirectWithDelay('/error404')
+    return
+  }
+
+  if (tokenReceived) return
+  const receivedToken = event.data?.token
+  // 只接受非空字串，避免非預期格式被存入 store 並當成 Bearer token 送出
+  if (typeof receivedToken !== 'string' || !receivedToken) return
+
+  tokenReceived = true
+  // 與目前使用中的 token 相同且已開始載入時，不重複請求
+  if (receivedToken === auth.idToken && latestRequestId > 0) return
+
+  auth.setToken(receivedToken)
+  token.value = receivedToken
+
+  await loadPreview()
+}
+
 onMounted(async () => {
-  let tokenReceived = false
+  window.addEventListener('message', handleMessage)
 
   // 主動通知後台已準備好
   if (window.opener) {
@@ -25,45 +64,12 @@ onMounted(async () => {
     window.opener.postMessage({ type: 'ready' }, adminUrl)
   }
 
-  // 處理訊息事件（token or logout）
-  const handleMessage = async (event: MessageEvent) => {
-    if (event.origin !== adminUrl || event.source !== window.opener) return
-
-    if (event.data?.type === 'logout') {
-      auth.removeToken()
-      token.value = null
-      error.value = new Error('已從後台登出，請重新登入後再預覽')
-      resetData()
-      redirectWithDelay('/error404')
-      return
-    }
-
-    if (tokenReceived) return
-    const receivedToken = event.data?.token
-    if (!receivedToken) return
-
-    tokenReceived = true
-    auth.setToken(receivedToken)
-    token.value = receivedToken
-
-    const response = await useSinglePreviewFetch(safeId)
-    await handleFetchResult(response)
-  }
-
-  window.addEventListener('message', handleMessage)
-
   await performAuthCheck()
+})
 
-  // SEO 標題設定
-  watch(
-    () => item.value,
-    (newItem) => {
-      useHead(() => ({
-        title: newItem ? `(預覽)-${newItem.title}` : '林家丞 作品集 | Portfolio WebSite Chia-Cheng, Lin',
-      }))
-    },
-    { immediate: true },
-  )
+onBeforeUnmount(() => {
+  window.removeEventListener('message', handleMessage)
+  cancelRedirect()
 })
 
 // 認證檢查流程
@@ -80,13 +86,15 @@ async function performAuthCheck() {
       return
     }
 
+    // 等待期間已收到後台的 token，由 handleMessage 載入，避免重複請求
+    if (tokenReceived) return
+
     // 這裡同步 Pinia
     if (storedToken && !auth.idToken) {
       auth.setToken(storedToken)
     }
 
-    const response = await useSinglePreviewFetch(safeId)
-    await handleFetchResult(response)
+    await loadPreview()
   } catch (err) {
     console.error('認證檢查出錯:', err)
     const errorMessage = err instanceof Error ? err.message : '認證檢查失敗'
@@ -104,7 +112,7 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
     const checkToken = () => {
       let storedToken: string | null = null
       try {
-        const raw = localStorage.getItem('google_id_token')
+        const raw = sessionStorage.getItem('google_id_token')
         if (raw) {
           const parsed = JSON.parse(raw)
           storedToken = parsed.idToken || null
@@ -123,8 +131,6 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
           storedToken,
           timedOut: elapsed >= maxWaitTime,
         })
-        pending.value = false
-        dataLoaded.value = false
         return
       }
 
@@ -135,11 +141,24 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
   })
 }
 
+// 載入預覽文章（請求期間維持「資料載入中」）
+async function loadPreview() {
+  const requestId = ++latestRequestId
+  pending.value = true
+  dataLoaded.value = true
+
+  const response = await useSinglePreviewFetch(safeId)
+  if (requestId !== latestRequestId) return
+
+  handleFetchResult(response)
+}
+
 // 統一處理 fetch 結果
 function handleFetchResult(response: FetchResult) {
-  if (response.status === 403 && response.error.includes('已上線')) {
+  // 後端 /admin/preview/:id 的 403 只代表文章已上線
+  if (response.status === 403) {
     console.warn('文章已上線，導向正式頁面')
-    return router.push(`/portfolio/${safeId}`)
+    return router.push(`/portfolio/${encodeURIComponent(safeId)}`)
   }
 
   if (response.error) {
@@ -149,6 +168,9 @@ function handleFetchResult(response: FetchResult) {
     return
   }
 
+  // 先前失敗（例如 sessionStorage 的舊 token 已過期）後，後台送來新 token 並成功載入時，取消導頁與錯誤訊息
+  cancelRedirect()
+  error.value = null
   data.value = response.data
   item.value = data.value?.dataCard ?? null
   pending.value = false
@@ -163,9 +185,19 @@ function resetData() {
   dataLoaded.value = true
 }
 
-// 延遲跳轉
+// 延遲跳轉（同時只保留一個排程）
+let redirectTimer: ReturnType<typeof setTimeout> | null = null
+
 function redirectWithDelay(path: string, delay = 3000) {
-  setTimeout(() => router.push(path), delay)
+  cancelRedirect()
+  redirectTimer = setTimeout(() => router.push(path), delay)
+}
+
+function cancelRedirect() {
+  if (redirectTimer) {
+    clearTimeout(redirectTimer)
+    redirectTimer = null
+  }
 }
 
 definePageMeta({

@@ -11,9 +11,15 @@ export async function useSingleDataFetch(providedId?: string): Promise<FetchResu
   const id = providedId || route.params.id
   const safeId = Array.isArray(id) ? id[0] : id || ''
 
+  if (!isValidDataCardId(safeId)) {
+    router.push('/error404') // 與後端回 400（無效的 ID）時相同處理
+    return { data: null, pending: false, error: '無效的 ID' }
+  }
+
   try {
     // 加入完整的 URL 路徑檢查
-    const url = `${baseUrl}/public/dataCard/${safeId}`
+    // route param 已被解碼，需重新編碼，避免 `..%2F` 變成 `../` 造成路徑穿越
+    const url = `${baseUrl}/public/dataCard/${encodeURIComponent(safeId)}`
 
     // 加入 fetch 選項
     const response = await fetch(url, {
@@ -27,8 +33,14 @@ export async function useSingleDataFetch(providedId?: string): Promise<FetchResu
 
     // 檢查回應狀態
     if (!response.ok) {
-      router.push('/error404') // 跳轉到對應的頁面
-      throw new Error(`API 請求失敗: ${response.status} ${response.statusText}`)
+      // 錯誤回應的 body 不一定是 JSON（例如代理伺服器的 HTML 錯誤頁）
+      const errorData: ResponseData | null = await response.json().catch(() => null)
+
+      // 400（無效的 ID）、404（找不到）導向 404 頁；500 等伺服器錯誤留在原頁顯示錯誤訊息
+      if (response.status === 400 || response.status === 404) {
+        router.push('/error404') // 跳轉到對應的頁面
+      }
+      throw new Error(errorData?.error || `API 請求失敗: ${response.status} ${response.statusText}`)
     }
 
     const data: ResponseData = await response.json()

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { useDataFetch } from '~/composables/useDataFetch'
 import { useHoverStore } from '~/stores/hoverStore'
 import { useActive } from '~/composables/useActive'
 
@@ -15,17 +14,9 @@ const clickLink = () => {
 // useActive.ts
 const { isActive } = useActive('design')
 
-// 使用整合後的 useDataFetch
-const { data } = useDataFetch('design')
-
-// 使用 Pinia store
+// 使用 Pinia store（被 hover 的卡片資料由 CardDesign 寫入）
 const hoverStore = useHoverStore()
-const { hoveredId } = storeToRefs(hoverStore)
-
-const hoveredData = computed(() => {
-  if (!hoveredId.value || !data?.value?.dataCard) return null
-  return data.value.dataCard.find((item: any) => item.id === hoveredId.value) || null
-})
+const { hoveredId, hoveredCard: hoveredData } = storeToRefs(hoverStore)
 </script>
 
 <template>

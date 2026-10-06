@@ -15,9 +15,14 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
   const auth = useAuthStore()
   const token = auth.idToken // Pinia 的 token
 
+  if (!isValidDataCardId(safeId)) {
+    return { data: null, pending: false, error: '無效的 ID', status: 400 }
+  }
+
   try {
     // 加入完整的 URL 路徑檢查
-    const url = `${baseUrl}/admin/preview/${safeId}`
+    // route param 已被解碼，需重新編碼，避免 `..%2F` 變成 `../` 造成路徑穿越（此請求帶有 Bearer token）
+    const url = `${baseUrl}/admin/preview/${encodeURIComponent(safeId)}`
 
     // 加入 fetch 選項
     const response = await fetch(url, {
@@ -32,15 +37,19 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
 
     // 檢查回應狀態
     if (!response.ok) {
-      const errorData: ResponseData = await response.json()
-      if (response.status === 401 || response.status === 403) {
+      // 只有 401 代表 token 失效；403 是「此內容已上線，無法預覽」，token 仍有效
+      // 等待回應期間 token 可能已被換成後台送來的新 token，只移除這次請求使用的 token
+      if (response.status === 401 && auth.idToken === token) {
         auth.removeToken() // 用 Pinia 的方法移除 token
       }
+
+      // 錯誤回應的 body 不一定是 JSON（例如代理伺服器的 HTML 錯誤頁）
+      const errorData: ResponseData | null = await response.json().catch(() => null)
 
       return {
         data: errorData,
         pending: false,
-        error: errorData?.error || 'API 請求失敗',
+        error: errorData?.error || `API 請求失敗: ${response.status}`,
         status: response.status,
       }
     }

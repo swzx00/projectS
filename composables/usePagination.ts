@@ -10,6 +10,11 @@ export function usePagination(
   const currentPage = ref(initialPage.value)
   const maxPages = 5
 
+  // 同步外部頁碼（側欄標籤、上一頁等不經 gotoPage 的導航）
+  watch(initialPage, (newPage) => {
+    currentPage.value = newPage
+  })
+
   // 計算總頁數
   const totalPages = computed(() => {
     if (totalCount.value !== null && perPage.value !== null) {

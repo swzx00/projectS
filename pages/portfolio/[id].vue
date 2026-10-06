@@ -15,6 +15,10 @@ onMounted(async () => {
   const safeId = route.params.id as string
   try {
     const response = await useSingleDataFetch(safeId)
+    // useSingleDataFetch 失敗時不會拋出例外，而是回傳 error 訊息
+    if (response.error) {
+      error.value = new Error(response.error)
+    }
     data.value = response.data
     item.value = data.value?.dataCard ?? null
   } catch (err) {
@@ -25,8 +29,11 @@ onMounted(async () => {
   }
 })
 
+usePageLoading(pending)
+
 definePageMeta({
   middleware: ['loading'],
+  waitForData: true,
 })
 </script>
 
