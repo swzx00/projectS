@@ -112,7 +112,7 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
     const checkToken = () => {
       let storedToken: string | null = null
       try {
-        const raw = localStorage.getItem('google_id_token')
+        const raw = sessionStorage.getItem('google_id_token')
         if (raw) {
           const parsed = JSON.parse(raw)
           storedToken = parsed.idToken || null
@@ -168,7 +168,7 @@ function handleFetchResult(response: FetchResult) {
     return
   }
 
-  // 先前失敗（例如 localStorage 的舊 token 已過期）後，後台送來新 token 並成功載入時，取消導頁與錯誤訊息
+  // 先前失敗（例如 sessionStorage 的舊 token 已過期）後，後台送來新 token 並成功載入時，取消導頁與錯誤訊息
   cancelRedirect()
   error.value = null
   data.value = response.data

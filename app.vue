@@ -6,16 +6,7 @@ import { useGoogleTokenValid } from '~/composables/useGoogleTokenValid'
 const auth = useAuthStore()
 const { idToken } = storeToRefs(auth)
 
-onMounted(() => {
-  window.addEventListener('storage', (e) => {
-    // e.key 為 null 代表其他分頁執行了 localStorage.clear()
-    if (e.key === 'google_id_token' || e.key === null) {
-      auth.syncFromLocalStorage()
-    }
-  })
-})
-
-// 監聽 idToken 變化（immediate：驗證從 localStorage 還原的 token）
+// 監聽 idToken 變化（immediate：驗證從 sessionStorage 還原的 token）
 watch(
   idToken,
   async (newToken, oldToken) => {
