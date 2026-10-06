@@ -1,7 +1,7 @@
 export const getIconName = (_type: string, tag: string): string => {
   switch (tag.toLowerCase().replace(/['\s]/g, '')) {
     case 'printed':
-    case 'video card':
+    case 'videocard':
     case 'banner':
     case 'web':
       return 'logos:adobe-photoshop'
@@ -33,7 +33,7 @@ export const getIconTitle = (_type: string, tag: string): string => {
     switch (tag.toLowerCase().replace(/['\s]/g, '')) {
       case 'printed':
         return 'Printed'
-      case 'video card':
+      case 'videocard':
         return 'Video Card'
       case 'banner':
         return 'Banner'
@@ -47,7 +47,7 @@ export const getIconTitle = (_type: string, tag: string): string => {
   } else if (_type === 'frontend') {
     switch (tag.toLowerCase().replace(/['\s]/g, '')) {
       case 'printed':
-      case 'video card':
+      case 'videocard':
       case 'banner':
       case 'web':
         return 'Design'
@@ -75,7 +75,7 @@ export const getIconTitle = (_type: string, tag: string): string => {
   } else {
     switch (tag.toLowerCase().replace(/['\s]/g, '')) {
       case 'printed':
-      case 'video card':
+      case 'videocard':
       case 'banner':
       case 'web':
         return 'Web Design'
