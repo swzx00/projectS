@@ -32,15 +32,17 @@ export async function useSinglePreviewFetch(providedId?: string): Promise<FetchR
 
     // 檢查回應狀態
     if (!response.ok) {
-      const errorData: ResponseData = await response.json()
       if (response.status === 401 || response.status === 403) {
         auth.removeToken() // 用 Pinia 的方法移除 token
       }
 
+      // 錯誤回應的 body 不一定是 JSON（例如代理伺服器的 HTML 錯誤頁）
+      const errorData: ResponseData | null = await response.json().catch(() => null)
+
       return {
         data: errorData,
         pending: false,
-        error: errorData?.error || 'API 請求失敗',
+        error: errorData?.error || `API 請求失敗: ${response.status}`,
         status: response.status,
       }
     }

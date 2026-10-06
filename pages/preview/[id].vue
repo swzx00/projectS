@@ -16,8 +16,40 @@ const token = ref<string | null>(null)
 const adminUrl = import.meta.env.VITE_ADMIN_BASE_URL
 const safeId = route.params.id as string
 
+// SEO 標題設定
+useHead(() => ({
+  title: item.value ? `(預覽)-${item.value.title}` : '林家丞 作品集 | Portfolio WebSite Chia-Cheng, Lin',
+}))
+
+let tokenReceived = false
+
+// 處理訊息事件（token or logout）
+const handleMessage = async (event: MessageEvent) => {
+  if (event.origin !== adminUrl || event.source !== window.opener) return
+
+  if (event.data?.type === 'logout') {
+    auth.removeToken()
+    token.value = null
+    error.value = new Error('已從後台登出，請重新登入後再預覽')
+    resetData()
+    redirectWithDelay('/error404')
+    return
+  }
+
+  if (tokenReceived) return
+  const receivedToken = event.data?.token
+  if (!receivedToken) return
+
+  tokenReceived = true
+  auth.setToken(receivedToken)
+  token.value = receivedToken
+
+  const response = await useSinglePreviewFetch(safeId)
+  await handleFetchResult(response)
+}
+
 onMounted(async () => {
-  let tokenReceived = false
+  window.addEventListener('message', handleMessage)
 
   // 主動通知後台已準備好
   if (window.opener) {
@@ -25,45 +57,12 @@ onMounted(async () => {
     window.opener.postMessage({ type: 'ready' }, adminUrl)
   }
 
-  // 處理訊息事件（token or logout）
-  const handleMessage = async (event: MessageEvent) => {
-    if (event.origin !== adminUrl || event.source !== window.opener) return
-
-    if (event.data?.type === 'logout') {
-      auth.removeToken()
-      token.value = null
-      error.value = new Error('已從後台登出，請重新登入後再預覽')
-      resetData()
-      redirectWithDelay('/error404')
-      return
-    }
-
-    if (tokenReceived) return
-    const receivedToken = event.data?.token
-    if (!receivedToken) return
-
-    tokenReceived = true
-    auth.setToken(receivedToken)
-    token.value = receivedToken
-
-    const response = await useSinglePreviewFetch(safeId)
-    await handleFetchResult(response)
-  }
-
-  window.addEventListener('message', handleMessage)
-
   await performAuthCheck()
+})
 
-  // SEO 標題設定
-  watch(
-    () => item.value,
-    (newItem) => {
-      useHead(() => ({
-        title: newItem ? `(預覽)-${newItem.title}` : '林家丞 作品集 | Portfolio WebSite Chia-Cheng, Lin',
-      }))
-    },
-    { immediate: true },
-  )
+onBeforeUnmount(() => {
+  window.removeEventListener('message', handleMessage)
+  cancelRedirect()
 })
 
 // 認證檢查流程
@@ -149,6 +148,9 @@ function handleFetchResult(response: FetchResult) {
     return
   }
 
+  // 先前失敗（例如 localStorage 的舊 token 已過期）後，後台送來新 token 並成功載入時，取消導頁與錯誤訊息
+  cancelRedirect()
+  error.value = null
   data.value = response.data
   item.value = data.value?.dataCard ?? null
   pending.value = false
@@ -163,9 +165,19 @@ function resetData() {
   dataLoaded.value = true
 }
 
-// 延遲跳轉
+// 延遲跳轉（同時只保留一個排程）
+let redirectTimer: ReturnType<typeof setTimeout> | null = null
+
 function redirectWithDelay(path: string, delay = 3000) {
-  setTimeout(() => router.push(path), delay)
+  cancelRedirect()
+  redirectTimer = setTimeout(() => router.push(path), delay)
+}
+
+function cancelRedirect() {
+  if (redirectTimer) {
+    clearTimeout(redirectTimer)
+    redirectTimer = null
+  }
 }
 
 definePageMeta({

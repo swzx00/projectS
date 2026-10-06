@@ -14,15 +14,23 @@ onMounted(() => {
   })
 })
 
-// 監聽 idToken 變化
-watch(idToken, async (newToken, oldToken) => {
-  if (newToken && newToken !== oldToken) {
-    const { valid } = await useGoogleTokenValid(newToken)
-    if (!valid) {
-      console.warn('未通過驗證! 請登入系統!')
+// 監聽 idToken 變化（immediate：驗證從 localStorage 還原的 token）
+watch(
+  idToken,
+  async (newToken, oldToken) => {
+    if (newToken && newToken !== oldToken) {
+      const { valid, status } = await useGoogleTokenValid(newToken)
+      if (!valid) {
+        console.warn('未通過驗證! 請登入系統!')
+        // 只有後端明確回 401（過期、無效、已登出）才移除；網路或伺服器錯誤時保留
+        if (status === 401 && auth.idToken === newToken) {
+          auth.removeToken()
+        }
+      }
     }
-  }
-})
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
