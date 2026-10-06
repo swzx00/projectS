@@ -13,21 +13,18 @@ export const useAuthStore = defineStore(
       idToken.value = ''
     }
 
-    function syncFromLocalStorage() {
-      try {
-        const stored = localStorage.getItem('google_id_token')
-        // 其他分頁移除 token（removeItem / clear）時，這裡也要清空
-        idToken.value = stored ? JSON.parse(stored).idToken || '' : ''
-      } catch {
-        idToken.value = ''
-      }
-    }
-
-    return { idToken, setToken, removeToken, syncFromLocalStorage }
+    return { idToken, setToken, removeToken }
   },
   {
+    // 後台 JWT 只存在 sessionStorage：關閉分頁即清除，不會長期留在公開前台的網域
+    // （重新整理預覽頁時，後台收到 ready 會重送 token）
+    // persist plugin 只在 client 安裝，以函式延遲存取 sessionStorage，避免 server 端參照不存在的全域變數
     persist: {
       key: 'google_id_token',
+      storage: {
+        getItem: (key) => sessionStorage.getItem(key),
+        setItem: (key, value) => sessionStorage.setItem(key, value),
+      },
     },
   },
 )
