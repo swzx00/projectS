@@ -47,19 +47,22 @@ Nuxt 預設目錄結構（未使用 `app/` 目錄），`components/`、`composab
 | `/preview/[id]`       | `preview`  | 後端 `/admin/preview/:id`（需要 Bearer JWT） |
 | `/error404`、其他路徑 | 無         | —                                            |
 
-列表頁的資料請求在 `composables/useDataFetch.ts`，頁碼與 tag 從 URL query（`?page=`、`?tag=`）讀取；分頁元件透過 `usePagination` 以 `router.push` 更新 query。同一頁面不要重複呼叫 `useDataFetch`（每次呼叫都會各自送出請求）；設計作品側欄的 hover 預覽由 `CardDesign` 把卡片寫入 `hoverStore.hoveredCard`，側欄直接讀取。
+列表頁的資料請求在 `composables/useDataFetch.ts`，以 `useAsyncData` 在 SSR 時抓取並輸出列表（SEO），hydration 沿用 payload 不重複請求；頁碼與 tag 從 URL query（`?page=`、`?tag=`）讀取，改變時重新抓取；分頁元件透過 `usePagination` 以 `router.push` 更新 query。同一頁面不要重複呼叫 `useDataFetch`（每次呼叫都會各自送出請求）；設計作品側欄的 hover 預覽由 `CardDesign` 把卡片寫入 `hoverStore.hoveredCard`，側欄直接讀取。
 
 ### Loading 畫面
 
 - `middleware/loading.ts` 換頁時開啟 `AppLoading`，預設 350ms 後關閉。server 端也要開啟（SSR 時 `isLoading` 會傳到 client，client 在 hydration 前也會執行 middleware，兩邊不一致會造成 hydration mismatch），關閉的計時器只在 client 執行。
 - 會抓資料的頁面設定 `definePageMeta({ middleware: ['loading'], waitForData: true })` 並呼叫 `usePageLoading(pending)`，等 `pending` 變為 `false` 才關閉。目前套用在 `/portfolio`、`/portfolio/[id]`、`/resume`。
 - 新增會抓資料的頁面時，`waitForData` 與 `usePageLoading` 要一起加，只加其中一個會讓 Loading 不關閉或提早關閉。
+- 同一頁面只改 query / hash（例如換頁碼）時 middleware 不開啟 Loading，由頁面自己顯示「載入中」。
+- 資料還沒載入完就離開時，`usePageLoading` 會在卸載時關閉 Loading（新頁面沒有 `waitForData` 時）。
 
 ### 預覽頁與 token
 
 - `authStore.idToken` 存的是**後端簽發的 JWT**（名稱 `google_id_token` 是沿用舊名），persist 的 localStorage key 為 `google_id_token`。
 - `/preview/[id]` 開啟後會對 `window.opener` 送出 `{ type: 'ready' }`，後台回傳 `{ token }`；後台登出時送出 `{ type: 'logout' }`。收訊息時必須檢查 `event.origin === VITE_ADMIN_BASE_URL` 且 `event.source === window.opener`。
-- `app.vue` 會呼叫後端 `/auth/verify` 驗證 token，後端回 401 時移除 token。
+- `app.vue` 會呼叫後端 `/auth/verify` 驗證 token，後端回 401 時移除 token；其他分頁移除 token 時透過 `storage` 事件同步清空。
+- 預覽頁的載入一律經過 `loadPreview()`，只採用最新一次請求的結果；收到 401 時只移除該次請求使用的 token（等待回應期間 token 可能已被後台送來的新 token 取代）。
 - 後端 `/admin/preview/:id` 只允許預覽草稿（`status = 0`）；已上線的文章回 403，前台會導向 `/portfolio/[id]`。
 - 修改預覽或登入流程時，要一併確認後端與後台的對應實作。
 
