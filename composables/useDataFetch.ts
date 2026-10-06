@@ -72,10 +72,6 @@ export function useDataFetch(defaultTag: string) {
       }
 
       const responseData: ResponseData = await response.json()
-
-      // 當資料加載完成後，將 totalCount 和 perPage 賦值
-      totalCount.value = responseData.totalCount
-      perPage.value = responseData.perPage
       return responseData
     } catch (err) {
       console.error('Error fetching data:', err)
@@ -92,18 +88,29 @@ export function useDataFetch(defaultTag: string) {
   const perPage = ref<number | null>(null)
 
   // 使用 watchEffect 來觸發資料請求
-  watchEffect(async () => {
+  watchEffect(async (onCleanup) => {
+    // 頁數或 tag 再次改變時，舊請求的回應作廢，避免較晚回來的舊資料覆蓋新資料
+    let isStale = false
+    onCleanup(() => {
+      isStale = true
+    })
+
     pending.value = true
     error.value = null
 
     try {
       const result = await fetchData()
+      if (isStale) return
 
       data.value = result
+      // 當資料加載完成後，將 totalCount 和 perPage 賦值
+      totalCount.value = result.totalCount
+      perPage.value = result.perPage
     } catch (err) {
+      if (isStale) return
       error.value = err
     } finally {
-      pending.value = false
+      if (!isStale) pending.value = false
     }
   })
 
