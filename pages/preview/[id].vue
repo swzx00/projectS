@@ -22,12 +22,15 @@ useHead(() => ({
 }))
 
 let tokenReceived = false
+// 每次請求的序號，只採用最新一次請求的結果（後台送來新 token 後，舊 token 的回應作廢）
+let latestRequestId = 0
 
 // 處理訊息事件（token or logout）
 const handleMessage = async (event: MessageEvent) => {
   if (event.origin !== adminUrl || event.source !== window.opener) return
 
   if (event.data?.type === 'logout') {
+    latestRequestId++ // 進行中的請求作廢
     auth.removeToken()
     token.value = null
     error.value = new Error('已從後台登出，請重新登入後再預覽')
@@ -41,11 +44,13 @@ const handleMessage = async (event: MessageEvent) => {
   if (!receivedToken) return
 
   tokenReceived = true
+  // 與目前使用中的 token 相同且已開始載入時，不重複請求
+  if (receivedToken === auth.idToken && latestRequestId > 0) return
+
   auth.setToken(receivedToken)
   token.value = receivedToken
 
-  const response = await useSinglePreviewFetch(safeId)
-  await handleFetchResult(response)
+  await loadPreview()
 }
 
 onMounted(async () => {
@@ -79,13 +84,15 @@ async function performAuthCheck() {
       return
     }
 
+    // 等待期間已收到後台的 token，由 handleMessage 載入，避免重複請求
+    if (tokenReceived) return
+
     // 這裡同步 Pinia
     if (storedToken && !auth.idToken) {
       auth.setToken(storedToken)
     }
 
-    const response = await useSinglePreviewFetch(safeId)
-    await handleFetchResult(response)
+    await loadPreview()
   } catch (err) {
     console.error('認證檢查出錯:', err)
     const errorMessage = err instanceof Error ? err.message : '認證檢查失敗'
@@ -122,8 +129,6 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
           storedToken,
           timedOut: elapsed >= maxWaitTime,
         })
-        pending.value = false
-        dataLoaded.value = false
         return
       }
 
@@ -134,9 +139,22 @@ function waitForTokenReady(maxWaitTime = 6000, checkInterval = 100): Promise<Tok
   })
 }
 
+// 載入預覽文章（請求期間維持「資料載入中」）
+async function loadPreview() {
+  const requestId = ++latestRequestId
+  pending.value = true
+  dataLoaded.value = true
+
+  const response = await useSinglePreviewFetch(safeId)
+  if (requestId !== latestRequestId) return
+
+  handleFetchResult(response)
+}
+
 // 統一處理 fetch 結果
 function handleFetchResult(response: FetchResult) {
-  if (response.status === 403 && response.error.includes('已上線')) {
+  // 後端 /admin/preview/:id 的 403 只代表文章已上線
+  if (response.status === 403) {
     console.warn('文章已上線，導向正式頁面')
     return router.push(`/portfolio/${safeId}`)
   }
