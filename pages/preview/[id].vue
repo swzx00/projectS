@@ -31,6 +31,7 @@ const handleMessage = async (event: MessageEvent) => {
 
   if (event.data?.type === 'logout') {
     latestRequestId++ // 進行中的請求作廢
+    tokenReceived = false // 後台重新登入後送來的新 token 仍可套用
     auth.removeToken()
     token.value = null
     error.value = new Error('已從後台登出，請重新登入後再預覽')
@@ -41,7 +42,8 @@ const handleMessage = async (event: MessageEvent) => {
 
   if (tokenReceived) return
   const receivedToken = event.data?.token
-  if (!receivedToken) return
+  // 只接受非空字串，避免非預期格式被存入 store 並當成 Bearer token 送出
+  if (typeof receivedToken !== 'string' || !receivedToken) return
 
   tokenReceived = true
   // 與目前使用中的 token 相同且已開始載入時，不重複請求
@@ -156,7 +158,7 @@ function handleFetchResult(response: FetchResult) {
   // 後端 /admin/preview/:id 的 403 只代表文章已上線
   if (response.status === 403) {
     console.warn('文章已上線，導向正式頁面')
-    return router.push(`/portfolio/${safeId}`)
+    return router.push(`/portfolio/${encodeURIComponent(safeId)}`)
   }
 
   if (response.error) {
