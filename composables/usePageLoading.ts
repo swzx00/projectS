@@ -7,6 +7,7 @@ export function usePageLoading(pending: Ref<boolean>) {
   if (import.meta.server) return
 
   const loadingStore = useLoadingStore()
+  const router = useRouter()
 
   watch(
     pending,
@@ -15,4 +16,12 @@ export function usePageLoading(pending: Ref<boolean>) {
     },
     { immediate: true },
   )
+
+  // 資料還沒載入完就離開時，若新頁面不會自己關閉（沒有 waitForData），由這裡關閉，
+  // 避免導向沒有 loading middleware 的頁面（例如 /portfolio/frontend）後 Loading 關不掉
+  onBeforeUnmount(() => {
+    if (pending.value && !router.currentRoute.value.meta.waitForData) {
+      loadingStore.hideLoading()
+    }
+  })
 }
