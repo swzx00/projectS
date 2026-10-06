@@ -20,18 +20,18 @@ Node.js 版本須符合 Nuxt 4 的要求：`^22.21.0 || ^24.11.0`，版本不符
 
 Nuxt 預設目錄結構（未使用 `app/` 目錄），`components/`、`composables/`、`stores/` 會自動匯入。
 
-| 目錄 / 檔案      | 內容                                                                                      |
-| ---------------- | ----------------------------------------------------------------------------------------- |
-| `app.vue`        | 根元件：Loading、Vercel Analytics / Speed Insights，以及 token 驗證                       |
-| `pages/`         | 頁面路由（見下表）                                                                        |
-| `layouts/`       | `default`、`design`、`frontend`、`preview`                                                |
-| `components/`    | 依區塊分資料夾：`Card`、`Header`、`Footer`、`Side`、`Pagination`、`Portfolio` 等          |
-| `composables/`   | API 呼叫、分頁、標籤、GSAP 動畫；型別定義集中在 `interface.ts`                            |
-| `stores/`        | Pinia：`authStore`（預覽用 token，persist 到 localStorage）、`loadingStore`、`hoverStore` |
-| `middleware/`    | `loading`：換頁時顯示 Loading 畫面（見下方說明）                                          |
-| `plugins/`       | `pinia-plugin-persistedstate`（僅 client）                                                |
-| `server/api/`    | `dataResume`：回傳 `server/data/dataResume.json`（履歷資料，不經過後端）                  |
-| `nuxt.config.ts` | 模組、Google Fonts、全站 SEO meta                                                         |
+| 目錄 / 檔案      | 內容                                                                                                   |
+| ---------------- | ------------------------------------------------------------------------------------------------------ |
+| `app.vue`        | 根元件：Loading、Vercel Analytics / Speed Insights，以及 token 驗證                                    |
+| `pages/`         | 頁面路由（見下表）                                                                                     |
+| `layouts/`       | `default`、`design`、`frontend`、`preview`                                                             |
+| `components/`    | 依區塊分資料夾：`Card`、`Header`、`Footer`、`Side`、`Pagination`、`Portfolio` 等                       |
+| `composables/`   | API 呼叫、分頁、標籤、GSAP 動畫；型別定義集中在 `interface.ts`                                         |
+| `stores/`        | Pinia：`authStore`（預覽用 token，persist 到 sessionStorage）、`loadingStore`、`hoverStore`            |
+| `middleware/`    | `loading`：換頁時顯示 Loading 畫面（見下方說明）                                                       |
+| `plugins/`       | `pinia-plugin-persistedstate`、`clear-legacy-token`（清除舊版留在 localStorage 的 token），皆僅 client |
+| `server/api/`    | `dataResume`：回傳 `server/data/dataResume.json`（履歷資料，不經過後端）                               |
+| `nuxt.config.ts` | 模組、Google Fonts、全站 SEO meta                                                                      |
 
 ### 路由
 
@@ -59,9 +59,9 @@ Nuxt 預設目錄結構（未使用 `app/` 目錄），`components/`、`composab
 
 ### 預覽頁與 token
 
-- `authStore.idToken` 存的是**後端簽發的 JWT**（名稱 `google_id_token` 是沿用舊名），persist 的 localStorage key 為 `google_id_token`。
+- `authStore.idToken` 存的是**後端簽發的 JWT**（名稱 `google_id_token` 是沿用舊名），persist 在 **sessionStorage**（key `google_id_token`），關閉分頁即清除。不要改回 localStorage：token 會長期留在公開前台的網域。
 - `/preview/[id]` 開啟後會對 `window.opener` 送出 `{ type: 'ready' }`，後台回傳 `{ token }`；後台登出時送出 `{ type: 'logout' }`。收訊息時必須檢查 `event.origin === VITE_ADMIN_BASE_URL` 且 `event.source === window.opener`。
-- `app.vue` 會呼叫後端 `/auth/verify` 驗證 token，後端回 401 時移除 token；其他分頁移除 token 時透過 `storage` 事件同步清空。
+- `app.vue` 會呼叫後端 `/auth/verify` 驗證 token，後端回 401 時移除 token。
 - 預覽頁的載入一律經過 `loadPreview()`，只採用最新一次請求的結果；收到 401 時只移除該次請求使用的 token（等待回應期間 token 可能已被後台送來的新 token 取代）。
 - 後端 `/admin/preview/:id` 只允許預覽草稿（`status = 0`）；已上線的文章回 403，前台會導向 `/portfolio/[id]`。
 - 修改預覽或登入流程時，要一併確認後端與後台的對應實作。
@@ -78,6 +78,8 @@ Nuxt 預設目錄結構（未使用 `app/` 目錄），`components/`、`composab
 | `/auth/verify`         | 只有 401 移除 token；400 / 500 / 網路錯誤保留                                                 |
 
 前台送出前會先避免 400：頁碼非正整數一律視為 1（`useDataFetch` 的 `parsePage`），tag 以 `encodeURIComponent` 編碼。
+
+文章 ID 送出前以 `isValidDataCardId`（`composables/dataCardId.ts`，與後端同規則：1～18 位數字）檢查，並以 `encodeURIComponent` 編碼。route param 是已解碼的值，直接拼進 API 路徑會造成路徑穿越（預覽請求帶有 Bearer token）。
 
 ## 環境變數
 

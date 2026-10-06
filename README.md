@@ -100,7 +100,7 @@ projectS/
 ├── layouts/             # default、design、frontend、preview
 ├── middleware/          # loading
 ├── pages/               # 頁面路由
-├── plugins/             # pinia-plugin-persistedstate
+├── plugins/             # pinia-plugin-persistedstate、清除舊版 token
 ├── public/              # 靜態檔（OG 圖片、履歷 PDF、robots.txt）
 ├── server/              # Nuxt server API（履歷資料）
 ├── stores/              # Pinia store
